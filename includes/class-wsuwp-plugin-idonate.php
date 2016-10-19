@@ -27,5 +27,23 @@ class WSUWP_Plugin_iDonate {
 	 *
 	 * @since 0.0.1
 	 */
-	public function setup_hooks() {}
+	public function setup_hooks() {
+		custom_posttypes_run();
+	}
+
+	/**
+	* Creates an instance of the WSUWP_Plugin_iDonate_Post_Type_Fund class
+	* and calls its initialization method.
+	*
+	* @since    0.0.1
+	*/
+	private function custom_posttypes_run() {
+
+		/** Loads the custom taxonomy class file. */
+		require_once( dirname( __FILE__ ) . '/class-custom-post-type-fund.php' );
+
+		$custom_post_type = new WSUWP_Plugin_iDonate_Post_Type_Fund();
+		$custom_post_type->init();
+
+	}
 }
