@@ -34,7 +34,7 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
         );
         
         $args = array( 
-			'label'                 => $labels,
+			'labels'                 => $labels,
 			'public'                => false,
 			'show_ui'	        	=> true,
 			'show_in_admin_bar'     => true,

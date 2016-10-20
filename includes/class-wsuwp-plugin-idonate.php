@@ -28,7 +28,7 @@ class WSUWP_Plugin_iDonate {
 	 * @since 0.0.1
 	 */
 	public function setup_hooks() {
-		custom_posttypes_run();
+		self::$instance->custom_posttypes_run();
 	}
 
 	/**
@@ -39,7 +39,7 @@ class WSUWP_Plugin_iDonate {
 	*/
 	private function custom_posttypes_run() {
 
-		/** Loads the custom taxonomy class file. */
+		/** Loads the custom post type Fund class file. */
 		require_once( dirname( __FILE__ ) . '/class-custom-post-type-fund.php' );
 
 		$custom_post_type = new WSUWP_Plugin_iDonate_Post_Type_Fund();
