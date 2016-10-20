@@ -38,6 +38,7 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
 			'public'                => false,
 			'show_ui'	        	=> true,
 			'show_in_admin_bar'     => true,
+			'menu_icon' 			=> 'dashicons-welcome-learn-more',
 			'hierarchical'			=> false, 
 			'taxonomies'			=> array( 'priorities', 'colleges', 'campuses', 'programs'  ),
 			'supports'           	=> array( 'title', 'custom-fields')
