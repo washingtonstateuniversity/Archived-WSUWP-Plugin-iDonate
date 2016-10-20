@@ -43,6 +43,45 @@ class WSUWP_Plugin_iDonate_Custom_Taxonomies {
 		    )
         );
 
+        $taxonomies[] = array(
+            'name' => 'colleges',
+            'post_type' => 'fund',
+            'labels' => array(
+                'name'          => 'Colleges',
+                'singular_name' => 'College',
+                'edit_item'     => 'Edit College',
+                'update_item'   => 'Update College',
+                'add_new_item'  => 'Add New College',
+                'menu_name'     => 'Colleges'
+		    )
+        );
+
+        $taxonomies[] = array(
+            'name' => 'campuses',
+            'post_type' => 'fund',
+            'labels' => array(
+                'name'          => 'Campuses',
+                'singular_name' => 'Campus',
+                'edit_item'     => 'Edit Campus',
+                'update_item'   => 'Update Campus',
+                'add_new_item'  => 'Add New Campus',
+                'menu_name'     => 'Campuses'
+            )
+        );
+
+        $taxonomies[] = array(
+            'name' => 'programs',
+            'post_type' => 'fund',
+            'labels' => array(
+                'name'          => 'Programs',
+                'singular_name' => 'Program',
+                'edit_item'     => 'Edit University Program',
+                'update_item'   => 'Update University Program',
+                'add_new_item'  => 'Add New University Program',
+                'menu_name'     => 'Programs'
+            )
+        );
+
         foreach ($taxonomies as $taxonomy) {
             $this->register_custom_taxonomy($taxonomy["name"], $taxonomy["post_type"], $taxonomy["labels"]);
         }
