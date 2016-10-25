@@ -26,78 +26,75 @@ class WSUWP_Plugin_iDonate_Custom_Taxonomies {
 
 	}
 
-    public function init_taxonomies()
-    {
-        $taxonomies = array();
-        
-        $taxonomies[] = array(
-            'name' => 'priorities',
-            'post_type' => 'fund',
-            'labels' => array(
-                'name'          => 'Priorities',
-                'singular_name' => 'Priority',
-                'edit_item'     => 'Edit Priority',
-                'update_item'   => 'Update Priority',
-                'add_new_item'  => 'Add New Priority',
-                'menu_name'     => 'Priorities'
-		    )
-        );
+	public function init_taxonomies() {
+		$taxonomies = array();
 
-        $taxonomies[] = array(
-            'name' => 'colleges',
-            'post_type' => 'fund',
-            'labels' => array(
-                'name'          => 'Colleges',
-                'singular_name' => 'College',
-                'edit_item'     => 'Edit College',
-                'update_item'   => 'Update College',
-                'add_new_item'  => 'Add New College',
-                'menu_name'     => 'Colleges'
-		    )
-        );
+		$taxonomies[] = array(
+			'name' => 'priorities',
+			'post_type' => 'fund',
+			'labels' => array(
+				'name'          => 'Priorities',
+				'singular_name' => 'Priority',
+				'edit_item'     => 'Edit Priority',
+				'update_item'   => 'Update Priority',
+				'add_new_item'  => 'Add New Priority',
+				'menu_name'     => 'Priorities',
+			),
+		);
 
-        $taxonomies[] = array(
-            'name' => 'campuses',
-            'post_type' => 'fund',
-            'labels' => array(
-                'name'          => 'Campuses',
-                'singular_name' => 'Campus',
-                'edit_item'     => 'Edit Campus',
-                'update_item'   => 'Update Campus',
-                'add_new_item'  => 'Add New Campus',
-                'menu_name'     => 'Campuses'
-            )
-        );
+		$taxonomies[] = array(
+			'name' => 'colleges',
+			'post_type' => 'fund',
+			'labels' => array(
+				'name'          => 'Colleges',
+				'singular_name' => 'College',
+				'edit_item'     => 'Edit College',
+				'update_item'   => 'Update College',
+				'add_new_item'  => 'Add New College',
+				'menu_name'     => 'Colleges',
+			),
+		);
 
-        $taxonomies[] = array(
-            'name' => 'programs',
-            'post_type' => 'fund',
-            'labels' => array(
-                'name'          => 'Programs',
-                'singular_name' => 'Program',
-                'edit_item'     => 'Edit University Program',
-                'update_item'   => 'Update University Program',
-                'add_new_item'  => 'Add New University Program',
-                'menu_name'     => 'Programs'
-            )
-        );
+		$taxonomies[] = array(
+			'name' => 'campuses',
+			'post_type' => 'fund',
+			'labels' => array(
+				'name'          => 'Campuses',
+				'singular_name' => 'Campus',
+				'edit_item'     => 'Edit Campus',
+				'update_item'   => 'Update Campus',
+				'add_new_item'  => 'Add New Campus',
+				'menu_name'     => 'Campuses',
+			),
+		);
 
-        foreach ($taxonomies as $taxonomy) {
-            $this->register_custom_taxonomy($taxonomy["name"], $taxonomy["post_type"], $taxonomy["labels"]);
-        }
-        
-    }
+		$taxonomies[] = array(
+			'name' => 'programs',
+			'post_type' => 'fund',
+			'labels' => array(
+				'name'          => 'Programs',
+				'singular_name' => 'Program',
+				'edit_item'     => 'Edit University Program',
+				'update_item'   => 'Update University Program',
+				'add_new_item'  => 'Add New University Program',
+				'menu_name'     => 'Programs',
+			),
+		);
 
-    private function register_custom_taxonomy($name, $post_type, $labels)
-    {
-        $args = array(
+		foreach ( $taxonomies as $taxonomy ) {
+			$this->register_custom_taxonomy( $taxonomy['name'], $taxonomy['post_type'], $taxonomy['labels'] );
+		}
+	}
+
+	private function register_custom_taxonomy( $name, $post_type, $labels )	{
+		$args = array(
 			'hierarchical'      => true,
 			'labels'            => $labels,
 			'public'            => false,
-            'show_ui'           => true,
+			'show_ui'           => true,
 			'show_admin_column' => true,
 		);
 
 		register_taxonomy( $name, $post_type, $args );
-    }
+	}
 }
