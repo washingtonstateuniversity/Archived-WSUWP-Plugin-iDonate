@@ -86,7 +86,7 @@ class WSUWP_Plugin_iDonate_Custom_Taxonomies {
 		}
 	}
 
-	private function register_custom_taxonomy( $name, $post_type, $labels )	{
+	private function register_custom_taxonomy( $name, $post_type, $labels ) {
 		$args = array(
 			'hierarchical'      => true,
 			'labels'            => $labels,

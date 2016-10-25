@@ -40,8 +40,8 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
 			'show_in_admin_bar'		=> true,
 			'menu_icon' 			=> 'dashicons-welcome-learn-more',
 			'hierarchical'			=> false,
-			'taxonomies'			=> array( 'priorities', 'colleges', 'campuses', 'programs', ),
-			'supports'				=> array( 'title', 'custom-fields', )
+			'taxonomies'			=> array( 'priorities', 'colleges', 'campuses', 'programs' ),
+			'supports'				=> array( 'title', 'custom-fields' ),
 		);
 
 		register_post_type( 'fund', $args );
