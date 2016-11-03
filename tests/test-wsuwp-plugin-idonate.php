@@ -13,7 +13,7 @@ class WSUWP_Plugin_iDonate_Tests extends WP_UnitTestCase {
 	 */
 	public function test_WSUWP_Plugin_iDonate_Post_Type_Fund() {
 
-		$this->assertTrue(post_type_exists( 'fund' ));
+		$this->assertTrue( post_type_exists( 'fund' ) );
 	}
 
 	/**
@@ -24,29 +24,30 @@ class WSUWP_Plugin_iDonate_Tests extends WP_UnitTestCase {
 			'_builtin' => false,
 		);
 
-		$post_types = get_post_types( $args ); 
+		$post_types = get_post_types( $args );
 
-		$this->assertTrue(count($post_types) == 1);
+		$this->assertTrue( count( $post_types ) === 1 );
+
 	}
 
 	public function test_WSUWP_Plugin_iDonate_Custom_Taxonomies_exists() {
 
-		$this->assertTrue(taxonomy_exists( 'priorities' ));
-		$this->assertTrue(taxonomy_exists( 'colleges' ));
-		$this->assertTrue(taxonomy_exists( 'campuses' ));
-		$this->assertTrue(taxonomy_exists( 'programs' ));
-		
+		$this->assertTrue( taxonomy_exists( 'priorities' ) );
+		$this->assertTrue( taxonomy_exists( 'colleges' ) );
+		$this->assertTrue( taxonomy_exists( 'campuses' ) );
+		$this->assertTrue( taxonomy_exists( 'programs' ) );
+
 	}
 
 	public function test_WSUWP_Plugin_iDonate_Custom_Taxonomies_count() {
-		
+
 		$args = array(
 			'_builtin' => false,
-		); 
+		);
 
-		$taxonomies = get_taxonomies( $args ); 
+		$taxonomies = get_taxonomies( $args );
 
-		$this->assertNotEmpty($taxonomies);
-		$this->assertCount(4, $taxonomies);
+		$this->assertNotEmpty( $taxonomies );
+		$this->assertCount( 4, $taxonomies );
 	}
 }
