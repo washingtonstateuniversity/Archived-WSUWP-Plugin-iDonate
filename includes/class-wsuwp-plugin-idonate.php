@@ -30,6 +30,7 @@ class WSUWP_Plugin_iDonate {
 	public function setup_hooks() {
 		self::$instance->custom_posttypes_run();
 		self::$instance->custom_taxonomies_run();
+		self::$instance->fundselector_shortcode_run();
 	}
 
 	/**
@@ -61,6 +62,22 @@ class WSUWP_Plugin_iDonate {
 
 		$custom_post_type = new WSUWP_Plugin_iDonate_Custom_Taxonomies();
 		$custom_post_type->init();
+
+	}
+
+	/**
+	* Creates an instance of the WSUWP_Plugin_iDonate_Custom_Taxonomies class
+	* and calls its initialization method.
+	*
+	* @since    0.0.1
+	*/
+	private function fundselector_shortcode_run() {
+
+		/** Loads the custom taxonomy class file. */
+		require_once( dirname( __FILE__ ) . '/class-wsuwp-shortcode-fundselector.php' );
+
+		$fundselector_shortcode = new WSUWP_Plugin_iDonate_ShortCode_Fund_Selector();
+		$fundselector_shortcode->init();
 
 	}
 }
