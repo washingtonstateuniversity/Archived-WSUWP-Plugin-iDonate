@@ -66,14 +66,14 @@ class WSUWP_Plugin_iDonate {
 	}
 
 	/**
-	* Creates an instance of the WSUWP_Plugin_iDonate_Custom_Taxonomies class
+	* Creates an instance of the WSUWP_Plugin_iDonate_ShortCode_Fund_Selector class
 	* and calls its initialization method.
 	*
 	* @since    0.0.1
 	*/
 	private function fundselector_shortcode_run() {
 
-		/** Loads the custom taxonomy class file. */
+		/** Loads the fundselector shortcode class file. */
 		require_once( dirname( __FILE__ ) . '/class-wsuwp-shortcode-fundselector.php' );
 
 		$fundselector_shortcode = new WSUWP_Plugin_iDonate_ShortCode_Fund_Selector();
