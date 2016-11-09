@@ -31,6 +31,7 @@ class WSUWP_Plugin_iDonate {
 		self::$instance->custom_posttypes_run();
 		self::$instance->custom_taxonomies_run();
 		self::$instance->fundselector_shortcode_run();
+		self::$instance->ajax_data_retrieval_run();
 	}
 
 	/**
@@ -77,6 +78,22 @@ class WSUWP_Plugin_iDonate {
 		require_once( dirname( __FILE__ ) . '/class-wsuwp-shortcode-fundselector.php' );
 
 		$fundselector_shortcode = new WSUWP_Plugin_iDonate_ShortCode_Fund_Selector();
+		$fundselector_shortcode->init();
+
+	}
+
+	/**
+	* Creates an instance of the WSUWP_Plugin_iDonate_Ajax_Data class
+	* and calls its initialization method.
+	*
+	* @since    0.0.2
+	*/
+	private function ajax_data_retrieval_run() {
+
+		/** Loads the fundselector shortcode class file. */
+		require_once( dirname( __FILE__ ) . '/class-ajax-data-retrieval.php' );
+
+		$fundselector_shortcode = new WSUWP_Plugin_iDonate_Ajax_Data();
 		$fundselector_shortcode->init();
 
 	}
