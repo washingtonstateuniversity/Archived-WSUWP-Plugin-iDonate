@@ -23,6 +23,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	public function init() {
 
 		add_shortcode( 'fundselector', array( $this, 'fundselector_create_shortcode' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'wsuf_fundselector_enqueue_scripts' ) );
 
 	}
 
@@ -90,6 +91,20 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$return_string .= '<button type="button" id="continueButton" class="btn btn-default" disabled>Continue</button>';
 
 		return $return_string . '</div>';
+	}
+
+	/*
+	* Enqueues JavaScript files
+	*/
+	function wsuf_fundselector_enqueue_scripts() {
+
+		wp_enqueue_script( 'wsuf_fundselector_utils', plugins_url( '/wsuwp-shortcode-fundselector-utils.js', __FILE__ ), array('jquery'), '1.0', true );
+
+		wp_enqueue_script( 'wsuf_fundselector', plugins_url( '/wsuwp-shortcode-fundselector.js', __FILE__ ), array('jquery', 'jquery-ui-core', 'jquery-ui-autocomplete'), '1.0', true );
+
+		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
+			'ajax_url' => admin_url( 'admin-ajax.php' )
+		));
 	}
 
 	/**
