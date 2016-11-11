@@ -50,7 +50,7 @@ class WSUWP_Plugin_iDonate_Ajax_Data {
 				$title = get_the_title();
 				$des_id = get_post_meta( get_the_ID(), 'designationId', true );
 
-				$return[] = array( 'label' => $title , 'value' => $des_id );
+				$return[] = array( 'label' => $title , 'name' => $title, 'designationId' => $des_id );
 			}
 		}
 

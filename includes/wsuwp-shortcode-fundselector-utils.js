@@ -1,10 +1,9 @@
 // Does our namespace exist
-wsuwp.utils = wsuwp.utils || {};
-
+window.wsuwpUtils = window.wsuwpUtils || {};
 
 (function () {
 
-    wsuwp.utils = {
+    window.wsuwpUtils = {
 
 		addListItem: function ( $list, name, designationId ) {
 			var html = '<li class="list-group-item" data-designation_id="' + designationId + '">' + name + '<a href="#" class="pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a></li>'; 

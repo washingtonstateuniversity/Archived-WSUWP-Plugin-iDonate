@@ -1,3 +1,5 @@
+/// <reference path="wsuwp-shortcode-fundselector-utils.js" />
+
 jQuery(document).ready(function($) {
 
 	$("#fundSearch").autocomplete(
@@ -16,8 +18,8 @@ jQuery(document).ready(function($) {
 			},
 			minLength: 3,
             select: function( event, ui ) {
-                wsuwp.utils.addListItem($("#selectedFunds"), ui.item.value, ui.item.designation_id);
-                $("#fundSearch").val("");
+                wsuwpUtils.addListItem($("#selectedFunds"), ui.item.name, ui.item.designationId);
+				$("#fundSearch").val("");
                 event.preventDefault();
             }
         }
