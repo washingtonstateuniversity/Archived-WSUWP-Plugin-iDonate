@@ -45,7 +45,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		</div>';
 
 		// Priorities Tab
-		$priorities = $this->wsuf_fundselector_funds_get_funds( 'priorities', 'priorities' );
+		$priorities = $this->wsuf_fundselector_funds_get_funds( 'idonate_priorities', 'idonate_priorities' );
 		$priorities_list = '<option disabled selected value> -- Select a Fund -- </option>';
 
 		foreach ( $priorities as $priority ) {
@@ -136,7 +136,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	*/
 	function wsuf_fundselector_funds_get_funds( $category, $subcategory ) {
 		$fund_list = get_posts(array(
-			'post_type'   => 'fund',
+			'post_type'   => 'idonate_fund',
 			'post_status' => 'any',
 			'posts_per_page' => -1, // Get all posts
 			'tax_query' => array(
