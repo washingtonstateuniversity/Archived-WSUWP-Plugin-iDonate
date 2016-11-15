@@ -13,7 +13,7 @@ class WSUWP_Plugin_iDonate_Tests extends WP_UnitTestCase {
 	 */
 	public function test_WSUWP_Plugin_iDonate_Post_Type_Fund() {
 
-		$this->assertTrue( post_type_exists( 'fund' ) );
+		$this->assertTrue( post_type_exists( 'idonate_fund' ) );
 	}
 
 	/**
@@ -32,10 +32,10 @@ class WSUWP_Plugin_iDonate_Tests extends WP_UnitTestCase {
 
 	public function test_WSUWP_Plugin_iDonate_Custom_Taxonomies_exists() {
 
-		$this->assertTrue( taxonomy_exists( 'priorities' ) );
-		$this->assertTrue( taxonomy_exists( 'colleges' ) );
-		$this->assertTrue( taxonomy_exists( 'campuses' ) );
-		$this->assertTrue( taxonomy_exists( 'programs' ) );
+		$this->assertTrue( taxonomy_exists( 'idonate_priorities' ) );
+		$this->assertTrue( taxonomy_exists( 'idonate_colleges' ) );
+		$this->assertTrue( taxonomy_exists( 'idonate_campuses' ) );
+		$this->assertTrue( taxonomy_exists( 'idonate_programs' ) );
 
 	}
 

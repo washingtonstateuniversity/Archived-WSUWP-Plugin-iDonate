@@ -28,22 +28,23 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
 
 	function custom_post_types() {
 		$labels = array(
-			'name'				=> 'Funds',
-			'singular_name'		=> 'Fund',
-			'menu_name'			=> 'Funds',
+			'name' => 'Funds',
+			'singular_name' => 'Fund',
+			'menu_name' => 'Funds',
 		);
 
 		$args = array(
-			'labels'				=> $labels,
-			'public'				=> false,
-			'show_ui'				=> true,
-			'show_in_admin_bar'		=> true,
-			'menu_icon' 			=> 'dashicons-welcome-learn-more',
-			'hierarchical'			=> false,
-			'taxonomies'			=> array( 'priorities', 'colleges', 'campuses', 'programs' ),
-			'supports'				=> array( 'title', 'custom-fields' ),
+			'labels' => $labels,
+			'public' => false,
+			'show_ui' => true,
+			'show_in_admin_bar' => true,
+			'show_in_rest' => true,
+			'menu_icon' => 'dashicons-welcome-learn-more',
+			'hierarchical' => false,
+			'taxonomies' => array( 'idonate_priorities', 'idonate_colleges', 'idonate_campuses', 'idonate_programs' ),
+			'supports' => array( 'title', 'custom-fields' ),
 		);
 
-		register_post_type( 'fund', $args );
+		register_post_type( 'idonate_fund', $args );
 	}
 }

@@ -30,8 +30,8 @@ class WSUWP_Plugin_iDonate_Custom_Taxonomies {
 		$taxonomies = array();
 
 		$taxonomies[] = array(
-			'name' => 'priorities',
-			'post_type' => 'fund',
+			'name' => 'idonate_priorities',
+			'post_type' => 'idonate_fund',
 			'labels' => array(
 				'name'          => 'Priorities',
 				'singular_name' => 'Priority',
@@ -43,8 +43,8 @@ class WSUWP_Plugin_iDonate_Custom_Taxonomies {
 		);
 
 		$taxonomies[] = array(
-			'name' => 'colleges',
-			'post_type' => 'fund',
+			'name' => 'idonate_colleges',
+			'post_type' => 'idonate_fund',
 			'labels' => array(
 				'name'          => 'Colleges',
 				'singular_name' => 'College',
@@ -56,8 +56,8 @@ class WSUWP_Plugin_iDonate_Custom_Taxonomies {
 		);
 
 		$taxonomies[] = array(
-			'name' => 'campuses',
-			'post_type' => 'fund',
+			'name' => 'idonate_campuses',
+			'post_type' => 'idonate_fund',
 			'labels' => array(
 				'name'          => 'Campuses',
 				'singular_name' => 'Campus',
@@ -69,8 +69,8 @@ class WSUWP_Plugin_iDonate_Custom_Taxonomies {
 		);
 
 		$taxonomies[] = array(
-			'name' => 'programs',
-			'post_type' => 'fund',
+			'name' => 'idonate_programs',
+			'post_type' => 'idonate_fund',
 			'labels' => array(
 				'name'          => 'Programs',
 				'singular_name' => 'Program',
