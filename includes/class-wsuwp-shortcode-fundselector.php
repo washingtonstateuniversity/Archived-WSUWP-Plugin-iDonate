@@ -22,12 +22,12 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	 */
 	public function init() {
 
-		add_shortcode( 'fundselector', array( $this, 'fundselector_create_shortcode' ) );
+		add_shortcode( 'idonate_fundselector', array( $this, 'fundselector_create_shortcode' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wsuf_fundselector_enqueue_scripts' ) );
 
 	}
 
-	// [fundselector embed="iDonate-embed-guid"]
+	// [idonate_fundselector embed="iDonate-embed-guid"]
 	public function fundselector_create_shortcode( $atts ) {
 		// $args = shortcode_atts( array(
 		// 	'embed' => 'something',
