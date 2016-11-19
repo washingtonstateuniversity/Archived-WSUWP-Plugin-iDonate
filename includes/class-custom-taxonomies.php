@@ -91,6 +91,7 @@ class WSUWP_Plugin_iDonate_Custom_Taxonomies {
 			'hierarchical'      => true,
 			'labels'            => $labels,
 			'public'            => false,
+			'show_in_rest' => true,
 			'show_ui'           => true,
 			'show_admin_column' => true,
 		);
