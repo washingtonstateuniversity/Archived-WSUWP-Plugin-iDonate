@@ -6,13 +6,21 @@ jQuery(document).ready(function($) {
         {
 			source: function( request, response ) {
 	
-				$.getJSON( wpData.ajax_url, 
+				$.getJSON( wpData.request_url_base, 
 					{
-						term : request.term,
-						action : "wsuwp_plugin_idonate_ajax_fund_search"
+						search : request.term
 					}, 
 					function( data, status, xhr ) {			
-						response( data );
+						// Map the fund data to use the expected label name ("value") from fund name
+						var fundList = $.map(data, function(fund) {
+							return {
+								"designationId": fund.designationId,
+								"name": fund.title.rendered,
+								"value": fund.title.rendered
+							};
+						});
+						
+						response( fundList );
 					}
 				);
 			},
