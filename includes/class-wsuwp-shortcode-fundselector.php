@@ -103,7 +103,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		wp_enqueue_script( 'wsuf_fundselector', plugins_url( '/wsuwp-shortcode-fundselector.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-autocomplete' ), '1.0', true );
 
 		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
-			'ajax_url' => admin_url( 'admin-ajax.php' ),
 			'request_url_base' => esc_url( rest_url( '/wp/v2/idonate_fund' ) ),
 		));
 	}
