@@ -49,8 +49,8 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$priorities_list = '<option disabled selected value> -- Select a Fund -- </option>';
 
 		foreach ( $priorities as $priority ) {
-			$fund_name = $priority['fund_name'];
-			$fund_designation_id = $priority['designation_id'];
+			$fund_name = esc_html( $priority['fund_name'] );
+			$fund_designation_id = esc_attr( $priority['designation_id'] );
 			$priorities_list .= "<option value=\"{$fund_designation_id}\">{$fund_name}</option>";
 		}
 
