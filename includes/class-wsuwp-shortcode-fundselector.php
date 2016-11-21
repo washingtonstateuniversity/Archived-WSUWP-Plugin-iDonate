@@ -24,7 +24,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		add_shortcode( 'idonate_fundselector', array( $this, 'fundselector_create_shortcode' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wsuf_fundselector_enqueue_scripts' ) );
-
+		add_action( 'rest_api_init', array( $this, 'wsuf_fundselector_register_designation_id' ) );
 	}
 
 	// [idonate_fundselector embed="iDonate-embed-guid"]
@@ -49,8 +49,8 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$priorities_list = '<option disabled selected value> -- Select a Fund -- </option>';
 
 		foreach ( $priorities as $priority ) {
-			$fund_name = $priority['fund_name'];
-			$fund_designation_id = $priority['designation_id'];
+			$fund_name = esc_html( $priority['fund_name'] );
+			$fund_designation_id = esc_attr( $priority['designation_id'] );
 			$priorities_list .= "<option value=\"{$fund_designation_id}\">{$fund_name}</option>";
 		}
 
@@ -103,8 +103,35 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		wp_enqueue_script( 'wsuf_fundselector', plugins_url( '/wsuwp-shortcode-fundselector.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-autocomplete' ), '1.0', true );
 
 		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
-			'ajax_url' => admin_url( 'admin-ajax.php' ),
+			'request_url_base' => esc_url( rest_url( '/wp/v2/idonate_fund' ) ),
 		));
+	}
+
+	/**
+	* Add the designation ID to the Fund response
+	**/
+	function wsuf_fundselector_register_designation_id() {
+		register_rest_field( 'idonate_fund',
+			'designationId',
+			array(
+				'get_callback'    => array( $this, 'wsuf_fundselector_get_post_meta' ),
+				'update_callback' => null,
+				'schema'          => null,
+			)
+		);
+	}
+
+	/**
+	* Get the value for the specified field_name argument
+	*
+	* @param array $object Details of current post.
+	* @param string $field_name Name of field.
+	* @param WP_REST_Request $request Current request
+	*
+	* @return mixed
+	*/
+	function wsuf_fundselector_get_post_meta( $object, $field_name, $request ) {
+		return get_post_meta( $object['id'], $field_name, true );
 	}
 
 	/**
