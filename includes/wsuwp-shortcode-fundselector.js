@@ -2,6 +2,7 @@
 
 jQuery(document).ready(function($) {
 
+	// Fund Search Autocomplete
 	$("#fundSearch").autocomplete(
         {
 			source: function( request, response ) {
@@ -32,5 +33,17 @@ jQuery(document).ready(function($) {
             }
         }
     );
+
+	// Major Category Click Events
+	$("#majorcategory a")
+	.click( function( event ) {
+		$("#majorcategory a").removeClass("active");  
+		$(".categoryTab").addClass('hidden');
+
+		var tabName = $(this).attr("data-tab");
+		$("#" + tabName).removeClass('hidden');
+
+		event.preventDefault();
+	});
 
 });
