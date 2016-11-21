@@ -39,9 +39,9 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$return_string .= '
 		<div id="majorcategory" class="" role="group" aria-label="Category Selection Group">
 			<a class="active" role="button" data-tab="prioritiesTab" href="#" >Priorities</a>
-			<a class="" role="button" data-tab="subcategoryTab" data-category="programs" href="#">Programs</a>
-			<a class="" role="button" data-tab="subcategoryTab" data-category="colleges" href="#">Colleges</a>
-			<a class="" role="button" data-tab="subcategoryTab" data-category="campuses" href="#">Campuses</a>
+			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_programs" href="#">Programs</a>
+			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_colleges" href="#">Colleges</a>
+			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_campuses" href="#">Campuses</a>
 		</div>';
 
 		// Priorities Tab
@@ -120,7 +120,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		wp_enqueue_script( 'wsuf_fundselector', plugins_url( '/wsuwp-shortcode-fundselector.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-autocomplete' ), '1.0', true );
 
 		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
-			'request_url_base' => esc_url( rest_url( '/wp/v2/idonate_fund' ) ),
+			'request_url_base' => esc_url( rest_url( '/wp/v2/' ) ),
 		));
 	}
 
