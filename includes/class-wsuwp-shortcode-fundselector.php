@@ -29,9 +29,9 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 	// [idonate_fundselector embed="iDonate-embed-guid"]
 	public function fundselector_create_shortcode( $atts ) {
-		// $args = shortcode_atts( array(
-		// 	'embed' => 'something',
-		// ), $atts );
+		$args = shortcode_atts( array(
+			'embed' => '',
+		), $atts );
 
 		$return_string = '<div id="fundSelectionForm">';
 
@@ -107,6 +107,9 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Continue button
 		$return_string .= '<button type="button" id="continueButton" class="btn btn-default" disabled>Continue</button>';
 
+		$embed_id = esc_attr( $args['embed'] );
+		$return_string .= '<div id="iDonateEmbed" data-idonate-embed="' . $embed_id . '" data-defer></div>';
+
 		return $return_string . '</div>';
 	}
 
@@ -122,6 +125,8 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
 			'request_url_base' => esc_url( rest_url( '/wp/v2/' ) ),
 		));
+
+		wp_enqueue_script( 'idonate_embed', 'https://staging-embed.idonate.com/idonate.js', "2", true);
 	}
 
 	/**

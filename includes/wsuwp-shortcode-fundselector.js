@@ -124,4 +124,23 @@ jQuery(document).ready(function($) {
 		
 	});
 
+	// Continue Button Initialization and Click Event
+	$("#continueButton").button()
+	.click( function( event ) {
+      
+        var designations = wsuwpUtils.getDesignationList($("#selectedFunds"));
+
+		if(designations.length > 0)
+		{
+			// Turn the list of designations into a JSON string
+			var designationsString = JSON.stringify(designations);
+
+			// Add the designation as an attribute
+			$("#iDonateEmbed").attr("data-designations", designationsString);
+
+			// Initialize the iDonate embed
+			initializeEmbeds();
+		}
+    });
+
 });
