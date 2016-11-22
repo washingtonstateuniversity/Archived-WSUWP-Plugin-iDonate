@@ -67,7 +67,7 @@ jQuery(document).ready(function($) {
 	});
 
 	
-	// Subcategory Click event
+	// Subcategory Selected Change event
 	$("#subcategories")
 	.change( function( event ) {
 		var category = $(this).find(":selected").attr("data-category");
@@ -97,6 +97,14 @@ jQuery(document).ready(function($) {
 		}
 
 		event.preventDefault();
+	});
+
+	// Fund Selected Change event
+	$(".fund-selection")
+	.change( function ( ) {
+		var designationId = $(this).val();
+		var fundName = $(this).find(":selected").text();
+		wsuwpUtils.addListItem($("#selectedFunds"), fundName, designationId);
 	});
 
 });
