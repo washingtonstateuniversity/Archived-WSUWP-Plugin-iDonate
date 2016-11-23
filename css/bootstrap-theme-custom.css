@@ -1,0 +1,23 @@
+/* Add carets below the Category Selection indicators */
+#majorcategory a.active:after{
+    bottom: 0%;
+    margin-bottom: -20px;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+#majorcategory a.active:after {
+	border-top-color: #651421;
+	border-width: 10px;
+	margin-left: -10px;
+    z-index: 1;
+}
+
+#majorcategory {
+	padding-bottom: 5px; /* Add a little spacing to the bottom */
+}

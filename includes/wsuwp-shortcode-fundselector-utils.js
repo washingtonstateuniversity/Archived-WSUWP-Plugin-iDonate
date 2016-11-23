@@ -35,6 +35,14 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			$button.button("disable");
 		},
 
+		highlightSelectedCategory: function ( $button, $buttonGroup ) {
+			$buttonGroup.removeClass("active");  
+			$buttonGroup.removeClass("btn-primary");  
+			$buttonGroup.addClass("btn-default");  
+			$button.removeClass("btn-default");
+			$button.addClass("btn-primary active");
+		},
+
 		htmlDecode: function (value) {
 			return jQuery("<textarea/>").html(value).text();
 		}

@@ -37,11 +37,11 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		// Major Categories button group
 		$return_string .= '
-		<div id="majorcategory" class="" role="group" aria-label="Category Selection Group">
-			<a class="active" role="button" data-tab="prioritiesTab" href="#" >Priorities</a>
-			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_programs" href="#">Programs</a>
-			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_colleges" href="#">Colleges</a>
-			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_campuses" href="#">Campuses</a>
+		<div id="majorcategory" class="btn-group btn-group-justified" role="group" aria-label="Category Selection Group">
+			<a class="btn btn-primary active" role="button" data-tab="prioritiesTab" href="#" >Priorities</a>
+			<a class="btn btn-default" role="button" data-tab="subcategoryTab" data-category="idonate_programs" href="#">Programs</a>
+			<a class="btn btn-default" role="button" data-tab="subcategoryTab" data-category="idonate_colleges" href="#">Colleges</a>
+			<a class="btn btn-default" role="button" data-tab="subcategoryTab" data-category="idonate_campuses" href="#">Campuses</a>
 		</div>';
 
 		// Priorities Tab
@@ -130,6 +130,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		wp_enqueue_style('wsuf_fundselector_bootstrap', plugins_url('/../css/bootstrap.min.css', __FILE__));
 		wp_enqueue_style('wsuf_fundselector_bootstrap_theme', plugins_url('/../css/bootstrap-theme.css', __FILE__));
+		wp_enqueue_style('wsuf_fundselector_bootstrap_theme_custom', plugins_url('/../css/bootstrap-theme-custom.css', __FILE__));
 		wp_enqueue_style('wsuf_fundselector', plugins_url('/../wsuwp-plugin-idonate.css', __FILE__), array('spine-theme'), null);
 	}
 

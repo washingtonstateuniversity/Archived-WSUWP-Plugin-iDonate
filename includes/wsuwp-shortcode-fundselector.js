@@ -38,7 +38,9 @@ jQuery(document).ready(function($) {
 	// Major Category Click Events
 	$("#majorcategory a")
 	.click( function( event ) {
-		$("#majorcategory a").removeClass("active");  
+
+		wsuwpUtils.highlightSelectedCategory($(this), $("#majorcategory a"));
+
 		$(".categoryTab").addClass('hidden');
 
 		var tabName = $(this).attr("data-tab");
