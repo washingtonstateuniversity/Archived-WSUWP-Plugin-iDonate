@@ -128,9 +128,9 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		wp_enqueue_script( 'idonate_embed', 'https://staging-embed.idonate.com/idonate.js', "2", true);
 
-		wp_enqueue_style('wsuf_fundselector', plugins_url('/wsuwp-plugin-idonate.css', __FILE__), array('spine-theme'), null);
 		wp_enqueue_style('wsuf_fundselector_bootstrap', plugins_url('/../css/bootstrap.min.css', __FILE__));
 		wp_enqueue_style('wsuf_fundselector_bootstrap_theme', plugins_url('/../css/bootstrap-theme.css', __FILE__));
+		wp_enqueue_style('wsuf_fundselector', plugins_url('/../wsuwp-plugin-idonate.css', __FILE__), array('spine-theme'), null);
 	}
 
 	/**
