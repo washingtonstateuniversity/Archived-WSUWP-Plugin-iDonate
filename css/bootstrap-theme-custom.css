@@ -21,3 +21,30 @@
 #majorcategory {
 	padding-bottom: 5px; /* Add a little spacing to the bottom */
 }
+
+/* Add lines to the sides of the search separator (OR) */
+/* Adapted from the code here: http://stackoverflow.com/a/14731123 */
+.search-separator {
+    overflow: hidden;
+    text-align: center;
+	color: #981e32;
+	font-weight: bold;
+}
+.search-separator:before,
+.search-separator:after {
+    background-color: #651421;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+.search-separator:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+.search-separator:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
