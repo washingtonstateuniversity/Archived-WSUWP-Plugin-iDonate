@@ -33,7 +33,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			'embed' => '',
 		), $atts );
 
-		$return_string = '<div id="fundSelectionForm">';
+		$return_string = '<div id="fundSelectionForm"  class="container-fluid">';
 
 		// Major Categories button group
 		$return_string .= '
