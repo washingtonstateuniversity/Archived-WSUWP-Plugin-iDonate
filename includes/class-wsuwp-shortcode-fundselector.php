@@ -33,6 +33,12 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			'embed' => '',
 		), $atts );
 
+		$args['embed'] = sanitize_key( $args['embed'] );
+
+		if ( empty( $args['embed'] ) ) {
+			return '';
+		}
+
 		$return_string = '<div id="fundSelectionForm">';
 
 		// Major Categories button group
@@ -107,8 +113,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Continue button
 		$return_string .= '<button type="button" id="continueButton" class="btn btn-default" disabled>Continue</button>';
 
-		$embed_id = esc_attr( $args['embed'] );
-		$return_string .= '<div id="iDonateEmbed" data-idonate-embed="' . $embed_id . '" data-defer></div>';
+		$return_string .= '<div id="iDonateEmbed" data-idonate-embed="' . $args['embed'] . '" data-defer></div>';
 
 		return $return_string . '</div>';
 	}
