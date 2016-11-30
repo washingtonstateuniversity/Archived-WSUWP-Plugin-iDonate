@@ -145,4 +145,7 @@ jQuery(document).ready(function($) {
 		}
     });
 
+	// Disable the continue button by default
+	wsuwpUtils.disableButton($("#continueButton"));
+
 });

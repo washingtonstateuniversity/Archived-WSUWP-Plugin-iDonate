@@ -114,7 +114,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		';
 
 		// Continue button
-		$return_string .= '<button type="button" id="continueButton" class="btn btn-default" disabled>Continue</button>';
+		$return_string .= '<button type="button" id="continueButton" class="btn btn-primary btn-block" disabled>Continue</button>';
 
 		$embed_id = esc_attr( $args['embed'] );
 		$return_string .= '<div id="iDonateEmbed" data-idonate-embed="' . $embed_id . '" data-defer></div>';
