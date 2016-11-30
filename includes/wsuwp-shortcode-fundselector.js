@@ -113,7 +113,7 @@ jQuery(document).ready(function($) {
 
 	// Remove Fund Button Click Event
 	// (Using body to defer binding until element has been created)
-	$('body').on('click', '#selectedFunds li a', function (event) {
+	$('body').on('click', '#selectedFunds div a', function (event) {
 		event.preventDefault();
 		
 		$(this).parent().remove();

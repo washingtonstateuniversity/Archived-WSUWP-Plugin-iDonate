@@ -102,14 +102,20 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$return_string .= '
 		<div class="panel panel-default">
 			<!-- Default panel contents -->
-			<div class="panel-heading">Selected Funds</div>
+			<div class="panel-heading" id="selectedFundsHeader">Selected Funds</div>
 			<div class="panel-body">
 				<p>These are the funds that you have chosen to support today. Thank you for your generousity!</p>
 			</div>
 			
 			<!-- List group -->
-			<ul id="selectedFunds" class="list-group">
-			</ul>
+			<div class="panel-collapse collapse in container-fluid" id="selectedFundsContainer" role="tabpanel" aria-expanded="true" aria-labelledby="selectedFundsHeader">
+				<div class="clear-fix"></div>
+				<div id="selectedFunds" class="list-group row">
+					<div class="list-group-item col-sm-9" data-designation_id="1234"> Test Fund Name for WSU Foundation</div> 
+					<div class="list-group-item col-sm-2">$25</div>
+					<a href="#" role="button" class="list-group-item col-sm-2"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a>
+				</div>
+			</div>
 		</div>
 		';
 
