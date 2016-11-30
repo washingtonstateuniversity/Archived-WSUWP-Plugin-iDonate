@@ -100,3 +100,8 @@
 	-moz-border-radius: 0px;
 	background-image: none;
 }
+
+/* Remove extra padding on the fund list from the Spine theme */
+ul.list-group {
+	padding: 0;
+}

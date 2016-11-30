@@ -100,8 +100,17 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		// Selected Funds List
 		$return_string .= '
-		<ul id="selectedFunds" class="list-group">
-		</ul>
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">Selected Funds</div>
+			<div class="panel-body">
+				<p>These are the funds that you have chosen to support today. Thank you for your generousity!</p>
+			</div>
+			
+			<!-- List group -->
+			<ul id="selectedFunds" class="list-group">
+			</ul>
+		</div>
 		';
 
 		// Continue button
