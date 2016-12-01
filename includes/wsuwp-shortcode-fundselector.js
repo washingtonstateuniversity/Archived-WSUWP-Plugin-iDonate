@@ -136,6 +136,15 @@ jQuery(document).ready(function($) {
 		$this.addClass("selected");
     });
 
+	// Other Amount text field Change Event
+	$("#otherAmount").on('input propertychange paste', function () {
+		var inputAmount = parseFloat($(this).val());
+		if(inputAmount && _.isNumber(inputAmount) && inputAmount > 0)
+		{
+			$("#inpAmount").val(inputAmount);
+		}		
+	});
+
 	// Continue Button Initialization and Click Event
 	$("#continueButton").button()
 	.click( function( event ) {

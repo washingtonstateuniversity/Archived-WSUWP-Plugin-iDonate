@@ -114,7 +114,8 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			<button type="button" class="amount-selection btn btn-default" data-amount="2000">$2000</button>
 			<div class="input-group">
 				<div class="input-group-addon">$</div>
-				<input type="text" class="form-control" id="otherAmount" placeholder="Other Amount" maxlength="5" data-max="99999">
+				<!-- Maximum length of 8 includes cents (.xx) -->
+				<input type="text" class="form-control" id="otherAmount" placeholder="Other Amount" maxlength="8" data-max="99999">
 			</div>
 			<input name="inpAmount" id="inpAmount" class="value" data-token="amount" value="25" type="hidden">
 		</div>
@@ -149,7 +150,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		wp_enqueue_script( 'wsuf_fundselector_utils', plugins_url( '/wsuwp-shortcode-fundselector-utils.js', __FILE__ ), array( 'jquery' ), '1.0', true );
 
-		wp_enqueue_script( 'wsuf_fundselector', plugins_url( '/wsuwp-shortcode-fundselector.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-autocomplete', 'jquery-ui-button' ), '1.0', true );
+		wp_enqueue_script( 'wsuf_fundselector', plugins_url( '/wsuwp-shortcode-fundselector.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-autocomplete', 'jquery-ui-button', 'underscore' ), '1.0', true );
 
 		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
 			'request_url_base' => esc_url( rest_url( '/wp/v2/' ) ),
