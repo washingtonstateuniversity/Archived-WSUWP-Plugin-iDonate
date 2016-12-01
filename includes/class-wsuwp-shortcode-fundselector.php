@@ -105,6 +105,21 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		</div>
 		';
 
+		// Dollar Amount Selectors
+		$return_string .= '
+		<div class="" role="group">
+			<button type="button" class="amount-selection btn btn-default selected" data-amount="25" >$25</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="50">$50</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="100">$100</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="2000">$2000</button>
+			<div class="input-group">
+				<div class="input-group-addon">$</div>
+				<input type="text" class="form-control" id="otherAmount" placeholder="Other Amount" maxlength="5" data-max="99999">
+			</div>
+			<input name="inpAmount" id="inpAmount" class="value" data-token="amount" value="25" type="hidden">
+		</div>
+		';
+
 		// Selected Funds List
 		$return_string .= '
 		<ul id="selectedFunds" class="list-group">

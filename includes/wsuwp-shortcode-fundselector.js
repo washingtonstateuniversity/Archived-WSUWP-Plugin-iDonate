@@ -27,7 +27,7 @@ jQuery(document).ready(function($) {
 			},
 			minLength: 3,
             select: function( event, ui ) {
-                wsuwpUtils.addListItem($("#selectedFunds"), ui.item.name, ui.item.designationId);
+                wsuwpUtils.addListItem($("#selectedFunds"), ui.item.name, ui.item.designationId, $("#inpAmount").val());
 				wsuwpUtils.enableButton($("#continueButton"));
 				$("#fundSearch").val("");
                 event.preventDefault();
@@ -105,7 +105,7 @@ jQuery(document).ready(function($) {
 	.change( function ( ) {
 		var designationId = $(this).val();
 		var fundName = $(this).find(":selected").text();
-		wsuwpUtils.addListItem($("#selectedFunds"), fundName, designationId);
+		wsuwpUtils.addListItem($("#selectedFunds"), fundName, designationId, $("#inpAmount").val());
 		wsuwpUtils.enableButton($("#continueButton"));
 	});
 
@@ -123,6 +123,18 @@ jQuery(document).ready(function($) {
 		}
 		
 	});
+
+	// Amount Selection Buttons Initialization and Click Event
+	$(".amount-selection").button()
+	.click( function( event ) {
+      
+		var $this = $(this);
+
+        $("#inpAmount").val($this.attr("data-amount"));
+
+		$(".amount-selection").removeClass("selected");
+		$this.addClass("selected");
+    });
 
 	// Continue Button Initialization and Click Event
 	$("#continueButton").button()
