@@ -5,10 +5,10 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 
     window.wsuwpUtils = {
 
-		addListItem: function ( $list, name, designationId ) {
-			var html = '<div class="list-group-item col-sm-9" data-designation_id="' + designationId + '">' + name + '</div>'; 
-			html += '<div class="list-group-item col-sm-2"><span class="label label-success">$25</span></div>';
-			html += '<div class="list-group-item col-sm-1"><a href="#" role="button" class="list-group-item"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a></div>';
+		addListItem: function ( $list, name, designationId, amount ) {
+			var html = '<li class="list-group-item col-sm-12" data-designation_id="' + designationId + '" data-amount="' + amount + '"><h3><span class="label label-success pull-left">$' + amount +  '</span></h3>' + name; 
+			html += '<a href="#" role="button" class="pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a>';
+			html += '</li>';
 			$list.append(html);
 		},
 
@@ -20,7 +20,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 				// Element should look like '[{"id":"someId", "amount":99},{"id":"someId", "amount":99}]'
 				designationIds.push({
 					"id" : jQuery(element).attr("data-designation_id"),
-					"amount": 25 // Amount is required for the embed, defaulting to $25 for now
+					"amount": jQuery(element).attr("data-amount") // Amount is required for the embed
 				});
 			})
 

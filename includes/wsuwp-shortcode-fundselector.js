@@ -27,7 +27,7 @@ jQuery(document).ready(function($) {
 			},
 			minLength: 3,
             select: function( event, ui ) {
-                wsuwpUtils.addListItem($("#selectedFunds"), ui.item.name, ui.item.designationId);
+                wsuwpUtils.addListItem($("#selectedFunds"), ui.item.name, ui.item.designationId, $("#inpAmount").val());
 				wsuwpUtils.enableButton($("#continueButton"));
 				$("#fundSearch").val("");
                 event.preventDefault();
@@ -107,13 +107,13 @@ jQuery(document).ready(function($) {
 	.change( function ( ) {
 		var designationId = $(this).val();
 		var fundName = $(this).find(":selected").text();
-		wsuwpUtils.addListItem($("#selectedFunds"), fundName, designationId);
+		wsuwpUtils.addListItem($("#selectedFunds"), fundName, designationId, $("#inpAmount").val());
 		wsuwpUtils.enableButton($("#continueButton"));
 	});
 
 	// Remove Fund Button Click Event
 	// (Using body to defer binding until element has been created)
-	$('body').on('click', '#selectedFunds div a', function (event) {
+	$('body').on('click', '#selectedFunds li a', function (event) {
 		event.preventDefault();
 		
 		$(this).parent().remove();
@@ -125,6 +125,17 @@ jQuery(document).ready(function($) {
 		}
 		
 	});
+
+	// Amount Selection Buttons Initialization and Click Event
+	$(".btn.amount-selection").button()
+	.click( function( event ) {
+      
+		var $this = $(this);
+
+        $("#inpAmount").val($this.attr("data-amount"));
+
+		wsuwpUtils.highlightSelectedCategory($(this), $(".amount-selection"))
+    });
 
 	// Continue Button Initialization and Click Event
 	$("#continueButton").button()
