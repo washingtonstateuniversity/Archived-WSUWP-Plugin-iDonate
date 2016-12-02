@@ -115,14 +115,8 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			</div>
 			
 			<!-- List group -->
-			<div class="panel-collapse collapse in container-fluid" id="selectedFundsContainer" role="tabpanel" aria-expanded="true" aria-labelledby="selectedFundsHeader">
-				<div class="clear-fix"></div>
-				<div id="selectedFunds" class="list-group row">
-					<div class="list-group-item col-sm-9" data-designation_id="1234"> Test Fund Name for WSU Foundation</div> 
-					<div class="list-group-item col-sm-2">$25</div>
-					<a href="#" role="button" class="list-group-item col-sm-2"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a>
-				</div>
-			</div>
+			<ul id="selectedFunds" class="list-group">
+			</ul>
 		</div>
 		';
 
@@ -158,7 +152,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		wp_enqueue_style( 'wsuf_fundselector_bootstrap', plugins_url( '/../css/bootstrap.min.css', __FILE__ ) );
 		wp_enqueue_style( 'wsuf_fundselector_bootstrap_theme', plugins_url( '/../css/bootstrap-theme.css', __FILE__ ) );
 		wp_enqueue_style( 'wsuf_fundselector_bootstrap_theme_custom', plugins_url( '/../css/bootstrap-theme-custom.css', __FILE__ ) );
-		wp_enqueue_style( 'wsuf_fundselector', plugins_url( '/../wsuwp-plugin-idonate.css', __FILE__ ), array( 'spine-theme' ), null );
+		wp_enqueue_style( 'wsuf_fundselector', plugins_url( '/../css/wsuwp-plugin-idonate.css', __FILE__ ), array( 'spine-theme' ), null );
 	}
 
 	/**
