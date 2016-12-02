@@ -27,10 +27,11 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		add_action( 'rest_api_init', array( $this, 'wsuf_fundselector_register_designation_id' ) );
 	}
 
-	// [idonate_fundselector embed="iDonate-embed-guid"]
+	// [idonate_fundselector embed="iDonate-embed-guid" server="production/staging"]
 	public function fundselector_create_shortcode( $atts ) {
 		$args = shortcode_atts( array(
 			'embed' => '',
+			'server' => 'production',
 		), $atts );
 
 		$args['embed'] = sanitize_key( $args['embed'] );
@@ -128,6 +129,14 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Continue button
 		$return_string .= '<button type="button" id="continueButton" class="btn btn-primary btn-block" disabled>Continue</button>';
 
+		if ( 'staging' === $args['server'] ) {
+			$url = 'https://staging-embed.idonate.com/idonate.js';
+		} else {
+			$url = 'https://embed.idonate.com/idonate.js';
+		}
+
+		wp_enqueue_script( 'wsuf_fundselector_idonate_embed', $url, array(), false, true );
+
 		$return_string .= '<div id="iDonateEmbed" data-idonate-embed="' . $args['embed'] . '" data-defer></div>';
 
 		return $return_string . '</div>';
@@ -145,8 +154,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
 			'request_url_base' => esc_url( rest_url( '/wp/v2/' ) ),
 		));
-
-		wp_enqueue_script( 'idonate_embed', 'https://staging-embed.idonate.com/idonate.js', '2', true );
 
 		wp_enqueue_style( 'wsuf_fundselector_bootstrap', plugins_url( '/../css/bootstrap.min.css', __FILE__ ) );
 		wp_enqueue_style( 'wsuf_fundselector_bootstrap_theme', plugins_url( '/../css/bootstrap-theme.css', __FILE__ ) );
