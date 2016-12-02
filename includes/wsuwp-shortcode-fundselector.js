@@ -140,6 +140,16 @@ jQuery(document).ready(function($) {
 
 			// Initialize the iDonate embed
 			initializeEmbeds();
+
+			$loadingMessage = $("#embedLoadingMessage");
+			$loadingMessage.show();
+			
+			wsuwpUtils.iDonateEmbedLoad($("#loadingCheck"))
+			.then(function loaded() {
+				$loadingMessage.hide();
+				$loadingMessage.text("Finished loading");
+			});
+
 		}
     });
 

@@ -120,6 +120,9 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			$url = 'https://embed.idonate.com/idonate.js';
 		}
 
+		// Loading Message List
+		$return_string .= '<h2 id="embedLoadingMessage" style="display: none;">Loading Payment Process</h2>';
+
 		wp_enqueue_script( 'wsuf_fundselector_idonate_embed', $url, array(), false, true );
 
 		$return_string .= '<div id="iDonateEmbed" data-idonate-embed="' . $args['embed'] . '" data-defer></div>';
