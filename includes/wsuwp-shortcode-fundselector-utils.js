@@ -5,8 +5,8 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 
     window.wsuwpUtils = {
 
-		addListItem: function ( $list, name, designationId ) {
-			var html = '<li class="list-group-item" data-designation_id="' + designationId + '">' + name + '<a href="#" role="button" class="pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a></li>'; 
+		addListItem: function ( $list, name, designationId, amount ) {
+			var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '">($' + amount +  ') ' + name + '<a href="#" role="button" class="pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a></li>'; 
 			$list.append(html);
 		},
 
@@ -18,7 +18,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 				// Element should look like '[{"id":"someId", "amount":99},{"id":"someId", "amount":99}]'
 				designationIds.push({
 					"id" : jQuery(element).attr("data-designation_id"),
-					"amount": 25 // Amount is required for the embed, defaulting to $25 for now
+					"amount": jQuery(element).attr("data-amount") // Amount is required for the embed
 				});
 			})
 
