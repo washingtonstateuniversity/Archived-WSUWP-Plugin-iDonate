@@ -2,11 +2,12 @@
 
 jQuery(document).ready(function($) {
 
+	// Fund Search Autocomplete
 	$("#fundSearch").autocomplete(
         {
 			source: function( request, response ) {
 	
-				$.getJSON( wpData.request_url_base, 
+				$.getJSON( wpData.request_url_base + 'idonate_fund', 
 					{
 						search : request.term
 					}, 
@@ -33,4 +34,34 @@ jQuery(document).ready(function($) {
         }
     );
 
+	// Major Category Click Events
+	$("#majorcategory a")
+	.click( function( event ) {
+		$("#majorcategory a").removeClass("active");  
+		$(".categoryTab").addClass('hidden');
+
+		var tabName = $(this).attr("data-tab");
+		$("#" + tabName).removeClass('hidden');
+		
+		var categoryName = $(this).attr("data-category");
+
+		if(categoryName) {
+			var restUrl = wpData.request_url_base + encodeURIComponent(categoryName);
+			
+			$.getJSON( restUrl )
+			.done(function( json ) {
+
+				var $list = $('#subcategories'); 
+				$list.html('<option disabled selected value> -- Select a Category -- </option>');
+				$.each(json, function(key, value) {   
+					$list
+					.append($('<option>', { value : value["id"] })
+					.text( wsuwpUtils.htmlDecode(value["name"]) )); 
+				});
+
+			})
+		}
+
+		event.preventDefault();
+	});
 });

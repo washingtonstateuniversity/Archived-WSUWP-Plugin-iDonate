@@ -14,6 +14,10 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			$button.prop("disabled", false);
 			$button.button("enable");
 		},
+
+		htmlDecode: function (value) {
+			return jQuery("<textarea/>").html(value).text();
+		}
 	}
 
 })();

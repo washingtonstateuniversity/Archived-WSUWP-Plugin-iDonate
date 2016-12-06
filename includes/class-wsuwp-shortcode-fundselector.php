@@ -38,10 +38,10 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Major Categories button group
 		$return_string .= '
 		<div id="majorcategory" class="" role="group" aria-label="Category Selection Group">
-			<a class="active" role="button" href="#" data-tab="prioritiesTab">Priorities</a>
-			<a class="" role="button" data-category="programs" href="#">Programs</a>
-			<a class="" role="button" data-category="colleges" href="#">Colleges</a>
-			<a class="" role="button" data-category="campuses" href="#">Campuses</a>
+			<a class="active" role="button" data-tab="prioritiesTab" href="#" >Priorities</a>
+			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_programs" href="#">Programs</a>
+			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_colleges" href="#">Colleges</a>
+			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_campuses" href="#">Campuses</a>
 		</div>';
 
 		// Priorities Tab
@@ -55,12 +55,32 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		$return_string .= '
-		<div id="prioritiesTab">    
+		<div id="prioritiesTab" class="categoryTab">    
 			<label for="priorities">Choose one of the university\'s greatest needs</label>
 			<select name="priorities" id="priorities" class="form-control fund-selection">'
 				. $priorities_list .
 			'</select>
 		</div>';
+
+		// Subcategory tab (Colleges, Campuses, Programs)
+		$return_string .= '
+		<div id="subcategoryTab" class="categoryTab hidden">';
+
+		// Categories Select Menu
+		$return_string .= '    
+		<label for="subcategories">Choose a category</label>
+		<select name="subcategories" id="subcategories" class="form-control">
+			<option disabled selected value> -- Select a Category -- </option>
+		</select>';
+
+		// Funds Select Menu
+		$return_string .= '    
+		<label for="funds">Choose a fund</label>
+		<select name="funds" id="funds" class="form-control fund-selection" disabled>
+			<option disabled selected value> -- Select a Fund -- </option>
+		</select>';
+
+		$return_string .= '</div>';
 
 		// Search Separator
 		$return_string .= '
@@ -70,9 +90,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		';
 
 		// Search AutoComplete
-		// $search_funds = wsuf_fundselector_funds_get_all_funds();
-		$option_list_funds = '';
-
 		$return_string .= '
 		<div class="form-group has-feedback">
 			<label for="fundSearch">Search for any Fund: </label>
@@ -103,7 +120,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		wp_enqueue_script( 'wsuf_fundselector', plugins_url( '/wsuwp-shortcode-fundselector.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-autocomplete' ), '1.0', true );
 
 		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
-			'request_url_base' => esc_url( rest_url( '/wp/v2/idonate_fund' ) ),
+			'request_url_base' => esc_url( rest_url( '/wp/v2/' ) ),
 		));
 	}
 
