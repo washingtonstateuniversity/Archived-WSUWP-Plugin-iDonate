@@ -16,8 +16,8 @@ jQuery(document).ready(function($) {
 						var fundList = $.map(data, function(fund) {
 							return {
 								"designationId": fund.designationId,
-								"name": fund.title.rendered,
-								"value": fund.title.rendered
+								"name": wsuwpUtils.htmlDecode(fund.title.rendered),
+								"value": wsuwpUtils.htmlDecode(fund.title.rendered)
 							};
 						});
 						
@@ -55,12 +55,18 @@ jQuery(document).ready(function($) {
 			.done(function( json ) {
 
 				var $list = $('#subcategories'); 
-				$list.html('<option disabled selected value> -- Select a Category -- </option>');
-				$('#funds').html('<option disabled selected value> -- Select a Fund -- </option>');
+				$list.empty();
+				$list.append('<option disabled selected value> -- Select a Category -- </option>');
+				
+				var $fundList = $('#funds');				
+				$fundList.empty();
+				$fundList.append('<option disabled selected value> -- Select a Fund -- </option>');
+				$fundList.prop("disabled", true);
+
 				$.each(json, function(key, value) {   
 					$list
 					.append($('<option>', { value : value["id"], "data-category" : value["taxonomy"] })
-					.text( wsuwpUtils.htmlDecode(value["name"]) )); 
+					.text( wsuwpUtils.htmlDecode( value["name"]) )); 
 				});
 
 			})
@@ -84,7 +90,8 @@ jQuery(document).ready(function($) {
 			.done(function( json ) {
 
 				var $list = $('#funds'); 
-				$list.html('<option disabled selected value> -- Select a Fund -- </option>');
+				$list.empty();
+				$list.append('<option disabled selected value> -- Select a Fund -- </option>');
 				$.each(json, function(key, value) {   
 					$list
 					.append($('<option>', { value : value["designationId"] })
@@ -143,7 +150,8 @@ jQuery(document).ready(function($) {
 		if(inputAmount && _.isNumber(inputAmount) && inputAmount > 0)
 		{
 			$("#inpAmount").val(inputAmount);
-			wsuwpUtils.highlightSelectedCategory($(this), $(".amount-selection"))
+
+			wsuwpUtils.highlightSelectedCategory($(this), $(".amount-selection"));
 		}		
 	});
 
@@ -163,6 +171,16 @@ jQuery(document).ready(function($) {
 
 			// Initialize the iDonate embed
 			initializeEmbeds();
+
+			$loadingMessage = $("#embedLoadingMessage");
+			$loadingMessage.show();
+			
+			wsuwpUtils.iDonateEmbedLoad($("#loadingCheck"))
+			.then(function loaded() {
+				$loadingMessage.hide();
+				$loadingMessage.text("Finished loading");
+			});
+
 		}
     });
 

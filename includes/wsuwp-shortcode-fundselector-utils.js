@@ -6,7 +6,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
     window.wsuwpUtils = {
 
 		addListItem: function ( $list, name, designationId, amount ) {
-			var html = '<li class="list-group-item col-sm-12" data-designation_id="' + designationId + '" data-amount="' + amount + '"><h3><span class="label label-success pull-left">$' + amount +  '</span></h3>' + name; 
+			var html = '<li class="list-group-item col-sm-12" data-designation_id="' + designationId + '" data-amount="' + amount + '"><h3><span class="label label-success pull-left">$' + amount +  '</span></h3>' + _.escape(name); 
 			html += '<a href="#" role="button" class="pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a>';
 			html += '</li>';
 			$list.append(html);
@@ -47,6 +47,29 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 
 		htmlDecode: function (value) {
 			return jQuery("<textarea/>").html(value).text();
+		},
+
+		iDonateEmbedLoad: function ($loadingCheck)
+		{
+			var deferred = jQuery.Deferred();
+ 
+			var timer = setInterval(function() {
+				var loadingCheckText = $loadingCheck.text()
+				if(loadingCheckText === "done")
+				{
+					clearInterval(timer);
+					deferred.resolve();
+				}
+
+				deferred.notify(loadingCheckText);
+			}, 500);
+			
+			setTimeout(function() {
+				clearInterval(timer);
+				if(deferred.state() === "pending") deferred.reject();
+			}, 25000); // timeout and fail if embed hasn't loaded after 25 seconds
+			
+			return deferred.promise();
 		}
 
 
