@@ -6,7 +6,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
     window.wsuwpUtils = {
 
 		addListItem: function ( $list, name, designationId, amount ) {
-			var html = '<li class="list-group-item col-sm-12" data-designation_id="' + designationId + '" data-amount="' + amount + '"><h3><span class="label label-success pull-left">$' + amount +  '</span></h3>' + _.escape(name); 
+			var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '"><h3><span class="label label-success pull-left">$' + amount +  '</span></h3>' + _.escape(name); 
 			html += '<a href="#" role="button" class="pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a>';
 			html += '</li>';
 			$list.append(html);
