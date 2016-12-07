@@ -6,13 +6,18 @@ window.wsuwpUtils = window.wsuwpUtils || {};
     window.wsuwpUtils = {
 
 		addListItem: function ( $list, name, designationId ) {
-			var html = '<li class="list-group-item" data-designation_id="' + designationId + '">' + name + '<a href="#" class="pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a></li>'; 
+			var html = '<li class="list-group-item" data-designation_id="' + designationId + '">' + name + '<a href="#" role="button" class="pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a></li>'; 
 			$list.append(html);
 		},
 
 		enableButton: function ( $button ) {
 			$button.prop("disabled", false);
 			$button.button("enable");
+		},
+
+		disableButton: function ( $button ) {
+			$button.prop("disabled", true);
+			$button.button("disable");
 		},
 
 		htmlDecode: function (value) {

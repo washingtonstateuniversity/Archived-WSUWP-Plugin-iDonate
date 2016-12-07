@@ -28,6 +28,7 @@ jQuery(document).ready(function($) {
 			minLength: 3,
             select: function( event, ui ) {
                 wsuwpUtils.addListItem($("#selectedFunds"), ui.item.name, ui.item.designationId);
+				wsuwpUtils.enableButton($("#continueButton"));
 				$("#fundSearch").val("");
                 event.preventDefault();
             }
@@ -66,7 +67,8 @@ jQuery(document).ready(function($) {
 		event.preventDefault();
 	});
 
-	// Subcategory Click event
+	
+	// Subcategory Selected Change event
 	$("#subcategories")
 	.change( function( event ) {
 		var category = $(this).find(":selected").attr("data-category");
@@ -97,4 +99,29 @@ jQuery(document).ready(function($) {
 
 		event.preventDefault();
 	});
+
+	// Fund Selected Change event
+	$(".fund-selection")
+	.change( function ( ) {
+		var designationId = $(this).val();
+		var fundName = $(this).find(":selected").text();
+		wsuwpUtils.addListItem($("#selectedFunds"), fundName, designationId);
+		wsuwpUtils.enableButton($("#continueButton"));
+	});
+
+	// Remove Fund Button Click Event
+	// (Using body to defer binding until element has been created)
+	$('body').on('click', '#selectedFunds li a', function (event) {
+		event.preventDefault();
+		
+		$(this).parent().remove();
+
+		// If the Fund list is empty, disable the Continue Button
+		if($("#selectedFunds").find("li").length === 0)
+		{
+			wsuwpUtils.disableButton($("#continueButton"));
+		}
+		
+	});
+
 });
