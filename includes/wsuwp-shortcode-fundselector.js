@@ -66,7 +66,6 @@ jQuery(document).ready(function($) {
 		event.preventDefault();
 	});
 
-	
 	// Subcategory Click event
 	$("#subcategories")
 	.change( function( event ) {
@@ -98,5 +97,4 @@ jQuery(document).ready(function($) {
 
 		event.preventDefault();
 	});
-
 });
