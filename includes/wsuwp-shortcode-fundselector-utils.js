@@ -34,6 +34,11 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			$button.button("enable");
 		},
 
+		disableButton: function ( $button ) {
+			$button.prop("disabled", true);
+			$button.button("disable");
+		},
+
 		htmlDecode: function (value) {
 			return jQuery("<textarea/>").html(value).text();
 		}
