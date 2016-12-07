@@ -24,5 +24,5 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			return jQuery("<textarea/>").html(value).text();
 		}
 	}
-
+	
 })();
