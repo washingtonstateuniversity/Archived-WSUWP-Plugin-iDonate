@@ -111,6 +111,9 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			<button type="button" class="amount-selection btn btn-primary active" data-amount="25" >$25</button>
 			<button type="button" class="amount-selection btn btn-default" data-amount="50">$50</button>
 			<button type="button" class="amount-selection btn btn-default" data-amount="100">$100</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="250">$250</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="500">$500</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="1000">$1000</button>
 			<button type="button" class="amount-selection btn btn-default" data-amount="2000">$2000</button>
 		</div>
 		<div class="form-group input-group">
