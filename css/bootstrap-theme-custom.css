@@ -105,3 +105,12 @@
 ul.list-group {
 	padding: 0;
 }
+
+/*Change coloring of the select options*/
+select option {
+	color: #555555;
+}
+
+select option:disabled {
+	color: #AAA;
+}
