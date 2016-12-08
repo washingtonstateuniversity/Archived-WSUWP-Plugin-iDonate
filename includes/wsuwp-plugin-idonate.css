@@ -1,0 +1,6 @@
+@media (max-width: 372px) {
+	.halves.gutter .column.one:not(.gutterless), .halves.gutter .column:nth-of-type(2n+3):not(.gutterless), .side-right.gutter .column.one:not(.gutterless)
+	{
+		padding-right: 1rem; 
+	}
+}
