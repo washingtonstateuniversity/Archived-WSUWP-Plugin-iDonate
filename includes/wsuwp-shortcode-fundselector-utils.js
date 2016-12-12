@@ -9,7 +9,25 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '"><h3><span class="label label-success pull-left">$' + amount +  '</span></h3>' + _.escape(name); 
 			html += '<a href="#" role="button" class="pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a>';
 			html += '</li>';
-			$list.append(html);
+
+			if (!this.isDuplicateDesignation(designationId, $list)) {
+			    $list.append(html);
+			}
+		},
+
+		isDuplicateDesignation: function (designationId, $list)
+		{
+			var duplicate = false;
+			$list.each(function()
+			{
+				if(designationId == jQuery(this).find("li").attr("data-designation_id"))
+				{ 
+					duplicate = true;
+					return false;
+				}
+			});
+
+			 return duplicate;
 		},
 
 		getDesignationList: function ($listElement)
