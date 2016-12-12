@@ -106,7 +106,11 @@ ul.list-group {
 	padding: 0;
 }
 
-/*Change coloring of the select options*/
+/*Change coloring of the select menu and options*/
+select.form-control {
+	color: #555555;
+}
+
 select option {
 	color: #555555;
 }
