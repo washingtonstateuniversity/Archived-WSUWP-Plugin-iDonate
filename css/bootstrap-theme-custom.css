@@ -1,0 +1,120 @@
+/* Add carets below the Category Selection indicators */
+#majorcategory a.active:after{
+    bottom: 0%;
+    margin-bottom: -20px;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+#majorcategory a.active:after {
+	border-top-color: #651421;
+	border-width: 10px;
+	margin-left: -10px;
+    z-index: 1;
+}
+
+#majorcategory {
+	padding-bottom: 5px; /* Add a little spacing to the bottom */
+}
+
+/* Add lines to the sides of the search separator (OR) */
+/* Adapted from the code here: http://stackoverflow.com/a/14731123 */
+.search-separator {
+    overflow: hidden;
+    text-align: center;
+	color: #981e32;
+	font-weight: bold;
+}
+.search-separator:before,
+.search-separator:after {
+    background-color: #651421;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+.search-separator:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+.search-separator:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+
+/* jQuery UI autocomplete for bootstrap*/
+/* Based off of SASS found here: https://gist.github.com/daz/2168334 & updates found here: https://gist.github.com/daz/2168334#gistcomment-1471125 */
+.ui-autocomplete {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	float: left;
+	display: none;
+	min-width: 160px;
+	_width: 160px;
+	padding: 4px 0;
+	margin: 2px 0 0 0;
+	list-style: none;
+	background-color: #ffffff;
+	border-color: #ccc;
+	border-color: rgba(0, 0, 0, 0.2);
+	border-style: solid;
+	border-width: 1px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	*border-right-width: 2px;
+	*border-bottom-width: 2px;
+}
+
+.ui-autocomplete .ui-menu-item {
+	display: block;
+	padding: 3px 15px;
+	clear: both;
+	font-weight: normal;
+	line-height: 18px;
+	color: #555555;
+	white-space: nowrap;
+}
+
+.ui-autocomplete .ui-menu-item.ui-state-focus {
+	color: #ffffff;
+	text-decoration: none;
+	background-color: #651421;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	background-image: none;
+}
+
+/* Remove extra padding on the fund list from the Spine theme */
+ul.list-group {
+	padding: 0;
+}
+
+/*Change coloring of the select menu and options*/
+select.form-control {
+	color: #555555;
+}
+
+select option {
+	color: #555555;
+}
+
+select option:disabled {
+	color: #AAA;
+}

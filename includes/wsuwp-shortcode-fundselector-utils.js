@@ -5,12 +5,13 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 
     window.wsuwpUtils = {
 
-		addListItem: function ( $list, name, designationId, amount  ) {
-		    var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '">($' + amount +  ') ' + _.escape(name) + '<a href="#" class="pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a></li>';
-			
-			if(!this.isDuplicateDesignation(designationId, $list))
-			{
-				$list.append(html);
+		addListItem: function ( $list, name, designationId, amount ) {
+			var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '"><h3><span class="label label-success pull-left">$' + amount +  '</span></h3>' + _.escape(name); 
+			html += '<a href="#" role="button" class="pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a>';
+			html += '</li>';
+
+			if (!this.isDuplicateDesignation(designationId, $list)) {
+			    $list.append(html);
 			}
 		},
 
@@ -52,6 +53,14 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 		disableButton: function ( $button ) {
 			$button.prop("disabled", true);
 			$button.button("disable");
+		},
+
+		highlightSelectedCategory: function ( $button, $buttonGroup ) {
+			$buttonGroup.removeClass("active");  
+			$buttonGroup.removeClass("btn-primary");  
+			$buttonGroup.addClass("btn-default");  
+			$button.removeClass("btn-default");
+			$button.addClass("btn-primary active");
 		},
 
 		htmlDecode: function (value) {

@@ -38,7 +38,9 @@ jQuery(document).ready(function($) {
 	// Major Category Click Events
 	$("#majorcategory a")
 	.click( function( event ) {
-		$("#majorcategory a").removeClass("active");  
+
+		wsuwpUtils.highlightSelectedCategory($(this), $("#majorcategory a"));
+
 		$(".categoryTab").addClass('hidden');
 
 		var tabName = $(this).attr("data-tab");
@@ -132,15 +134,14 @@ jQuery(document).ready(function($) {
 	});
 
 	// Amount Selection Buttons Initialization and Click Event
-	$(".amount-selection").button()
+	$(".btn.amount-selection").button()
 	.click( function( event ) {
       
 		var $this = $(this);
 
         $("#inpAmount").val($this.attr("data-amount"));
 
-		$(".amount-selection").removeClass("selected");
-		$this.addClass("selected");
+		wsuwpUtils.highlightSelectedCategory($(this), $(".amount-selection"))
     });
 
 	// Other Amount text field Change Event
@@ -149,6 +150,8 @@ jQuery(document).ready(function($) {
 		if(inputAmount && _.isNumber(inputAmount) && inputAmount > 0)
 		{
 			$("#inpAmount").val(inputAmount);
+
+			wsuwpUtils.highlightSelectedCategory($(this), $(".amount-selection"));
 		}		
 	});
 
@@ -180,5 +183,8 @@ jQuery(document).ready(function($) {
 
 		}
     });
+
+	// Disable the continue button by default
+	wsuwpUtils.disableButton($("#continueButton"));
 
 });
