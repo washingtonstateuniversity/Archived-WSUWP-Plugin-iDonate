@@ -145,8 +145,8 @@ jQuery(document).ready(function($) {
 
 	// Other Amount text field Change Event
 	$("#otherAmount").on('input propertychange paste', function () {
-		var inputAmount = parseFloat($(this).val());
-		if(inputAmount && _.isNumber(inputAmount) && inputAmount > 0)
+		var inputAmount = $(this).val();
+		if(wsuwpUtils.validateAmount(inputAmount))
 		{
 			$("#inpAmount").val(inputAmount);
 		}		
