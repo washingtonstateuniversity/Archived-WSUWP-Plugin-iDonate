@@ -141,6 +141,8 @@ jQuery(document).ready(function($) {
 
 		$(".amount-selection").removeClass("selected");
 		$this.addClass("selected");
+
+		jQuery("#errorOtherAmount").text("");
     });
 
 	// Other Amount text field Change Event
@@ -149,6 +151,11 @@ jQuery(document).ready(function($) {
 		if(wsuwpUtils.validateAmount(inputAmount))
 		{
 			$("#inpAmount").val(inputAmount);
+			jQuery("#errorOtherAmount").text("");
+		}
+		else
+		{
+			jQuery("#errorOtherAmount").text("Amount should be between $3 and $100,000.");
 		}		
 	});
 

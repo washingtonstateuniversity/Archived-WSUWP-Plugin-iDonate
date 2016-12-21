@@ -9,7 +9,8 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '">' + _.escape(name);
 			html += ' ($<span id="edit' + designationId + '" class="editable">' + amount +  '</span>)';
 			html += '<input id="' + designationId +'" class="edit" type="button" value="Edit Amount"></input>';
-			html += '<a href="#" class="remove pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a></li>';
+			html += '<a href="#" class="remove pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a>'
+			html += '<span id="error' + designationId + '" class="error"></span></li>';
 			
 			if(!wsuwpUtils.isDuplicateDesignation(designationId, $list))
 			{
@@ -26,9 +27,11 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 					if( !wsuwpUtils.validateAmount(e.value) ){
 						// Revert back to the original value
 						e.target.html(e.old_value);
+						jQuery("#error" + designationId).text("Amount must be between $3 and $100,000. Amount was reset.");
 					}
 					else{
 						e.target.parent().attr("data-amount", e.value);
+						jQuery("#error" + designationId).text("");
 					}
 				});
 			}
@@ -54,7 +57,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			var validMoneyAmount = false;
 
 			var inputAmount = parseFloat(intendedAmount);
-			if(inputAmount && _.isNumber(inputAmount) && inputAmount > 0 && intendedAmount.match(/^\d{1,5}(?:\.\d{1,2})?$/)){
+			if(inputAmount && _.isNumber(inputAmount) && inputAmount > 0 && intendedAmount.match(/^\d{1,5}(?:\.\d{0,2})?$/)){
 				validMoneyAmount = true;
 			}
 

@@ -116,6 +116,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 				<div class="input-group-addon">$</div>
 				<!-- Maximum length of 8 includes cents (.xx) -->
 				<input type="text" class="form-control" id="otherAmount" placeholder="Other Amount" maxlength="8" data-max="99999">
+				<span id="errorOtherAmount" class="error"></span>
 			</div>
 			<input name="inpAmount" id="inpAmount" class="value" data-token="amount" value="25" type="hidden">
 		</div>
