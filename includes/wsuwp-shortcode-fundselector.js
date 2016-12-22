@@ -118,7 +118,7 @@ jQuery(document).ready(function($) {
 
 	// Remove Fund Button Click Event
 	// (Using body to defer binding until element has been created)
-	$('body').on('click', '#selectedFunds li a', function (event) {
+	$('body').on('click', '#selectedFunds li a.remove', function (event) {
 		event.preventDefault();
 		
 		$(this).parent().remove();
@@ -141,14 +141,21 @@ jQuery(document).ready(function($) {
 
 		$(".amount-selection").removeClass("selected");
 		$this.addClass("selected");
+
+		jQuery("#errorOtherAmount").text("");
     });
 
 	// Other Amount text field Change Event
 	$("#otherAmount").on('input propertychange paste', function () {
-		var inputAmount = parseFloat($(this).val());
-		if(inputAmount && _.isNumber(inputAmount) && inputAmount > 0)
+		var inputAmount = $(this).val();
+		if(wsuwpUtils.validateAmount(inputAmount))
 		{
 			$("#inpAmount").val(inputAmount);
+			jQuery("#errorOtherAmount").text("");
+		}
+		else
+		{
+			jQuery("#errorOtherAmount").text("Amount should be between $3 and $100,000.");
 		}		
 	});
 
@@ -180,5 +187,4 @@ jQuery(document).ready(function($) {
 
 		}
     });
-
 });
