@@ -23,7 +23,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	public function init() {
 
 		add_shortcode( 'idonate_fundselector', array( $this, 'fundselector_create_shortcode' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'wsuf_fundselector_enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'wsuf_fundselector_enqueue_scripts' ), 99 );
 		add_action( 'rest_api_init', array( $this, 'wsuf_fundselector_register_designation_id' ) );
 	}
 
