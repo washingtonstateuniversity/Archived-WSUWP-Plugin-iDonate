@@ -162,7 +162,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		wp_enqueue_script( 'wsuf_fundselector_jquery_editable', plugins_url( '/jquery.editable.min.js', __FILE__ ), array( 'jquery' ), null, true );
 
-		wp_enqueue_style( 'wsuf_fundselector', plugins_url( '/wsuwp-plugin-idonate.css', __FILE__ ), array( 'spine-theme' ), null );
+		wp_enqueue_style( 'wsuf_fundselector', plugins_url( 'css/wsuwp-plugin-idonate.css', dirname( __FILE__ ) ), array( 'spine-theme' ), null );
 	}
 
 	/**
