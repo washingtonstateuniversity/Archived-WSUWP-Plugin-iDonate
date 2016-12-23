@@ -11,18 +11,14 @@ notifications:
     on_failure: always
     on_start: never
 
+branches:
+  only:
+    - master
+
 matrix:
   include:
     - php: 5.6
-      env: WP_VERSION=latest WP_MULTISITE=0
-    - php: 5.6
       env: WP_VERSION=latest WP_MULTISITE=1
-    - php: 5.6
-      env: WP_VERSION=nightly WP_MULTISITE=0
-    - php: 5.6
-      env: WP_VERSION=nightly WP_MULTISITE=1
-    - php: 7.0
-      env: WP_VERSION=latest WP_MULTISITE=0
     - php: 7.0
       env: WP_VERSION=latest WP_MULTISITE=1
     - php: 5.6
@@ -35,6 +31,7 @@ before_script:
       fi
     - |
       if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
+        rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install 6
         npm install
         composer install
       fi
@@ -46,5 +43,5 @@ script:
       fi
     - |
       if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
-        grunt phpcs
+        grunt
       fi

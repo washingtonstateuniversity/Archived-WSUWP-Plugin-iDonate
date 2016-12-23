@@ -23,7 +23,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	public function init() {
 
 		add_shortcode( 'idonate_fundselector', array( $this, 'fundselector_create_shortcode' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'wsuf_fundselector_enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'wsuf_fundselector_enqueue_scripts' ), 99 );
 		add_action( 'rest_api_init', array( $this, 'wsuf_fundselector_register_designation_id' ) );
 	}
 
@@ -162,7 +162,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		wp_enqueue_script( 'wsuf_fundselector_jquery_editable', plugins_url( '/jquery.editable.min.js', __FILE__ ), array( 'jquery' ), null, true );
 
-		wp_enqueue_style( 'wsuf_fundselector', plugins_url( '/wsuwp-plugin-idonate.css', __FILE__ ), array( 'spine-theme' ), null );
+		wp_enqueue_style( 'wsuf_fundselector', plugins_url( 'css/wsuwp-plugin-idonate.css', dirname( __FILE__ ) ), array( 'spine-theme' ), null );
 	}
 
 	/**
