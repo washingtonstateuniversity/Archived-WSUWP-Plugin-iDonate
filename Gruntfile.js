@@ -70,7 +70,7 @@ module.exports = function(grunt) {
 
         watch: {
             styles: {
-                files: [ "css/*.css" ],
+                files: [ "css/wsuwp-plugin-idonate-src.css" ],
                 tasks: [ "default" ],
                 option: {
                     livereload: 8000
@@ -89,10 +89,9 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-phpcs');
+    grunt.loadNpmTasks( "grunt-phpcs" );
     grunt.loadNpmTasks( "grunt-contrib-watch" );
     grunt.loadNpmTasks( "grunt-contrib-connect" );
-
     grunt.loadNpmTasks( "grunt-postcss" );
     grunt.loadNpmTasks( "grunt-contrib-csslint" );
     grunt.loadNpmTasks( "grunt-stylelint" );
