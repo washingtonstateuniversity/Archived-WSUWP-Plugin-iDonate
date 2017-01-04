@@ -105,6 +105,13 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		</div>
 		';
 
+		// Add Fund Button
+		$return_string .= '
+			<input name="inpDesignationId" id="inpDesignationId" type="hidden">
+			<input name="inpFundName" id="inpFundName" type="hidden">
+			<button id="addFundButton" type="button">Add Fund</button>
+		';
+
 		// Dollar Amount Selectors
 		$return_string .= '
 		<div class="" role="group">

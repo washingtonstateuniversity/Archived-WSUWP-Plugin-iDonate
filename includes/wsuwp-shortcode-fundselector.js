@@ -27,10 +27,8 @@ jQuery(document).ready(function($) {
 			},
 			minLength: 3,
             select: function( event, ui ) {
-                wsuwpUtils.addListItem($("#selectedFunds"), ui.item.name, ui.item.designationId, $("#inpAmount").val());
-				wsuwpUtils.enableButton($("#continueButton"));
-				$("#fundSearch").val("");
-                event.preventDefault();
+				$("#inpDesignationId").text(ui.item.designationId);
+				$("#inpFundName").text(ui.item.name);
             }
         }
     );
@@ -112,8 +110,21 @@ jQuery(document).ready(function($) {
 	.change( function ( ) {
 		var designationId = $(this).val();
 		var fundName = $(this).find(":selected").text();
+		$("#inpDesignationId").text(designationId);
+		$("#inpFundName").text(fundName);
+	});
+
+	// Add Fund Button click  event
+	$("#addFundButton")
+	.click( function ( ) {
+		var designationId = $("#inpDesignationId").text();
+		var fundName = $("#inpFundName").text();
+
 		wsuwpUtils.addListItem($("#selectedFunds"), fundName, designationId, $("#inpAmount").val());
 		wsuwpUtils.enableButton($("#continueButton"));
+
+		$("#fundSearch").val("");
+		$('.fund-selection').prop('selectedIndex', 0);
 	});
 
 	// Remove Fund Button Click Event
