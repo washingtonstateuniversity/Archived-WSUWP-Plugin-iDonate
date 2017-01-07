@@ -54,11 +54,11 @@ jQuery(document).ready(function($) {
 
 				var $list = $('#subcategories'); 
 				$list.empty();
-				$list.append('<option disabled selected value> -- Select a Category -- </option>');
+				$list.append('<option disabled selected value> SELECT A CATEGORY </option>');
 				
 				var $fundList = $('#funds');				
 				$fundList.empty();
-				$fundList.append('<option disabled selected value> -- Select a Fund -- </option>');
+				$fundList.append('<option disabled selected value> SELECT A FUND </option>');
 				$fundList.prop("disabled", true);
 
 				$.each(json, function(key, value) {   
@@ -89,7 +89,7 @@ jQuery(document).ready(function($) {
 
 				var $list = $('#funds'); 
 				$list.empty();
-				$list.append('<option disabled selected value> -- Select a Fund -- </option>');
+				$list.append('<option disabled selected value> SELECT A FUND </option>');
 				$.each(json, function(key, value) {   
 					$list
 					.append($('<option>', { value : value["designationId"] })
@@ -114,15 +114,18 @@ jQuery(document).ready(function($) {
 		var fundName = $(this).find(":selected").text();
 		wsuwpUtils.addListItem($("#selectedFunds"), fundName, designationId, $("#inpAmount").val());
 		wsuwpUtils.enableButton($("#continueButton"));
+		continueAction();
 	});
 
 	// Remove Fund Button Click Event
 	// (Using body to defer binding until element has been created)
-	$('body').on('click', '#selectedFunds li a.remove', function (event) {
+	$('body').on('click', '#selectedFunds li a', function (event) {
 		event.preventDefault();
 		
-		$(this).parent().remove();
+		$(this).parent().parent().remove();
 
+		//continueAction();
+		
 		// If the Fund list is empty, disable the Continue Button
 		if($("#selectedFunds").find("li").length === 0)
 		{
@@ -141,50 +144,80 @@ jQuery(document).ready(function($) {
 
 		$(".amount-selection").removeClass("selected");
 		$this.addClass("selected");
-
-		jQuery("#errorOtherAmount").text("");
     });
 
 	// Other Amount text field Change Event
 	$("#otherAmount").on('input propertychange paste', function () {
-		var inputAmount = $(this).val();
-		if(wsuwpUtils.validateAmount(inputAmount))
+		var inputAmount = parseFloat($(this).val());
+		if(inputAmount && _.isNumber(inputAmount) && inputAmount > 0)
 		{
 			$("#inpAmount").val(inputAmount);
-			jQuery("#errorOtherAmount").text("");
-		}
-		else
-		{
-			jQuery("#errorOtherAmount").text("Amount should be between $3 and $100,000.");
 		}		
 	});
 
 	// Continue Button Initialization and Click Event
 	$("#continueButton").button()
-	.click( function( event ) {
-      
-        var designations = wsuwpUtils.getDesignationList($("#selectedFunds"));
+	.click( continueAction );
 
-		if(designations.length > 0)
-		{
-			// Turn the list of designations into a JSON string
-			var designationsString = JSON.stringify(designations);
+});
 
-			// Add the designation as an attribute
-			$("#iDonateEmbed").attr("data-designations", designationsString);
+function continueAction()
+{
+	var designations = wsuwpUtils.getDesignationList(jQuery("#selectedFunds"));
 
-			// Initialize the iDonate embed
-			initializeEmbeds();
+	if(designations.length > 0)
+	{
+		// Turn the list of designations into a JSON string
+		var designationsString = JSON.stringify(designations);
 
-			$loadingMessage = $("#embedLoadingMessage");
-			$loadingMessage.show();
-			
-			wsuwpUtils.iDonateEmbedLoad($("#loadingCheck"))
-			.then(function loaded() {
-				$loadingMessage.hide();
-				$loadingMessage.text("Finished loading");
-			});
+		// Add the designation as an attribute
+		jQuery("#iDonateEmbed").attr("data-designations", designationsString);
 
-		}
-    });
+		// Initialize the iDonate embed
+		initializeEmbeds();
+
+		$loadingMessage = jQuery("#embedLoadingMessage");
+		$loadingMessage.show();
+		
+		wsuwpUtils.iDonateEmbedLoad(jQuery("#loadingCheck"))
+		.then(function loaded() {
+			jQuery("#iDonateEmbed iframe").show();
+			$loadingMessage.hide();
+			$loadingMessage.text("Finished loading");
+		});
+	}
+	else
+		jQuery("#iDonateEmbed iframe").hide();
+}
+
+jQuery(document).ready(function(){
+	//jQuery("#iDonateEmbed").width( jQuery(window).width() ).height( jQuery(window).height() );
+	jQuery("#majorcategory a").on("click",function(){
+		jQuery(".form-group.search").addClass("hidden");
+		jQuery("#majorcategory a.active").removeClass("active");
+		jQuery(this).addClass("active");
+	});
+	jQuery(".search").on("click", function(){
+		jQuery(".form-group.search").removeClass("hidden");
+	});
+	jQuery("button.amount-selection:last").addClass("lastbutton");
+	jQuery("button").on("click", function(){
+		var value = jQuery(this).data("amount");
+		jQuery(this).addClass("selected");
+		jQuery("#otherAmount").val(value);
+	});
+	jQuery("#otherAmount").on("keyup",function(){
+		console.log("keyup");
+		var inputval = jQuery(this).val();
+		jQuery("button").each(function(){
+			var buttonval = jQuery(this).data("amount");
+			if(buttonval != inputval)
+				jQuery(this).removeClass("selected");
+			else
+				jQuery(this).addClass("selected");
+		});
+	});
+	jQuery("#continueButton").on("click", function(){
+		//jQuery("#continueButton span.ui-button-text").text("Update");
+	});
 });
