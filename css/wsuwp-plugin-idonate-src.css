@@ -226,6 +226,17 @@ input, select, button, .ui-button {
 	-o-transition: all 0.30s ease-in-out;
 }
 
+#majorcategory a {
+	-webkit-transition: color 0.30s ease-in-out;
+	-moz-transition: color 0.30s ease-in-out;
+	-ms-transition: color 0.30s ease-in-out;
+	-o-transition: color 0.30s ease-in-out;
+}
+
+#majorcategory a:hover {
+	color: #981E32;
+}
+
 select {
 	color: #4c4c4c;
 }
@@ -310,7 +321,7 @@ input.search, a.search {
 	background: transparent url(../images/ico/search-gry.png) no-repeat 12px center;
 	background-size: 12px;
 }
-#majorcategory a.search.active{
+#majorcategory a.search.active,#majorcategory a.search:hover{
 	background: transparent url(../images/ico/search-crm.png) no-repeat 12px center;
 	background-size: 12px;
 	border:none;
@@ -599,6 +610,9 @@ button.amount-selection.lastbutton {
 }
 button.amount-selection:hover {
 	background-color:#d1d3d4;
+}
+button.amount-selection.selected:hover{
+	background-color: #981E32;
 }
 div.input-group { clear:both; }
 button.amount-selection:hover {     
