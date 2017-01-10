@@ -35,6 +35,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			'unit_taxonomy' => '',
 			'unit_category' => '',
 			'unit_description' => '',
+			'unit_title' => '',
 		), $atts );
 
 		$args['embed'] = sanitize_key( $args['embed'] );
@@ -45,13 +46,16 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		$args['unit_taxonomy'] = sanitize_key( $args['unit_taxonomy'] );
 		$args['unit_category'] = sanitize_key( $args['unit_category'] );
+		$args['unit_title'] = sanitize_text_field( $args['unit_title'] );
 		$args['unit_description'] = esc_html( $args['unit_description'] );
 
 		$unit_included = ! empty( $args['unit_taxonomy'] ) && ! empty( $args['unit_category'] );
 
 		$return_string = '<div id="fundSelectionForm">';
 
-		$unit_priorities = $unit_included ? '<a class="active" role="button" data-tab="categoryTab" href="#" >Unit Priorities</a>' : '';
+		$unit_title = ! empty( $args['unit_title'] ) ? $args['unit_title'] : 'Unit Priorities';
+
+		$unit_priorities = $unit_included ? '<a class="active" role="button" data-tab="categoryTab" href="#" >' . $unit_title . '</a>' : '';
 
 		// Major Categories button group
 		$return_string .= '
