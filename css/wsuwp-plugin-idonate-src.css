@@ -758,10 +758,6 @@ div.input-group {
 	clear: both;
 }
 
-button.amount-selection:hover {
-	border-width: auto;
-}
-
 button.amount-selection {
 	width: calc(25% - 5px);
 	display: flex;
@@ -787,7 +783,6 @@ input[type="button"]:active {
 	/*color: #b5babe;
 	border-color: #000; */
 	background: auto;
-	border-width: auto;
 }
 
 #selectedFunds {
