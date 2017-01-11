@@ -24,7 +24,7 @@ a.btnblk {
 	margin: 0;
 	padding: 15px 40px 15px 40px;
 	background: rgba(0, 0, 0, 0);
-	font: 700 12px/12px "Montserrat", Helvetica, Arial, san-serif;
+	font: 700 12px/12px Montserrat, Helvetica, Arial, san-serif;
 	text-align: center;
 	text-shadow: none;
 	-webkit-border-radius: 2px;
@@ -70,7 +70,7 @@ a.btngreen:hover {
 }
 
 a.btnblue {
-	color: rgba(0, 177, 255, 1.0);
+	color: rgba(0, 177, 255, 1);
 	border: 1px solid rgba(0, 177, 255, 1);
 }
 
@@ -105,7 +105,7 @@ a.btnorange:hover {
 a.btnlhtgry {
 	color: #3b4042;
 	border: 1px solid rgba(236, 236, 236, 1);
-	background-color: #F1F1F1;
+	background-color: #f1f1f1;
 }
 
 a.btnlhtgry:hover {
@@ -129,7 +129,7 @@ a.btngry2 {
 	margin: 0 0 0 0;
 	padding: 0 40px 15px 40px;
 	background: rgba(0, 0, 0, 0);
-	font: 700 12px/12px "Montserrat", Helvetica, Arial, san-serif;
+	font: 700 12px/12px Montserrat, Helvetica, Arial, san-serif;
 	text-transform: uppercase;
 	text-align: center;
 	text-shadow: none;
@@ -138,7 +138,7 @@ a.btngry2 {
 	-ms-border-radius: 0;
 	border-radius: 0;
 	color: #4c4c4c;
-	border-bottom: 1px solid rgba(76, 76, 76, 0.2);
+	border-bottom: 1px solid rgba(76, 76, 76, .2);
 }
 
 a.btngry2:hover {
@@ -199,10 +199,11 @@ a.btnblk:hover {
 	margin: 7px 16px 0 0;
 	-webkit-user-select: none;
 	-moz-user-select: none;
-	-ms-user-select: none
+	-ms-user-select: none;
 }
 
-.onoffswitch-checkbox, .onoffswitch-checkbox2 {
+.onoffswitch-checkbox,
+.onoffswitch-checkbox2 {
 	display: none;
 }
 
@@ -219,7 +220,7 @@ a.btnblk:hover {
 	-webkit-border-radius: 30px;
 	border-radius: 30px;
 	background-color: #cbccce;
-	transition: all 0.3s ease-in;
+	transition: all .3s ease-in;
 }
 
 .onoffswitch-label:before,
@@ -228,7 +229,7 @@ a.btnblk:hover {
 	display: block;
 	width: 30px;
 	margin: 0;
-	background: #ffffff;
+	background: #fff;
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -237,19 +238,19 @@ a.btnblk:hover {
 	-moz-border-radius: 30px;
 	-webkit-border-radius: 30px;
 	border-radius: 30px;
-	transition: all 0.3s ease-in 0s;
+	transition: all .3s ease-in 0s;
 }
 
 .onoffswitch-checkbox:checked + .onoffswitch-label,
 .onoffswitch-checkbox2:checked + .onoffswitch-label2 {
-	background-color: #49E845;
+	background-color: #49e845;
 }
 
 .onoffswitch-checkbox:checked + .onoffswitch-label,
 .onoffswitch-checkbox:checked + .onoffswitch-label:before,
 .onoffswitch-checkbox2:checked + .onoffswitch-label2,
 .onoffswitch-checkbox2:checked + .onoffswitch-label2:before {
-	border-color: #49E845;
+	border-color: #49e845;
 }
 
 .onoffswitch-checkbox:checked + .onoffswitch-label:before,
@@ -272,7 +273,10 @@ a.btnblk:hover {
 	padding: 0;
 }
 
-input, select, button, .ui-button {
+input,
+select,
+button,
+.ui-button {
 	color: #4c4c4c;
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
@@ -288,7 +292,7 @@ input, select, button, .ui-button {
 }
 
 #majorcategory a:hover {
-	color: #981E32;
+	color: #981e32;
 }
 
 select {
@@ -299,8 +303,8 @@ input,
 input:focus {
 	width: 100%;
 	height: 50px;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	text-align: left;
 	text-indent: 10px;
 	text-transform: none;
@@ -343,29 +347,28 @@ select {
 	border-radius: 2px;
 	outline: none;
 	border: 1px solid #ebe7e8;
-	font-size:12px;
-	font-weight:400;
+	font-size: 12px;
+	font-weight: 400;
 	text-transform: uppercase;
 }
 
-input[type=text]:hover,
+input[type="text"]:hover,
 select:hover {
-	/*color: rgba(255, 255, 255, 1.0);*/
 	border: 1px solid #d1d3d4;
 	cursor: pointer;
 }
 
-input[type=text]:focus,
+input[type="text"]:focus,
 select:focus {
-	/*color: rgba(255, 255, 255, 1.0);*/
-	border: 1px solid #981E32;
+	border: 1px solid #981e32;
 }
 
 select::-ms-expand {
 	display: none;
 }
 
-select.fund, select.subject {
+select.fund,
+select.subject {
 	background: #fff url(../images/ico/arrow-down-gry.png) no-repeat calc(100% - 16px) calc(100% - 50%);
 }
 
@@ -385,7 +388,8 @@ input.password {
 	background: rgba(0, 0, 0, .05) url(../images/ico/lock-gry.png) no-repeat 16px center;
 }
 
-input.search, a.search {
+input.search,
+a.search {
 	background: transparent url(../images/ico/search-gry.png) no-repeat 12px center;
 	background-size: 12px;
 }
@@ -532,24 +536,24 @@ input.simplylht:focus {
 	padding: 15px 15px 15px 15px;
 	color: #4c4c4c;
 	display: block;
-	font: 400 12px/12px "Montserrat", Helvetica, Arial, san-serif;
+	font: 400 12px/12px Montserrat, Helvetica, Arial, san-serif;
 }
 
 .dropdown a:hover,
 .dropdown a:focus {
-	color: #ffffff;
+	color: #fff;
 	background: #94192b;
 }
 
 .dropdown a:hover strong,
 .dropdown a:focus b {
-	color: #ffffff;
+	color: #fff;
 }
 
 .dropdown a strong,
 .dropdown a b {
 	color: #94192b;
-	font: 700 12px/12px "Montserrat", Helvetica, Arial, san-serif;
+	font: 700 12px/12px Montserrat, Helvetica, Arial, san-serif;
 }
 
 .dropdown li {
@@ -586,7 +590,7 @@ input.simplylht:focus {
 	border-collapse: separate;
 }
 
-.input-group[class*=col-] {
+.input-group[class*="col-"] {
 	float: none;
 	padding-left: 0;
 	padding-right: 0;
@@ -647,8 +651,8 @@ input.simplylht:focus {
 	border-radius: 6px;
 }
 
-.input-group-addon input[type=checkbox],
-.input-group-addon input[type=radio] {
+.input-group-addon input[type="checkbox"],
+.input-group-addon input[type="radio"] {
 	margin-top: 0;
 }
 
@@ -703,7 +707,8 @@ input.simplylht:focus {
 	margin-right: -1px;
 }
 
-.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
+.input-group-btn:last-child > .btn,
+.input-group-btn:last-child > .btn-group {
 	z-index: 2;
 	margin-left: -1px;
 }
@@ -745,7 +750,7 @@ button.amount-selection:hover {
 	background-color: #d1d3d4;
 }
 
-button.amount-selection.selected:hover{
+button.amount-selection.selected:hover {
 	background-color: #981e32;
 }
 
@@ -775,9 +780,9 @@ button.amount-selection {
 .button:active,
 button.active,
 button:active,
-input[type=submit]:active,
-input[type=reset]:active,
-input[type=button]:active {
+input[type="submit"]:active,
+input[type="reset"]:active,
+input[type="button"]:active {
 
 	/*color: #b5babe;
 	border-color: #000; */
@@ -804,7 +809,7 @@ input[type=button]:active {
 }
 
 #selectedFunds li:first-child:after {
-	content: '';
+	content: "";
 	position: absolute;
 	border-style: solid;
 	border-width: 0 14px 15px;
@@ -818,7 +823,7 @@ input[type=button]:active {
 
 #selectedFunds li:first-child:before {
 	color: #e6e7e8;
-	content: '';
+	content: "";
 	position: absolute;
 	border-style: solid;
 	border-width: 0 14px 15px;
@@ -832,7 +837,7 @@ input[type=button]:active {
 
 #selectedFunds li span.left {
 	padding-right: 20px;
-	font-weight: bold;
+	font-weight: 700;
 	align-items: center;
 	display: flex;
 }
@@ -872,14 +877,13 @@ input[type=button]:active {
 #jacket,
 #binder,
 section.row {
-	background-color: white;
+	background-color: #fff;
 }
 
 #majorcategory {
-	padding-bottom: 10px;
 	display: flex;
 	justify-content: space-around;
-	padding: 0;
+	padding: 0 0 10px 0;
 }
 
 #majorcategory a,
@@ -902,7 +906,7 @@ section.row {
 	border-right: 1px solid #d1d3d4;
 	border-bottom: none;
 	color: #981e32;
-	font-weight:700;
+	font-weight: 700;
 }
 
 #majorcategory span {
