@@ -20,9 +20,6 @@
     } ],
     "declaration-bang-space-after": "never",
     "declaration-bang-space-before": "always",
-    "declaration-block-no-duplicate-properties": [ true, {
-      ignore: ["consecutive-duplicates"],
-    } ],
     "declaration-block-no-shorthand-property-overrides": true,
     "declaration-block-semicolon-newline-after": "always",
     "declaration-block-semicolon-space-before": "never",
@@ -99,7 +96,6 @@
     "selector-pseudo-element-no-unknown": true,
     "selector-type-case": "lower",
     "selector-type-no-unknown": true,
-    "shorthand-property-no-redundant-values": true,
     "string-no-newline": true,
     "string-quotes": "double",
     "unit-case": "lower",
