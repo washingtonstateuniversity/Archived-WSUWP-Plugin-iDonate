@@ -245,7 +245,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			//do whatever you want with it
 			$return_array[] = array( 'fund_name' => $post_title, 'designation_id' => $des_id );
 		}
-        
+
 		return $return_array;
 	}
 }
