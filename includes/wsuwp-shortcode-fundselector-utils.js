@@ -6,11 +6,36 @@ window.wsuwpUtils = window.wsuwpUtils || {};
     window.wsuwpUtils = {
 
 		addListItem: function ( $list, name, designationId, amount  ) {
-		    var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '"><span class="left">$' + amount +  '</span><span class="right">' + _.escape(name) + '</span><span class="close"><a href="#"></a></span></li>';
-			
-			if(!this.isDuplicateDesignation(designationId, $list))
+		    var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '"></li>';
+			var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '">';
+			html += '<span class="right">' + _.escape(name) + '</span>'
+			html += ' $<span id="edit' + designationId + '" class="editable left">' + amount +  '</span>';
+			html += '<input id="' + designationId +'" class="edit" type="button" value="Edit Amount"></input>';
+			html += '<span class="close remove"><a href="#"></a></span>'
+			html += '<span id="error' + designationId + '" class="error"></span></li>';
+
+			if(!wsuwpUtils.isDuplicateDesignation(designationId, $list))
 			{
 				$list.append(html);
+
+				// jQuery Editable
+				var $editButton = jQuery("input#" + designationId);
+				
+				$editButton.click(function (e) { e.preventDefault(); } );
+				
+				var option = {trigger : $editButton, action : "click"};
+				jQuery("span#edit" + designationId).editable(option, function(e){
+					
+					if( !wsuwpUtils.validateAmount(e.value) ){
+						// Revert back to the original value
+						e.target.html(e.old_value);
+						jQuery("#error" + designationId).text("Amount must be between $3 and $100,000. Amount was reset.");
+					}
+					else{
+						e.target.parent().attr("data-amount", e.value);
+						jQuery("#error" + designationId).text("");
+					}
+				});
 			}
 		},
 
@@ -27,6 +52,18 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			});
 
 			 return duplicate;
+		},
+
+		validateAmount(intendedAmount)
+		{
+			var validMoneyAmount = false;
+
+			var inputAmount = parseFloat(intendedAmount);
+			if(inputAmount && _.isNumber(inputAmount) && inputAmount > 0 && intendedAmount.match(/^\d{1,5}(?:\.\d{0,2})?$/)){
+				validMoneyAmount = true;
+			}
+
+			return validMoneyAmount;
 		},
 
 		getDesignationList: function ($listElement)
