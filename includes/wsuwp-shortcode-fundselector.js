@@ -112,26 +112,27 @@ jQuery(document).ready(function($) {
 		var fundName = $(this).find(":selected").text();
 		$("#inpDesignationId").text(designationId);
 		$("#inpFundName").text(fundName);
+		showAmountZone();
 	});
 
 	// Add Fund Button click  event
+	$(".amount-selection").not(".other")
+	.click( function ( event ) {
+		console.log("amoutnselectionclick");
+		handleAmountSelectionClick( event );	
+		addFundAction();
+	});
+
 	$("#addFundButton")
-	.click( function ( ) {
-		var designationId = $("#inpDesignationId").text();
-		var fundName = $("#inpFundName").text();
-
-		wsuwpUtils.addListItem($("#selectedFunds"), fundName, designationId, $("#inpAmount").val());
-		wsuwpUtils.enableButton($("#continueButton"));
-
-		$("#fundSearch").val("");
-		$('.fund-selection').prop('selectedIndex', 0);
-
-		continueAction();
+	.click( function ( event ) {	
+		console.log("addfundbutton click");	
+		jQuery("#inpAmount").val( jQuery("#otherAmount").val() );
+		addFundAction();
 	});
 
 	// Remove Fund Button Click Event
 	// (Using body to defer binding until element has been created)
-	$('body').on('click', '#selectedFunds li a', function (event) {
+	$('body').on('click', '#selectedFunds li span.close a', function (event) {
 		event.preventDefault();
 		
 		$(this).parent().parent().remove();
@@ -142,21 +143,14 @@ jQuery(document).ready(function($) {
 		if($("#selectedFunds").find("li").length === 0)
 		{
 			wsuwpUtils.disableButton($("#continueButton"));
+			hideContinueButton();
 		}
 		
 	});
 
 	// Amount Selection Buttons Initialization and Click Event
-	$(".amount-selection").button()
-	.click( function( event ) {
-      
-		var $this = $(this);
-
-        $("#inpAmount").val($this.attr("data-amount"));
-
-		$(".amount-selection").removeClass("selected");
-		$this.addClass("selected");
-    });
+//	$(".amount-selection").button()
+//	.click( handleAmountSelectionClick );
 
 	// Other Amount text field Change Event
 	$("#otherAmount").on('input propertychange paste', function () {
@@ -167,11 +161,56 @@ jQuery(document).ready(function($) {
 		}		
 	});
 
+	$(".amount-selection.other").on('click',function(){
+		$(".amount-selection.selected").removeClass("selected");
+		$(this).addClass("selected");
+		showOther();
+	});
+
 	// Continue Button Initialization and Click Event
 	$("#continueButton").button()
 	.click( continueAction );
 
+	$("#backButton").on('click',function(){
+		showForm();
+	});
 });
+
+function addFundAction()
+{
+	console.log("addfundaction");
+	var designationId = jQuery("#inpDesignationId").text();
+	var fundName = jQuery("#inpFundName").text();
+
+	if(designationId && fundName)
+	{
+		wsuwpUtils.addListItem(jQuery("#selectedFunds"), fundName, designationId, jQuery("#inpAmount").val());
+		wsuwpUtils.enableButton(jQuery("#continueButton"));
+		showContinueButton();
+		resetForm();
+	}
+}
+
+function resetForm()
+{
+	jQuery("#fundSearch").val("");
+	jQuery('.fund-selection').prop('selectedIndex', 0);
+	setTimeout(function(){ jQuery('.amountwrapper .selected').removeClass('selected'); }, 1300);
+	hideAmountZone();
+	hideother();
+}
+
+function handleAmountSelectionClick(event)
+{
+	var $this = jQuery(event.target);
+    if($this.attr("data-amount"))
+	{
+		jQuery("#inpAmount").val($this.attr("data-amount"));
+
+		jQuery(".amount-selection").removeClass("selected");
+		$this.addClass("selected");
+	}
+}
 
 function continueAction()
 {
@@ -179,6 +218,7 @@ function continueAction()
 
 	if(designations.length > 0)
 	{
+		hideForm();
 		// Turn the list of designations into a JSON string
 		var designationsString = JSON.stringify(designations);
 
@@ -195,15 +235,68 @@ function continueAction()
 		.then(function loaded() {
 			jQuery("#iDonateEmbed iframe").show();
 			$loadingMessage.hide();
-			$loadingMessage.text("Finished loading");
+			//$loadingMessage.text("Finished loading");
 		});
 	}
 	else
 		jQuery("#iDonateEmbed iframe").hide();
 }
 
+function showForm()
+{
+	showAnything( jQuery("#firstform") ); 
+	hideAnything( jQuery("#secondform") );
+}
+
+function hideForm()
+{
+	hideAnything( jQuery("#firstform") );
+	showAnything( jQuery("#secondform") );
+}
+
+function showAmountZone()
+{
+	showAnything( jQuery(".amountwrapper.wrapper") ); 
+}
+
+function hideAmountZone()
+{
+	hideAnything( jQuery(".amountwrapper.wrapper") );
+}
+
+function showContinueButton()
+{
+	showAnything( jQuery(".continuebutton") ); 
+}
+
+function hideContinueButton()
+{
+	hideAnything( jQuery(".continuebutton") );
+}
+
+function showOther()
+{
+	showAnything( jQuery(".otherprice") ); 
+}
+
+function hideother()
+{
+	hideAnything( jQuery(".otherprice") );
+}
+
+function showAnything(element)
+{
+	jQuery(element).animate({"opacity":1},{duration:300}).show().delay(1000);
+}
+
+function hideAnything(element)
+{
+	jQuery(element).animate({"opacity":0}, {duration:1000}); 
+	setTimeout(function(){ jQuery(element).hide(); }, 1100);
+}
+
+
 jQuery(document).ready(function(){
-	//jQuery("#iDonateEmbed").width( jQuery(window).width() ).height( jQuery(window).height() );
 	jQuery("#majorcategory a").on("click",function(){
 		jQuery(".form-group.search").addClass("hidden");
 		jQuery("#majorcategory a.active").removeClass("active");
@@ -213,23 +306,4 @@ jQuery(document).ready(function(){
 		jQuery(".form-group.search").removeClass("hidden");
 	});
 	jQuery("button.amount-selection:last").addClass("lastbutton");
-	jQuery("button").on("click", function(){
-		var value = jQuery(this).data("amount");
-		jQuery(this).addClass("selected");
-		jQuery("#otherAmount").val(value);
-	});
-	jQuery("#otherAmount").on("keyup",function(){
-		console.log("keyup");
-		var inputval = jQuery(this).val();
-		jQuery("button").each(function(){
-			var buttonval = jQuery(this).data("amount");
-			if(buttonval != inputval)
-				jQuery(this).removeClass("selected");
-			else
-				jQuery(this).addClass("selected");
-		});
-	});
-	jQuery("#continueButton").on("click", function(){
-		//jQuery("#continueButton span.ui-button-text").text("Update");
-	});
 });
