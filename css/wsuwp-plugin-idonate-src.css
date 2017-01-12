@@ -394,6 +394,24 @@ a.search {
 	background-size: 12px;
 }
 
+input.left,
+a.left {
+	background: transparent url(../images/ico/arrow-left-gry.png) no-repeat 12px center;
+	background-size: 12px;
+	color: #3b4042;
+	border: 1px solid rgba(236, 236, 236, 1);
+	background-color: #f1f1f1;
+}
+
+input.plus,
+a.plus {
+	background: transparent url(../images/ico/plus-gry.png) no-repeat 12px center;
+	background-size: 12px;
+	color: #3b4042;
+	border: 1px solid rgba(236, 236, 236, 1);
+	background-color: #f1f1f1;
+}
+
 #majorcategory a.search.active,
 #majorcategory a.search:hover {
 	background: transparent url(../images/ico/search-crm.png) no-repeat 12px center;
@@ -472,8 +490,13 @@ input.search.simplylht,
 input.name.simplydrk:focus,
 input.password.simplydrk:focus,
 select.subject,
-select.fund {
+select.fund,
+a.plus {
 	background-size: 12px;
+	-webkit-transition: background-color .3s ease-in-out, color .3s ease-in-out;
+	-moz-transition: background-color .3s ease-in-out, color .3s ease-in-out;
+	-ms-transition: background-color .3s ease-in-out, color .3s ease-in-out;
+	-o-transition: background-color .3s ease-in-out, color .3s ease-in-out;
 }
 
 input.simplydrk {
@@ -633,6 +656,8 @@ input.simplylht:focus {
 	background-color: #eee;
 	border: 1px solid #ebe7e8;
 	border-radius: 2px;
+	display: flex;
+	align-items: center;
 }
 
 .input-group-addon.input-sm,
@@ -759,7 +784,7 @@ div.input-group {
 }
 
 button.amount-selection {
-	width: calc(25% - 5px);
+	width: calc(20% - 5px);
 	display: flex;
 	justify-content: center;
 }
@@ -786,7 +811,7 @@ input[type="button"]:active {
 }
 
 #selectedFunds {
-	margin: 5px 0 0 0;
+	margin: 0 0 0 0;
 	list-style-type: none;
 	padding: 0;
 }
@@ -807,27 +832,13 @@ input[type="button"]:active {
 	content: "";
 	position: absolute;
 	border-style: solid;
-	border-width: 0 14px 15px;
+	border-width: 0 7px 7px;
 	border-color: #e6e7e8 transparent;
 	display: block;
 	width: 0;
 	z-index: 1;
-	top: -15px;
-	left: 28px;
-}
-
-#selectedFunds li:first-child:before {
-	color: #e6e7e8;
-	content: "";
-	position: absolute;
-	border-style: solid;
-	border-width: 0 14px 15px;
-	border-color: #e6e7e8 transparent;
-	display: block;
-	width: 0;
-	z-index: 0;
-	top: -16px;
-	left: 28px;
+	top: -8px;
+	left: 7px;
 }
 
 #selectedFunds li span.left {
@@ -842,6 +853,10 @@ input[type="button"]:active {
 	width: 100%;
 	display: flex;
 	align-items: center;
+}
+
+#selectedFunds span.editable.left {
+	width: 100%;
 }
 
 /* Remove fund button */
@@ -929,7 +944,7 @@ ul.ui-autocomplete {
 #selectedFunds li span.left,
 .input-group-addon:first-child {
 	font-weight: 800;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .amountwrapper .input-group {
@@ -938,7 +953,7 @@ ul.ui-autocomplete {
 
 .continuebutton {
 	display: flex;
-	margin-top: 20px;
+	margin-top: 40px;
 	justify-content: flex-end;
 }
 
@@ -964,9 +979,52 @@ legend {
 	opacity: 1;
 }
 
+span.edit {
+	display: flex;
+	align-items: center;
+}
+
+a.edit,
+li span.amount {
+	color: #4c4c4c;
+	font-weight: 800;
+	font-size: 12px;
+}
+
+.otherprice {
+	display: flex;
+	width: 100%;
+}
+
+span.center {
+	font-size: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#addFundButton {
+	padding: 11px 40px 10px 40px;
+	background-position-x: 51px;
+	background-size: 8px;
+	background-color: #e6e7e8;
+}
+
+#addFundButton:hover {
+	color: #fff;
+	background: #981e32 url(../images/ico/plus-wht.png) no-repeat 12px center;
+	background-size: 8px;
+	background-position-x: 51px;
+}
+
+#backButton {
+	min-width: 70px;
+	padding: 15px 15px 15px 15px;
+}
+
 @media (max-width: 800px) {
 
 	button.amount-selection {
-		width: calc(25% - 5px);
+		width: calc(20% - 5px);
 	}
 }
