@@ -5,13 +5,15 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 
     window.wsuwpUtils = {
 
-		addListItem: function ( $list, name, designationId, amount  ) {	
-			var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '">' + _.escape(name);
-			html += ' ($<span id="edit' + designationId + '" class="editable">' + amount +  '</span>)';
+		addListItem: function ( $list, name, designationId, amount  ) {
+		    var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '"></li>';
+			var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '">';
+			html += '<span class="right">' + _.escape(name) + '</span>'
+			html += ' $<span id="edit' + designationId + '" class="editable left">' + amount +  '</span>';
 			html += '<input id="' + designationId +'" class="edit" type="button" value="Edit Amount"></input>';
-			html += '<a href="#" class="remove pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Remove Fund button</span></a>'
+			html += '<span class="close remove"><a href="#"></a></span>'
 			html += '<span id="error' + designationId + '" class="error"></span></li>';
-			
+
 			if(!wsuwpUtils.isDuplicateDesignation(designationId, $list))
 			{
 				$list.append(html);
