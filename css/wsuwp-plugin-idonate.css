@@ -657,6 +657,19 @@
 	padding: 15px 15px 15px 15px;
 }
 
+#fundSelectionForm .ui-autocomplete {
+	background-color: #fff;
+	border: 1px solid #e6e7e8;
+}
+
+#fundSelectionForm .ui-autocomplete .ui-menu-item {
+	cursor: pointer;
+}
+
+#fundSelectionForm .ui-autocomplete .ui-menu-item.ui-state-focus {
+	color: #981e32;
+}
+
 @media (max-width: 800px) {
 
 	#fundSelectionForm button.amount-selection {
