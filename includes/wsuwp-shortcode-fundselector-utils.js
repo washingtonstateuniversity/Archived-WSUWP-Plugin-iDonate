@@ -6,20 +6,19 @@ window.wsuwpUtils = window.wsuwpUtils || {};
     window.wsuwpUtils = {
 
 		addListItem: function ( $list, name, designationId, amount  ) {
-		    var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '"></li>';
 			var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '">';
 			html += '<span class="right">' + _.escape(name) + '</span>'
-			html += ' $<span id="edit' + designationId + '" class="editable left">' + amount +  '</span>';
-			html += '<input id="' + designationId +'" class="edit" type="button" value="Edit Amount"></input>';
+			html += '<span class="center">$</span><span id="edit' + designationId + '" class="editable left">' + amount +  '</span>';
+			html += '<span class="edit"><a href="#" id="' + designationId +'" class="edit">EDIT</a></span>';
 			html += '<span class="close remove"><a href="#"></a></span>'
 			html += '<span id="error' + designationId + '" class="error"></span></li>';
-
+			
 			if(!wsuwpUtils.isDuplicateDesignation(designationId, $list))
 			{
 				$list.append(html);
 
 				// jQuery Editable
-				var $editButton = jQuery("input#" + designationId);
+				var $editButton = jQuery("a#" + designationId);
 				
 				$editButton.click(function (e) { e.preventDefault(); } );
 				
