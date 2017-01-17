@@ -27,10 +27,8 @@ jQuery(document).ready(function($) {
 			},
 			minLength: 3,
             select: function( event, ui ) {
-                wsuwpUtils.addListItem($("#selectedFunds"), ui.item.name, ui.item.designationId, $("#inpAmount").val());
-				wsuwpUtils.enableButton($("#continueButton"));
-				$("#fundSearch").val("");
-                event.preventDefault();
+				$("#inpDesignationId").text(ui.item.designationId);
+				$("#inpFundName").text(ui.item.name);
             }
         }
     );
@@ -54,11 +52,11 @@ jQuery(document).ready(function($) {
 
 				var $list = $('#subcategories'); 
 				$list.empty();
-				$list.append('<option disabled selected value> -- Select a Category -- </option>');
+				$list.append('<option disabled selected value> SELECT A CATEGORY </option>');
 				
 				var $fundList = $('#funds');				
 				$fundList.empty();
-				$fundList.append('<option disabled selected value> -- Select a Fund -- </option>');
+				$fundList.append('<option disabled selected value> SELECT A FUND </option>');
 				$fundList.prop("disabled", true);
 
 				$.each(json, function(key, value) {   
@@ -89,7 +87,7 @@ jQuery(document).ready(function($) {
 
 				var $list = $('#funds'); 
 				$list.empty();
-				$list.append('<option disabled selected value> -- Select a Fund -- </option>');
+				$list.append('<option disabled selected value> SELECT A FUND </option>');
 				$.each(json, function(key, value) {   
 					$list
 					.append($('<option>', { value : value["designationId"] })
@@ -112,73 +110,203 @@ jQuery(document).ready(function($) {
 	.change( function ( ) {
 		var designationId = $(this).val();
 		var fundName = $(this).find(":selected").text();
-		wsuwpUtils.addListItem($("#selectedFunds"), fundName, designationId, $("#inpAmount").val());
-		wsuwpUtils.enableButton($("#continueButton"));
+		$("#inpDesignationId").text(designationId);
+		$("#inpFundName").text(fundName);
+		showAmountZone();
+	});
+
+	// Add Fund Button click  event
+	$(".amount-selection").not(".other")
+	.click( function ( event ) {
+		console.log("amoutnselectionclick");
+		handleAmountSelectionClick( event );	
+		addFundAction();
+	});
+
+	$("#addFundButton")
+	.click( function ( event ) {	
+		console.log("addfundbutton click");	
+		jQuery("#inpAmount").val( jQuery("#otherAmount").val() );
+		addFundAction();
 	});
 
 	// Remove Fund Button Click Event
 	// (Using body to defer binding until element has been created)
-	$('body').on('click', '#selectedFunds li a', function (event) {
+	$('body').on('click', '#selectedFunds li span.close a', function (event) {
 		event.preventDefault();
 		
-		$(this).parent().remove();
+		$(this).parent().parent().remove();
 
 		// If the Fund list is empty, disable the Continue Button
 		if($("#selectedFunds").find("li").length === 0)
 		{
 			wsuwpUtils.disableButton($("#continueButton"));
+			hideContinueButton();
 		}
 		
 	});
 
 	// Amount Selection Buttons Initialization and Click Event
-	$(".amount-selection").button()
-	.click( function( event ) {
-      
-		var $this = $(this);
-
-        $("#inpAmount").val($this.attr("data-amount"));
-
-		$(".amount-selection").removeClass("selected");
-		$this.addClass("selected");
-    });
+//	$(".amount-selection").button()
+//	.click( handleAmountSelectionClick );
 
 	// Other Amount text field Change Event
 	$("#otherAmount").on('input propertychange paste', function () {
-		var inputAmount = parseFloat($(this).val());
-		if(inputAmount && _.isNumber(inputAmount) && inputAmount > 0)
+		var inputAmount = $(this).val();
+		if(wsuwpUtils.validateAmount(inputAmount))
 		{
 			$("#inpAmount").val(inputAmount);
+			jQuery("#errorOtherAmount").text("");
+		}
+		else
+		{
+			jQuery("#errorOtherAmount").text("Amount should be between $3 and $100,000.");
 		}		
+	});
+
+	$(".amount-selection.other").on('click',function(){
+		$(".amount-selection.selected").removeClass("selected");
+		$(this).addClass("selected");
+		showOther();
 	});
 
 	// Continue Button Initialization and Click Event
 	$("#continueButton").button()
-	.click( function( event ) {
-      
-        var designations = wsuwpUtils.getDesignationList($("#selectedFunds"));
+	.click( continueAction );
 
-		if(designations.length > 0)
-		{
-			// Turn the list of designations into a JSON string
-			var designationsString = JSON.stringify(designations);
+	$("#backButton").on('click',function(){
+		showForm();
+});
+});
 
-			// Add the designation as an attribute
-			$("#iDonateEmbed").attr("data-designations", designationsString);
+function addFundAction()
+{
+	console.log("addfundaction");
+	var designationId = jQuery("#inpDesignationId").text();
+	var fundName = jQuery("#inpFundName").text();
 
-			// Initialize the iDonate embed
-			initializeEmbeds();
+	if(designationId && fundName)
+	{
+		wsuwpUtils.addListItem(jQuery("#selectedFunds"), fundName, designationId, jQuery("#inpAmount").val());
+		wsuwpUtils.enableButton(jQuery("#continueButton"));
+		showContinueButton();
+		resetForm();
+	}
+}
 
-			$loadingMessage = $("#embedLoadingMessage");
-			$loadingMessage.show();
-			
-			wsuwpUtils.iDonateEmbedLoad($("#loadingCheck"))
-			.then(function loaded() {
-				$loadingMessage.hide();
-				$loadingMessage.text("Finished loading");
-			});
+function resetForm()
+{
+	jQuery("#fundSearch").val("");
+	jQuery('.fund-selection').prop('selectedIndex', 0);
+	setTimeout(function(){ jQuery('.amountwrapper .selected').removeClass('selected'); }, 1300);
+	hideAmountZone();
+	hideother();
+}
 
-		}
-    });
+function handleAmountSelectionClick(event)
+{
+	var $this = jQuery(event.target);
+    if($this.attr("data-amount"))
+	{
+		jQuery("#inpAmount").val($this.attr("data-amount"));
 
+		jQuery(".amount-selection").removeClass("selected");
+		$this.addClass("selected");
+	}
+}
+
+function continueAction()
+{
+	var designations = wsuwpUtils.getDesignationList(jQuery("#selectedFunds"));
+
+	if(designations.length > 0)
+	{
+		hideForm();
+		// Turn the list of designations into a JSON string
+		var designationsString = JSON.stringify(designations);
+
+		// Add the designation as an attribute
+		jQuery("#iDonateEmbed").attr("data-designations", designationsString);
+
+		// Initialize the iDonate embed
+		initializeEmbeds();
+
+		$loadingMessage = jQuery("#embedLoadingMessage");
+		$loadingMessage.show();
+		
+		wsuwpUtils.iDonateEmbedLoad(jQuery("#loadingCheck"))
+		.then(function loaded() {
+			jQuery("#iDonateEmbed iframe").show();
+			$loadingMessage.hide();
+			//$loadingMessage.text("Finished loading");
+		});
+	}
+	else
+		jQuery("#iDonateEmbed iframe").hide();
+}
+
+function showForm()
+{
+	showAnything( jQuery("#firstform") ); 
+	hideAnything( jQuery("#secondform") );
+}
+
+function hideForm()
+{
+	hideAnything( jQuery("#firstform") );
+	showAnything( jQuery("#secondform") );
+}
+
+function showAmountZone()
+{
+	showAnything( jQuery(".amountwrapper.wrapper") ); 
+}
+
+function hideAmountZone()
+{
+	hideAnything( jQuery(".amountwrapper.wrapper") );
+}
+
+function showContinueButton()
+{
+	showAnything( jQuery(".continuebutton") ); 
+}
+
+function hideContinueButton()
+{
+	hideAnything( jQuery(".continuebutton") );
+}
+
+function showOther()
+{
+	showAnything( jQuery(".otherprice") ); 
+}
+
+function hideother()
+{
+	hideAnything( jQuery(".otherprice") );
+}
+
+function showAnything(element)
+{
+	jQuery(element).animate({"opacity":1},{duration:300}).show().delay(1000);
+}
+
+function hideAnything(element)
+{
+	jQuery(element).animate({"opacity":0}, {duration:1000}); 
+	setTimeout(function(){ jQuery(element).hide(); }, 1100);
+}
+
+
+jQuery(document).ready(function(){
+	jQuery("#majorcategory a").on("click",function(){
+		jQuery(".form-group.search").addClass("hidden");
+		jQuery("#majorcategory a.active").removeClass("active");
+		jQuery(this).addClass("active");
+	});
+	jQuery(".search").on("click", function(){
+		jQuery(".form-group.search").removeClass("hidden");
+	});
+	jQuery("button.amount-selection:last").addClass("lastbutton");
 });

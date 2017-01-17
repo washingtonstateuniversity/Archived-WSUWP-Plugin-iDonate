@@ -7,7 +7,7 @@
  * WordPress.
  *
  * @link       https://github.com/washingtonstateuniversity/WSUWP-Plugin-iDonate
- * @since      1.0.0
+ * @since      0.0.1
  *
  * @package    WSUWP_Plugin_iDonate_ShortCode_Fund_Selector
  * @author     Blair Lierman
@@ -18,12 +18,12 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	 * Initializes the plugin by registering the hooks necessary
 	 * for creating our custom post type within WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
 	public function init() {
 
 		add_shortcode( 'idonate_fundselector', array( $this, 'fundselector_create_shortcode' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'wsuf_fundselector_enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'wsuf_fundselector_enqueue_scripts' ), 99 );
 		add_action( 'rest_api_init', array( $this, 'wsuf_fundselector_register_designation_id' ) );
 	}
 
@@ -56,7 +56,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		$unit_included = ! empty( $args['unit_taxonomy'] ) && ! empty( $args['unit_category'] );
 
-		$return_string = '<div id="fundSelectionForm">';
+		$return_string = '<div id="fundSelectionForm"><div id="firstform">';
 
 		$unit_title = ! empty( $args['unit_title'] ) ? $args['unit_title'] : 'Unit Priorities';
 
@@ -64,12 +64,13 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		// Major Categories button group
 		$return_string .= '
-		<div id="majorcategory" class="" role="group" aria-label="Category Selection Group">'
+		<div id="majorcategory" class="wrapper" role="group" aria-label="Category Selection Group">'
 			. $unit_priorities .
 			'<a class="' . ($unit_included ? '' : 'active') . '" role="button" data-tab="prioritiesTab" href="#" >WSU Priorities</a>
 			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_programs" href="#">Programs</a>
 			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_colleges" href="#">Colleges</a>
 			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_campuses" href="#">Campuses</a>
+            <span><a class="search" role="button" href="#"></a></span>
 		</div>';
 
 		// Unit Priorities Tab
@@ -94,7 +95,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		// University Priorities Tab
 		$priorities = $this->wsuf_fundselector_funds_get_funds( 'idonate_priorities', 'idonate_priorities' );
-		$priorities_list = '<option disabled selected value> -- Select a Fund -- </option>';
+		$priorities_list = '<option disabled selected value> SELECT A FUND </option>';
 
 		foreach ( $priorities as $priority ) {
 			$fund_name = esc_html( $priority['fund_name'] );
@@ -103,9 +104,9 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		$return_string .= '
-		<div id="prioritiesTab" class="categoryTab ' . ($unit_included ? 'hidden' : '') . '">    
+		<div id="prioritiesTab" class="categoryTab wrapper ' . ($unit_included ? 'hidden' : '') . '">    
 			<label for="priorities">Choose one of the university\'s greatest needs</label>
-			<select name="priorities" id="priorities" class="form-control fund-selection">'
+			<select name="priorities" id="priorities" class="form-control fund-selection fund">'
 				. $priorities_list .
 			'</select>
 		</div>';
@@ -117,59 +118,67 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Categories Select Menu
 		$return_string .= '    
 		<label for="subcategories">Choose a category</label>
-		<select name="subcategories" id="subcategories" class="form-control">
-			<option disabled selected value> -- Select a Category -- </option>
+		<select name="subcategories" id="subcategories" class="form-control fund">
+			<option disabled selected value> SELECT A CATEGORY </option>
 		</select>';
 
 		// Funds Select Menu
 		$return_string .= '    
-		<label for="funds">Choose a fund</label>
-		<select name="funds" id="funds" class="form-control fund-selection" disabled>
-			<option disabled selected value> -- Select a Fund -- </option>
-		</select>';
+		<div class="wrapper"><label for="funds">Choose a fund</label>
+		<select name="funds" id="funds" class="form-control fund-selection fund" disabled>
+			<option disabled selected value> SELECT A FUND </option>
+		</select></div>';
 
 		$return_string .= '</div>';
 
 		// Search Separator
-		$return_string .= '
+		/*$return_string .= '
 		<div class="search-separator">
 		OR
 		</div>
-		';
+		';*/
 
 		// Search AutoComplete
 		$return_string .= '
-		<div class="form-group has-feedback">
-			<label for="fundSearch">Search for any Fund: </label>
-			<input id="fundSearch" type="search" class="form-control" placeholder="Search for a fund..." >
+		<div class="form-group has-feedback wrapper search hidden">
+			<input id="fundSearch" type="text" class="form-control" placeholder="Search for a fund..." >
 			<span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
 		</div>
 		';
 
 		// Dollar Amount Selectors
 		$return_string .= '
-		<div class="" role="group">
-			<button type="button" class="amount-selection btn btn-default selected" data-amount="25" >$25</button>
+		<div class="amountwrapper wrapper" style="opacity:0;display:none;" role="group">
+			<button type="button" class="amount-selection btn btn-default other" data-amount="25" >OTHER</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="25" >$25</button>
 			<button type="button" class="amount-selection btn btn-default" data-amount="50">$50</button>
-			<button type="button" class="amount-selection btn btn-default" data-amount="100">$100</button>
+			<button type="button" class="amount-selection btn btn-default selected" data-amount="100">$100</button>
 			<button type="button" class="amount-selection btn btn-default" data-amount="2000">$2000</button>
-			<div class="input-group">
+			<div class="input-group otherprice" style="opacity:0; display:none;">
 				<div class="input-group-addon">$</div>
 				<!-- Maximum length of 8 includes cents (.xx) -->
-				<input type="text" class="form-control" id="otherAmount" placeholder="Other Amount" maxlength="8" data-max="99999">
+				<input class="form-control" id="otherAmount" placeholder="Other Amount" maxlength="8" data-max="99999" value="100" type="text">
+				<a class="btnlhtgry plus" id="addFundButton">Add Fund</a>
+				<span id="errorOtherAmount" class="error"></span>
 			</div>
-			<input name="inpAmount" id="inpAmount" class="value" data-token="amount" value="25" type="hidden">
+			<input name="inpAmount" id="inpAmount" class="value" data-token="amount" value="100" type="hidden">
 		</div>
+		';
+
+		// Add Fund Button
+		$return_string .= '
+			<input name="inpDesignationId" id="inpDesignationId" type="hidden">
+			<input name="inpFundName" id="inpFundName" type="hidden">
 		';
 
 		// Selected Funds List
 		$return_string .= '
-		<ul id="selectedFunds" class="list-group">
+		<ul id="selectedFunds" class="list-group wrapper">
 		</ul>
 		';
 
 		// Continue button
-		$return_string .= '<button type="button" id="continueButton" class="btn btn-default" disabled>Continue</button>';
+		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Continue</a></p></div>';
 
 		if ( 'staging' === $args['server'] ) {
 			$url = 'https://staging-embed.idonate.com/idonate.js';
@@ -178,13 +187,13 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		// Loading Message List
-		$return_string .= '<h2 id="embedLoadingMessage" style="display: none;">Loading Payment Process</h2>';
+		$return_string .= '<div id="secondform" style="display:none"><a class="left btnlhtgry" id="backButton">Back</a><h2 id="embedLoadingMessage" style="display: none;">Loading Payment Process</h2>';
 
 		wp_enqueue_script( 'wsuf_fundselector_idonate_embed', $url, array(), false, true );
 
 		$return_string .= '<div id="iDonateEmbed" data-idonate-embed="' . $args['embed'] . '" data-defer></div>';
 
-		return $return_string . '</div>';
+		return $return_string . '</div></div>';
 	}
 
 	/*
@@ -196,7 +205,15 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		wp_enqueue_script( 'wsuf_fundselector', plugins_url( '/wsuwp-shortcode-fundselector.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-autocomplete', 'jquery-ui-button', 'underscore' ), '1.0', true );
 
-		wp_enqueue_style( 'wsuf_fundselector', plugins_url( '/wsuwp-plugin-idonate.css', __FILE__ ), array( 'spine-theme' ), null );
+		wp_enqueue_script( 'wsuf_fundselector_jquery_editable', plugins_url( '/jquery.editable.min.js', __FILE__ ), array( 'jquery' ), null, true );
+
+		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
+			'request_url_base' => esc_url( rest_url( '/wp/v2/' ) ),
+		));
+
+		wp_enqueue_script( 'wsuf_fundselector_jquery_editable', plugins_url( '/jquery.editable.min.js', __FILE__ ), array( 'jquery' ), null, true );
+
+		wp_enqueue_style( 'wsuf_fundselector', plugins_url( 'css/wsuwp-plugin-idonate.css', dirname( __FILE__ ) ), array( 'spine-theme' ), null );
 	}
 
 	/**
