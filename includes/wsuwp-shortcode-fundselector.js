@@ -137,8 +137,6 @@ jQuery(document).ready(function($) {
 		
 		$(this).parent().parent().remove();
 
-		//continueAction();
-		
 		// If the Fund list is empty, disable the Continue Button
 		if($("#selectedFunds").find("li").length === 0)
 		{
@@ -154,10 +152,15 @@ jQuery(document).ready(function($) {
 
 	// Other Amount text field Change Event
 	$("#otherAmount").on('input propertychange paste', function () {
-		var inputAmount = parseFloat($(this).val());
-		if(inputAmount && _.isNumber(inputAmount) && inputAmount > 0)
+		var inputAmount = $(this).val();
+		if(wsuwpUtils.validateAmount(inputAmount))
 		{
 			$("#inpAmount").val(inputAmount);
+			jQuery("#errorOtherAmount").text("");
+		}
+		else
+		{
+			jQuery("#errorOtherAmount").text("Amount should be between $3 and $100,000.");
 		}		
 	});
 
@@ -173,7 +176,7 @@ jQuery(document).ready(function($) {
 
 	$("#backButton").on('click',function(){
 		showForm();
-	});
+});
 });
 
 function addFundAction()
