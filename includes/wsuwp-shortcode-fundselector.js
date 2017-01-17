@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
 				showAmountZone();
             }
         }
-    );
+    ).autocomplete( "widget" ).addClass( "fundselector" );
 
 	// Major Category Click Events
 	$("#majorcategory a")
