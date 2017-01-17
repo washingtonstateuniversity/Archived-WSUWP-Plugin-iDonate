@@ -7,7 +7,7 @@
  * WordPress.
  *
  * @link       https://github.com/washingtonstateuniversity/WSUWP-Plugin-iDonate
- * @since      1.0.0
+ * @since      0.0.1
  *
  * @package    WSUWP_Plugin_iDonate_ShortCode_Fund_Selector
  * @author     Blair Lierman
@@ -18,7 +18,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	 * Initializes the plugin by registering the hooks necessary
 	 * for creating our custom post type within WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
 	public function init() {
 
