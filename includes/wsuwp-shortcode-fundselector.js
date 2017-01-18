@@ -176,8 +176,34 @@ jQuery(document).ready(function($) {
 
 	$("#backButton").on('click',function(){
 		showForm();
+	});
+
+	loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
 });
-});
+
+function loadPriorities($list, category, subcategory)
+{
+	if($list.find("option").length <= 1 && category && subcategory) {
+		// GET /wp-json/plugin_idonate/v1/funds/category/subcategory (e.g. GET /wp-json/plugin_idonate/v1/funds/idonate_priorities/idonate_priorities)
+		var restQueryUrl = wpData.plugin_url_base + 'funds/' + category + '/' + subcategory;
+		
+		jQuery.getJSON( restQueryUrl )
+		.done(function( json ) { 
+			$list.empty();
+			$list.append('<option disabled selected value> SELECT A FUND </option>');
+			jQuery.each(json, function(key, value) {   
+				$list
+				.append(jQuery('<option>', { value : value["designationId"] })
+				.text( wsuwpUtils.htmlDecode(value["fund_name"]) ) ); 
+			});
+
+			if(json.length > 0)
+			{
+				$list.prop("disabled", false);
+			}
+		})
+	}
+}
 
 function addFundAction()
 {
