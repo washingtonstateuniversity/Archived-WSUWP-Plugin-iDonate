@@ -79,11 +79,11 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$unit_priorities = $this->wsuf_fundselector_funds_get_funds( $args['unit_taxonomy'], $args['unit_category'] );
 		$unit_priorities_list = '<option disabled selected value> -- Select a Fund -- </option>';
 
-		foreach ( $unit_priorities as $unit_priority ) {
-			$fund_name = esc_html( $unit_priority['fund_name'] );
-			$fund_designation_id = esc_attr( $unit_priority['designation_id'] );
-			$unit_priorities_list .= "<option value=\"{$fund_designation_id}\">{$fund_name}</option>";
-		}
+				foreach ( $unit_priorities as $unit_priority ) {
+				$fund_name = esc_html( $unit_priority['fund_name'] );
+				$fund_designation_id = esc_attr( $unit_priority['designation_id'] );
+				$unit_priorities_list .= "<option value=\"{$fund_designation_id}\">{$fund_name}</option>";
+			}
 
 		$unit_description = ! empty( $args['unit_description'] ) ? $args['unit_description'] : 'Please choose a fund to support';
 
@@ -96,29 +96,14 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		</div>';
 
 		// University Priorities Tab
+		$priorities = $this->wsuf_fundselector_funds_get_funds( 'idonate_priorities', 'idonate_priorities' );
 		$priorities_list = '<option disabled selected value> SELECT A FUND </option>';
 
-		if ( rest_url( '' ) !== $args['rest_url'] ) { // If the REST URL was overridden
-			$plugin_api_url = esc_url( $args['rest_url'] . 'idonate_fundselector/v1/funds/idonate_priorities/idonate_priorities' );
-			$response = wp_remote_get( $plugin_api_url );
-
-			if ( ! is_wp_error( $response ) ) {
-				$priorities = json_decode( wp_remote_retrieve_body( $response ) );
 				foreach ( $priorities as $priority ) {
-					$fund_name = esc_html( $priority->fund_name );
-					$fund_designation_id = esc_attr( $priority->designation_id );
-					$priorities_list .= "<option value=\"{$fund_designation_id}\">{$fund_name}</option>";
-				}
-			}
-		} else {
-			$priorities = $this->wsuf_fundselector_funds_get_funds( 'idonate_priorities', 'idonate_priorities' );
-
-			foreach ( $priorities as $priority ) {
 				$fund_name = esc_html( $priority['fund_name'] );
 				$fund_designation_id = esc_attr( $priority['designation_id'] );
 				$priorities_list .= "<option value=\"{$fund_designation_id}\">{$fund_name}</option>";
 			}
-		}
 
 		$return_string .= '
 		<div id="prioritiesTab" class="categoryTab wrapper ' . ($unit_included ? 'hidden' : '') . '">    
