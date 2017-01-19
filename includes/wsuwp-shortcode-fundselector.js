@@ -184,7 +184,7 @@ jQuery(document).ready(function($) {
 function loadPriorities($list, category, subcategory)
 {
 	if($list.find("option").length <= 1 && category && subcategory) {
-		// GET /wp-json/plugin_idonate/v1/funds/category/subcategory (e.g. GET /wp-json/plugin_idonate/v1/funds/idonate_priorities/idonate_priorities)
+		// GET /wp-json/idonate_fundselector/v1/funds/category/subcategory (e.g. GET /wp-json/idonate_fundselector/v1/funds/idonate_priorities/idonate_priorities)
 		var restQueryUrl = wpData.plugin_url_base + 'funds/' + category + '/' + subcategory;
 		
 		jQuery.getJSON( restQueryUrl )

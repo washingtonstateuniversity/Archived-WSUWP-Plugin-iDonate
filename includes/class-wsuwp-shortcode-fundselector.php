@@ -48,7 +48,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
 			'request_url_base' => esc_url( $args['rest_url'] . 'wp/v2/' ),
-			'plugin_url_base' => esc_url( $args['rest_url'] . 'plugin_idonate/v1/' ),
+			'plugin_url_base' => esc_url( $args['rest_url'] . 'idonate_fundselector/v1/' ),
 		));
 
 		$args['unit_taxonomy'] = sanitize_key( $args['unit_taxonomy'] );
@@ -79,7 +79,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$unit_priorities_list = '<option disabled selected value> -- Select a Fund -- </option>';
 
 		if ( rest_url( '' ) !== $args['rest_url'] ) { // If the REST URL was overridden
-			$plugin_api_url = esc_url( $args['rest_url'] . 'plugin_idonate/v1/funds/' . $args['unit_taxonomy'] . '/' . $args['unit_category'] );
+			$plugin_api_url = esc_url( $args['rest_url'] . 'idonate_fundselector/v1/funds/' . $args['unit_taxonomy'] . '/' . $args['unit_category'] );
 			$response = wp_remote_get( $plugin_api_url );
 
 			if ( ! is_wp_error( $response ) ) {
@@ -226,7 +226,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
 			'request_url_base' => esc_url( rest_url( '/wp/v2/' ) ),
-			'plugin_url_base' => esc_url( rest_url( '/plugin_idonate/v1/' ) ),
+			'plugin_url_base' => esc_url( rest_url( '/idonate_fundselector/v1/' ) ),
 		));
 
 		wp_enqueue_script( 'wsuf_fundselector_jquery_editable', plugins_url( '/jquery.editable.min.js', __FILE__ ), array( 'jquery' ), null, true );
@@ -267,7 +267,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	* @since 0.0.5
 	**/
 	function wsuf_fundselector_register_endpoint_get_funds() {
-		register_rest_route( 'plugin_idonate/v1', '/funds/(?P<category>.*?)/(?P<subcategory>.*)',
+		register_rest_route( 'idonate_fundselector/v1', '/funds/(?P<category>.*?)/(?P<subcategory>.*)',
 			array(
 				'methods' => 'GET',
 				'callback' => array( $this, 'wsuf_fundselector_funds_get_funds_rest' ),
