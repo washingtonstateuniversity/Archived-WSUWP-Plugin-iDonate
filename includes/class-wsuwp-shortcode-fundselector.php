@@ -114,7 +114,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$priorities_list = '<option disabled selected value> SELECT A FUND </option>';
 
 		if ( rest_url( '' ) !== $args['rest_url'] ) { // If the REST URL was overridden
-			$plugin_api_url = esc_url( $args['rest_url'] . 'idonate_fundselector/v1/funds/idonate_priorities/idonate_priorities');
+			$plugin_api_url = esc_url( $args['rest_url'] . 'idonate_fundselector/v1/funds/idonate_priorities/idonate_priorities' );
 			$response = wp_remote_get( $plugin_api_url );
 
 			if ( ! is_wp_error( $response ) ) {
