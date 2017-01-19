@@ -179,6 +179,7 @@ jQuery(document).ready(function($) {
 	});
 
 	loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
+	loadPriorities($("#unit-priorities"), wpData.unit_taxonomy, wpData.unit_category);
 });
 
 function loadPriorities($list, category, subcategory)

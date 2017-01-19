@@ -46,15 +46,17 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			return '';
 		}
 
-		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
-			'request_url_base' => esc_url( $args['rest_url'] . 'wp/v2/' ),
-			'plugin_url_base' => esc_url( $args['rest_url'] . 'idonate_fundselector/v1/' ),
-		));
-
 		$args['unit_taxonomy'] = sanitize_key( $args['unit_taxonomy'] );
 		$args['unit_category'] = sanitize_key( $args['unit_category'] );
 		$args['unit_title'] = sanitize_text_field( $args['unit_title'] );
 		$args['unit_description'] = esc_html( $args['unit_description'] );
+
+		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
+			'request_url_base' => esc_url( $args['rest_url'] . 'wp/v2/' ),
+			'plugin_url_base' => esc_url( $args['rest_url'] . 'idonate_fundselector/v1/' ),
+			'unit_taxonomy' => $args['unit_taxonomy'],
+			'unit_category' => $args['unit_category'],
+		));
 
 		$unit_included = ! empty( $args['unit_taxonomy'] ) && ! empty( $args['unit_category'] );
 
@@ -77,7 +79,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		// Unit Priorities Tab
 		$unit_priorities = $this->wsuf_fundselector_funds_get_funds( $args['unit_taxonomy'], $args['unit_category'] );
-		$unit_priorities_list = '<option disabled selected value> -- Select a Fund -- </option>';
+		$unit_priorities_list = '<option disabled selected value> SELECT A FUND </option>';
 
 				foreach ( $unit_priorities as $unit_priority ) {
 				$fund_name = esc_html( $unit_priority['fund_name'] );
