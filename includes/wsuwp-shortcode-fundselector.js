@@ -29,9 +29,10 @@ jQuery(document).ready(function($) {
             select: function( event, ui ) {
 				$("#inpDesignationId").text(ui.item.designationId);
 				$("#inpFundName").text(ui.item.name);
+				showAmountZone();
             }
         }
-    );
+    ).autocomplete( "widget" ).addClass( "fundselector" );
 
 	// Major Category Click Events
 	$("#majorcategory a")
@@ -118,14 +119,12 @@ jQuery(document).ready(function($) {
 	// Add Fund Button click  event
 	$(".amount-selection").not(".other")
 	.click( function ( event ) {
-		console.log("amoutnselectionclick");
 		handleAmountSelectionClick( event );	
 		addFundAction();
 	});
 
 	$("#addFundButton")
 	.click( function ( event ) {	
-		console.log("addfundbutton click");	
 		jQuery("#inpAmount").val( jQuery("#otherAmount").val() );
 		addFundAction();
 	});
@@ -181,7 +180,6 @@ jQuery(document).ready(function($) {
 
 function addFundAction()
 {
-	console.log("addfundaction");
 	var designationId = jQuery("#inpDesignationId").text();
 	var fundName = jQuery("#inpFundName").text();
 
@@ -298,7 +296,6 @@ function hideAnything(element)
 	setTimeout(function(){ jQuery(element).hide(); }, 1100);
 }
 
-
 jQuery(document).ready(function(){
 	jQuery("#majorcategory a").on("click",function(){
 		jQuery(".form-group.search").addClass("hidden");
@@ -309,4 +306,12 @@ jQuery(document).ready(function(){
 		jQuery(".form-group.search").removeClass("hidden");
 	});
 	jQuery("button.amount-selection:last").addClass("lastbutton");
+});
+
+jQuery.extend(jQuery.ui.autocomplete.prototype.options, {
+	open: function(event, ui) {
+		jQuery(this).autocomplete("widget").css({
+            "width": (jQuery(this).width() + "px")
+        });
+    }
 });
