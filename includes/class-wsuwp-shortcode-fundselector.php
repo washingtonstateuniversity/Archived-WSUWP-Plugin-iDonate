@@ -90,9 +90,9 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$unit_description = ! empty( $args['unit_description'] ) ? $args['unit_description'] : 'Please choose a fund to support';
 
 		$return_string .= '
-		<div id="categoryTab" class="categoryTab ' . ($unit_included ? '' : 'hidden') . '">    
+		<div id="categoryTab" class="categoryTab wrapper ' . ($unit_included ? '' : 'hidden') . '">    
 			<label for="unit-priorities">' . $unit_description . '</label>
-			<select name="unit-priorities" id="unit-priorities" class="form-control fund-selection">'
+			<select name="unit-priorities" id="unit-priorities" class="form-control fund-selection fund">'
 				. $unit_priorities_list .
 			'</select>
 		</div>';
@@ -135,13 +135,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		$return_string .= '</div>';
 
-		// Search Separator
-		/*$return_string .= '
-		<div class="search-separator">
-		OR
-		</div>
-		';*/
-
 		// Search AutoComplete
 		$return_string .= '
 		<div class="form-group has-feedback wrapper search hidden">
@@ -156,7 +149,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			<button type="button" class="amount-selection btn btn-default other" data-amount="25" >OTHER</button>
 			<button type="button" class="amount-selection btn btn-default" data-amount="25" >$25</button>
 			<button type="button" class="amount-selection btn btn-default" data-amount="50">$50</button>
-			<button type="button" class="amount-selection btn btn-default selected" data-amount="100">$100</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="100">$100</button>
 			<button type="button" class="amount-selection btn btn-default" data-amount="2000">$2000</button>
 			<div class="input-group otherprice" style="opacity:0; display:none;">
 				<div class="input-group-addon">$</div>
