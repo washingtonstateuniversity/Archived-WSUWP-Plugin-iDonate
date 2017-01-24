@@ -73,7 +73,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 				// Element should look like '[{"id":"someId", "amount":99},{"id":"someId", "amount":99}]'
 				designationIds.push({
 					"id" : jQuery(element).attr("data-designation_id"),
-					"amount": jQuery(element).attr("data-amount") // Amount is required for the embed
+					"amount": parseInt(jQuery(element).attr("data-amount")) // Amount is required for the embed
 				});
 			})
 
