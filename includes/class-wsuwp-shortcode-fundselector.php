@@ -175,7 +175,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		';
 
 		// Continue button
-		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Continue</a></p></div>';
+		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Proceed to Checkout</a></p></div>';
 
 		if ( 'staging' === $args['server'] ) {
 			$url = 'https://staging-embed.idonate.com/idonate.js';
