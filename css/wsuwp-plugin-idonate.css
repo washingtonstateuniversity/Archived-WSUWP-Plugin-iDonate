@@ -107,6 +107,10 @@
 	font-size: 12px;
 	margin-bottom: -1px;
 	border-bottom: 1px solid #d1d3d4;
+	text-align: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
 }
 
 #fundSelectionForm #majorcategory a:hover {
@@ -226,6 +230,7 @@
 	background-size: 12px;
 	-webkit-transition: background-color .3s ease-in-out, color .3s ease-in-out;
 	transition: background-color .3s ease-in-out, color .3s ease-in-out;
+	padding-right: 35px;
 }
 
 #fundSelectionForm .input-group {
@@ -595,8 +600,6 @@
 	padding: 0;
 	background: url(../images/ico/close-gry.png) no-repeat center center;
 	background-size: 12px;
-	-webkit-opacity: 1;
-	-moz-opacity: 1;
 	opacity: 1;
 }
 
@@ -660,6 +663,24 @@
 
 	#fundSelectionForm button.amount-selection {
 		width: calc(20% - 5px);
+	}
+
+}
+
+@media (max-width: 400px) {
+
+	#fundSelectionForm button.amount-selection {
+		width: calc(33% - 5px);
+	}
+
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+
+	#fundSelectionForm select:focus,
+	#fundSelectionForm textarea:focus,
+	#fundSelectionForm input:focus {
+		font-size: 16px;
 	}
 
 }

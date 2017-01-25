@@ -85,6 +85,8 @@
 			font-size:12px;
 			margin-bottom:-1px;
 			border-bottom:1px solid #d1d3d4;
+            text-align:center;
+            align-items:center;
 		}
 		a:hover {
 			color:#981e32;
@@ -176,6 +178,7 @@
 	select.fund {
 		background-size:12px;
 		transition:background-color .3s ease-in-out, color .3s ease-in-out;
+        padding-right: 35px;
 	}
 	.input-group {
 		position:relative;
@@ -432,8 +435,6 @@
 		padding:0;
 		background:url(../images/ico/close-gry.png) no-repeat center center;
 		background-size:12px;
-		-webkit-opacity:1;
-		-moz-opacity:1;
 		opacity:1;
 	}
 	span.edit {
@@ -476,6 +477,17 @@
 	@media (max-width: 800px) {
 		button.amount-selection {
 			width: calc(20% - 5px);
+		}
+	}
+    
+    @media (max-width: 400px) {
+		button.amount-selection {
+			width: calc(33% - 5px);
+		}
+	}
+	@media screen and (-webkit-min-device-pixel-ratio: 0) {
+		select:focus, textarea:focus, input:focus {
+			font-size: 16px;
 		}
 	}
 }

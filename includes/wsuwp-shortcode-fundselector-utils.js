@@ -41,9 +41,9 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 		isDuplicateDesignation: function (designationId, $list)
 		{
 			var duplicate = false;
-			$list.each(function()
+			$list.find("li").each(function()
 			{
-				if(designationId == jQuery(this).find("li").attr("data-designation_id"))
+				if(designationId == jQuery(this).attr("data-designation_id"))
 				{ 
 					duplicate = true;
 					return false;
