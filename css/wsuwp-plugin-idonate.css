@@ -667,7 +667,7 @@
 
 }
 
-@media (max-width: 400px) {
+@media (max-width: 420px) {
 
 	#fundSelectionForm button.amount-selection {
 		width: calc(33% - 5px);
