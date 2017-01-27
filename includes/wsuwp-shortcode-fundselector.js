@@ -252,6 +252,13 @@ function continueAction()
 
 		// Add the designation as an attribute
 		jQuery("#iDonateEmbed").attr("data-designations", designationsString);
+		
+		var sum = 0;
+		for (var i = 0; i < designations.length; i++) {
+			sum += parseInt(designations[i].amount);
+		}
+		
+		jQuery("#iDonateEmbed").attr("data-custom_gift_amount", sum);
 
 		// Initialize the iDonate embed
 		initializeEmbeds();
