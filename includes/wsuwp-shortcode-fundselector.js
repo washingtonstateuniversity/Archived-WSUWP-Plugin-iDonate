@@ -248,10 +248,13 @@ function continueAction()
 	{
 		hideForm();
 
+		var sum = 0;
+
 		if(designations.length === 1)
 		{
 			// Add the designation as an attribute
 			jQuery("#iDonateEmbed").attr("data-designation", designations[0].id);
+			sum = designations[0].amount;
 		}
 		else {
 			// Turn the list of designations into a JSON string
@@ -259,14 +262,13 @@ function continueAction()
 			
 			// Add the designations as an attribute
 			jQuery("#iDonateEmbed").attr("data-designations", designationsString);
-			
-			var sum = 0;
+					
 			for (var i = 0; i < designations.length; i++) {
 				sum += parseInt(designations[i].amount);
-			}
-			
-			jQuery("#iDonateEmbed").attr("data-custom_gift_amount", sum);
+			}		
 		}
+
+		jQuery("#iDonateEmbed").attr("data-custom_gift_amount", sum);
 
 		// Initialize the iDonate embed
 		initializeEmbeds();
