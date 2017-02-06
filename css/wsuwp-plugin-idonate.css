@@ -393,9 +393,9 @@
 	background-color: #f1f1f1;
 	border-radius: 2px;
 	width: calc(20% - 5px);
+	display: flex;
 	display: -webkit-box;
 	display: -ms-flexbox;
-	display: flex;
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
