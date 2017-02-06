@@ -389,7 +389,7 @@
 
 #fundSelectionForm button.amount-selection {
 	border: none;
-	padding: 10px 35px;
+	padding: 10px 10px;
 	background-color: #f1f1f1;
 	border-radius: 2px;
 	width: calc(20% - 5px);
