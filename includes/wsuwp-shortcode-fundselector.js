@@ -260,6 +260,7 @@ function continueAction()
 			var giftArrays = [[desName, des.amount]];
 
 			jQuery("#iDonateEmbed").attr("data-gift_arrays", JSON.stringify(giftArrays));
+			jQuery("#iDonateEmbed").attr("data-cash_default", des.amount);
 		}
 		else {
 			// Turn the list of designations into a JSON string
