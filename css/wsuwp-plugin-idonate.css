@@ -677,6 +677,12 @@
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
 
+	#fundSelectionForm select,
+	#fundSelectionForm textarea,
+	#fundSelectionForm input {
+		font-size: 16px;
+	}
+
 	#fundSelectionForm select:focus,
 	#fundSelectionForm textarea:focus,
 	#fundSelectionForm input:focus {
