@@ -248,13 +248,18 @@ function continueAction()
 	{
 		hideForm();
 
-		var sum = 0;
-
 		if(designations.length === 1)
 		{
+			var des = designations[0];
+			
 			// Add the designation as an attribute
-			jQuery("#iDonateEmbed").attr("data-designation", designations[0].id);
-			sum = designations[0].amount;
+			jQuery("#iDonateEmbed").attr("data-designation", des.id);
+			
+			// Get the designation name from the first span in the list item
+			var desName = wsuwpUtils.htmlEncode(jQuery("#selectedFunds li span").first().text());
+			var giftArrays = [[desName, des.amount]];
+
+			jQuery("#iDonateEmbed").attr("data-gift_arrays", JSON.stringify(giftArrays));
 		}
 		else {
 			// Turn the list of designations into a JSON string
@@ -262,13 +267,15 @@ function continueAction()
 			
 			// Add the designations as an attribute
 			jQuery("#iDonateEmbed").attr("data-designations", designationsString);
-					
+
+			var sum = 0;
+
 			for (var i = 0; i < designations.length; i++) {
 				sum += parseInt(designations[i].amount);
 			}		
-		}
 
-		jQuery("#iDonateEmbed").attr("data-custom_gift_amount", sum);
+			jQuery("#iDonateEmbed").attr("data-custom_gift_amount", sum);		
+		}
 
 		// Initialize the iDonate embed
 		initializeEmbeds();
