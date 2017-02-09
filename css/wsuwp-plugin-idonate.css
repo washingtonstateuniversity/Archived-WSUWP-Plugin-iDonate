@@ -389,13 +389,13 @@
 
 #fundSelectionForm button.amount-selection {
 	border: none;
-	padding: 10px 35px;
+	padding: 10px 10px;
 	background-color: #f1f1f1;
 	border-radius: 2px;
 	width: calc(20% - 5px);
+	display: flex;
 	display: -webkit-box;
 	display: -ms-flexbox;
-	display: flex;
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
@@ -676,6 +676,12 @@
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
+
+	#fundSelectionForm select,
+	#fundSelectionForm textarea,
+	#fundSelectionForm input {
+		font-size: 16px;
+	}
 
 	#fundSelectionForm select:focus,
 	#fundSelectionForm textarea:focus,

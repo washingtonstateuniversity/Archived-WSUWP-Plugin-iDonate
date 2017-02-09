@@ -96,6 +96,17 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			return jQuery("<textarea/>").html(value).text();
 		},
 
+		// Solution from http://stackoverflow.com/a/7124052
+		htmlEncode: function (str) {
+			return str
+			.replace(/&/g, '&amp;')
+			.replace(/"/g, '&quot;')
+			.replace(/'/g, '&#39;')
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;')
+			.replace(/\//g, '&#x2F;');
+		},
+
 		iDonateEmbedLoad: function ($loadingCheck)
 		{
 			var deferred = jQuery.Deferred();
