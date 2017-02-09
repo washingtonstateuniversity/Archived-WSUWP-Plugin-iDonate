@@ -174,6 +174,10 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		</ul>
 		';
 
+		$return_string .= '
+		<input type="checkbox" id="genScholarship" value="scholarship_check"> <label for="genScholarship">I believe in WSU students! I would like to give an additional $10 to support general scholarships (Crimson Opportunity Scholarship Fund).</label>
+		';
+
 		// Continue button
 		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Proceed to Checkout</a></p></div>';
 
