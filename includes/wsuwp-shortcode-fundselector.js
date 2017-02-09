@@ -143,7 +143,7 @@ jQuery(document).ready(function($) {
 		{
 			wsuwpUtils.disableButton($("#continueButton"));
 			hideContinueButton();
-			hideAnything(jQuery(".disclaimer.total"));
+			hideAnything(jQuery(".disclaimer"));
 		}
 		
 	});
@@ -215,8 +215,7 @@ function addFundAction()
 		wsuwpUtils.enableButton(jQuery("#continueButton"));
 		
 		wsuwpUtils.updateTotalAmountText();
-		showAnything(jQuery(".disclaimer.total"));
-
+		showAnything(jQuery(".disclaimer"));
 		showContinueButton();
 		resetForm();
 	}

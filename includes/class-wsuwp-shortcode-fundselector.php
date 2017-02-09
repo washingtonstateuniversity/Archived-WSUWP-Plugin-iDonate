@@ -179,6 +179,11 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		<div class="disclaimer total" style="display:none;">Thank you for your donation of $<span id="totalAmount"></span>. When you proceed to checkout, you will be sent to our payment processing service.</div>
 		';
 
+		// Credit Card Disclaimer
+		$return_string .= '
+		<div class="disclaimer creditcard" style="display:none;">Please note: The WSU Foundation does not retain your credit card information after the processing of your donation is complete.</div>
+		';
+
 		// Continue button
 		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Proceed to Checkout</a></p></div>';
 
@@ -189,7 +194,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		// Loading Message List
-		$return_string .= '<div id="secondform" style="display:none"><a class="left btnlhtgry" id="backButton">Back</a><h2 id="embedLoadingMessage" style="display: none;">Loading Payment Process</h2>';
+		$return_string .= '<div id="secondform" style="display: none;"><a class="left btnlhtgry" id="backButton">Back</a><h2 id="embedLoadingMessage" style="display: none;">Loading Payment Process</h2>';
 
 		wp_enqueue_script( 'wsuf_fundselector_idonate_embed', $url, array(), false, true );
 
