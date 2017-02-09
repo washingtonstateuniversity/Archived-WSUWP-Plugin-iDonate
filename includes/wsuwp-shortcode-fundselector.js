@@ -244,21 +244,39 @@ function continueAction()
 {
 	var designations = wsuwpUtils.getDesignationList(jQuery("#selectedFunds"));
 
-	if(designations.length > 0)
+	if(designations && designations.length > 0)
 	{
 		hideForm();
-		// Turn the list of designations into a JSON string
-		var designationsString = JSON.stringify(designations);
 
-		// Add the designation as an attribute
-		jQuery("#iDonateEmbed").attr("data-designations", designationsString);
-		
-		var sum = 0;
-		for (var i = 0; i < designations.length; i++) {
-			sum += parseInt(designations[i].amount);
+		if(designations.length === 1)
+		{
+			var des = designations[0];
+			
+			// Add the designation as an attribute
+			jQuery("#iDonateEmbed").attr("data-designation", des.id);
+			
+			// Get the designation name from the first span in the list item
+			var desName = wsuwpUtils.htmlEncode(jQuery("#selectedFunds li span").first().text());
+			var giftArrays = [[desName, des.amount]];
+
+			jQuery("#iDonateEmbed").attr("data-gift_arrays", JSON.stringify(giftArrays));
+			jQuery("#iDonateEmbed").attr("data-cash_default", des.amount);
 		}
-		
-		jQuery("#iDonateEmbed").attr("data-custom_gift_amount", sum);
+		else {
+			// Turn the list of designations into a JSON string
+			var designationsString = JSON.stringify(designations);
+			
+			// Add the designations as an attribute
+			jQuery("#iDonateEmbed").attr("data-designations", designationsString);
+
+			var sum = 0;
+
+			for (var i = 0; i < designations.length; i++) {
+				sum += parseInt(designations[i].amount);
+			}		
+
+			jQuery("#iDonateEmbed").attr("data-custom_gift_amount", sum);		
+		}
 
 		// Initialize the iDonate embed
 		initializeEmbeds();
@@ -270,7 +288,6 @@ function continueAction()
 		.then(function loaded() {
 			jQuery("#iDonateEmbed iframe").show();
 			$loadingMessage.hide();
-			//$loadingMessage.text("Finished loading");
 		});
 	}
 	else
