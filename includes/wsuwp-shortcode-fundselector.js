@@ -136,18 +136,17 @@ jQuery(document).ready(function($) {
 		
 		$(this).parent().parent().remove();
 
+		wsuwpUtils.updateTotalAmountText();
+
 		// If the Fund list is empty, disable the Continue Button
 		if($("#selectedFunds").find("li").length === 0)
 		{
 			wsuwpUtils.disableButton($("#continueButton"));
 			hideContinueButton();
+			hideAnything(jQuery(".disclaimer.total"));
 		}
 		
 	});
-
-	// Amount Selection Buttons Initialization and Click Event
-//	$(".amount-selection").button()
-//	.click( handleAmountSelectionClick );
 
 	// Other Amount text field Change Event
 	$("#otherAmount").on('input propertychange paste', function () {
@@ -214,6 +213,10 @@ function addFundAction()
 	{
 		wsuwpUtils.addListItem(jQuery("#selectedFunds"), fundName, designationId, jQuery("#inpAmount").val());
 		wsuwpUtils.enableButton(jQuery("#continueButton"));
+		
+		wsuwpUtils.updateTotalAmountText();
+		showAnything(jQuery(".disclaimer.total"));
+
 		showContinueButton();
 		resetForm();
 	}
