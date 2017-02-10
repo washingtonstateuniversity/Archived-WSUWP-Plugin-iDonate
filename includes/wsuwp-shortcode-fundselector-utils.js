@@ -55,7 +55,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			 return duplicate;
 		},
 
-		validateAmount(intendedAmount)
+		validateAmount: function (intendedAmount)
 		{
 			var validMoneyAmount = false;
 
@@ -130,7 +130,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			return deferred.promise();
 		},
 
-		getDonationTotal(designationList)
+		getDonationTotal: function(designationList)
 		{
 			var sum = 0.0;
 			
@@ -144,7 +144,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			return sum;
 		},
 
-		updateTotalAmountText()
+		updateTotalAmountText: function()
 		{
 			var designations = wsuwpUtils.getDesignationList(jQuery("#selectedFunds"));
 			jQuery("#totalAmount").text(wsuwpUtils.getDonationTotal(designations).toFixed(2));
