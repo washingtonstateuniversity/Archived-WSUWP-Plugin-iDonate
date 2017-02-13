@@ -174,8 +174,10 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		</ul>
 		';
 
+		$scholarship_fund = $this->wsuf_fundselector_funds_get_single_scholarship_fund( 'idonate_general-scholarship' );
+
 		$return_string .= '
-		<input type="checkbox" id="genScholarship" value="scholarship_check"> <label for="genScholarship">I believe in WSU students! I would like to give an additional $10 to support general scholarships (Crimson Opportunity Scholarship Fund).</label>
+		<input type="checkbox" id="genScholarship" value="scholarship_check"> <label for="genScholarship">I believe in WSU students! I would like to give an additional $10 to support ' . $scholarship_fund['description'] . ' (' . $scholarship_fund['fund_name'] . ').</label>
 		';
 
 		// Continue button
@@ -332,5 +334,47 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		return $return_array;
+	}
+
+	/**
+	* Get a single fund stored in the a specific category
+	*
+	* @return array $return_fund
+	*
+	* @since 0.0.9
+	*/
+	function wsuf_fundselector_funds_get_single_scholarship_fund( $subcategory ) {
+		$fund_list = get_posts(array(
+			'post_type'   => 'idonate_fund',
+			'post_status' => 'any',
+			'posts_per_page' => 1,
+			'tax_query' => array(
+					array(
+						'taxonomy' => 'idonate_scholarships',
+						'field' => 'slug',
+						'terms' => $subcategory,
+					),
+				),
+			'orderby' => 'title',
+			'order' => 'ASC',
+			)
+		);
+
+		$return_fund = array();
+
+		if ( count( $fund_list ) === 1 ) {
+			$fund_object = $fund_list[0];
+
+			$des_id = get_post_meta( $fund_object->ID, 'designationId' , true );
+			$scholarship_title = get_post_meta( $fund_object->ID, 'scholarship_title' , true );
+			$scholarship_desc = get_post_meta( $fund_object->ID, 'scholarship_description' , true );
+
+			if ( empty( $scholarship_title ) ) { $scholarship_title = $fund_object->post_title; }
+			if ( empty( $scholarship_desc ) ) { $scholarship_title = 'general scholarships'; }
+
+			$return_fund = array( 'fund_name' => $scholarship_title, 'description' => $scholarship_desc, 'designation_id' => $des_id );
+		}
+
+		return $return_fund;
 	}
 }
