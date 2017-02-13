@@ -134,7 +134,11 @@ jQuery(document).ready(function($) {
 	$('body').on('click', '#selectedFunds li span.close a', function (event) {
 		event.preventDefault();
 		
-		$(this).parent().parent().remove();
+		$parent = $(this).parent().parent()
+
+		if($parent.hasClass("fund-scholarship")) $("#genScholarship").prop("checked", false);
+
+		$parent.remove();
 
 		// If the Fund list is empty, disable the Continue Button
 		if($("#selectedFunds").find("li").length === 0)
@@ -144,10 +148,6 @@ jQuery(document).ready(function($) {
 		}
 		
 	});
-
-	// Amount Selection Buttons Initialization and Click Event
-//	$(".amount-selection").button()
-//	.click( handleAmountSelectionClick );
 
 	// Other Amount text field Change Event
 	$("#otherAmount").on('input propertychange paste', function () {
