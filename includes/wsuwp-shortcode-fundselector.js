@@ -140,11 +140,14 @@ jQuery(document).ready(function($) {
 
 		$parent.remove();
 
+		wsuwpUtils.updateTotalAmountText();
+
 		// If the Fund list is empty, disable the Continue Button
 		if($("#selectedFunds").find("li").length === 0)
 		{
 			wsuwpUtils.disableButton($("#continueButton"));
 			hideContinueButton();
+			hideAnything(jQuery(".disclaimer.total"));
 		}
 		
 	});
@@ -237,6 +240,10 @@ function addFundAction(scholarship)
 	{
 		wsuwpUtils.addListItem(jQuery("#selectedFunds"), fundName, designationId, jQuery("#inpAmount").val(), scholarship);
 		wsuwpUtils.enableButton(jQuery("#continueButton"));
+		
+		wsuwpUtils.updateTotalAmountText();
+		showAnything(jQuery(".disclaimer.total"));
+
 		showContinueButton();
 		resetForm();
 	}

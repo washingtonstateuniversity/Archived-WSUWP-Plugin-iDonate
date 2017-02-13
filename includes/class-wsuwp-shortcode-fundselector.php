@@ -176,6 +176,11 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		</ul>
 		';
 
+		// Total Amount information
+		$return_string .= '
+		<div class="disclaimer total" style="display:none;">Thank you for your donation of $<span id="totalAmount"></span>. When you proceed to checkout, you will be sent to our payment processing service.</div>
+		';
+
 		// Scholarship Support Checkbox
 		$scholarship_fund = $this->wsuf_fundselector_funds_get_single_scholarship_fund( $args['unit_scholarship_category'] );
 

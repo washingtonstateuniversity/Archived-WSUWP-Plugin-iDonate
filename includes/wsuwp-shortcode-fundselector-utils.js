@@ -33,6 +33,8 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 					else{
 						e.target.parent().attr("data-amount", e.value);
 						jQuery("#error" + designationId).text("");
+
+						wsuwpUtils.updateTotalAmountText();
 					}
 				});
 			}
@@ -53,7 +55,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			 return duplicate;
 		},
 
-		validateAmount(intendedAmount)
+		validateAmount: function (intendedAmount)
 		{
 			var validMoneyAmount = false;
 
@@ -73,7 +75,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 				// Element should look like '[{"id":"someId", "amount":99},{"id":"someId", "amount":99}]'
 				designationIds.push({
 					"id" : jQuery(element).attr("data-designation_id"),
-					"amount": parseInt(jQuery(element).attr("data-amount")) // Amount is required for the embed
+					"amount": parseFloat(jQuery(element).attr("data-amount")) // Amount is required for the embed
 				});
 			})
 
@@ -126,6 +128,26 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			}, 25000); // timeout and fail if embed hasn't loaded after 25 seconds
 			
 			return deferred.promise();
+		},
+
+		getDonationTotal: function(designationList)
+		{
+			var sum = 0.0;
+			
+			if(designationList && designationList.length)
+			{
+				for (var i = 0; i < designationList.length; i++) {
+					sum += parseFloat(designationList[i].amount);
+				}
+			}
+
+			return sum;
+		},
+
+		updateTotalAmountText: function()
+		{
+			var designations = wsuwpUtils.getDesignationList(jQuery("#selectedFunds"));
+			jQuery("#totalAmount").text(wsuwpUtils.getDonationTotal(designations).toFixed(2));
 		}
 
 
