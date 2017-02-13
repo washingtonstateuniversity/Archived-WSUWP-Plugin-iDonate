@@ -175,9 +175,13 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		';
 
 		$scholarship_fund = $this->wsuf_fundselector_funds_get_single_scholarship_fund( 'idonate_general-scholarship' );
+		$scholarship_des_id = esc_attr( $scholarship_fund['designation_id'] );
+		$scholarship_description = esc_html( $scholarship_fund['description'] );
+		$scholarship_name = sanitize_text_field( $scholarship_fund['fund_name'] );
 
 		$return_string .= '
-		<input type="checkbox" id="genScholarship" value="scholarship_check"> <label for="genScholarship">I believe in WSU students! I would like to give an additional $10 to support ' . $scholarship_fund['description'] . ' (' . $scholarship_fund['fund_name'] . ').</label>
+		<input type="checkbox" id="genScholarship" value="scholarship_check" data-designation_id="' . $scholarship_des_id . '" data-amount=10> 
+		<label for="genScholarship">' . $scholarship_description . ' (' . $scholarship_name  . ').</label>
 		';
 
 		// Continue button
