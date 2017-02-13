@@ -38,6 +38,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			'unit_category' => '',
 			'unit_description' => '',
 			'unit_title' => '',
+			'unit_scholarship_category' => 'idonate_general-scholarship',
 		), $atts );
 
 		$args['embed'] = sanitize_key( $args['embed'] );
@@ -48,6 +49,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		$args['unit_taxonomy'] = sanitize_key( $args['unit_taxonomy'] );
 		$args['unit_category'] = sanitize_key( $args['unit_category'] );
+		$args['unit_scholarship_category'] = sanitize_key( $args['unit_scholarship_category'] );
 		$args['unit_title'] = sanitize_text_field( $args['unit_title'] );
 		$args['unit_description'] = esc_html( $args['unit_description'] );
 
@@ -174,7 +176,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		</ul>
 		';
 
-		$scholarship_fund = $this->wsuf_fundselector_funds_get_single_scholarship_fund( 'idonate_general-scholarship' );
+		$scholarship_fund = $this->wsuf_fundselector_funds_get_single_scholarship_fund( $args['unit_scholarship_category'] );
 		$scholarship_des_id = esc_attr( $scholarship_fund['designation_id'] );
 		$scholarship_description = esc_html( $scholarship_fund['description'] );
 		$scholarship_name = sanitize_text_field( $scholarship_fund['fund_name'] );
