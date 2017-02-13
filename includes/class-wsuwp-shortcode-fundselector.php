@@ -180,10 +180,11 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$scholarship_des_id = esc_attr( $scholarship_fund['designation_id'] );
 		$scholarship_description = esc_html( $scholarship_fund['description'] );
 		$scholarship_name = sanitize_text_field( $scholarship_fund['fund_name'] );
+		$scholarship_title = sanitize_text_field( $scholarship_fund['title'] );
 
 		$return_string .= '
-		<input type="checkbox" id="genScholarship" value="scholarship_check" data-designation_id="' . $scholarship_des_id . '" data-amount=10> 
-		<label for="genScholarship">' . $scholarship_description . ' (' . $scholarship_name  . ').</label>
+		<input type="checkbox" id="genScholarship" value="scholarship_check" data-designation_id="' . $scholarship_des_id . '" data-fund_name="' . $scholarship_name . '" data-amount=10 > 
+		<label for="genScholarship">' . $scholarship_description . ' (' . $scholarship_title  . ').</label>
 		';
 
 		// Continue button
@@ -378,7 +379,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			if ( empty( $scholarship_title ) ) { $scholarship_title = $fund_object->post_title; }
 			if ( empty( $scholarship_desc ) ) { $scholarship_title = 'general scholarships'; }
 
-			$return_fund = array( 'fund_name' => $scholarship_title, 'description' => $scholarship_desc, 'designation_id' => $des_id );
+			$return_fund = array( 'fund_name' => $fund_object->post_title, 'title' => $scholarship_title, 'description' => $scholarship_desc, 'designation_id' => $des_id );
 		}
 
 		return $return_fund;
