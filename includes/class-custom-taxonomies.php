@@ -81,6 +81,19 @@ class WSUWP_Plugin_iDonate_Custom_Taxonomies {
 			),
 		);
 
+		$taxonomies[] = array(
+			'name' => 'idonate_scholarships',
+			'post_type' => 'idonate_fund',
+			'labels' => array(
+				'name'          => 'Featured Scholarships',
+				'singular_name' => 'Featured Scholarship',
+				'edit_item'     => 'Edit Featured Scholarship',
+				'update_item'   => 'Update Featured Scholarship',
+				'add_new_item'  => 'Add New Featured Scholarship',
+				'menu_name'     => 'Featured Scholarships',
+			),
+		);
+
 		foreach ( $taxonomies as $taxonomy ) {
 			$this->register_custom_taxonomy( $taxonomy['name'], $taxonomy['post_type'], $taxonomy['labels'] );
 		}

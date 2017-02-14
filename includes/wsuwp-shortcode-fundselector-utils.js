@@ -5,8 +5,8 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 
     window.wsuwpUtils = {
 
-		addListItem: function ( $list, name, designationId, amount  ) {
-			var html = '<li class="list-group-item" data-designation_id="' + designationId + '" data-amount="' + amount + '">';
+		addListItem: function ( $list, name, designationId, amount, scholarship  ) {
+			var html = '<li class="list-group-item ' + (scholarship ? "fund-scholarship": "") + '" data-designation_id="' + designationId + '" data-amount="' + amount + '">';
 			html += '<span class="right">' + _.escape(name) + '</span>'
 			html += '<span class="center">$</span><span id="edit' + designationId + '" class="editable left">' + amount +  '</span>';
 			html += '<span class="edit"><a href="#" id="' + designationId +'" class="edit">EDIT</a></span>';
