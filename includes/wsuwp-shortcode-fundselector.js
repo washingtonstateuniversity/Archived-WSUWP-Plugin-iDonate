@@ -134,7 +134,11 @@ jQuery(document).ready(function($) {
 	$('body').on('click', '#selectedFunds li span.close a', function (event) {
 		event.preventDefault();
 		
-		$(this).parent().parent().remove();
+		$parent = $(this).parent().parent()
+
+		if($parent.hasClass("fund-scholarship")) $("#genScholarship").prop("checked", false);
+
+		$parent.remove();
 
 		wsuwpUtils.updateTotalAmountText();
 
@@ -176,6 +180,29 @@ jQuery(document).ready(function($) {
 		showForm();
 	});
 
+
+	$("#genScholarship").change(function() {
+		// this will contain a reference to the checkbox
+		if (this.checked) {
+			// the checkbox is now checked
+			$("#inpAmount").val($(this).attr("data-amount"));
+			$("#inpDesignationId").text($(this).attr("data-designation_id"));
+			$("#inpFundName").text($(this).attr("data-fund_name"));
+			addFundAction(true);
+		} else {
+			// the checkbox is now no longer checked
+			$("#selectedFunds > li.fund-scholarship").remove();
+
+			// If the Fund list is empty, disable the Continue Button
+			if ($("#selectedFunds").find("li").length === 0) {
+				wsuwpUtils.disableButton($("#continueButton"));
+				hideContinueButton();
+			}
+		}
+	});
+
+
+
 	loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
 	loadPriorities($("#unit-priorities"), wpData.unit_taxonomy, wpData.unit_category);
 });
@@ -204,14 +231,14 @@ function loadPriorities($list, category, subcategory)
 	}
 }
 
-function addFundAction()
+function addFundAction(scholarship)
 {
 	var designationId = jQuery("#inpDesignationId").text();
 	var fundName = jQuery("#inpFundName").text();
 
 	if(designationId && fundName)
 	{
-		wsuwpUtils.addListItem(jQuery("#selectedFunds"), fundName, designationId, jQuery("#inpAmount").val());
+		wsuwpUtils.addListItem(jQuery("#selectedFunds"), fundName, designationId, jQuery("#inpAmount").val(), scholarship);
 		wsuwpUtils.enableButton(jQuery("#continueButton"));
 		
 		wsuwpUtils.updateTotalAmountText();

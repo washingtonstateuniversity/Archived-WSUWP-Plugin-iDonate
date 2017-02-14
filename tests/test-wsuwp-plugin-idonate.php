@@ -48,6 +48,6 @@ class WSUWP_Plugin_iDonate_Tests extends WP_UnitTestCase {
 		$taxonomies = get_taxonomies( $args );
 
 		$this->assertNotEmpty( $taxonomies );
-		$this->assertCount( 4, $taxonomies );
+		$this->assertCount( 5, $taxonomies );
 	}
 }

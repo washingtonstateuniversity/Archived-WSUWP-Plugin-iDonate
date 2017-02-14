@@ -38,6 +38,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			'unit_category' => '',
 			'unit_description' => '',
 			'unit_title' => '',
+			'unit_scholarship_category' => 'idonate_general-scholarship',
 		), $atts );
 
 		$args['embed'] = sanitize_key( $args['embed'] );
@@ -48,6 +49,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		$args['unit_taxonomy'] = sanitize_key( $args['unit_taxonomy'] );
 		$args['unit_category'] = sanitize_key( $args['unit_category'] );
+		$args['unit_scholarship_category'] = sanitize_key( $args['unit_scholarship_category'] );
 		$args['unit_title'] = sanitize_text_field( $args['unit_title'] );
 		$args['unit_description'] = esc_html( $args['unit_description'] );
 
@@ -183,6 +185,21 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$return_string .= '
 		<div class="disclaimer creditcard" style="display:none;">Please note: The WSU Foundation does not retain your credit card information after the processing of your donation is complete.</div>
 		';
+
+		// Scholarship Support Checkbox
+		$scholarship_fund = $this->wsuf_fundselector_funds_get_single_scholarship_fund( $args['unit_scholarship_category'] );
+
+		if ( ! empty( $scholarship_fund ) ) {
+			$scholarship_des_id = esc_attr( $scholarship_fund['designation_id'] );
+			$scholarship_description = esc_html( $scholarship_fund['description'] );
+			$scholarship_name = sanitize_text_field( $scholarship_fund['fund_name'] );
+			$scholarship_title = sanitize_text_field( $scholarship_fund['title'] );
+
+			$return_string .= '
+			<input type="checkbox" id="genScholarship" value="scholarship_check" data-designation_id="' . $scholarship_des_id . '" data-fund_name="' . $scholarship_name . '" data-amount=10 > 
+			<label for="genScholarship">' . $scholarship_description . ' (' . $scholarship_title  . ').</label>
+			';
+		}
 
 		// Continue button
 		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Proceed to Checkout</a></p></div>';
@@ -338,5 +355,47 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		return $return_array;
+	}
+
+	/**
+	* Get a single fund stored in the a specific category
+	*
+	* @return array $return_fund
+	*
+	* @since 0.0.9
+	*/
+	function wsuf_fundselector_funds_get_single_scholarship_fund( $subcategory ) {
+		$fund_list = get_posts(array(
+			'post_type'   => 'idonate_fund',
+			'post_status' => 'any',
+			'posts_per_page' => 1,
+			'tax_query' => array(
+					array(
+						'taxonomy' => 'idonate_scholarships',
+						'field' => 'slug',
+						'terms' => $subcategory,
+					),
+				),
+			'orderby' => 'title',
+			'order' => 'ASC',
+			)
+		);
+
+		$return_fund = array();
+
+		if ( count( $fund_list ) === 1 ) {
+			$fund_object = $fund_list[0];
+
+			$des_id = get_post_meta( $fund_object->ID, 'designationId' , true );
+			$scholarship_title = get_post_meta( $fund_object->ID, 'scholarship_title' , true );
+			$scholarship_desc = get_post_meta( $fund_object->ID, 'scholarship_description' , true );
+
+			if ( empty( $scholarship_title ) ) { $scholarship_title = $fund_object->post_title; }
+			if ( empty( $scholarship_desc ) ) { $scholarship_title = 'general scholarships'; }
+
+			$return_fund = array( 'fund_name' => $fund_object->post_title, 'title' => $scholarship_title, 'description' => $scholarship_desc, 'designation_id' => $des_id );
+		}
+
+		return $return_fund;
 	}
 }
