@@ -208,7 +208,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			<input type="checkbox" id="gpInWill"> 
 			<label for="gpInWill">I have included the WSU Foundation in my Will or other estate plans.</label>
 			<input type="checkbox" id="gpMoreInfo"> 
-			<label for="genScholarship">I am considering including the WSU Foundation in my Will or other estate plans. Please send me information.</label>
+			<label for="gpMoreInfo">I am considering including the WSU Foundation in my Will or other estate plans. Please send me information.</label>
 		</div>
 		';
 
