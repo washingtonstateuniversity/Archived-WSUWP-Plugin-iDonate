@@ -201,6 +201,17 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			';
 		}
 
+		$return_string .= '
+		<div class="gift-planning">
+			<div class="gift-planning-header">Is WSU in your Will?</div>
+			<p>Charitable gifts from estates and other planned gifts play an integral role in the future of Washington State University. The WSU Foundation offers several tax-wise giving options to support WSU’s mission while fulfilling your personal philanthropic goals.</p>
+			<input type="checkbox" id="gpInWill"> 
+			<label for="gpInWill">I have included the WSU Foundation in my Will or other estate plans.</label>
+			<input type="checkbox" id="gpMoreInfo"> 
+			<label for="genScholarship">I am considering including the WSU Foundation in my Will or other estate plans. Please send me information.</label>
+		</div>
+		';
+
 		// Continue button
 		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Proceed to Checkout</a></p></div>';
 
