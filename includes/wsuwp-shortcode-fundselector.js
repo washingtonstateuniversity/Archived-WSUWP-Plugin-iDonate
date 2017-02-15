@@ -307,6 +307,14 @@ function continueAction()
 			jQuery("#iDonateEmbed").attr("data-custom_gift_amount", sum);		
 		}
 
+		if(jQuery("#gpInWill").prop("checked")){
+			jQuery("#iDonateEmbed").attr("data-custom_note_4", "WSU is in my will/estate plan!");
+		}
+
+		if(jQuery("#gpMoreInfo").prop("checked")){
+			jQuery("#iDonateEmbed").attr("data-custom_note_5", "I would like more information about putting WSU in my will/estate plan");
+		}
+
 		// Initialize the iDonate embed
 		initializeEmbeds();
 
