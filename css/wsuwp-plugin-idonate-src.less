@@ -71,6 +71,7 @@
 		a.search.active, a.search:hover {
 			background:transparent url(../images/ico/search-crm.png) no-repeat 12px center;
 			background-size:12px;
+			background-position-x: 6px;
 			border:none;
 		}
 		a {
@@ -117,8 +118,8 @@
 			font-weight:700;
 		}
 		a.search {
-			width:12px;
-			height:12px;
+			min-width:60px;
+			justify-content: flex-end;
 		}
 	}
 	input:focus {
@@ -155,6 +156,7 @@
 	input.search, a.search {
 		background:transparent url(../images/ico/search-gry.png) no-repeat 12px center;
 		background-size:12px;
+		background-position-x: 6px;
 	}
 	input.left, a.left {
 		background:transparent url(../images/ico/arrow-left-gry.png) no-repeat 12px center;

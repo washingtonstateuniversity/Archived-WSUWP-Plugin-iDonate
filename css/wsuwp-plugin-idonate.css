@@ -87,6 +87,7 @@
 #fundSelectionForm #majorcategory a.search:hover {
 	background: transparent url(../images/ico/search-crm.png) no-repeat 12px center;
 	background-size: 12px;
+	background-position-x: 6px;
 	border: none;
 }
 
@@ -152,8 +153,10 @@
 }
 
 #fundSelectionForm #majorcategory a.search {
-	width: 12px;
-	height: 12px;
+	min-width: 60px;
+	-webkit-box-pack: end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
 }
 
 #fundSelectionForm input:focus {
@@ -201,6 +204,7 @@
 #fundSelectionForm a.search {
 	background: transparent url(../images/ico/search-gry.png) no-repeat 12px center;
 	background-size: 12px;
+	background-position-x: 6px;
 }
 
 #fundSelectionForm input.left,
