@@ -218,7 +218,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$return_string .= '
 		<div class="disclaimer creditcard" style="display:none;">Please note: The WSU Foundation does not retain your credit card information after the processing of your donation is complete.</div></div>
 		';
-		
+
 		if ( 'staging' === $args['server'] ) {
 			$url = 'https://staging-embed.idonate.com/idonate.js';
 		} else {
