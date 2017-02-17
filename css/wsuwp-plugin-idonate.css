@@ -518,6 +518,20 @@
 	left: 7px;
 }
 
+#fundSelectionForm #selectedFunds li.help-text {
+	background: #c60c30;
+	border-color: #c60c30;
+	color: #e6e7e8;
+}
+
+#fundSelectionForm #selectedFunds li.help-text:first-child:after {
+	border-color: #c60c30 transparent;
+}
+
+#fundSelectionForm #selectedFunds li.help-text .close a {
+	background: url(../images/ico/close-wht.png) no-repeat center center;
+}
+
 #fundSelectionForm .hidden {
 	display: none;
 }
