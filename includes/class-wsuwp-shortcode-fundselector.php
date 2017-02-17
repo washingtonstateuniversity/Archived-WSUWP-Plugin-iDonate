@@ -148,11 +148,11 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Dollar Amount Selectors
 		$return_string .= '
 		<div class="amountwrapper wrapper" style="opacity:0;display:none;" role="group">
-			<button type="button" class="amount-selection btn btn-default other" data-amount="25" >OTHER</button>
-			<button type="button" class="amount-selection btn btn-default" data-amount="25" >$25</button>
-			<button type="button" class="amount-selection btn btn-default" data-amount="50">$50</button>
-			<button type="button" class="amount-selection btn btn-default" data-amount="100">$100</button>
 			<button type="button" class="amount-selection btn btn-default" data-amount="2000">$2000</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="100">$100</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="50">$50</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="25" >$25</button>
+			<button type="button" class="amount-selection btn btn-default other" data-amount="25" >OTHER</button>
 			<div class="input-group otherprice" style="opacity:0; display:none;">
 				<div class="input-group-addon">$</div>
 				<!-- Maximum length of 8 includes cents (.xx) -->
@@ -176,16 +176,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		</ul>
 		';
 
-		// Total Amount information
-		$return_string .= '
-		<div class="disclaimer total" style="display:none;">Thank you for your donation of $<span id="totalAmount"></span>. When you proceed to checkout, you will be sent to our payment processing service.</div>
-		';
-
-		// Credit Card Disclaimer
-		$return_string .= '
-		<div class="disclaimer creditcard" style="display:none;">Please note: The WSU Foundation does not retain your credit card information after the processing of your donation is complete.</div>
-		';
-
 		// Scholarship Support Checkbox
 		$scholarship_fund = $this->wsuf_fundselector_funds_get_single_scholarship_fund( $args['unit_scholarship_category'] );
 
@@ -202,19 +192,33 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		$return_string .= '
-		<div class="gift-planning">
+		<div class="gift-planning" style="display:none;">
 			<div class="gift-planning-header">Is WSU in your Will?</div>
 			<p>Charitable gifts from estates and other planned gifts play an integral role in the future of Washington State University. The WSU Foundation offers several tax-wise giving options to support WSU’s mission while fulfilling your personal philanthropic goals.</p>
-			<input type="checkbox" id="gpInWill"> 
-			<label for="gpInWill">I have included the WSU Foundation in my Will or other estate plans.</label>
-			<input type="checkbox" id="gpMoreInfo"> 
-			<label for="gpMoreInfo">I am considering including the WSU Foundation in my Will or other estate plans. Please send me information.</label>
+            <span>
+            <input type="checkbox" id="gpInWill"> 
+			<label for="gpInWill">
+			I have included the WSU Foundation in my Will or other estate plans.</label></span>
+			<span>
+            <input type="checkbox" id="gpMoreInfo">
+            <label for="gpMoreInfo"> 
+			I am considering including the WSU Foundation in my Will or other estate plans. Please send me information.</label></span>
 		</div>
 		';
 
 		// Continue button
-		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Proceed to Checkout</a></p></div>';
+		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Proceed to Checkout</a></p>';
 
+		// Total Amount information
+		$return_string .= '
+		<div class="disclaimer total" style="display:none;">Thank you for your donation of $<span id="totalAmount"></span>. When you proceed to checkout, you will be sent to our payment processing service.</div>
+		';
+
+		// Credit Card Disclaimer
+		$return_string .= '
+		<div class="disclaimer creditcard" style="display:none;">Please note: The WSU Foundation does not retain your credit card information after the processing of your donation is complete.</div></div>
+		';
+		
 		if ( 'staging' === $args['server'] ) {
 			$url = 'https://staging-embed.idonate.com/idonate.js';
 		} else {

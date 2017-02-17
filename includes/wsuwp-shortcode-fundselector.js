@@ -138,17 +138,19 @@ jQuery(document).ready(function($) {
 
 		if($parent.hasClass("fund-scholarship")) $("#genScholarship").prop("checked", false);
 
-		$parent.remove();
+		$parent.fadeOut(1000, function(){ 
+            $(this).remove(); 
 
-		wsuwpUtils.updateTotalAmountText();
+            wsuwpUtils.updateTotalAmountText();
 
-		// If the Fund list is empty, disable the Continue Button
-		if($("#selectedFunds").find("li").length === 0)
-		{
-			wsuwpUtils.disableButton($("#continueButton"));
-			hideContinueButton();
-			hideAnything(jQuery(".disclaimer"));
-		}
+            // If the Fund list is empty, disable the Continue Button
+            if($("#selectedFunds").find("li").length === 0)
+            {
+                wsuwpUtils.disableButton($("#continueButton"));
+                hideContinueButton();
+                hideAnything(jQuery(".disclaimer"));
+            }
+        });
 		
 	});
 
@@ -176,6 +178,8 @@ jQuery(document).ready(function($) {
 	$("#continueButton").button()
 	.click( continueAction );
 
+    hideContinueButton();
+    
 	$("#backButton").on('click',function(){
 		showForm();
 	});
@@ -355,12 +359,12 @@ function hideAmountZone()
 
 function showContinueButton()
 {
-	showAnything( jQuery(".continuebutton") ); 
+	showAnything( jQuery(".continuebutton, .disclaimer, .gift-planning") ); 
 }
 
 function hideContinueButton()
 {
-	hideAnything( jQuery(".continuebutton") );
+	hideAnything( jQuery(".continuebutton, .disclaimer, .gift-planning") );
 }
 
 function showOther()

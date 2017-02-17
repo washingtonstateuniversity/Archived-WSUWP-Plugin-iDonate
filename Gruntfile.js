@@ -105,7 +105,7 @@ module.exports = function(grunt) {
 
         watch: {
             styles: {
-                files: [ "css/wsuwp-plugin-idonate-src.less" ],
+                files: [ "css/wsuwp-plugin-idonate-src.less", "includes/*.php" ],
                 tasks: [ "default" ],
                 option: {
                     livereload: 8000
