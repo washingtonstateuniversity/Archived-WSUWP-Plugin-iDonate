@@ -39,20 +39,12 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 				});
 			}
 
-			if($list.find("li").length === 1)
+			if($list.find("li").length === 1) {
+				showAnything(jQuery(".help-text"));
+			}
+			else
 			{
-				_.templateSettings = {
-					escape: /\{\{(.+?)\}\}/g
-				};
-
-				var template = //_.template(
-					'<li class="help-text">'  +
-						'<span class="right">Thank you! You can add more funds by selecting them above.</span>' +
-						'<span class="close remove"><a href="#"></a></span>' +
-					'</li>'
-				; //);
-
-				$list.prepend(template);
+				hideAnything(jQuery(".help-text"));
 			}
 		},
 

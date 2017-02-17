@@ -518,17 +518,58 @@
 	left: 7px;
 }
 
-#fundSelectionForm #selectedFunds li.help-text {
-	background: #c60c30;
-	border-color: #c60c30;
+#fundSelectionForm .help-text {
+	background: #981e32;
 	color: #e6e7e8;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	position: relative;
+	padding: 10px 10px 10px 20px;
+	border-radius: 2px;
+	border: #981e32 solid 1px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
-#fundSelectionForm #selectedFunds li.help-text:first-child:after {
-	border-color: #c60c30 transparent;
+#fundSelectionForm .help-text span.left {
+	padding-right: 20px;
+	font-weight: 700;
+	font-weight: 800;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	font-size: 12px;
 }
 
-#fundSelectionForm #selectedFunds li.help-text .close a {
+#fundSelectionForm .help-text span.right {
+	font-size: 12px;
+	width: 100%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-right: 20px;
+}
+
+#fundSelectionForm .help-text:first-child:after {
+	border-color: #981e32 transparent;
+	content: "";
+	position: absolute;
+	border-style: solid;
+	border-width: 7px 7px 0;
+	display: block;
+	width: 0;
+	top: 100%;
+	left: 10%;
+}
+
+#fundSelectionForm .help-text .close a {
 	background: url(../images/ico/close-wht.png) no-repeat center center;
 }
 
