@@ -725,6 +725,22 @@
 
 }
 
+@media screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 0) {
+
+	#fundSelectionForm select,
+	#fundSelectionForm textarea,
+	#fundSelectionForm input {
+		font-size: 16px;
+	}
+
+	#fundSelectionForm select:focus,
+	#fundSelectionForm textarea:focus,
+	#fundSelectionForm input:focus {
+		font-size: 16px;
+	}
+
+}
+
 .ui-autocomplete.fundselector {
 	background-color: #fff;
 	border: 1px solid #e6e7e8;
