@@ -139,19 +139,17 @@ jQuery(document).ready(function($) {
 		if($parent.hasClass("fund-scholarship")) $("#genScholarship").prop("checked", false);
 
 		$parent.fadeOut(1000, function(){ 
-            $(this).remove(); 
-
+            $(this).remove();
             wsuwpUtils.updateTotalAmountText();
-
-            // If the Fund list is empty, disable the Continue Button
-            if($("#selectedFunds").find("li").length === 0)
-            {
-                wsuwpUtils.disableButton($("#continueButton"));
-                hideContinueButton();
-                hideAnything(jQuery(".disclaimer"));
-            }
         });
-		
+
+        // If the Fund list is empty, disable the Continue Button
+        if($("#selectedFunds").find("li").length === 1)
+        {
+            wsuwpUtils.disableButton($("#continueButton"));
+            hideContinueButton();
+            hideAnything(jQuery(".disclaimer"));
+        }
 	});
 
 	// Other Amount text field Change Event
