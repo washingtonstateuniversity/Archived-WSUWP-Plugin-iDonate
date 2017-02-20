@@ -1,3 +1,7 @@
+#fundSelectionForm p {
+	font-size: 1em;
+}
+
 #fundSelectionForm a.btnlhtgry {
 	display: inline-block;
 	min-width: 100px;
@@ -19,8 +23,6 @@
 
 #fundSelectionForm input {
 	color: #4c4c4c;
-	-webkit-transition: all .3s ease-in-out;
-	transition: all .3s ease-in-out;
 	width: 100%;
 	height: 50px;
 	height: 35px;
@@ -29,14 +31,16 @@
 	text-align: left;
 	text-indent: 10px;
 	text-transform: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
 	box-shadow: none;
 	border: none;
 	border: 1px solid #ebe7e8;
 	border-radius: 2px;
-	outline: none;
+}
+
+#fundSelectionForm input[type="checkbox"] {
+	width: 15px;
+	height: 15px;
+	margin-top: 2px;
 }
 
 #fundSelectionForm select {
@@ -49,8 +53,6 @@
 	padding: 0;
 	text-align: left;
 	text-indent: 16px;
-	text-transform: none;
-	text-transform: uppercase;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -84,6 +86,7 @@
 }
 
 #fundSelectionForm #majorcategory a {
+	line-height: 1.4em;
 	-webkit-transition: color .3s ease-in-out;
 	transition: color .3s ease-in-out;
 	width: 25%;
@@ -97,7 +100,7 @@
 	padding: 6px;
 	text-transform: uppercase;
 	font-weight: 400;
-	font-size: 12px;
+	font-size: 10px;
 	margin-bottom: -1px;
 	border-bottom: 1px solid #d1d3d4;
 	text-align: center;
@@ -153,25 +156,6 @@
 	border-bottom: none;
 	color: #981e32;
 	font-weight: 700;
-}
-
-#fundSelectionForm input:focus {
-	width: 100%;
-	height: 50px;
-	height: 35px;
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	text-indent: 10px;
-	text-transform: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	box-shadow: none;
-	border: none;
-	border: 1px solid #ebe7e8;
-	border-radius: 2px;
-	outline: none;
 }
 
 #fundSelectionForm input[type="text"]:hover,
@@ -436,10 +420,6 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: reverse;
-	-ms-flex-direction: row-reverse;
-	flex-direction: row-reverse;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	box-sizing: border-box;
@@ -463,7 +443,7 @@
 }
 
 #fundSelectionForm #selectedFunds {
-	margin: 0 0 0 0;
+	margin: 0 0 20px 0;
 	list-style-type: none;
 	padding: 0;
 }
@@ -483,7 +463,6 @@
 #fundSelectionForm #selectedFunds li span.left {
 	padding-right: 20px;
 	font-weight: 700;
-	font-weight: 800;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
@@ -515,6 +494,66 @@
 	width: 0;
 	top: -8px;
 	left: 7px;
+}
+
+#fundSelectionForm .gift-planning {
+	font-size: 90%;
+}
+
+#fundSelectionForm .gift-planning .gift-planning-header {
+	font-weight: 700;
+	font-size: 12px;
+}
+
+#fundSelectionForm .gift-planning input[type="checkbox"] {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 20px;
+	flex: 0 0 20px;
+}
+
+#fundSelectionForm .gift-planning input[type="checkbox"] + label:before {
+	border: 1px solid rgba(0, 0, 0, .2);
+	content: "\00a0";
+	display: inline-block;
+	font: 16px/1em sans-serif;
+	height: 15px;
+	margin: 0 .25em 0 0;
+	padding: 0;
+	vertical-align: top;
+	width: 15px;
+}
+
+#fundSelectionForm .gift-planning input[type="checkbox"]:checked + label:before {
+	background: #981e32 url(/wp-content/plugins/WSUWP-Plugin-iDonate/images/ico-check-wht.png) center center no-repeat;
+	color: #fff;
+	border: 1px solid #981e32;
+	background-size: 12px;
+	text-align: center;
+}
+
+#fundSelectionForm .gift-planning input[type="checkbox"]:checked + label:after {
+	font-weight: 700;
+}
+
+#fundSelectionForm .gift-planning input[type="checkbox"] {
+	display: none;
+}
+
+#fundSelectionForm .gift-planning span {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin-left: 10px;
+	line-height: 2em;
+	margin-bottom: 5px;
+}
+
+#fundSelectionForm .gift-planning label {
+	-webkit-box-flex: 2;
+	-ms-flex: 2;
+	flex: 2;
+	margin-left: 5px;
+	font-size: 1em;
 }
 
 #fundSelectionForm .hidden {
@@ -658,6 +697,13 @@
 	padding: 15px 15px 15px 15px;
 }
 
+#fundSelectionForm .disclaimer {
+	font-size: 75%;
+	font-style: italic;
+	line-height: 1.3em;
+	margin-top: 10px;
+}
+
 @media (max-width: 800px) {
 
 	#fundSelectionForm button.amount-selection {
@@ -668,13 +714,17 @@
 
 @media (max-width: 420px) {
 
+	#fundSelectionForm .gift-planning {
+		font-size: 65%;
+	}
+
 	#fundSelectionForm button.amount-selection {
 		width: calc(33% - 5px);
 	}
 
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
+@media screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 0) {
 
 	#fundSelectionForm select,
 	#fundSelectionForm textarea,
