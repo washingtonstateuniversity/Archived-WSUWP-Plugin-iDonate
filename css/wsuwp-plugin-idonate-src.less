@@ -1,5 +1,8 @@
 #fundSelectionForm
 {
+    p {
+        font-size: 1em;
+    }
 	a.btnlhtgry {
 		display:inline-block;
 		min-width:100px;
@@ -19,7 +22,6 @@
 	}
 	input {
 		color:#4c4c4c;
-		transition:all .3s ease-in-out;
 		width:100%;
 		height:50px;
 		height:35px;
@@ -28,15 +30,18 @@
 		text-align:left;
 		text-indent:10px;
 		text-transform:none;
-		appearance:none;
 		box-shadow:none;
 		border:none;
 		border:1px solid #ebe7e8;
 		border-radius:2px;
-		outline:none;
 	}
+    input[type="checkbox"]
+    {
+        width:15px;
+        height:15px;
+        margin-top:2px;
+    } 
 	select {
-		color:#4c4c4c;
 		color:#4c4c4c;
 		transition:all .3s ease-in-out;
 		width:100%;
@@ -45,8 +50,6 @@
 		padding:0;
 		text-align:left;
 		text-indent:16px;
-		text-transform:none;
-		text-transform:uppercase;
 		appearance:none;
 		box-shadow:none;
 		border:none;
@@ -74,6 +77,7 @@
 			border:none;
 		}
 		a {
+            line-height: 1.4em;
 			transition:color .3s ease-in-out;
 			width:25%;
 			color:#4c4c4c;
@@ -82,7 +86,7 @@
 			padding:6px;
 			text-transform:uppercase;
 			font-weight:400;
-			font-size:12px;
+			font-size:10px;
 			margin-bottom:-1px;
 			border-bottom:1px solid #d1d3d4;
             text-align:center;
@@ -121,22 +125,7 @@
 			height:12px;
 		}
 	}
-	input:focus {
-		width:100%;
-		height:50px;
-		height:35px;
-		margin:0;
-		padding:0;
-		text-align:left;
-		text-indent:10px;
-		text-transform:none;
-		appearance:none;
-		box-shadow:none;
-		border:none;
-		border:1px solid #ebe7e8;
-		border-radius:2px;
-		outline:none;
-	}
+	
 	input[type="text"]:hover, select:hover {
 		border:1px solid #d1d3d4;
 		cursor:pointer;
@@ -332,7 +321,6 @@
 	}
 	.amountwrapper {
 		display:flex;
-		flex-direction:row-reverse;
 		flex-wrap:wrap;
 		box-sizing:border-box;
 		justify-content:space-between;
@@ -344,7 +332,7 @@
 		background:auto;
 	}
 	#selectedFunds {
-		margin:0 0 0 0;
+		margin:0 0 20px 0;
 		list-style-type:none;
 		padding:0;
 		li {
@@ -358,7 +346,6 @@
 			span.left {
 				padding-right:20px;
 				font-weight:700;
-				font-weight:800;
 				align-items:center;
 				display:flex;
 				font-size:12px;
@@ -383,6 +370,38 @@
 			left:7px;
 		}
 	}
+    .gift-planning { 
+        .gift-planning-header { font-weight:700; font-size: 12px; }
+        font-size:90%;
+        input[type="checkbox"] { flex: 0 0 20px; }
+        input[type="checkbox"] + label:before {
+          border: 1px solid rgba(0,0,0,0.2);
+          content: "\00a0";
+          display: inline-block;
+          font: 16px/1em sans-serif;
+          height: 15px;
+          margin: 0 .25em 0 0;
+          padding: 0;
+          vertical-align: top;
+          width: 15px;
+        }
+        input[type="checkbox"]:checked + label:before {
+          background: #981e32 url(/wp-content/plugins/WSUWP-Plugin-iDonate/images/ico-check-wht.png) center center no-repeat;
+          color: #fff;
+          border: 1px solid #981e32;
+          background-size:12px; 
+          text-align: center;
+        }
+        input[type="checkbox"]:checked + label:after {
+          font-weight: 700;
+        }
+        input[type="checkbox"] {
+          display: none;
+        }
+
+        span { display: flex; margin-left: 10px; line-height: 2em; margin-bottom: 5px; }
+        label { flex: 2; margin-left: 5px; font-size:1em; }
+    }
 	.hidden {
 		display:none;
 	}
@@ -473,6 +492,13 @@
 		min-width:70px;
 		padding:15px 15px 15px 15px;
 	}
+    
+    .disclaimer {
+        font-size: 75%;
+        font-style: italic;
+        line-height: 1.3em;
+        margin-top: 10px;
+    }
 
 	@media (max-width: 800px) {
 		button.amount-selection {
@@ -481,15 +507,18 @@
 	}
     
     @media (max-width: 420px) {
+        .gift-planning { 
+            font-size:65%;
+        }
 		button.amount-selection {
 			width: calc(33% - 5px);
 		}
 	}
-	@media screen and (-webkit-min-device-pixel-ratio: 0) {
-		select, textarea, input {
+	@media screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 0) {
+        select, textarea, input {
 			font-size: 16px;
 		}
-		
+            
 		select:focus, textarea:focus, input:focus {
 			font-size: 16px;
 		}
