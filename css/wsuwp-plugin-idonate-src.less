@@ -392,7 +392,6 @@
 		border-radius:2px;
 		border:#981e32 solid 1px;
 		margin-top:10px;
-		margin-bottom:10px;
 		span.left {
 			padding-right:20px;
 			font-weight:700;
@@ -409,16 +408,17 @@
 			padding-right: 20px;
 		}
 	}
-	.help-text:first-child:after {
-		border-color:#981e32 transparent;
-		content:"";
-		position:absolute;
-		border-style:solid;
-		border-width:7px 7px 0;
-		display:block;
-		width:0;
-		top:100%;
-		left:10%;
+	.help-text-caret {
+		// position:absolute;
+		// display:block;
+		width: 0; 
+		height: 0;
+		border-left: 7px solid transparent;
+		border-right: 7px solid transparent;		
+		border-top: 7px solid #981e32;
+		margin-top: 0;
+		margin-left: calc(10% - 7px);
+		margin-bottom: 10px;
 	}
 	.help-text .close a {
 		background:url(../images/ico/close-wht.png) no-repeat center center;

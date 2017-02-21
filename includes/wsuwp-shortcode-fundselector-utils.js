@@ -41,10 +41,17 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 
 			if($list.find("li").length === 1) {
 				showAnything(jQuery(".help-text"));
+				showAnything(jQuery(".help-text-caret"));
+				for(var i = 0; i < jQuery("#majorcategory a").length - 1; i++)
+				{
+					jQuery(".help-text-caret").animate({marginLeft: "+=20%"}, {duration: 500}).delay(500);
+				}
 			}
 			else
 			{
 				hideAnything(jQuery(".help-text"));
+				hideAnything(jQuery(".help-text-caret"));
+				//jQuery(".help-text-caret").marginLeft("calc(10% - 7px)");
 			}
 		},
 

@@ -529,7 +529,6 @@
 	border-radius: 2px;
 	border: #981e32 solid 1px;
 	margin-top: 10px;
-	margin-bottom: 10px;
 }
 
 #fundSelectionForm .help-text span.left {
@@ -557,16 +556,15 @@
 	padding-right: 20px;
 }
 
-#fundSelectionForm .help-text:first-child:after {
-	border-color: #981e32 transparent;
-	content: "";
-	position: absolute;
-	border-style: solid;
-	border-width: 7px 7px 0;
-	display: block;
+#fundSelectionForm .help-text-caret {
 	width: 0;
-	top: 100%;
-	left: 10%;
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 7px solid #981e32;
+	margin-top: 0;
+	margin-left: calc(10% - 7px);
+	margin-bottom: 10px;
 }
 
 #fundSelectionForm .help-text .close a {
