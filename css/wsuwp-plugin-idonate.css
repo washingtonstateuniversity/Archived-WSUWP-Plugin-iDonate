@@ -497,22 +497,23 @@
 	left: 7px;
 }
 
-#fundSelectionForm .gift-planning {
+#fundSelectionForm .additional-info {
 	font-size: 90%;
 }
 
-#fundSelectionForm .gift-planning .gift-planning-header {
+#fundSelectionForm .additional-info .additional-info-header {
 	font-weight: 700;
 	font-size: 12px;
+	text-align: center;
 }
 
-#fundSelectionForm .gift-planning input[type="checkbox"] {
+#fundSelectionForm .additional-info input[type="checkbox"] {
 	-webkit-box-flex: 0;
 	-ms-flex: 0 0 20px;
 	flex: 0 0 20px;
 }
 
-#fundSelectionForm .gift-planning input[type="checkbox"] + label:before {
+#fundSelectionForm .additional-info input[type="checkbox"] + label:before {
 	border: 1px solid rgba(0, 0, 0, .2);
 	content: "\00a0";
 	display: inline-block;
@@ -524,23 +525,23 @@
 	width: 15px;
 }
 
-#fundSelectionForm .gift-planning input[type="checkbox"]:checked + label:before {
-	background: #981e32 url(/wp-content/plugins/WSUWP-Plugin-iDonate/images/ico-check-wht.png) center center no-repeat;
+#fundSelectionForm .additional-info input[type="checkbox"]:checked + label:before {
+	background: #981e32 url(../images/ico-check-wht.png) center center no-repeat;
 	color: #fff;
 	border: 1px solid #981e32;
 	background-size: 12px;
 	text-align: center;
 }
 
-#fundSelectionForm .gift-planning input[type="checkbox"]:checked + label:after {
+#fundSelectionForm .additional-info input[type="checkbox"]:checked + label:after {
 	font-weight: 700;
 }
 
-#fundSelectionForm .gift-planning input[type="checkbox"] {
+#fundSelectionForm .additional-info input[type="checkbox"] {
 	display: none;
 }
 
-#fundSelectionForm .gift-planning span {
+#fundSelectionForm .additional-info span {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -549,7 +550,7 @@
 	margin-bottom: 5px;
 }
 
-#fundSelectionForm .gift-planning label {
+#fundSelectionForm .additional-info label {
 	-webkit-box-flex: 2;
 	-ms-flex: 2;
 	flex: 2;

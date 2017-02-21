@@ -186,14 +186,18 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			$scholarship_title = sanitize_text_field( $scholarship_fund['title'] );
 
 			$return_string .= '
-			<input type="checkbox" id="genScholarship" value="scholarship_check" data-designation_id="' . $scholarship_des_id . '" data-fund_name="' . $scholarship_name . '" data-amount=10 > 
-			<label for="genScholarship">' . $scholarship_description . ' (' . $scholarship_title  . ').</label>
+			<div class="additional-info" style="display:none;">
+				<span>
+				<input type="checkbox" id="genScholarship" value="scholarship_check" data-designation_id="' . $scholarship_des_id . '" data-fund_name="' . $scholarship_name . '" data-amount=10 > 
+				<label for="genScholarship">' . $scholarship_description . ' (' . $scholarship_title  . ').</label>
+				</span>
+			</div>
 			';
 		}
 
 		$return_string .= '
-		<div class="gift-planning" style="display:none;">
-			<div class="gift-planning-header">Is WSU in your Will?</div>
+		<div class="additional-info gift-planning" style="display:none;">
+			<div class="additional-info-header">Is WSU in your Will?</div>
 			<p>Charitable gifts from estates and other planned gifts play an integral role in the future of Washington State University. The WSU Foundation offers several tax-wise giving options to support WSU’s mission while fulfilling your personal philanthropic goals.</p>
             <span>
             <input type="checkbox" id="gpInWill"> 
