@@ -188,8 +188,8 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			$return_string .= '
 			<div class="additional-info" style="display:none;">
 				<span>
-				<input type="checkbox" id="genScholarship" value="scholarship_check" data-designation_id="' . $scholarship_des_id . '" data-fund_name="' . $scholarship_name . '" data-amount=10 > 
-				<label for="genScholarship">' . $scholarship_description . ' (' . $scholarship_title  . ').</label>
+					<input type="checkbox" id="genScholarship" value="scholarship_check" data-designation_id="' . $scholarship_des_id . '" data-fund_name="' . $scholarship_name . '" data-amount=10 > 
+					<label for="genScholarship">' . $scholarship_description . ' (' . $scholarship_title  . ').</label>
 				</span>
 			</div>
 			';
@@ -210,17 +210,17 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		</div>
 		';
 
-		// Continue button
-		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Proceed to Checkout</a></p>';
-
 		// Total Amount information
 		$return_string .= '
 		<div class="disclaimer total" style="display:none;">Thank you for your donation of $<span id="totalAmount"></span>. When you proceed to checkout, you will be sent to our payment processing service.</div>
 		';
 
+		// Continue button
+		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Proceed to Checkout</a></p>';
+
 		// Credit Card Disclaimer
 		$return_string .= '
-		<div class="disclaimer creditcard" style="display:none;">Please note: The WSU Foundation does not retain your credit card information after the processing of your donation is complete.</div></div>
+		<div class="disclaimer credit-card" style="display:none;">Please note: The WSU Foundation does not retain your credit card information after the processing of your donation is complete.</div></div>
 		';
 
 		if ( 'staging' === $args['server'] ) {

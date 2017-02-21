@@ -700,10 +700,13 @@
 }
 
 #fundSelectionForm .disclaimer {
-	font-size: 75%;
 	font-style: italic;
 	line-height: 1.3em;
 	margin-top: 10px;
+}
+
+#fundSelectionForm .disclaimer.credit-card {
+	font-size: 75%;
 }
 
 @media (max-width: 800px) {
@@ -716,7 +719,7 @@
 
 @media (max-width: 420px) {
 
-	#fundSelectionForm .gift-planning {
+	#fundSelectionForm .additional-info {
 		font-size: 65%;
 	}
 
