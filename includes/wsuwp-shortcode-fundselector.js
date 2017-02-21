@@ -357,12 +357,12 @@ function hideAmountZone()
 
 function showContinueButton()
 {
-	showAnything( jQuery(".continuebutton, .disclaimer, .gift-planning") ); 
+	showAnything( jQuery(".continuebutton, .disclaimer, .additional-info") ); 
 }
 
 function hideContinueButton()
 {
-	hideAnything( jQuery(".continuebutton, .disclaimer, .gift-planning") );
+	hideAnything( jQuery(".continuebutton, .disclaimer, .additional-info") );
 }
 
 function showOther()
