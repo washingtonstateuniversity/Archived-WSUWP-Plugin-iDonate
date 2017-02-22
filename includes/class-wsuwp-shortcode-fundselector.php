@@ -220,7 +220,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		// Credit Card Disclaimer
 		$return_string .= '
-		<div class="disclaimer credit-card" style="display:none;">Please note: The WSU Foundation does not retain your credit card information after the processing of your donation is complete.</div></div>
+		<div class="disclaimer credit-card" style="display:none;">In accordance with <a href="https://www.pcisecuritystandards.org/">PCI compliance requirements</a>, the WSU Foundation does not store or retain your credit card information.</div></div>
 		';
 
 		if ( 'staging' === $args['server'] ) {
