@@ -41,7 +41,6 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 
 			if($list.find("li").length === 1) {
 				showAnything(jQuery(".help-text"));
-				showAnything(jQuery(".help-text-caret"));
 				var origMargin = jQuery(".help-text-caret").css('margin-left');
 				for(var i = 0; i < jQuery("#majorcategory a").length - 1; i++)
 				{
@@ -52,8 +51,6 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			else
 			{
 				hideAnything(jQuery(".help-text"));
-				hideAnything(jQuery(".help-text-caret"));
-				//jQuery(".help-text-caret").marginLeft("calc(10% - 7px)");
 			}
 		},
 

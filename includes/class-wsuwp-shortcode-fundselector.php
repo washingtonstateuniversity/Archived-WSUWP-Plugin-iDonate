@@ -63,10 +63,13 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$return_string = '<div id="fundSelectionForm"><div id="firstform">';
 
 		$return_string .= '	<div class="help-text" style="opacity:0;display:none;">
-						 		<span class="left">Thank you! You can add more funds from one of these categories:</span>
-								<span class="close remove"><a href="#"></a></span>
+						 		<div class="help-text-box">
+									<span class="left">Thank you! You can add more funds from one of these categories:</span>
+									<span class="close remove"><a href="#"></a></span>
+								</div>
+								<div class="help-text-caret"></div>
 							</div>
-							<div class="help-text-caret" style="opacity:0;display:none;"></div>';
+						';
 
 		$unit_included = ! empty( $args['unit_taxonomy'] ) && ! empty( $args['unit_category'] );
 

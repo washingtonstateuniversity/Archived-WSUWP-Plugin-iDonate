@@ -497,7 +497,7 @@
 	left: 7px;
 }
 
-#fundSelectionForm .help-text {
+#fundSelectionForm .help-text-box {
 	background: #981e32;
 	color: #e6e7e8;
 	display: -webkit-box;
@@ -510,7 +510,7 @@
 	margin-top: 10px;
 }
 
-#fundSelectionForm .help-text span.left {
+#fundSelectionForm .help-text-box span.left {
 	padding-right: 20px;
 	font-weight: 700;
 	font-weight: 800;
@@ -523,7 +523,7 @@
 	font-size: 12px;
 }
 
-#fundSelectionForm .help-text span.right {
+#fundSelectionForm .help-text-box span.right {
 	font-size: 12px;
 	width: 100%;
 	display: -webkit-box;
