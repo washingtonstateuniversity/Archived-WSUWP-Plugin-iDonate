@@ -129,6 +129,15 @@ jQuery(document).ready(function($) {
 		addFundAction();
 	});
 
+	// Close Add Fund Indicator
+	$(".help-text span.close a").button()
+	.click( function(event) {
+		event.preventDefault();
+
+		hideAnything(".help-text");
+
+	} );
+
 	// Remove Fund Button Click Event
 	// (Using body to defer binding until element has been created)
 	$('body').on('click', '#selectedFunds li span.close a', function (event) {
