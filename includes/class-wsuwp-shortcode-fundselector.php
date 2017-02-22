@@ -60,9 +60,18 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			'unit_category' => $args['unit_category'],
 		));
 
-		$unit_included = ! empty( $args['unit_taxonomy'] ) && ! empty( $args['unit_category'] );
-
 		$return_string = '<div id="fundSelectionForm"><div id="firstform">';
+
+		$return_string .= '	<div class="help-text" style="opacity:0;display:none;">
+						 		<div class="help-text-box">
+									<span class="left">Thank you! You can add more funds from these categories:</span>
+									<span class="close remove"><a href="#"></a></span>
+								</div>
+								<div class="help-text-caret"></div>
+							</div>
+						';
+
+		$unit_included = ! empty( $args['unit_taxonomy'] ) && ! empty( $args['unit_category'] );
 
 		$unit_title = ! empty( $args['unit_title'] ) ? $args['unit_title'] : 'Unit Priorities';
 

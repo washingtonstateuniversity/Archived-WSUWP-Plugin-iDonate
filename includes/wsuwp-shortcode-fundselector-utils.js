@@ -38,6 +38,23 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 					}
 				});
 			}
+
+			if($list.find("li").length === 1) {
+				showAnything(jQuery(".help-text"));
+				var origMargin = jQuery(".help-text-caret").css('margin-left');
+				
+				jQuery(".help-text-caret").delay(1200);
+				
+				for(var i = 0; i < jQuery("#majorcategory a").length - 1; i++)
+				{
+					jQuery(".help-text-caret").animate({marginLeft: "+=20%"}, {duration: 500}).delay(500);
+				}
+				jQuery(".help-text-caret").animate({marginLeft: origMargin}, {duration: 500});
+			}
+			else
+			{
+				hideAnything(jQuery(".help-text"));
+			}
 		},
 
 		isDuplicateDesignation: function (designationId, $list)
