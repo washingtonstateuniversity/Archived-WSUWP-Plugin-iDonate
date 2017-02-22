@@ -42,10 +42,12 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			if($list.find("li").length === 1) {
 				showAnything(jQuery(".help-text"));
 				showAnything(jQuery(".help-text-caret"));
+				var origMargin = jQuery(".help-text-caret").css('margin-left');
 				for(var i = 0; i < jQuery("#majorcategory a").length - 1; i++)
 				{
 					jQuery(".help-text-caret").animate({marginLeft: "+=20%"}, {duration: 500}).delay(500);
 				}
+				jQuery(".help-text-caret").animate({marginLeft: origMargin}, {duration: 500});
 			}
 			else
 			{
