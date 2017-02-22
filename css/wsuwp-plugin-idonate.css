@@ -700,12 +700,16 @@
 }
 
 #fundSelectionForm .disclaimer {
-	font-style: italic;
 	line-height: 1.3em;
 	margin-top: 10px;
 }
 
+#fundSelectionForm .disclaimer.total {
+	font-weight: 600;
+}
+
 #fundSelectionForm .disclaimer.credit-card {
+	font-style: italic;
 	font-size: 75%;
 }
 
