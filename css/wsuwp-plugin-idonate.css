@@ -508,11 +508,11 @@
 	border-radius: 2px;
 	border: #981e32 solid 1px;
 	margin-top: 10px;
+	font-size: 12px;
 }
 
 #fundSelectionForm .help-text-box span.left {
 	padding-right: 20px;
-	font-weight: 700;
 	font-weight: 800;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
@@ -520,11 +520,10 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	font-size: 12px;
+	font-size: 105%;
 }
 
 #fundSelectionForm .help-text-box span.right {
-	font-size: 12px;
 	width: 100%;
 	display: -webkit-box;
 	display: -ms-flexbox;
