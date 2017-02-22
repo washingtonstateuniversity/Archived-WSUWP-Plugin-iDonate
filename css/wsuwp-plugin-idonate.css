@@ -617,7 +617,7 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	margin-top: 40px;
+	margin-top: 20px;
 	-webkit-box-pack: end;
 	-ms-flex-pack: end;
 	justify-content: flex-end;
