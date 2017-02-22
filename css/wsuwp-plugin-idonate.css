@@ -521,10 +521,10 @@
 	display: -ms-flexbox;
 	display: flex;
 	font-size: 105%;
+	width: 100%;
 }
 
 #fundSelectionForm .help-text-box span.right {
-	width: 100%;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
