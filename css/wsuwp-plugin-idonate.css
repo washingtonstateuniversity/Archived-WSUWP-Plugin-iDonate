@@ -499,6 +499,7 @@
 
 #fundSelectionForm .additional-info {
 	font-size: 90%;
+	margin-bottom: 20px;
 }
 
 #fundSelectionForm .additional-info .additional-info-header {
@@ -700,10 +701,13 @@
 
 #fundSelectionForm .disclaimer {
 	line-height: 1.3em;
-	margin-top: 10px;
 }
 
 #fundSelectionForm .disclaimer.total {
+	margin-bottom: 20px;
+}
+
+#fundSelectionForm .disclaimer.total .first-sentence {
 	font-weight: 600;
 }
 
