@@ -370,6 +370,44 @@
 			left:7px;
 		}
 	}
+	.help-text-box {
+		background: #981e32;
+		color:#e6e7e8;
+		display:flex;
+		position:relative;
+		padding:10px 10px 10px 20px;
+		border-radius:2px;
+		border:#981e32 solid 1px;
+		margin-top:10px;
+		font-size:12px;
+		span.left {
+			padding-right:20px;
+			font-weight:800;
+			align-items:center;
+			display:flex;
+			font-size: 105%;
+			width:100%;
+		}
+		span.right {			
+			display:flex;
+			align-items:center;
+			padding-right: 20px;
+		}
+	}
+	.help-text-caret {
+		width: 0; 
+		height: 0;
+		border-left: 7px solid transparent;
+		border-right: 7px solid transparent;		
+		border-top: 7px solid #981e32;
+		margin-top: 0;
+		margin-left: calc(10% - 7px);
+		margin-bottom: 10px;
+	}
+	.help-text .close a {
+		background:url(../images/ico/close-wht.png) no-repeat center center;
+		background-size: 12px;
+	}
     .additional-info { 
         .additional-info-header { 
 			font-weight:700; 
@@ -496,7 +534,7 @@
 		min-width:70px;
 		padding:15px 15px 15px 15px;
 	}
-    
+
     .disclaimer {
         line-height: 1.3em;
     }
@@ -531,10 +569,10 @@
 		}
 	}
 	@media screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 0) {
-        select, textarea, input {
+		select, textarea, input {
 			font-size: 16px;
 		}
-            
+		
 		select:focus, textarea:focus, input:focus {
 			font-size: 16px;
 		}

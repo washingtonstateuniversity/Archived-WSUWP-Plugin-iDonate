@@ -497,6 +497,59 @@
 	left: 7px;
 }
 
+#fundSelectionForm .help-text-box {
+	background: #981e32;
+	color: #e6e7e8;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	position: relative;
+	padding: 10px 10px 10px 20px;
+	border-radius: 2px;
+	border: #981e32 solid 1px;
+	margin-top: 10px;
+	font-size: 12px;
+}
+
+#fundSelectionForm .help-text-box span.left {
+	padding-right: 20px;
+	font-weight: 800;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	font-size: 105%;
+	width: 100%;
+}
+
+#fundSelectionForm .help-text-box span.right {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-right: 20px;
+}
+
+#fundSelectionForm .help-text-caret {
+	width: 0;
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 7px solid #981e32;
+	margin-top: 0;
+	margin-left: calc(10% - 7px);
+	margin-bottom: 10px;
+}
+
+#fundSelectionForm .help-text .close a {
+	background: url(../images/ico/close-wht.png) no-repeat center center;
+	background-size: 12px;
+}
+
 #fundSelectionForm .additional-info {
 	font-size: 90%;
 	margin-bottom: 20px;
