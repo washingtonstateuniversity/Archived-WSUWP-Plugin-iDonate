@@ -100,7 +100,7 @@
 	padding: 6px;
 	text-transform: uppercase;
 	font-weight: 400;
-	font-size: 10px;
+	font-size: 12px;
 	margin-bottom: -1px;
 	border-bottom: 1px solid #d1d3d4;
 	text-align: center;
@@ -496,22 +496,76 @@
 	left: 7px;
 }
 
-#fundSelectionForm .gift-planning {
-	font-size: 90%;
+#fundSelectionForm .help-text-box {
+	background: #981e32;
+	color: #e6e7e8;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	position: relative;
+	padding: 10px 10px 10px 20px;
+	border-radius: 2px;
+	border: #981e32 solid 1px;
+	margin-top: 10px;
+	font-size: 12px;
 }
 
-#fundSelectionForm .gift-planning .gift-planning-header {
+#fundSelectionForm .help-text-box span.left {
+	padding-right: 20px;
+	font-weight: 800;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	font-size: 105%;
+	width: 100%;
+}
+
+#fundSelectionForm .help-text-box span.right {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-right: 20px;
+}
+
+#fundSelectionForm .help-text-caret {
+	width: 0;
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 7px solid #981e32;
+	margin-top: 0;
+	margin-left: calc(10% - 7px);
+	margin-bottom: 10px;
+}
+
+#fundSelectionForm .help-text .close a {
+	background: url(../images/ico/close-wht.png) no-repeat center center;
+	background-size: 12px;
+}
+
+#fundSelectionForm .additional-info {
+	font-size: 90%;
+	margin-bottom: 20px;
+}
+
+#fundSelectionForm .additional-info .additional-info-header {
 	font-weight: 700;
 	font-size: 12px;
 }
 
-#fundSelectionForm .gift-planning input[type="checkbox"] {
+#fundSelectionForm .additional-info input[type="checkbox"] {
 	-webkit-box-flex: 0;
 	-ms-flex: 0 0 20px;
 	flex: 0 0 20px;
 }
 
-#fundSelectionForm .gift-planning input[type="checkbox"] + label:before {
+#fundSelectionForm .additional-info input[type="checkbox"] + label:before {
 	border: 1px solid rgba(0, 0, 0, .2);
 	content: "\00a0";
 	display: inline-block;
@@ -523,23 +577,23 @@
 	width: 15px;
 }
 
-#fundSelectionForm .gift-planning input[type="checkbox"]:checked + label:before {
-	background: #981e32 url(/wp-content/plugins/WSUWP-Plugin-iDonate/images/ico-check-wht.png) center center no-repeat;
+#fundSelectionForm .additional-info input[type="checkbox"]:checked + label:before {
+	background: #981e32 url(../images/ico-check-wht.png) center center no-repeat;
 	color: #fff;
 	border: 1px solid #981e32;
 	background-size: 12px;
 	text-align: center;
 }
 
-#fundSelectionForm .gift-planning input[type="checkbox"]:checked + label:after {
+#fundSelectionForm .additional-info input[type="checkbox"]:checked + label:after {
 	font-weight: 700;
 }
 
-#fundSelectionForm .gift-planning input[type="checkbox"] {
+#fundSelectionForm .additional-info input[type="checkbox"] {
 	display: none;
 }
 
-#fundSelectionForm .gift-planning span {
+#fundSelectionForm .additional-info span {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -548,7 +602,7 @@
 	margin-bottom: 5px;
 }
 
-#fundSelectionForm .gift-planning label {
+#fundSelectionForm .additional-info label {
 	-webkit-box-flex: 2;
 	-ms-flex: 2;
 	flex: 2;
@@ -615,7 +669,7 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	margin-top: 40px;
+	margin-top: 20px;
 	-webkit-box-pack: end;
 	-ms-flex-pack: end;
 	justify-content: flex-end;
@@ -698,10 +752,21 @@
 }
 
 #fundSelectionForm .disclaimer {
-	font-size: 75%;
-	font-style: italic;
 	line-height: 1.3em;
-	margin-top: 10px;
+}
+
+#fundSelectionForm .disclaimer.total {
+	margin-bottom: 20px;
+}
+
+#fundSelectionForm .disclaimer.total .first-sentence {
+	color: #981e32;
+	font-weight: 600;
+}
+
+#fundSelectionForm .disclaimer.credit-card {
+	font-style: italic;
+	font-size: 75%;
 }
 
 @media (max-width: 800px) {
@@ -714,7 +779,7 @@
 
 @media (max-width: 420px) {
 
-	#fundSelectionForm .gift-planning {
+	#fundSelectionForm .additional-info {
 		font-size: 65%;
 	}
 

@@ -129,6 +129,15 @@ jQuery(document).ready(function($) {
 		addFundAction();
 	});
 
+	// Close Add Fund Indicator
+	$(".help-text span.close a").button()
+	.click( function(event) {
+		event.preventDefault();
+
+		hideAnything(".help-text");
+
+	} );
+
 	// Remove Fund Button Click Event
 	// (Using body to defer binding until element has been created)
 	$('body').on('click', '#selectedFunds li span.close a', function (event) {
@@ -194,6 +203,8 @@ jQuery(document).ready(function($) {
 		} else {
 			// the checkbox is now no longer checked
 			$("#selectedFunds > li.fund-scholarship").remove();
+
+			wsuwpUtils.updateTotalAmountText();
 
 			// If the Fund list is empty, disable the Continue Button
 			if ($("#selectedFunds").find("li").length === 0) {
@@ -357,12 +368,12 @@ function hideAmountZone()
 
 function showContinueButton()
 {
-	showAnything( jQuery(".continuebutton, .disclaimer, .gift-planning") ); 
+	showAnything( jQuery(".continuebutton, .disclaimer, .additional-info") ); 
 }
 
 function hideContinueButton()
 {
-	hideAnything( jQuery(".continuebutton, .disclaimer, .gift-planning") );
+	hideAnything( jQuery(".continuebutton, .disclaimer, .additional-info") );
 }
 
 function showOther()
