@@ -204,6 +204,8 @@ jQuery(document).ready(function($) {
 			// the checkbox is now no longer checked
 			$("#selectedFunds > li.fund-scholarship").remove();
 
+			wsuwpUtils.updateTotalAmountText();
+
 			// If the Fund list is empty, disable the Continue Button
 			if ($("#selectedFunds").find("li").length === 0) {
 				wsuwpUtils.disableButton($("#continueButton"));
