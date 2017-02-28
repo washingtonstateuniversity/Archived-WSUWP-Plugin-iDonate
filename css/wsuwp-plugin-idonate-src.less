@@ -49,7 +49,7 @@
 		margin:0;
 		padding:0;
 		text-align:left;
-		text-indent:16px;
+		padding-left: 16px;
 		appearance:none;
 		box-shadow:none;
 		border:none;
@@ -60,7 +60,11 @@
 		font-weight:400;
 	}
 	select.fund {
-		background: #fff url(../images/ico/arrow-down-gry.png) no-repeat calc(~"100% - 16px") calc(~"100% - 50%");
+		background: #fff url(../images/ico/arrow-down-gry.png) no-repeat center center;
+        background-position:calc(100% - 16px) center;
+		background-size:12px;
+		transition:background-color .3s ease-in-out, color .3s ease-in-out;
+        padding-right: 35px;
 	}
 
 	button, .ui-button {
@@ -135,11 +139,6 @@
 	select::-ms-expand {
 		display:none;
 	}
-	select.fund {
-		background: #fff url(../images/ico/arrow-down-gry.png) no-repeat calc(100% - 16px) calc(100% - 50%);
-		background-size:12px;
-		transition:background-color .3s ease-in-out, color .3s ease-in-out;
-	}
 	input.search {
 		background:transparent url(../images/ico/search-gry.png) no-repeat 12px center;
 		background-size:12px;
@@ -163,11 +162,6 @@
 	}
 	input.search:focus {
 		background:#94192b url(../images/ico/search-wht.png) no-repeat 16px center;
-	}
-	select.fund {
-		background-size:12px;
-		transition:background-color .3s ease-in-out, color .3s ease-in-out;
-        padding-right: 35px;
 	}
 	.input-group {
 		position:relative;
@@ -514,6 +508,7 @@
 		width:100%;
 	}
 	span.center,span.close {
+        flex: 0 0 auto;
 		font-size:12px;
 		display:flex;
 		justify-content:center;

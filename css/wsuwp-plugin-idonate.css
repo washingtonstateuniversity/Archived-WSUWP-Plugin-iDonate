@@ -52,7 +52,7 @@
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	text-indent: 16px;
+	padding-left: 16px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -66,7 +66,12 @@
 }
 
 #fundSelectionForm select.fund {
-	background: #fff url(../images/ico/arrow-down-gry.png) no-repeat calc(100% - 16px) calc(100% - 50%);
+	background: #fff url(../images/ico/arrow-down-gry.png) no-repeat center center;
+	background-position: calc(100% - 16px) center;
+	background-size: 12px;
+	-webkit-transition: background-color .3s ease-in-out, color .3s ease-in-out;
+	transition: background-color .3s ease-in-out, color .3s ease-in-out;
+	padding-right: 35px;
 }
 
 #fundSelectionForm button,
@@ -173,13 +178,6 @@
 	display: none;
 }
 
-#fundSelectionForm select.fund {
-	background: #fff url(../images/ico/arrow-down-gry.png) no-repeat calc(100% - 16px) calc(100% - 50%);
-	background-size: 12px;
-	-webkit-transition: background-color .3s ease-in-out, color .3s ease-in-out;
-	transition: background-color .3s ease-in-out, color .3s ease-in-out;
-}
-
 #fundSelectionForm input.search {
 	background: transparent url(../images/ico/search-gry.png) no-repeat 12px center;
 	background-size: 12px;
@@ -207,13 +205,6 @@
 
 #fundSelectionForm input.search:focus {
 	background: #94192b url(../images/ico/search-wht.png) no-repeat 16px center;
-}
-
-#fundSelectionForm select.fund {
-	background-size: 12px;
-	-webkit-transition: background-color .3s ease-in-out, color .3s ease-in-out;
-	transition: background-color .3s ease-in-out, color .3s ease-in-out;
-	padding-right: 35px;
 }
 
 #fundSelectionForm .input-group {
@@ -720,6 +711,9 @@
 
 #fundSelectionForm span.center,
 #fundSelectionForm span.close {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;
 	font-size: 12px;
 	display: -webkit-box;
 	display: -ms-flexbox;
