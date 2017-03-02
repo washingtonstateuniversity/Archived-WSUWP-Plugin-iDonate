@@ -129,6 +129,15 @@ jQuery(document).ready(function($) {
 		addFundAction();
 	});
 
+	// Close Add Fund Indicator
+	$(".help-text span.close a").button()
+	.click( function(event) {
+		event.preventDefault();
+
+		hideAnything(".help-text");
+
+	} );
+
 	// Remove Fund Button Click Event
 	// (Using body to defer binding until element has been created)
 	$('body').on('click', '#selectedFunds li span.close a', function (event) {
@@ -138,18 +147,18 @@ jQuery(document).ready(function($) {
 
 		if($parent.hasClass("fund-scholarship")) $("#genScholarship").prop("checked", false);
 
-		$parent.remove();
+		$parent.fadeOut(1000, function(){ 
+            $(this).remove();
+            wsuwpUtils.updateTotalAmountText();
+        });
 
-		wsuwpUtils.updateTotalAmountText();
-
-		// If the Fund list is empty, disable the Continue Button
-		if($("#selectedFunds").find("li").length === 0)
-		{
-			wsuwpUtils.disableButton($("#continueButton"));
-			hideContinueButton();
-			hideAnything(jQuery(".disclaimer"));
-		}
-		
+        // If the Fund list is empty, disable the Continue Button
+        if($("#selectedFunds").find("li").length === 1)
+        {
+            wsuwpUtils.disableButton($("#continueButton"));
+            hideContinueButton();
+            hideAnything(jQuery(".disclaimer"));
+        }
 	});
 
 	// Other Amount text field Change Event
@@ -176,6 +185,8 @@ jQuery(document).ready(function($) {
 	$("#continueButton").button()
 	.click( continueAction );
 
+    hideContinueButton();
+    
 	$("#backButton").on('click',function(){
 		showForm();
 	});
@@ -192,6 +203,8 @@ jQuery(document).ready(function($) {
 		} else {
 			// the checkbox is now no longer checked
 			$("#selectedFunds > li.fund-scholarship").remove();
+
+			wsuwpUtils.updateTotalAmountText();
 
 			// If the Fund list is empty, disable the Continue Button
 			if ($("#selectedFunds").find("li").length === 0) {
@@ -355,12 +368,12 @@ function hideAmountZone()
 
 function showContinueButton()
 {
-	showAnything( jQuery(".continuebutton") ); 
+	showAnything( jQuery(".continuebutton, .disclaimer, .additional-info") ); 
 }
 
 function hideContinueButton()
 {
-	hideAnything( jQuery(".continuebutton") );
+	hideAnything( jQuery(".continuebutton, .disclaimer, .additional-info") );
 }
 
 function showOther()

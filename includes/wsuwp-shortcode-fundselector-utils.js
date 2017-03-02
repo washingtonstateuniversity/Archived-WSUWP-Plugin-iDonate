@@ -9,7 +9,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			var html = '<li class="list-group-item ' + (scholarship ? "fund-scholarship": "") + '" data-designation_id="' + designationId + '" data-amount="' + amount + '">';
 			html += '<span class="right">' + _.escape(name) + '</span>'
 			html += '<span class="center">$</span><span id="edit' + designationId + '" class="editable left">' + amount +  '</span>';
-			html += '<span class="edit"><a href="#" id="' + designationId +'" class="edit">EDIT</a></span>';
+			html += '<span class="edit"><a href="#!" id="' + designationId +'" class="edit">EDIT</a></span>';
 			html += '<span class="close remove"><a href="#"></a></span>'
 			html += '<span id="error' + designationId + '" class="error"></span></li>';
 			
@@ -37,6 +37,23 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 						wsuwpUtils.updateTotalAmountText();
 					}
 				});
+			}
+
+			if($list.find("li").length === 1) {
+				showAnything(jQuery(".help-text"));
+				var origMargin = jQuery(".help-text-caret").css('margin-left');
+				
+				jQuery(".help-text-caret").delay(1200);
+				
+				for(var i = 0; i < jQuery("#majorcategory a").length - 1; i++)
+				{
+					jQuery(".help-text-caret").animate({marginLeft: "+=20%"}, {duration: 500}).delay(500);
+				}
+				jQuery(".help-text-caret").animate({marginLeft: origMargin}, {duration: 500});
+			}
+			else
+			{
+				hideAnything(jQuery(".help-text"));
 			}
 		},
 

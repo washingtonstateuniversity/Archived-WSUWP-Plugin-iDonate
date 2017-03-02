@@ -1,3 +1,7 @@
+#fundSelectionForm p {
+	font-size: 1em;
+}
+
 #fundSelectionForm a.btnlhtgry {
 	display: inline-block;
 	min-width: 100px;
@@ -19,8 +23,6 @@
 
 #fundSelectionForm input {
 	color: #4c4c4c;
-	-webkit-transition: all .3s ease-in-out;
-	transition: all .3s ease-in-out;
 	width: 100%;
 	height: 50px;
 	height: 35px;
@@ -29,14 +31,16 @@
 	text-align: left;
 	text-indent: 10px;
 	text-transform: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
 	box-shadow: none;
 	border: none;
 	border: 1px solid #ebe7e8;
 	border-radius: 2px;
-	outline: none;
+}
+
+#fundSelectionForm input[type="checkbox"] {
+	width: 15px;
+	height: 15px;
+	margin-top: 2px;
 }
 
 #fundSelectionForm select {
@@ -48,9 +52,7 @@
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	text-indent: 16px;
-	text-transform: none;
-	text-transform: uppercase;
+	padding-left: 16px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -64,7 +66,12 @@
 }
 
 #fundSelectionForm select.fund {
-	background: #fff url(../images/ico/arrow-down-gry.png) no-repeat calc(100% - 16px) calc(100% - 50%);
+	background: #fff url(../images/ico/arrow-down-gry.png) no-repeat center center;
+	background-position: calc(100% - 16px) center;
+	background-size: 12px;
+	-webkit-transition: background-color .3s ease-in-out, color .3s ease-in-out;
+	transition: background-color .3s ease-in-out, color .3s ease-in-out;
+	padding-right: 35px;
 }
 
 #fundSelectionForm button,
@@ -83,14 +90,8 @@
 	padding: 0 0 10px 0;
 }
 
-#fundSelectionForm #majorcategory a.search.active,
-#fundSelectionForm #majorcategory a.search:hover {
-	background: transparent url(../images/ico/search-crm.png) no-repeat 12px center;
-	background-size: 12px;
-	border: none;
-}
-
 #fundSelectionForm #majorcategory a {
+	line-height: 1.4em;
 	-webkit-transition: color .3s ease-in-out;
 	transition: color .3s ease-in-out;
 	width: 25%;
@@ -115,6 +116,17 @@
 
 #fundSelectionForm #majorcategory a:hover {
 	color: #981e32;
+}
+
+#fundSelectionForm #majorcategory a.search {
+	background: transparent url(../images/ico/search-gry.png) no-repeat center center;
+	background-size: 12px;
+}
+
+#fundSelectionForm #majorcategory a.search.active,
+#fundSelectionForm #majorcategory a.search:hover {
+	background: transparent url(../images/ico/search-crm.png) no-repeat center center;
+	background-size: 12px;
 }
 
 #fundSelectionForm #majorcategory span {
@@ -151,30 +163,6 @@
 	font-weight: 700;
 }
 
-#fundSelectionForm #majorcategory a.search {
-	width: 12px;
-	height: 12px;
-}
-
-#fundSelectionForm input:focus {
-	width: 100%;
-	height: 50px;
-	height: 35px;
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	text-indent: 10px;
-	text-transform: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	box-shadow: none;
-	border: none;
-	border: 1px solid #ebe7e8;
-	border-radius: 2px;
-	outline: none;
-}
-
 #fundSelectionForm input[type="text"]:hover,
 #fundSelectionForm select:hover {
 	border: 1px solid #d1d3d4;
@@ -190,17 +178,10 @@
 	display: none;
 }
 
-#fundSelectionForm select.fund {
-	background: #fff url(../images/ico/arrow-down-gry.png) no-repeat calc(100% - 16px) calc(100% - 50%);
-	background-size: 12px;
-	-webkit-transition: background-color .3s ease-in-out, color .3s ease-in-out;
-	transition: background-color .3s ease-in-out, color .3s ease-in-out;
-}
-
-#fundSelectionForm input.search,
-#fundSelectionForm a.search {
+#fundSelectionForm input.search {
 	background: transparent url(../images/ico/search-gry.png) no-repeat 12px center;
 	background-size: 12px;
+	background-position-x: 6px;
 }
 
 #fundSelectionForm input.left,
@@ -224,13 +205,6 @@
 
 #fundSelectionForm input.search:focus {
 	background: #94192b url(../images/ico/search-wht.png) no-repeat 16px center;
-}
-
-#fundSelectionForm select.fund {
-	background-size: 12px;
-	-webkit-transition: background-color .3s ease-in-out, color .3s ease-in-out;
-	transition: background-color .3s ease-in-out, color .3s ease-in-out;
-	padding-right: 35px;
 }
 
 #fundSelectionForm .input-group {
@@ -437,10 +411,6 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: reverse;
-	-ms-flex-direction: row-reverse;
-	flex-direction: row-reverse;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	box-sizing: border-box;
@@ -464,7 +434,7 @@
 }
 
 #fundSelectionForm #selectedFunds {
-	margin: 0 0 0 0;
+	margin: 0 0 20px 0;
 	list-style-type: none;
 	padding: 0;
 }
@@ -484,7 +454,6 @@
 #fundSelectionForm #selectedFunds li span.left {
 	padding-right: 20px;
 	font-weight: 700;
-	font-weight: 800;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
@@ -516,6 +485,120 @@
 	width: 0;
 	top: -8px;
 	left: 7px;
+}
+
+#fundSelectionForm .help-text-box {
+	background: #981e32;
+	color: #e6e7e8;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	position: relative;
+	padding: 10px 10px 10px 20px;
+	border-radius: 2px;
+	border: #981e32 solid 1px;
+	margin-top: 10px;
+	font-size: 12px;
+}
+
+#fundSelectionForm .help-text-box span.left {
+	padding-right: 20px;
+	font-weight: 800;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	font-size: 105%;
+	width: 100%;
+}
+
+#fundSelectionForm .help-text-box span.right {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-right: 20px;
+}
+
+#fundSelectionForm .help-text-caret {
+	width: 0;
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 7px solid #981e32;
+	margin-top: 0;
+	margin-left: calc(10% - 7px);
+	margin-bottom: 10px;
+}
+
+#fundSelectionForm .help-text .close a {
+	background: url(../images/ico/close-wht.png) no-repeat center center;
+	background-size: 12px;
+}
+
+#fundSelectionForm .additional-info {
+	font-size: 90%;
+	margin-bottom: 20px;
+}
+
+#fundSelectionForm .additional-info .additional-info-header {
+	font-weight: 700;
+	font-size: 12px;
+}
+
+#fundSelectionForm .additional-info input[type="checkbox"] {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 20px;
+	flex: 0 0 20px;
+}
+
+#fundSelectionForm .additional-info input[type="checkbox"] + label:before {
+	border: 1px solid rgba(0, 0, 0, .2);
+	content: "\00a0";
+	display: inline-block;
+	font: 16px/1em sans-serif;
+	height: 15px;
+	margin: 0 .25em 0 0;
+	padding: 0;
+	vertical-align: top;
+	width: 15px;
+}
+
+#fundSelectionForm .additional-info input[type="checkbox"]:checked + label:before {
+	background: #981e32 url(../images/ico-check-wht.png) center center no-repeat;
+	color: #fff;
+	border: 1px solid #981e32;
+	background-size: 12px;
+	text-align: center;
+}
+
+#fundSelectionForm .additional-info input[type="checkbox"]:checked + label:after {
+	font-weight: 700;
+}
+
+#fundSelectionForm .additional-info input[type="checkbox"] {
+	display: none;
+}
+
+#fundSelectionForm .additional-info span {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin-left: 10px;
+	line-height: 2em;
+	margin-bottom: 5px;
+}
+
+#fundSelectionForm .additional-info label {
+	-webkit-box-flex: 2;
+	-ms-flex: 2;
+	flex: 2;
+	margin-left: 5px;
+	font-size: 1em;
 }
 
 #fundSelectionForm .hidden {
@@ -577,7 +660,7 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	margin-top: 40px;
+	margin-top: 20px;
 	-webkit-box-pack: end;
 	-ms-flex-pack: end;
 	justify-content: flex-end;
@@ -628,6 +711,9 @@
 
 #fundSelectionForm span.center,
 #fundSelectionForm span.close {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;
 	font-size: 12px;
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -659,6 +745,24 @@
 	padding: 15px 15px 15px 15px;
 }
 
+#fundSelectionForm .disclaimer {
+	line-height: 1.3em;
+}
+
+#fundSelectionForm .disclaimer.total {
+	margin-bottom: 20px;
+}
+
+#fundSelectionForm .disclaimer.total .first-sentence {
+	color: #981e32;
+	font-weight: 600;
+}
+
+#fundSelectionForm .disclaimer.credit-card {
+	font-style: italic;
+	font-size: 75%;
+}
+
 @media (max-width: 800px) {
 
 	#fundSelectionForm button.amount-selection {
@@ -669,13 +773,17 @@
 
 @media (max-width: 420px) {
 
+	#fundSelectionForm .additional-info {
+		font-size: 65%;
+	}
+
 	#fundSelectionForm button.amount-selection {
 		width: calc(33% - 5px);
 	}
 
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
+@media screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 0) {
 
 	#fundSelectionForm select,
 	#fundSelectionForm textarea,

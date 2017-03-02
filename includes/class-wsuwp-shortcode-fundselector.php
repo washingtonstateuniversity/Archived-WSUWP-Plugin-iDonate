@@ -60,9 +60,18 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			'unit_category' => $args['unit_category'],
 		));
 
-		$unit_included = ! empty( $args['unit_taxonomy'] ) && ! empty( $args['unit_category'] );
-
 		$return_string = '<div id="fundSelectionForm"><div id="firstform">';
+
+		$return_string .= '	<div class="help-text" style="opacity:0;display:none;">
+						 		<div class="help-text-box">
+									<span class="left">Thank you! You can add more funds from these categories:</span>
+									<span class="close remove"><a href="#"></a></span>
+								</div>
+								<div class="help-text-caret"></div>
+							</div>
+						';
+
+		$unit_included = ! empty( $args['unit_taxonomy'] ) && ! empty( $args['unit_category'] );
 
 		$unit_title = ! empty( $args['unit_title'] ) ? $args['unit_title'] : 'Unit Priorities';
 
@@ -76,7 +85,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_programs" href="#">Programs</a>
 			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_colleges" href="#">Colleges</a>
 			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_campuses" href="#">Campuses</a>
-            <span><a class="search" role="button" href="#"></a></span>
+            <a class="search" role="button" href="#"></a>
 		</div>';
 
 		// Unit Priorities Tab
@@ -148,11 +157,11 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Dollar Amount Selectors
 		$return_string .= '
 		<div class="amountwrapper wrapper" style="opacity:0;display:none;" role="group">
-			<button type="button" class="amount-selection btn btn-default other" data-amount="25" >OTHER</button>
-			<button type="button" class="amount-selection btn btn-default" data-amount="25" >$25</button>
-			<button type="button" class="amount-selection btn btn-default" data-amount="50">$50</button>
-			<button type="button" class="amount-selection btn btn-default" data-amount="100">$100</button>
 			<button type="button" class="amount-selection btn btn-default" data-amount="2000">$2000</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="100">$100</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="50">$50</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="25" >$25</button>
+			<button type="button" class="amount-selection btn btn-default other" data-amount="25" >OTHER</button>
 			<div class="input-group otherprice" style="opacity:0; display:none;">
 				<div class="input-group-addon">$</div>
 				<!-- Maximum length of 8 includes cents (.xx) -->
@@ -176,16 +185,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		</ul>
 		';
 
-		// Total Amount information
-		$return_string .= '
-		<div class="disclaimer total" style="display:none;">Thank you for your donation of $<span id="totalAmount"></span>. When you proceed to checkout, you will be sent to our payment processing service.</div>
-		';
-
-		// Credit Card Disclaimer
-		$return_string .= '
-		<div class="disclaimer creditcard" style="display:none;">Please note: The WSU Foundation does not retain your credit card information after the processing of your donation is complete.</div>
-		';
-
 		// Scholarship Support Checkbox
 		$scholarship_fund = $this->wsuf_fundselector_funds_get_single_scholarship_fund( $args['unit_scholarship_category'] );
 
@@ -196,24 +195,42 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			$scholarship_title = sanitize_text_field( $scholarship_fund['title'] );
 
 			$return_string .= '
-			<input type="checkbox" id="genScholarship" value="scholarship_check" data-designation_id="' . $scholarship_des_id . '" data-fund_name="' . $scholarship_name . '" data-amount=10 > 
-			<label for="genScholarship">' . $scholarship_description . ' (' . $scholarship_title  . ').</label>
+			<div class="additional-info" style="display:none;">
+				<span>
+					<input type="checkbox" id="genScholarship" value="scholarship_check" data-designation_id="' . $scholarship_des_id . '" data-fund_name="' . $scholarship_name . '" data-amount=10 > 
+					<label for="genScholarship">' . $scholarship_description . ' (' . $scholarship_title  . ').</label>
+				</span>
+			</div>
 			';
 		}
 
 		$return_string .= '
-		<div class="gift-planning">
-			<div class="gift-planning-header">Is WSU in your Will?</div>
+		<div class="additional-info gift-planning" style="display:none;">
+			<div class="additional-info-header">Is WSU in your Will?</div>
 			<p>Charitable gifts from estates and other planned gifts play an integral role in the future of Washington State University. The WSU Foundation offers several tax-wise giving options to support WSU’s mission while fulfilling your personal philanthropic goals.</p>
-			<input type="checkbox" id="gpInWill"> 
-			<label for="gpInWill">I have included the WSU Foundation in my Will or other estate plans.</label>
-			<input type="checkbox" id="gpMoreInfo"> 
-			<label for="genScholarship">I am considering including the WSU Foundation in my Will or other estate plans. Please send me information.</label>
+            <span>
+            <input type="checkbox" id="gpInWill"> 
+			<label for="gpInWill">
+			I have included the WSU Foundation in my Will or other estate plans.</label></span>
+			<span>
+            <input type="checkbox" id="gpMoreInfo">
+            <label for="gpMoreInfo"> 
+			I am considering including the WSU Foundation in my Will or other estate plans. Please send me information.</label></span>
 		</div>
 		';
 
+		// Total Amount information
+		$return_string .= '
+		<div class="disclaimer total" style="display:none;"><span class="first-sentence">Your generous donation will total $<span id="totalAmount"></span> today.</span> When you proceed to checkout, you will be sent to our payment processing service.</div>
+		';
+
 		// Continue button
-		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Proceed to Checkout</a></p></div>';
+		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Proceed to Checkout</a></p>';
+
+		// Credit Card Disclaimer
+		$return_string .= '
+		<div class="disclaimer credit-card" style="display:none;">In accordance with <a href="https://www.pcisecuritystandards.org/">PCI compliance requirements</a>, the WSU Foundation does not store or retain your credit card information.</div></div>
+		';
 
 		if ( 'staging' === $args['server'] ) {
 			$url = 'https://staging-embed.idonate.com/idonate.js';
