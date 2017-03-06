@@ -94,30 +94,12 @@
 		a:hover {
 			color:#981e32;
 		}
-		a.search {
-			background:transparent url(../images/ico/search-gry.png) no-repeat center center;
-			background-size: 12px;
-		}	
-		a.search.active, a.search:hover {
-			background:transparent url(../images/ico/search-crm.png) no-repeat center center;
-			background-size: 12px;
-		}	
-		span {
-			width:25%;
-			color:#4c4c4c;
-			display:flex;
-			justify-content:center;
-			justify-content:flex-end;
-			padding:6px;
-			text-transform:uppercase;
-			font-weight:400;
-			font-size:12px;
-			margin-bottom:-1px;
-			border-bottom:1px solid #d1d3d4;
-			padding-right:20px;
-			a {
-				border-bottom:none;
-			}
+		a.search:after {
+			content: "$";
+			font-family: Spine-Icons;
+			margin: 0 -.25rem 0 .5rem;
+			position: relative;
+			top: .125rem;
 		}
 		a.active {
 			border-left:1px solid #d1d3d4;
@@ -415,13 +397,13 @@
         input[type="checkbox"] + label:before {
           border: 1px solid rgba(0,0,0,0.2);
           content: "\00a0";
-          display: inline-block;
           font: 16px/1em sans-serif;
           height: 15px;
-          margin: 0 .25em 0 0;
+          margin: 0 .5em 0 0;
           padding: 0;
           vertical-align: top;
           width: 15px;
+		  float: left;
         }
         input[type="checkbox"]:checked + label:before {
           background: #981e32 url(../images/ico-check-wht.png) center center no-repeat;
@@ -436,9 +418,22 @@
         input[type="checkbox"] {
           display: none;
         }
-
-        span { display: flex; margin-left: 10px; line-height: 2em; margin-bottom: 5px; }
-        label { flex: 2; margin-left: 5px; font-size:1em; }
+        p {
+            padding-bottom: 2em;
+        }
+        span { 
+            display: flex; 
+            margin-left: 10px; 
+            line-height: 2em; 
+            margin-bottom: 10px; 
+            margin-top: -4px;
+        }
+        label { 
+			flex: 2; 
+			margin-left: 5px; 
+			font-size:1em; 
+  			padding-right: 10px;
+		}
     }
 	.hidden {
 		display:none;
@@ -474,7 +469,8 @@
 	}
 	.continuebutton {
 		display:flex;
-		margin-top:20px;
+		margin-top:40px;
+        margin-bottom:40px;
 		justify-content:flex-end;
 	}
 	label, legend {
