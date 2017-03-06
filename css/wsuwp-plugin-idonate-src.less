@@ -399,7 +399,7 @@
           content: "\00a0";
           font: 16px/1em sans-serif;
           height: 15px;
-          margin: 0 .25em 0 0;
+          margin: 0 .5em 0 0;
           padding: 0;
           vertical-align: top;
           width: 15px;
@@ -418,7 +418,16 @@
         input[type="checkbox"] {
           display: none;
         }
-        span { display: flex; margin-left: 10px; line-height: 2em; margin-bottom: 5px; }
+        p {
+            padding-bottom: 2em;
+        }
+        span { 
+            display: flex; 
+            margin-left: 10px; 
+            line-height: 2em; 
+            margin-bottom: 10px; 
+            margin-top: -4px;
+        }
         label { 
 			flex: 2; 
 			margin-left: 5px; 
@@ -460,7 +469,8 @@
 	}
 	.continuebutton {
 		display:flex;
-		margin-top:20px;
+		margin-top:40px;
+        margin-bottom:40px;
 		justify-content:flex-end;
 	}
 	label, legend {
