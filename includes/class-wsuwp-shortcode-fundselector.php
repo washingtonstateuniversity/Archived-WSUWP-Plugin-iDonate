@@ -85,7 +85,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_programs" href="#">Programs</a>
 			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_colleges" href="#">Colleges</a>
 			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_campuses" href="#">Campuses</a>
-            <a class="search" role="button" href="#"></a>
+            <a class="search" role="button" href="#"><div class="search-text">Search</div></a>
 		</div>';
 
 		// Unit Priorities Tab

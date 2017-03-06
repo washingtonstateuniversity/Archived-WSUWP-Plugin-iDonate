@@ -118,40 +118,12 @@
 	color: #981e32;
 }
 
-#fundSelectionForm #majorcategory a.search {
-	background: transparent url(../images/ico/search-gry.png) no-repeat center center;
-	background-size: 12px;
-}
-
-#fundSelectionForm #majorcategory a.search.active,
-#fundSelectionForm #majorcategory a.search:hover {
-	background: transparent url(../images/ico/search-crm.png) no-repeat center center;
-	background-size: 12px;
-}
-
-#fundSelectionForm #majorcategory span {
-	width: 25%;
-	color: #4c4c4c;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-	-webkit-box-pack: end;
-	-ms-flex-pack: end;
-	justify-content: flex-end;
-	padding: 6px;
-	text-transform: uppercase;
-	font-weight: 400;
-	font-size: 12px;
-	margin-bottom: -1px;
-	border-bottom: 1px solid #d1d3d4;
-	padding-right: 20px;
-}
-
-#fundSelectionForm #majorcategory span a {
-	border-bottom: none;
+#fundSelectionForm #majorcategory a.search:after {
+	content: "$";
+	font-family: Spine-Icons;
+	margin: 0 -.25rem 0 .5rem;
+	position: relative;
+	top: .125rem;
 }
 
 #fundSelectionForm #majorcategory a.active {
