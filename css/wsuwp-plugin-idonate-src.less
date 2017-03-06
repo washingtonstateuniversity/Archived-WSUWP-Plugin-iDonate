@@ -397,13 +397,13 @@
         input[type="checkbox"] + label:before {
           border: 1px solid rgba(0,0,0,0.2);
           content: "\00a0";
-          display: inline-block;
           font: 16px/1em sans-serif;
           height: 15px;
           margin: 0 .25em 0 0;
           padding: 0;
           vertical-align: top;
           width: 15px;
+		  float: left;
         }
         input[type="checkbox"]:checked + label:before {
           background: #981e32 url(../images/ico-check-wht.png) center center no-repeat;
@@ -418,9 +418,13 @@
         input[type="checkbox"] {
           display: none;
         }
-
         span { display: flex; margin-left: 10px; line-height: 2em; margin-bottom: 5px; }
-        label { flex: 2; margin-left: 5px; font-size:1em; }
+        label { 
+			flex: 2; 
+			margin-left: 5px; 
+			font-size:1em; 
+  			padding-right: 10px;
+		}
     }
 	.hidden {
 		display:none;

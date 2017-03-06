@@ -198,7 +198,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			<div class="additional-info" style="display:none;">
 				<span>
 					<input type="checkbox" id="genScholarship" value="scholarship_check" data-designation_id="' . $scholarship_des_id . '" data-fund_name="' . $scholarship_name . '" data-amount=10 > 
-					<label for="genScholarship">' . $scholarship_description . ' (' . $scholarship_title  . ').</label>
+					<label for="genScholarship"><span>' . $scholarship_description . ' (' . $scholarship_title  . ').</span></label>
 				</span>
 			</div>
 			';
@@ -209,13 +209,17 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			<div class="additional-info-header">Is WSU in your Will?</div>
 			<p>Charitable gifts from estates and other planned gifts play an integral role in the future of Washington State University. The WSU Foundation offers several tax-wise giving options to support WSU’s mission while fulfilling your personal philanthropic goals.</p>
             <span>
-            <input type="checkbox" id="gpInWill"> 
-			<label for="gpInWill">
-			I have included the WSU Foundation in my Will or other estate plans.</label></span>
+            	<input type="checkbox" id="gpInWill"> 
+				<label for="gpInWill">
+					<span>I have included the WSU Foundation in my Will or other estate plans.</span>
+				</label>
+			</span>
 			<span>
-            <input type="checkbox" id="gpMoreInfo">
-            <label for="gpMoreInfo"> 
-			I am considering including the WSU Foundation in my Will or other estate plans. Please send me information.</label></span>
+            	<input type="checkbox" id="gpMoreInfo">
+            	<label for="gpMoreInfo"> 
+					<span>I am considering including the WSU Foundation in my Will or other estate plans. Please send me information.</span>
+				</label>
+			</span>
 		</div>
 		';
 

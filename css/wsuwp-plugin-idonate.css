@@ -531,13 +531,13 @@
 #fundSelectionForm .additional-info input[type="checkbox"] + label:before {
 	border: 1px solid rgba(0, 0, 0, .2);
 	content: "\00a0";
-	display: inline-block;
 	font: 16px/1em sans-serif;
 	height: 15px;
 	margin: 0 .25em 0 0;
 	padding: 0;
 	vertical-align: top;
 	width: 15px;
+	float: left;
 }
 
 #fundSelectionForm .additional-info input[type="checkbox"]:checked + label:before {
@@ -571,6 +571,7 @@
 	flex: 2;
 	margin-left: 5px;
 	font-size: 1em;
+	padding-right: 10px;
 }
 
 #fundSelectionForm .hidden {
