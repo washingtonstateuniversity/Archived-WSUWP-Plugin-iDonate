@@ -232,7 +232,7 @@ function loadPriorities($list, category, subcategory)
 			$list.append('<option disabled selected value> SELECT A FUND </option>');
 			jQuery.each(json, function(key, value) {   
 				$list
-				.append(jQuery('<option>', { value : value["designationId"] })
+				.append(jQuery('<option>', { value : value["designation_id"] })
 				.text( wsuwpUtils.htmlDecode(value["fund_name"]) ) ); 
 			});
 
