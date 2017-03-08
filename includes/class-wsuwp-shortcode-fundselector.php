@@ -24,8 +24,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		add_shortcode( 'idonate_fundselector', array( $this, 'fundselector_create_shortcode' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wsuf_fundselector_enqueue_scripts' ), 99 );
-		add_action( 'rest_api_init', array( $this, 'wsuf_fundselector_register_designation_id' ) );
-		add_action( 'rest_api_init', array( $this, 'wsuf_fundselector_register_endpoint_get_funds' ) );
 	}
 
 	// [idonate_fundselector embed="iDonate-embed-guid" server="production/staging"]
@@ -271,64 +269,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		wp_enqueue_script( 'wsuf_fundselector_jquery_editable', plugins_url( '/jquery.editable.min.js', __FILE__ ), array( 'jquery' ), null, true );
 
 		wp_enqueue_style( 'wsuf_fundselector', plugins_url( 'css/wsuwp-plugin-idonate.css', dirname( __FILE__ ) ), array( 'spine-theme' ), null );
-	}
-
-	/**
-	* Add the designation ID to the Fund response
-	**/
-	function wsuf_fundselector_register_designation_id() {
-		register_rest_field( 'idonate_fund',
-			'designationId',
-			array(
-				'get_callback'    => array( $this, 'wsuf_fundselector_get_post_meta' ),
-				'update_callback' => null,
-				'schema'          => null,
-			)
-		);
-	}
-
-	/**
-	* Get the value for the specified field_name argument
-	*
-	* @param array $object Details of current post.
-	* @param string $field_name Name of field.
-	* @param WP_REST_Request $request Current request
-	*
-	* @return mixed
-	*/
-	function wsuf_fundselector_get_post_meta( $object, $field_name, $request ) {
-		return get_post_meta( $object['id'], $field_name, true );
-	}
-
-	/**
-	* Add a new custom REST endpoint to get funds for a specific taxonomy and category by slug
-	*
-	* @since 0.0.5
-	**/
-	function wsuf_fundselector_register_endpoint_get_funds() {
-		register_rest_route( 'idonate_fundselector/v1', '/funds/(?P<category>.*?)/(?P<subcategory>.*)',
-			array(
-				'methods' => 'GET',
-				'callback' => array( $this, 'wsuf_fundselector_funds_get_funds_rest' ),
-			)
-		);
-	}
-
-	/**
-	* Get a list of funds for a specific taxonomy and category via the REST API
-	*
-	* @param WP_Rest_Request $data data from the REST request
-	*
-	* @return array $return_array (from wsuf_fundselector_funds_get_funds)
-	*
-	* @since 0.0.5
-	*/
-	function wsuf_fundselector_funds_get_funds_rest( $data ) {
-
-		$category = $data['category']; // 'idonate_priorities';
-		$subcategory = $data['subcategory'];
-
-		return $this->wsuf_fundselector_funds_get_funds( $category, $subcategory );
 	}
 
 	/**
