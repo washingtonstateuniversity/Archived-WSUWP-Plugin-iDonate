@@ -217,8 +217,30 @@ jQuery(document).ready(function($) {
 
 
 	loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
-	loadPriorities($("#unit-priorities"), wpData.unit_taxonomy, wpData.unit_category);
+	loadPriorities($("#unit-priorities"), wpData.unit_taxonomy, wpData.unit_category)
+	.done(function() {
+		loadFundFromDesignationID($("#unit-priorities"), "d3f34029-cf8c-4051-a5f4-fefbdfeb49d5");
+	});
 });
+
+function loadFundFromDesignationID($list, designationId){
+	
+	var $des = wsuwpUtils.findElementbyDesignation($list, designationId);
+
+	// Check if the designation already exists in the priorities list and select item
+	if($des)
+	{
+		$des.prop("selected", true);
+		var fundName = $des.text();
+		jQuery("#inpDesignationId").text(designationId);
+		jQuery("#inpFundName").text(fundName);
+		showAmountZone();
+	}
+	else // Otherwise add it to the priorities list and select it
+	{
+
+	}
+}
 
 function loadPriorities($list, category, subcategory)
 {
@@ -226,8 +248,8 @@ function loadPriorities($list, category, subcategory)
 		// GET /wp-json/idonate_fundselector/v1/funds/category/subcategory (e.g. GET /wp-json/idonate_fundselector/v1/funds/idonate_priorities/idonate_priorities)
 		var restQueryUrl = wpData.plugin_url_base + 'funds/' + category + '/' + subcategory;
 		
-		jQuery.getJSON( restQueryUrl )
-		.done(function( json ) { 
+		return jQuery.getJSON( restQueryUrl )
+		.then(function( json ) { 
 			$list.empty();
 			$list.append('<option disabled selected value> SELECT A FUND </option>');
 			jQuery.each(json, function(key, value) {   
@@ -242,6 +264,9 @@ function loadPriorities($list, category, subcategory)
 			}
 		})
 	}
+
+	//return an already resolved promise (http://stackoverflow.com/a/33656679)
+	return $.when();
 }
 
 function addFundAction(scholarship)

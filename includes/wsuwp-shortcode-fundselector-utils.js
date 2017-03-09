@@ -72,6 +72,30 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			 return duplicate;
 		},
 
+		/**
+		 * Retrieves the option element with a selected designation iDonateEmbedLoad
+		 * 
+		 * @param {jQuery} $select The jQuery object that contains option elements (usually a select dropdown)
+		 * @param {string} designationId The designation ID of the element you want to find
+		 * 
+		 * @returns {jQuery} The jQuery object if the option element is found or null if not found
+		 */
+		findElementbyDesignation: function ($select, designationId)
+		{
+			var $element = null;
+			
+			$select.find("option").each(function()
+			{
+				if(designationId === jQuery(this).attr("value"))
+				{ 
+					$element = jQuery(this);
+					return false; //break out of the each loop
+				}
+			});
+
+			 return $element;
+		},
+
 		validateAmount: function (intendedAmount)
 		{
 			var validMoneyAmount = false;
