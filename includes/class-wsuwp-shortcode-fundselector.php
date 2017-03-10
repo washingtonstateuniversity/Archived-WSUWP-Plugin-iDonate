@@ -370,4 +370,39 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		return $return_fund;
 	}
+
+	/**
+	* Get a list of all funds stored in the wsuf fundselector funds table
+	*
+	* @return array $return_array
+	*
+	* @since 0.0.17
+	*/
+	function wsuf_fundselector_funds_get_fund_name( $des_id ) {
+		$fund_list = get_posts(array(
+			'post_type'   => 'idonate_fund',
+			'post_status' => 'any',
+			'posts_per_page' => -1, // Get all posts
+			'meta_query' => array(
+					array(
+						'key' => 'designationId',
+						'value' => $des_id,
+						'compare' => '=',
+					),
+			),
+		));
+
+		$return_array = array();
+
+		//loop over each post
+		foreach ( $fund_list as $p ) {
+			//get the meta you need form each post
+			$des_id = get_post_meta( $p->ID, 'designationId' , true );
+			$post_title = $p->post_title;
+			//do whatever you want with it
+			$return_array[] = array( 'fund_name' => $post_title, 'designation_id' => $des_id );
+		}
+
+		return $return_array;
+	}
 }
