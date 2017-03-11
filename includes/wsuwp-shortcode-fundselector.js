@@ -214,11 +214,22 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
-	loadPriorities($("#unit-priorities"), wpData.unit_taxonomy, wpData.unit_category)
-	.done(function() {
-		loadFundFromDesignationID($("#unit-priorities"), wpData.unit_designation);
-	});
+	// if a unit is specified
+	if(wpData.unit_taxonomy && wpData.unit_category)
+	{
+		loadPriorities($("#unit-priorities"), wpData.unit_taxonomy, wpData.unit_category)
+		.done(function() {
+			loadFundFromDesignationID($("#unit-priorities"), wpData.unit_designation);
+		});
+		loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
+	}
+	else
+	{
+		loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities")
+		.done(function() {
+			loadFundFromDesignationID($("#priorities"), wpData.unit_designation);
+		});
+	}
 });
 
 function loadFundFromDesignationID($list, designationId){
@@ -247,7 +258,7 @@ function loadFundFromDesignationID($list, designationId){
 					var $fund = jQuery('<option>', { value : json[0]["designation_id"] })
 								.text( wsuwpUtils.htmlDecode(json[0]["fund_name"]) );
 					$list.append($fund);
-					
+
 					// Select and show amount buttons
 					wsuwpUtils.selectFundInDropdown($fund, designationId); 
 				}
@@ -280,7 +291,7 @@ function loadPriorities($list, category, subcategory)
 	}
 
 	//return an already resolved promise (http://stackoverflow.com/a/33656679)
-	return $.when();
+	return jQuery.when();
 }
 
 function addFundAction(scholarship)
