@@ -24,6 +24,7 @@ class WSUWP_Plugin_iDonate_Custom_REST_API {
 
 		add_action( 'rest_api_init', array( $this, 'wsuf_fundselector_register_designation_id' ) );
 		add_action( 'rest_api_init', array( $this, 'wsuf_fundselector_register_endpoint_get_funds' ) );
+		add_action( 'rest_api_init', array( $this, 'wsuf_fundselector_register_endpoint_get_fund_by_des_id' ) );
 
 		/** Loads the fundselector shortcode class file. */
 		require_once( dirname( __FILE__ ) . '/class-wsuwp-shortcode-fundselector.php' );
@@ -87,5 +88,35 @@ class WSUWP_Plugin_iDonate_Custom_REST_API {
 		$subcategory = $data['subcategory'];
 
 		return $this->fundselector_shortcode->wsuf_fundselector_funds_get_funds( $category, $subcategory );
+	}
+
+	/**
+	* Add a new custom REST endpoint to get a fund name for a specific designation ID by slug
+	*
+	* @since 0.0.17
+	**/
+	function wsuf_fundselector_register_endpoint_get_fund_by_des_id() {
+		register_rest_route( 'idonate_fundselector/v1', '/fund/(?P<designationId>.*?)',
+			array(
+				'methods' => 'GET',
+				'callback' => array( $this, 'wsuf_fundselector_funds_get_fund_by_des_id_rest' ),
+			)
+		);
+	}
+
+	/**
+	* Gets a fund for a specific designation ID passed via the REST API
+	*
+	* @param WP_Rest_Request $data data from the REST request
+	*
+	* @return array $return_array (from wsuf_fundselector_funds_get_funds)
+	*
+	* @since 0.0.17
+	*/
+	function wsuf_fundselector_funds_get_fund_by_des_id_rest( $data ) {
+
+		$designation_id = $data['designationId'];
+
+		return $this->fundselector_shortcode->wsuf_fundselector_funds_get_fund_name( $designation_id );
 	}
 }
