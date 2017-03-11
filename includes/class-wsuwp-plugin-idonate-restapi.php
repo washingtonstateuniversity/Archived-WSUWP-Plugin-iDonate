@@ -25,6 +25,10 @@ class WSUWP_Plugin_iDonate_Custom_REST_API {
 		add_action( 'rest_api_init', array( $this, 'wsuf_fundselector_register_designation_id' ) );
 		add_action( 'rest_api_init', array( $this, 'wsuf_fundselector_register_endpoint_get_funds' ) );
 
+		/** Loads the fundselector shortcode class file. */
+		require_once( dirname( __FILE__ ) . '/class-wsuwp-shortcode-fundselector.php' );
+
+		$this->fundselector_shortcode = new WSUWP_Plugin_iDonate_ShortCode_Fund_Selector();
 	}
 
 	/**
@@ -82,11 +86,6 @@ class WSUWP_Plugin_iDonate_Custom_REST_API {
 		$category = $data['category'];
 		$subcategory = $data['subcategory'];
 
-		/** Loads the fundselector shortcode class file. */
-		require_once( dirname( __FILE__ ) . '/class-wsuwp-shortcode-fundselector.php' );
-
-		$fundselector_shortcode = new WSUWP_Plugin_iDonate_ShortCode_Fund_Selector();
-
-		return $fundselector_shortcode->wsuf_fundselector_funds_get_funds( $category, $subcategory );
+		return $this->fundselector_shortcode->wsuf_fundselector_funds_get_funds( $category, $subcategory );
 	}
 }
