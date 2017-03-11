@@ -219,7 +219,7 @@ jQuery(document).ready(function($) {
 	loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
 	loadPriorities($("#unit-priorities"), wpData.unit_taxonomy, wpData.unit_category)
 	.done(function() {
-		loadFundFromDesignationID($("#unit-priorities"), "d3f34029-cf8c-4051-a5f4-fefbdfeb49d5");
+		loadFundFromDesignationID($("#unit-priorities"), wpData.unit_designation);
 	});
 });
 

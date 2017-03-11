@@ -51,11 +51,14 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$args['unit_title'] = sanitize_text_field( $args['unit_title'] );
 		$args['unit_description'] = esc_html( $args['unit_description'] );
 
+		$des_id_query_param = ! empty( $_GET['fund'] ) ? sanitize_key( $_GET['fund'] ) : null;
+
 		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
 			'request_url_base' => esc_url( $args['rest_url'] . 'wp/v2/' ),
 			'plugin_url_base' => esc_url( $args['rest_url'] . 'idonate_fundselector/v1/' ),
 			'unit_taxonomy' => $args['unit_taxonomy'],
 			'unit_category' => $args['unit_category'],
+			'unit_designation' => $des_id_query_param,
 		));
 
 		$return_string = '<div id="fundSelectionForm"><div id="firstform">';
