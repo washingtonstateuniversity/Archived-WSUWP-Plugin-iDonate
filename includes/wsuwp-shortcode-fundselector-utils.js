@@ -189,8 +189,19 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 		{
 			var designations = wsuwpUtils.getDesignationList(jQuery("#selectedFunds"));
 			jQuery("#totalAmount").text(wsuwpUtils.getDonationTotal(designations).toFixed(2));
-		}
+		},
 
+		/**
+		 * Selects a fund in a dropdown select list and shows the amount zone
+		 */
+		selectFundInDropdown: function($fund, designationId)
+		{
+			$fund.prop("selected", true);
+			var fundName = $fund.text();
+			jQuery("#inpDesignationId").text(designationId);
+			jQuery("#inpFundName").text(fundName);
+			showAmountZone();
+		}
 
 	}
 

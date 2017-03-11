@@ -214,8 +214,6 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-
-
 	loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
 	loadPriorities($("#unit-priorities"), wpData.unit_taxonomy, wpData.unit_category)
 	.done(function() {
@@ -225,20 +223,36 @@ jQuery(document).ready(function($) {
 
 function loadFundFromDesignationID($list, designationId){
 	
-	var $des = wsuwpUtils.findElementbyDesignation($list, designationId);
-
-	// Check if the designation already exists in the priorities list and select item
-	if($des)
+	if(designationId)
 	{
-		$des.prop("selected", true);
-		var fundName = $des.text();
-		jQuery("#inpDesignationId").text(designationId);
-		jQuery("#inpFundName").text(fundName);
-		showAmountZone();
-	}
-	else // Otherwise add it to the priorities list and select it
-	{
+		var $des = wsuwpUtils.findElementbyDesignation($list, designationId);
 
+		// Check if the designation already exists in the priorities list and select item
+		if($des)
+		{
+			// Select and show amount buttons
+			wsuwpUtils.selectFundInDropdown($des, designationId);
+		}
+		else // Otherwise add it to the priorities list and select it
+		{
+			// Look up the Fund Name by Designation ID
+			// GET /wp-json/idonate_fundselector/v1/fund/designationId (e.g. GET /wp-json/idonate_fundselector/v1/fund/12dc5acc-07ea-4ed3-9c92-4b9ebe7c951c)
+			var restQueryUrl = wpData.plugin_url_base + 'fund/' + designationId;
+			
+			jQuery.getJSON( restQueryUrl )
+			.then(function( json ) { 			
+				if(json.length > 0)
+				{
+					// Add to priorities
+					var $fund = jQuery('<option>', { value : json[0]["designation_id"] })
+								.text( wsuwpUtils.htmlDecode(json[0]["fund_name"]) );
+					$list.append($fund);
+					
+					// Select and show amount buttons
+					wsuwpUtils.selectFundInDropdown($fund, designationId); 
+				}
+			})
+		}
 	}
 }
 
