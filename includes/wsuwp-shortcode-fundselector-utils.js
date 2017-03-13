@@ -75,6 +75,30 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			 return duplicate;
 		},
 
+		/**
+		 * Retrieves the option element with a selected designation iDonateEmbedLoad
+		 * 
+		 * @param {jQuery} $select The jQuery object that contains option elements (usually a select dropdown)
+		 * @param {string} designationId The designation ID of the element you want to find
+		 * 
+		 * @returns {jQuery} The jQuery object if the option element is found or null if not found
+		 */
+		findElementbyDesignation: function ($select, designationId)
+		{
+			var $element = null;
+			
+			$select.find("option").each(function()
+			{
+				if(designationId === jQuery(this).attr("value"))
+				{ 
+					$element = jQuery(this);
+					return false; //break out of the each loop
+				}
+			});
+
+			 return $element;
+		},
+
 		validateAmount: function (intendedAmount)
 		{
 			var validMoneyAmount = false;
@@ -168,8 +192,19 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 		{
 			var designations = wsuwpUtils.getDesignationList(jQuery("#selectedFunds"));
 			jQuery("#totalAmount").text(wsuwpUtils.getDonationTotal(designations).toFixed(2));
-		}
+		},
 
+		/**
+		 * Selects a fund in a dropdown select list and shows the amount zone
+		 */
+		selectFundInDropdown: function($fund, designationId)
+		{
+			$fund.prop("selected", true);
+			var fundName = $fund.text();
+			jQuery("#inpDesignationId").text(designationId);
+			jQuery("#inpFundName").text(fundName);
+			showAmountZone();
+		}
 
 	}
 
