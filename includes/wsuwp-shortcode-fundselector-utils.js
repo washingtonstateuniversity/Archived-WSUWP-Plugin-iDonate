@@ -31,7 +31,12 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 					if( !wsuwpUtils.validateAmount(e.value) ){
 						// Revert back to the original value
 						e.target.html(e.old_value);
-						jQuery("#error" + designationId).text("Amount must be between $3 and $100,000. Amount was reset.");
+						var $error = jQuery("#error" + designationId);
+						$error.text("Amount must be between $3 and $100,000. Amount was reset.");
+						showAnything($error);
+						setTimeout(function() {
+							hideAnything($error);
+						}, 2500);
 					}
 					else{
 						e.target.parent().parent().attr("data-amount", e.value);
