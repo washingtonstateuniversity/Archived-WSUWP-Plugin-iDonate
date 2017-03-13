@@ -265,6 +265,7 @@ function resetForm()
 {
 	jQuery("#fundSearch").val("");
 	jQuery('.fund-selection').prop('selectedIndex', 0);
+	jQuery('.category-selection').prop('selectedIndex', 0);
 	setTimeout(function(){ jQuery('.amountwrapper .selected').removeClass('selected'); }, 1300);
 	hideAmountZone();
 	hideother();
