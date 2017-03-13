@@ -415,12 +415,26 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
 	position: relative;
 	padding: 10px 10px 10px 20px;
 	background: #e6e7e8;
 	border-radius: 2px;
 	border: #e6e7e8 solid 1px;
 	margin-top: 10px;
+}
+
+#fundSelectionForm #selectedFunds li span {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
 }
 
 #fundSelectionForm #selectedFunds li span.left {
@@ -745,11 +759,10 @@
 #fundSelectionForm .error {
 	font-size: 90%;
 	color: #c60c30;
-	font-weight: 800;
 }
 
 #fundSelectionForm #errorOtherAmount {
-	margin-left: 7%;
+	margin-left: 15px;
 }
 
 @media (max-width: 800px) {

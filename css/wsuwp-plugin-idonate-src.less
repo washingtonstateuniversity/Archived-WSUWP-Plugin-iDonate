@@ -315,12 +315,17 @@
 		padding:0;
 		li {
 			display:flex;
+			flex-direction: column;
 			position:relative;
 			padding:10px 10px 10px 20px;
 			background:#e6e7e8;
 			border-radius:2px;
 			border:#e6e7e8 solid 1px;
 			margin-top:10px;
+			span {
+				display: flex;
+				flex-direction: row;
+			}
 			span.left {
 				padding-right:20px;
 				font-weight:700;
