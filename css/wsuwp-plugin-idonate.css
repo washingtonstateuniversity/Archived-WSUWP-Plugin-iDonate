@@ -742,6 +742,16 @@
 	font-size: 75%;
 }
 
+#fundSelectionForm .error {
+	font-size: 90%;
+	color: #c60c30;
+	font-weight: 800;
+}
+
+#fundSelectionForm #errorOtherAmount {
+	margin-left: 7%;
+}
+
 @media (max-width: 800px) {
 
 	#fundSelectionForm button.amount-selection {
