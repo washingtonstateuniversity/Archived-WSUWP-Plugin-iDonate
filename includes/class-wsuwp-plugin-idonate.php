@@ -31,6 +31,7 @@ class WSUWP_Plugin_iDonate {
 		self::$instance->custom_posttypes_run();
 		self::$instance->custom_taxonomies_run();
 		self::$instance->fundselector_shortcode_run();
+		self::$instance->fundselector_custom_rest_api_run();
 	}
 
 	/**
@@ -78,6 +79,22 @@ class WSUWP_Plugin_iDonate {
 
 		$fundselector_shortcode = new WSUWP_Plugin_iDonate_ShortCode_Fund_Selector();
 		$fundselector_shortcode->init();
+
+	}
+
+	/**
+	* Creates an instance of the WSUWP_Plugin_iDonate_Custom_REST_API class
+	* and calls its initialization method.
+	*
+	* @since    0.0.17
+	*/
+	private function fundselector_custom_rest_api_run() {
+
+		/** Loads the fundselector shortcode class file. */
+		require_once( dirname( __FILE__ ) . '/class-wsuwp-plugin-idonate-restapi.php' );
+
+		$fundselector_custom_rest_api = new WSUWP_Plugin_iDonate_Custom_REST_API();
+		$fundselector_custom_rest_api->init();
 
 	}
 }

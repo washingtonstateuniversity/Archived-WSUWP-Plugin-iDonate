@@ -24,8 +24,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		add_shortcode( 'idonate_fundselector', array( $this, 'fundselector_create_shortcode' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wsuf_fundselector_enqueue_scripts' ), 99 );
-		add_action( 'rest_api_init', array( $this, 'wsuf_fundselector_register_designation_id' ) );
-		add_action( 'rest_api_init', array( $this, 'wsuf_fundselector_register_endpoint_get_funds' ) );
 	}
 
 	// [idonate_fundselector embed="iDonate-embed-guid" server="production/staging"]
@@ -53,11 +51,14 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$args['unit_title'] = sanitize_text_field( $args['unit_title'] );
 		$args['unit_description'] = esc_html( $args['unit_description'] );
 
+		$des_id_query_param = ! empty( $_GET['fund'] ) ? sanitize_key( $_GET['fund'] ) : null;
+
 		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
 			'request_url_base' => esc_url( $args['rest_url'] . 'wp/v2/' ),
 			'plugin_url_base' => esc_url( $args['rest_url'] . 'idonate_fundselector/v1/' ),
 			'unit_taxonomy' => $args['unit_taxonomy'],
 			'unit_category' => $args['unit_category'],
+			'unit_designation' => $des_id_query_param,
 		));
 
 		$return_string = '<div id="fundSelectionForm"><div id="firstform">';
@@ -274,64 +275,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	}
 
 	/**
-	* Add the designation ID to the Fund response
-	**/
-	function wsuf_fundselector_register_designation_id() {
-		register_rest_field( 'idonate_fund',
-			'designationId',
-			array(
-				'get_callback'    => array( $this, 'wsuf_fundselector_get_post_meta' ),
-				'update_callback' => null,
-				'schema'          => null,
-			)
-		);
-	}
-
-	/**
-	* Get the value for the specified field_name argument
-	*
-	* @param array $object Details of current post.
-	* @param string $field_name Name of field.
-	* @param WP_REST_Request $request Current request
-	*
-	* @return mixed
-	*/
-	function wsuf_fundselector_get_post_meta( $object, $field_name, $request ) {
-		return get_post_meta( $object['id'], $field_name, true );
-	}
-
-	/**
-	* Add a new custom REST endpoint to get funds for a specific taxonomy and category by slug
-	*
-	* @since 0.0.5
-	**/
-	function wsuf_fundselector_register_endpoint_get_funds() {
-		register_rest_route( 'idonate_fundselector/v1', '/funds/(?P<category>.*?)/(?P<subcategory>.*)',
-			array(
-				'methods' => 'GET',
-				'callback' => array( $this, 'wsuf_fundselector_funds_get_funds_rest' ),
-			)
-		);
-	}
-
-	/**
-	* Get a list of funds for a specific taxonomy and category via the REST API
-	*
-	* @param WP_Rest_Request $data data from the REST request
-	*
-	* @return array $return_array (from wsuf_fundselector_funds_get_funds)
-	*
-	* @since 0.0.5
-	*/
-	function wsuf_fundselector_funds_get_funds_rest( $data ) {
-
-		$category = $data['category']; // 'idonate_priorities';
-		$subcategory = $data['subcategory'];
-
-		return $this->wsuf_fundselector_funds_get_funds( $category, $subcategory );
-	}
-
-	/**
 	* Get a list of all categories for a specific taxonomy
 	*
 	* @return array $return_array
@@ -429,5 +372,40 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		return $return_fund;
+	}
+
+	/**
+	* Get a list of all funds stored in the wsuf fundselector funds table
+	*
+	* @return array $return_array
+	*
+	* @since 0.0.17
+	*/
+	function wsuf_fundselector_funds_get_fund_name( $des_id ) {
+		$fund_list = get_posts(array(
+			'post_type'   => 'idonate_fund',
+			'post_status' => 'any',
+			'posts_per_page' => -1, // Get all posts
+			'meta_query' => array(
+					array(
+						'key' => 'designationId',
+						'value' => $des_id,
+						'compare' => '=',
+					),
+			),
+		));
+
+		$return_array = array();
+
+		//loop over each post
+		foreach ( $fund_list as $p ) {
+			//get the meta you need form each post
+			$des_id = get_post_meta( $p->ID, 'designationId' , true );
+			$post_title = $p->post_title;
+			//do whatever you want with it
+			$return_array[] = array( 'fund_name' => $post_title, 'designation_id' => $des_id );
+		}
+
+		return $return_array;
 	}
 }
