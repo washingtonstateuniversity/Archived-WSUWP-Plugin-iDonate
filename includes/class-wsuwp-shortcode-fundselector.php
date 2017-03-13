@@ -134,7 +134,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Categories Select Menu
 		$return_string .= '    
 		<label for="subcategories">Choose a category</label>
-		<select name="subcategories" id="subcategories" class="form-control fund">
+		<select name="subcategories" id="subcategories" class="form-control category-selection fund">
 			<option disabled selected value> SELECT A CATEGORY </option>
 		</select>';
 
