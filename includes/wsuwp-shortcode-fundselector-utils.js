@@ -45,9 +45,12 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 				
 				jQuery(".help-text-caret").delay(1200);
 				
-				for(var i = 0; i < jQuery("#majorcategory a").length - 1; i++)
+				var numCategories = jQuery("#majorcategory a").length;
+				var movementPercentage = numCategories ? 100 / numCategories: 0;
+				
+				for(var i = 0; i < numCategories - 1; i++)
 				{
-					jQuery(".help-text-caret").animate({marginLeft: "+=20%"}, {duration: 500}).delay(500);
+					jQuery(".help-text-caret").animate({marginLeft: "+=" + movementPercentage + "%"}, {duration: 500}).delay(500);
 				}
 				jQuery(".help-text-caret").animate({marginLeft: origMargin}, {duration: 500});
 			}
