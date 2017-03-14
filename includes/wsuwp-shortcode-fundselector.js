@@ -125,8 +125,13 @@ jQuery(document).ready(function($) {
 
 	$("#addFundButton")
 	.click( function ( event ) {	
-		jQuery("#inpAmount").val( jQuery("#otherAmount").val() );
-		addFundAction();
+		var amount = jQuery("#otherAmount").val();
+
+		if(wsuwpUtils.validateAmount(amount))
+		{	
+			jQuery("#inpAmount").val( amount );
+			addFundAction();
+		}
 	});
 
 	// Close Add Fund Indicator
@@ -167,10 +172,12 @@ jQuery(document).ready(function($) {
 		if(wsuwpUtils.validateAmount(inputAmount))
 		{
 			$("#inpAmount").val(inputAmount);
+			wsuwpUtils.enableButton($("#addFundButton"));
 			jQuery("#errorOtherAmount").text("");
 		}
 		else
 		{
+			wsuwpUtils.disableButton($("#addFundButton"));
 			jQuery("#errorOtherAmount").text("Amount should be between $3 and $100,000.");
 		}		
 	});
@@ -184,6 +191,8 @@ jQuery(document).ready(function($) {
 	// Continue Button Initialization and Click Event
 	$("#continueButton").button()
 	.click( continueAction );
+
+	$("#addFundButton").button();
 
     hideContinueButton();
     
