@@ -169,7 +169,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 				<input class="form-control" id="otherAmount" placeholder="Other Amount" maxlength="8" data-max="99999" value="100" type="text">
 				<a class="btnlhtgry plus" id="addFundButton">Add Fund</a>				
 			</div>
-			<span id="errorOtherAmount" class="error"></span>
+			<span id="errorOtherAmount" class="error" style="opacity:0; display:none;"></span>
 			<input name="inpAmount" id="inpAmount" class="value" data-token="amount" value="100" type="hidden">
 		</div>
 		';

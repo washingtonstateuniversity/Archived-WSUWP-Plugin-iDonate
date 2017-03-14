@@ -438,12 +438,14 @@ function hideContinueButton()
 
 function showOther()
 {
-	showAnything( jQuery(".otherprice") ); 
+	showAnything( jQuery(".otherprice") );
+	showAnything(jQuery("#errorOtherAmount")); 
 }
 
 function hideother()
 {
 	hideAnything( jQuery(".otherprice") );
+	hideAnything(jQuery("#errorOtherAmount"));
 }
 
 function showAnything(element)
