@@ -7,11 +7,14 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 
 		addListItem: function ( $list, name, designationId, amount, scholarship  ) {
 			var html = '<li class="list-group-item ' + (scholarship ? "fund-scholarship": "") + '" data-designation_id="' + designationId + '" data-amount="' + amount + '">';
-			html += '<span class="right">' + _.escape(name) + '</span>'
-			html += '<span class="center">$</span><span id="edit' + designationId + '" class="editable left">' + amount +  '</span>';
-			html += '<span class="edit"><a href="#!" id="' + designationId +'" class="edit">EDIT</a></span>';
-			html += '<span class="close remove"><a href="#"></a></span>'
-			html += '<span id="error' + designationId + '" class="error"></span></li>';
+			html += '<span class="fund-info">';
+			html += '	<span class="right">' + _.escape(name) + '</span>'
+			html += '	<span class="center">$</span><span id="edit' + designationId + '" class="editable left">' + amount +  '</span>';
+			html += '	<span class="edit"><a href="#!" id="' + designationId +'" class="edit">EDIT</a></span>';
+			html += '	<span class="close remove"><a href="#"></a></span>'
+			html += '</span>';
+			html += '<span id="error' + designationId + '" class="error"></span>';
+			html += '</li>';
 			
 			if(!wsuwpUtils.isDuplicateDesignation(designationId, $list))
 			{
@@ -28,10 +31,15 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 					if( !wsuwpUtils.validateAmount(e.value) ){
 						// Revert back to the original value
 						e.target.html(e.old_value);
-						jQuery("#error" + designationId).text("Amount must be between $3 and $100,000. Amount was reset.");
+						var $error = jQuery("#error" + designationId);
+						$error.text("Amount must be between $3 and $100,000. Amount was reset.");
+						showAnything($error);
+						setTimeout(function() {
+							hideAnything($error);
+						}, 2500);
 					}
 					else{
-						e.target.parent().attr("data-amount", e.value);
+						e.target.parent().parent().attr("data-amount", e.value);
 						jQuery("#error" + designationId).text("");
 
 						wsuwpUtils.updateTotalAmountText();

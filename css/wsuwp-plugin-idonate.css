@@ -415,12 +415,26 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
 	position: relative;
 	padding: 10px 10px 10px 20px;
 	background: #e6e7e8;
 	border-radius: 2px;
 	border: #e6e7e8 solid 1px;
 	margin-top: 10px;
+}
+
+#fundSelectionForm #selectedFunds li span {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
 }
 
 #fundSelectionForm #selectedFunds li span.left {
@@ -712,7 +726,8 @@
 	background-color: #e6e7e8;
 }
 
-#fundSelectionForm #addFundButton:hover {
+#fundSelectionForm #addFundButton:hover:not(.ui-state-disabled) {
+
 	color: #fff;
 	background: #981e32 url(../images/ico/plus-wht.png) no-repeat 12px center;
 	background-size: 8px;
@@ -740,6 +755,15 @@
 #fundSelectionForm .disclaimer.credit-card {
 	font-style: italic;
 	font-size: 75%;
+}
+
+#fundSelectionForm .error {
+	font-size: 90%;
+	color: #c60c30;
+}
+
+#fundSelectionForm #errorOtherAmount {
+	margin-left: 15px;
 }
 
 @media (max-width: 800px) {
