@@ -148,7 +148,7 @@ jQuery(document).ready(function($) {
 	$('body').on('click', '#selectedFunds li span.close a', function (event) {
 		event.preventDefault();
 		
-		$parent = $(this).parent().parent()
+		$parent = $(this).parent().parent().parent();
 
 		if($parent.hasClass("fund-scholarship")) $("#genScholarship").prop("checked", false);
 
