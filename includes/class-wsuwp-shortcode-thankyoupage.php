@@ -14,8 +14,8 @@
 class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 
 	/**
-	 * Initializes the plugin by registering the hooks necessary
-	 * for creating our custom post type within WordPress.
+	 * Initializes the shortcode by registering the hooks necessary
+	 * for creating our shortcode within WordPress.
 	 *
 	 * @since 0.0.20
 	 */
@@ -23,8 +23,13 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 
 		add_shortcode( 'idonate_thankyoupage', array( $this, 'thankyoupage_create_shortcode' ) );
 	}
-
-	// [idonate_thankyoupage]Thank You Page Content[/idonate_thankyoupage]
+ 
+	 /**
+	 * Defines the Thank You Page shortcode and applies the templating to the content
+	 * Usage: [idonate_thankyoupage]Thank You Page Content[/idonate_thankyoupage]
+	 *
+	 * @since 0.0.20
+	 */
 	public function thankyoupage_create_shortcode( $atts, $content = null ) {
 		$args = shortcode_atts( array(
 			// 'server' => 'production',
@@ -108,8 +113,11 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 	}
 
 	/**
-	* Flattens an array, but keep the basic structure by using . in the key name
+	* Flattens an array, but keep the naming structure by using . in the key name
 	* Based on the example found at http://stackoverflow.com/a/14972714
+	*
+	* @param array $array The array to flatten
+	* @param string $parent The name of the parent node(s), passed recursively
 	*
 	* @since 0.0.20
 	*
@@ -130,7 +138,12 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 	}
 
 	/**
-	* Based on https://github.com/slimndap/wp-theatre/blob/master/functions/template/wpt_template.php
+	* Checks for any conditionals
+	* Template style based on https://developers.sparkpost.com/api/substitutions-reference.html#header-if-then-else-syntax
+	* Matching based on https://github.com/slimndap/wp-theatre/blob/master/functions/template/wpt_template.php
+	*
+	* @param string $content The content from shortcode
+	* @param array $query_params The flattened list of query parameters passed to the shortcode page
 	*
 	* @since 0.0.20
 	*
