@@ -23,7 +23,7 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 
 		add_shortcode( 'idonate_thankyoupage', array( $this, 'thankyoupage_create_shortcode' ) );
 	}
- 
+
 	 /**
 	 * Defines the Thank You Page shortcode and applies the templating to the content
 	 * Usage: [idonate_thankyoupage]Thank You Page Content[/idonate_thankyoupage]
@@ -32,10 +32,14 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 	 */
 	public function thankyoupage_create_shortcode( $atts, $content = null ) {
 		$args = shortcode_atts( array(
-			// 'server' => 'production',
+			'redirect_url' => get_site_url(),
 		), $atts );
 
 		$query_params = $this->parse_querystring();
+
+		if ( empty( $query_params['donor.id'] ) || empty( $query_params['created'] ) ) {
+			return 'Thank you for your donation. <br /> Please go to our <a href="' . esc_url( $args['redirect_url'] ) . '">Online Giving site</a> if you would like to give again.';
+		}
 
 		$content = '
 		<img class="alignnone size-medium wp-image-565" src="https://hub.wsu.edu/foundation-sandbox/wp-content/uploads/sites/1540/2017/03/WSUFLogo-396x278.png" alt="" width="396" height="278" />
