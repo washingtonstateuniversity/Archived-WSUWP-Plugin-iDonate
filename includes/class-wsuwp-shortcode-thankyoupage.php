@@ -41,15 +41,16 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 			return 'Thank you for your donation. <br /> Please go to our <a href="' . esc_url( $args['redirect_url'] ) . '">Online Giving site</a> if you would like to give again.';
 		}
 
+		// Set a basic template if none given
+		if ( empty( $content ) ) {
 		$content = '
-		<img class="alignnone size-medium wp-image-565" src="https://hub.wsu.edu/foundation-sandbox/wp-content/uploads/sites/1540/2017/03/WSUFLogo-396x278.png" alt="" width="396" height="278" />
-		<h3><strong>Donation Summary:</strong></h3>
-		Donor number: {{donor.id}}
-		Date: {{created}}
-		Approval Code: {{transaction_id}}
+			<h3><strong>Donation Summary:</strong></h3><br />
+			Donor number: {{donor.id}}<br />
+			Date: {{created}}<br />
+			Approval Code: {{transaction_id}}<br />
 
-		<strong>Billing Information</strong>
 		<p style="white-space: pre-line;">
+			<strong>Billing Information</strong>
 		{{donor.contact.firstname}} {{donor.contact.lastname}}
 		{{donor.contact.address.street}}
 		{{if donor.contact.address.street2}}{{donor.contact.address.street2}}{{end}}
@@ -61,28 +62,24 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 
 		{{if comments}}Gift comments: {{comments}}{{end}}
 
-		<p style="white-space: pre-line;">
-			<strong><em>Management Information Systems Development Fund</em></strong>
-			Amount: $10.00
-			Date: {{created}}
-			Frequency: Onetime
-		</p>
-		
+			{{if value}}
 		<p style="white-space: pre-line;">
 		Total Amount Charged: $<span />{{value}}
 		to your {{card_type}} with the last four {{last_four}}
 		</p>
+			{{end}}
 
-		<p style="white-space: pre-line;">
-			<h5>WSU Foundation</h5>
-			<em>255 E. Main Street, Suite 201</em>
-			<em> PO Box 641927</em>
-			<em> Pullman, WA 99164-1927</em>
-			<em> Phone: 509-335-1686 or 800-GIV-2-WSU (448-2978)</em>
-			<em> Fax: 509-335-5903</em>
-			<em> E-mail: foundation@wsu.edu</em>
+			<p>
+				<h5>WSU Foundation</h5><br />
+				<em>255 E. Main Street, Suite 201</em><br />
+				<em> PO Box 641927</em><br />
+				<em> Pullman, WA 99164-1927</em><br />
+				<em> Phone: 509-335-1686 or 800-GIV-2-WSU (448-2978)</em><br />
+				<em> Fax: 509-335-5903</em><br />
+				<em> E-mail: foundation@wsu.edu</em><br />
 		</p>
 		';
+		}
 
 		$content = $this->replace_conditionals( $content, $query_params );
 
