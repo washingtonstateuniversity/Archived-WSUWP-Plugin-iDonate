@@ -35,33 +35,33 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 		$content = '
 		<img class="alignnone size-medium wp-image-565" src="https://hub.wsu.edu/foundation-sandbox/wp-content/uploads/sites/1540/2017/03/WSUFLogo-396x278.png" alt="" width="396" height="278" />
 		<h3><strong>Donation Summary:</strong></h3>
-		Donor number: {donor.id}
-		Date: {created}
-		Approval Code: {transaction_id}
+		Donor number: {{donor.id}}
+		Date: {{created}}
+		Approval Code: {{transaction_id}}
 
 		<strong>Billing Information</strong>
 		<p style="white-space: pre-line;">
-		{donor.contact.firstname} {donor.contact.lastname}
-		{donor.contact.address.street}
-		{donor.contact.address.street2}
-		{donor.contact.address.city}, {donor.contact.address.state} {donor.contact.address.zip}
-		{donor.contact.address.country_name}
-		{donor.contact.phone}
-		{donor.contact.email}
+		{{donor.contact.firstname}} {{donor.contact.lastname}}
+		{{donor.contact.address.street}}
+		{{if donor.contact.address.street2}}{{donor.contact.address.street2}}{{end}}
+		{{donor.contact.address.city}}, {{donor.contact.address.state}} {{donor.contact.address.zip}}
+		{{donor.contact.address.country_name}}
+		{{donor.contact.phone}}
+		{{donor.contact.email}}
 		</p>
 
-		Gift comments: {{comments}}
+		{{if comments}}Gift comments: {{comments}}{{end}}
 
 		<p style="white-space: pre-line;">
 			<strong><em>Management Information Systems Development Fund</em></strong>
 			Amount: $10.00
-			Date: {created}
+			Date: {{created}}
 			Frequency: Onetime
 		</p>
 		
 		<p style="white-space: pre-line;">
-		Total Amount Charged: $<span />{value}
-		to your {card_type} with the last four {last_four}
+		Total Amount Charged: $<span />{{value}}
+		to your {{card_type}} with the last four {{last_four}}
 		</p>
 
 		<p style="white-space: pre-line;">
@@ -75,8 +75,10 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 		</p>
 		';
 
+		$content = $this->replace_conditionals( $content, $query_params );
+
 		foreach ( $query_params as $key => $value ) {
-			$content = str_replace( '{' . $key . '}', "$value", $content );
+			$content = str_replace( '{{' . $key . '}}', "$value", $content );
 		}
 
 		return $content;
@@ -125,5 +127,24 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 		}
 
 		return $return;
+	}
+
+	/**
+	* Based on https://github.com/slimndap/wp-theatre/blob/master/functions/template/wpt_template.php
+	*
+	* @since 0.0.20
+	*
+	* @return string $content
+	**/
+	private function replace_conditionals( $content, $query_params ) {
+		$tags = array();
+		preg_match_all( '/{{if\s+(.*?)}}(.*?){{end}}/', $content, $tags, PREG_SET_ORDER );
+
+		foreach ( $tags as $tag ) {
+			$replace_content = ! empty( $query_params[ $tag[1] ] ) ? $tag[2]: '';
+			$content = str_replace( $tag[0], $replace_content, $content );
+		}
+
+		return $content;
 	}
 }
