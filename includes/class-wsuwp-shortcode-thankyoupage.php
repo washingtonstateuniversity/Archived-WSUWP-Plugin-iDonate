@@ -43,30 +43,30 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 
 		// Set a basic template if none given
 		if ( empty( $content ) ) {
-		$content = '
+			$content = '
 			<h3><strong>Donation Summary:</strong></h3><br />
 			Donor number: {{donor.id}}<br />
 			Date: {{created}}<br />
 			Approval Code: {{transaction_id}}<br />
 
-		<p style="white-space: pre-line;">
+			<p style="white-space: pre-line;">
 			<strong>Billing Information</strong>
-		{{donor.contact.firstname}} {{donor.contact.lastname}}
-		{{donor.contact.address.street}}
-		{{if donor.contact.address.street2}}{{donor.contact.address.street2}}{{end}}
-		{{donor.contact.address.city}}, {{donor.contact.address.state}} {{donor.contact.address.zip}}
-		{{donor.contact.address.country_name}}
-		{{donor.contact.phone}}
-		{{donor.contact.email}}
-		</p>
+			{{donor.contact.firstname}} {{donor.contact.lastname}}
+			{{donor.contact.address.street}}
+			{{if donor.contact.address.street2}}{{donor.contact.address.street2}}{{end}}
+			{{donor.contact.address.city}}, {{donor.contact.address.state}} {{donor.contact.address.zip}}
+			{{donor.contact.address.country_name}}
+			{{donor.contact.phone}}
+			{{donor.contact.email}}
+			</p>
 
-		{{if comments}}Gift comments: {{comments}}{{end}}
+			{{if comments}}Gift comments: {{comments}}{{end}}
 
 			{{if value}}
-		<p style="white-space: pre-line;">
-		Total Amount Charged: $<span />{{value}}
-		to your {{card_type}} with the last four {{last_four}}
-		</p>
+			<p style="white-space: pre-line;">
+			Total Amount Charged: $<span />{{value}}
+			to your {{card_type}} with the last four {{last_four}}
+			</p>
 			{{end}}
 
 			<p>
@@ -77,8 +77,8 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 				<em> Phone: 509-335-1686 or 800-GIV-2-WSU (448-2978)</em><br />
 				<em> Fax: 509-335-5903</em><br />
 				<em> E-mail: foundation@wsu.edu</em><br />
-		</p>
-		';
+			</p>
+			';
 		}
 
 		$content = $this->replace_conditionals( $content, $query_params );
@@ -152,7 +152,7 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 	**/
 	private function replace_conditionals( $content, $query_params ) {
 		$tags = array();
-		preg_match_all( '/{{if\s+(.*?)}}(.*?){{end}}/', $content, $tags, PREG_SET_ORDER );
+		preg_match_all( '/{{if\s+(.*?)}}(.*?){{end}}/is', $content, $tags, PREG_SET_ORDER );
 
 		foreach ( $tags as $tag ) {
 			$replace_content = ! empty( $query_params[ $tag[1] ] ) ? $tag[2]: '';
