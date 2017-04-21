@@ -38,7 +38,7 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 
 		$query_params = $this->parse_querystring();
 
-		if ( empty( $query_params['donor.id'] ) || empty( $query_params['created'] ) ) {
+		if ( empty( $query_params['donor.id'] ) ) {
 			return 'Thank you for your donation. <br /> Please go to our <a href="' . esc_url( $args['redirect_url'] ) . '">Online Giving site</a> if you would like to give again.';
 		}
 
