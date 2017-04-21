@@ -33,6 +33,7 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 	public function thankyoupage_create_shortcode( $atts, $content = null ) {
 		$args = shortcode_atts( array(
 			'redirect_url' => get_site_url(),
+			'debug' => false,
 		), $atts );
 
 		$query_params = $this->parse_querystring();
@@ -87,6 +88,8 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 			$content = str_replace( '{{' . $key . '}}', "$value", $content );
 		}
 
+		$content = $this->replace_nonmatched( $content, $args['debug'] );
+
 		return $content;
 	}
 
@@ -139,7 +142,7 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 	}
 
 	/**
-	* Checks for any conditionals
+	* Checks for any conditionals and replaces or removes them depending on if the condition is fulfilled
 	* Template style based on https://developers.sparkpost.com/api/substitutions-reference.html#header-if-then-else-syntax
 	* Matching based on https://github.com/slimndap/wp-theatre/blob/master/functions/template/wpt_template.php
 	*
@@ -158,6 +161,30 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 			$replace_content = ! empty( $query_params[ $tag[1] ] ) ? $tag[2]: '';
 			$content = str_replace( $tag[0], $replace_content, $content );
 		}
+
+		return $content;
+	}
+
+
+	/**
+	* Remove any template indicators in the content
+	*
+	* @param string $content The content from shortcode
+	* @param boolean $debug If the debug flag is set, show an visible placeholder instead of removing
+	*
+	* @since 0.0.20
+	*
+	* @return string $content
+	**/
+	private function replace_nonmatched( $content, $debug ) {
+		$content = preg_replace_callback(
+			'/\{\{(.*?)\}\}/',
+			function ( $matches ) use ( $debug ) {
+				// If debug is set, display an red message, otherwise just blank it
+				return ($debug ? '<b style="color:red;">[No value given for {{' . $matches[1] . '}}]</b>': '');
+			},
+			$content
+		);
 
 		return $content;
 	}
