@@ -85,7 +85,7 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 		$content = $this->replace_conditionals( $content, $query_params );
 
 		foreach ( $query_params as $key => $value ) {
-			$content = str_replace( '{{' . $key . '}}', "$value", $content );
+			$content = str_replace( '{{' . $key . '}}', esc_html( $value ), $content );
 		}
 
 		$content = $this->replace_nonmatched( $content, $args['debug'] );
