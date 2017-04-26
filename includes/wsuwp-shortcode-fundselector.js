@@ -154,7 +154,7 @@ jQuery(document).ready(function($) {
 
 		$parent.fadeOut(1000, function(){ 
             $(this).remove();
-            wsuwpUtils.updateTotalAmountText($("#advFeeCheck").prop('checked'), wpData.adv_fee_percentage);
+            wsuwpUtils.updateTotalAmountText($("#advFeeCheck").prop('checked'));
         });
 
         // If the Fund list is empty, disable the Continue Button
@@ -213,7 +213,7 @@ jQuery(document).ready(function($) {
 			// the checkbox is now no longer checked
 			$("#selectedFunds > li.fund-scholarship").remove();
 
-			wsuwpUtils.updateTotalAmountText($("#advFeeCheck").prop('checked'), wpData.adv_fee_percentage);
+			wsuwpUtils.updateTotalAmountText($("#advFeeCheck").prop('checked'));
 
 			// If the Fund list is empty, disable the Continue Button
 			if ($("#selectedFunds").find("li").length === 0) {
@@ -225,7 +225,7 @@ jQuery(document).ready(function($) {
 
 	$("#advFeeCheck").change(function() {
 		// this will contain a reference to the checkbox
-		wsuwpUtils.updateTotalAmountText(this.checked, wpData.adv_fee_percentage);
+		wsuwpUtils.updateTotalAmountText(this.checked);
 	});
 
 	// if a unit is specified
@@ -318,7 +318,7 @@ function addFundAction(scholarship)
 		wsuwpUtils.addListItem(jQuery("#selectedFunds"), fundName, designationId, jQuery("#inpAmount").val(), scholarship);
 		wsuwpUtils.enableButton(jQuery("#continueButton"));
 		
-		wsuwpUtils.updateTotalAmountText(jQuery("#advFeeCheck").prop('checked'), wpData.adv_fee_percentage);
+		wsuwpUtils.updateTotalAmountText(jQuery("#advFeeCheck").prop('checked'));
 		showAnything(jQuery(".disclaimer"));
 		showContinueButton();
 		resetForm();
