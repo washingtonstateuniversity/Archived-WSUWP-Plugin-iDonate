@@ -206,6 +206,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 				var advFeeDecimal = donationTotal * (advFee * 0.01);
 				if(addAdvFee) donationTotal = donationTotal + advFeeDecimal;
 				jQuery("#advFeeAmount").text(_.template(wpData.adv_fee_message)({advFeeAmount: advFeeDecimal.toFixed(2) }));
+				jQuery("#advFeeCheck").attr("data-amount", advFeeDecimal);
 			}
 
 			jQuery("#totalAmount").text(donationTotal.toFixed(2));

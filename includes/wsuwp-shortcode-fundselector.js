@@ -355,6 +355,12 @@ function continueAction()
 	{
 		hideForm();
 
+		var $advFeeCheck = jQuery("#advFeeCheck");
+		
+		if($advFeeCheck.prop("checked")) {
+			designations.push({id: $advFeeCheck.attr("data-designation_id"), amount: parseInt($advFeeCheck.attr("data-amount")) });
+		}
+
 		if(designations.length === 1)
 		{
 			var des = designations[0];
