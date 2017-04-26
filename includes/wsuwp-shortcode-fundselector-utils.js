@@ -196,11 +196,21 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			return sum;
 		},
 
-		updateTotalAmountText: function()
+		updateTotalAmountText: function(addAdvFee, advFee)
 		{
 			var designations = wsuwpUtils.getDesignationList(jQuery("#selectedFunds"));
-			jQuery("#totalAmount").text(wsuwpUtils.getDonationTotal(designations).toFixed(2));
-		},
+			var donationTotal = wsuwpUtils.getDonationTotal(designations);
+			
+			if(wpData.adv_fee_percentage)
+			{
+				var advFeeDecimal = donationTotal * (advFee * 0.01);
+				if(addAdvFee) donationTotal = donationTotal + advFeeDecimal;
+				jQuery("#advFeeAmount").text(_.template(wpData.adv_fee_message)({advFeeAmount: advFeeDecimal.toFixed(2) }));
+			}
+
+			jQuery("#totalAmount").text(donationTotal.toFixed(2));
+			
+		},	
 
 		/**
 		 * Selects a fund in a dropdown select list and shows the amount zone
