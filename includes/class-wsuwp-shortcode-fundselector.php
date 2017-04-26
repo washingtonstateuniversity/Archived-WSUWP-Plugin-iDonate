@@ -39,7 +39,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			'unit_scholarship_category' => 'idonate_general-scholarship',
 			'adv_fee_message' => '',
 			'adv_fee_designation_id' => '',
-			'adv_fee_percentage' => '5',
+			'adv_fee_percentage' => '',
 		), $atts );
 
 		$args['embed'] = sanitize_key( $args['embed'] );
