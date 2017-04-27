@@ -579,9 +579,13 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	margin-bottom: 10px;
+}
+
+#fundSelectionForm .additional-info span:not(.additional-info-header-wrapper) {
+
 	margin-left: 10px;
 	line-height: 2em;
-	margin-bottom: 10px;
 	margin-top: -4px;
 }
 
@@ -592,6 +596,28 @@
 	margin-left: 5px;
 	font-size: 1em;
 	padding-right: 10px;
+}
+
+#fundSelectionForm .additional-info .additional-info-header-wrapper a {
+	background: transparent url(../images/ico/arrow-down-gry.png) no-repeat calc(100% - 12px) 40%;
+	background-size: 12px;
+	-webkit-transition: background-color .3s ease-in-out, color .3s ease-in-out;
+	transition: background-color .3s ease-in-out, color .3s ease-in-out;
+	padding-right: 27px;
+	border: 1px solid #ececec;
+	background-color: #f1f1f1;
+	cursor: pointer;
+}
+
+#fundSelectionForm .additional-info .additional-info-header-wrapper a:hover {
+	background-color: #d1d3d4;
+}
+
+#fundSelectionForm .additional-info .additional-info-header-wrapper a > span {
+	line-height: inherit;
+	margin-top: 0;
+	margin-bottom: 0;
+	text-align: center;
 }
 
 #fundSelectionForm .hidden {

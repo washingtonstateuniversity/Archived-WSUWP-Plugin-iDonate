@@ -116,13 +116,14 @@ jQuery(document).ready(function($) {
 		showAmountZone();
 	});
 
-	// Add Fund Button click  event
+	// Dollar Amount button click  event
 	$(".amount-selection").not(".other")
 	.click( function ( event ) {
 		handleAmountSelectionClick( event );	
 		addFundAction();
 	});
 
+	// Add Fund Button click  event
 	$("#addFundButton")
 	.click( function ( event ) {	
 		var amount = jQuery("#otherAmount").val();
@@ -132,6 +133,28 @@ jQuery(document).ready(function($) {
 			jQuery("#inpAmount").val( amount );
 			addFundAction();
 		}
+	});
+
+	// Gift Planning Learn More click  event
+	$(".gift-planning a").button()
+	.click( function ( event ) {
+		$giftPlanningDescription = $(".gift-planning .additional-info-description");
+		
+		$giftPlanningDescription.animate({
+			opacity: "toggle",
+			height: "toggle"
+		}, 400, "linear");
+
+		// if($giftPlanningDescription.is(":hidden"))
+		// {
+		// 	$giftPlanningDescription.slideToggle().fadeToggle();
+		// 	//showAnything($giftPlanningDescription);
+		// }
+		// else
+		// {
+		// 	$giftPlanningDescription.slideToggle("fast");
+		// 	hideAnything($giftPlanningDescription);
+		// }
 	});
 
 	// Close Add Fund Indicator
@@ -200,6 +223,7 @@ jQuery(document).ready(function($) {
 		showForm();
 	});
 
+	//$(".gift-planning .additional-info-description").animate({height: "toggle"}, 5);
 
 	$("#genScholarship").change(function() {
 		// this will contain a reference to the checkbox
