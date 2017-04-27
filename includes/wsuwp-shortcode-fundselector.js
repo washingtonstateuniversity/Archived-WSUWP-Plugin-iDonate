@@ -37,6 +37,8 @@ jQuery(document).ready(function($) {
 	// Major Category Click Events
 	$("#majorcategory a")
 	.click( function( event ) {
+		resetForm(true);
+		
 		$("#majorcategory a").removeClass("active");  
 		$(".categoryTab").addClass('hidden');
 
@@ -320,14 +322,27 @@ function addFundAction(scholarship)
 	}
 }
 
-function resetForm()
+/**
+ * Resets the plugin elements back to their default states
+ * 
+ * @param {boolean} immediate If true, certain elements hide right away instead of fading out (like on tab switch)
+ */
+function resetForm(immediate)
 {
 	jQuery("#fundSearch").val("");
 	jQuery('.fund-selection').prop('selectedIndex', 0);
 	jQuery('.category-selection').prop('selectedIndex', 0);
 	setTimeout(function(){ jQuery('.amountwrapper .selected').removeClass('selected'); }, 1300);
-	hideAmountZone();
-	hideother();
+	if(immediate) { 		
+		jQuery(".amountwrapper.wrapper").hide();
+		jQuery(".otherprice").hide();
+		jQuery("#errorOtherAmount").hide();	 
+	}
+	else
+	{
+		hideAmountZone();
+		hideOther();
+	}
 }
 
 function handleAmountSelectionClick(event)
@@ -442,10 +457,10 @@ function showOther()
 	showAnything(jQuery("#errorOtherAmount")); 
 }
 
-function hideother()
+function hideOther()
 {
 	hideAnything( jQuery(".otherprice") );
-	hideAnything(jQuery("#errorOtherAmount"));
+	hideAnything( jQuery("#errorOtherAmount") );
 }
 
 function showAnything(element)
