@@ -214,6 +214,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			';
 		}
 
+		// Advancement Fee Checkbox
 		if ( ! empty( $args['adv_fee_designation_id'] ) ) {
 			$return_string .= '
 			<div class="additional-info" style="display:none;">
@@ -224,6 +225,11 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			</div>
 			';
 		}
+
+		// Total Amount information
+		$return_string .= '
+		<div class="disclaimer total" style="display:none;"><span class="first-sentence">Your generous donation will total $<span id="totalAmount"></span> today.</span> When you proceed to checkout, you will be sent to our payment processing service.</div>
+		';
 
 		// Gift Planning Checkboxes
 		$return_string .= '
@@ -243,11 +249,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 				</label>
 			</span>
 		</div>
-		';
-
-		// Total Amount information
-		$return_string .= '
-		<div class="disclaimer total" style="display:none;"><span class="first-sentence">Your generous donation will total $<span id="totalAmount"></span> today.</span> When you proceed to checkout, you will be sent to our payment processing service.</div>
 		';
 
 		// Continue button
