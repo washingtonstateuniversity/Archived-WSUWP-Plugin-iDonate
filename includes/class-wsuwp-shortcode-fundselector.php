@@ -244,7 +244,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		// Loading Message List
-		$return_string .= '<div id="secondform" style="display: none;"><a class="left btnlhtgry" id="backButton">Back</a><h2 id="embedLoadingMessage" style="display: none;">Loading Payment Process</h2>';
+		$return_string .= '<div id="secondform" style="display: none;"><a class="left btnlhtgry" id="backButton" href="#">Back</a><h2 id="embedLoadingMessage" style="display: none;">Loading Payment Process</h2>';
 
 		wp_enqueue_script( 'wsuf_fundselector_idonate_embed', $url, array(), false, true );
 

@@ -196,7 +196,8 @@ jQuery(document).ready(function($) {
 
     hideContinueButton();
     
-	$("#backButton").on('click',function(){
+	$("#backButton").on('click',function(event){
+		event.preventDefault();
 		showForm();
 	});
 
