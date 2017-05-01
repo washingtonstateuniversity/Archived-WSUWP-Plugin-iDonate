@@ -342,8 +342,10 @@ function handleAmountSelectionClick(event)
 	}
 }
 
-function continueAction()
+function continueAction(event)
 {
+	if(event) event.preventDefault();
+	
 	var designations = wsuwpUtils.getDesignationList(jQuery("#selectedFunds"));
 
 	if(designations && designations.length > 0)

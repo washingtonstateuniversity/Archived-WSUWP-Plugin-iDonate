@@ -230,7 +230,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		';
 
 		// Continue button
-		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Proceed to Checkout</a></p>';
+		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton" role="button" href="#">Proceed to Checkout</a></p>';
 
 		// Credit Card Disclaimer
 		$return_string .= '
