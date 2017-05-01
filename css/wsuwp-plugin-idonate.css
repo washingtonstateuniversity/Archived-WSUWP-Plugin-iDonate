@@ -563,12 +563,16 @@
 	text-align: center;
 }
 
+#fundSelectionForm .additional-info input[type="checkbox"]:focus + label::before {
+	border: 1px dotted #000;
+}
+
 #fundSelectionForm .additional-info input[type="checkbox"]:checked + label:after {
 	font-weight: 700;
 }
 
 #fundSelectionForm .additional-info input[type="checkbox"] {
-	display: none;
+	opacity: 0;
 }
 
 #fundSelectionForm .additional-info p {

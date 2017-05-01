@@ -418,11 +418,14 @@
           background-size:12px; 
           text-align: center;
         }
+		input[type="checkbox"]:focus + label::before {
+			border: 1px dotted #000;
+		}
         input[type="checkbox"]:checked + label:after {
           font-weight: 700;
         }
         input[type="checkbox"] {
-          display: none;
+          opacity: 0;
         }
         p {
             padding-bottom: 2em;
