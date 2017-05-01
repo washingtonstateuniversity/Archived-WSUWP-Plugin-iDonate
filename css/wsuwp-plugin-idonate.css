@@ -614,6 +614,10 @@
 	background-color: #d1d3d4;
 }
 
+#fundSelectionForm .additional-info .additional-info-header-wrapper a.down {
+	background-image: url(../images/ico/arrow-up-gry.png);
+}
+
 #fundSelectionForm .additional-info .additional-info-header-wrapper a > span {
 	line-height: inherit;
 	margin-top: 0;

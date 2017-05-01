@@ -140,21 +140,12 @@ jQuery(document).ready(function($) {
 	.click( function ( event ) {
 		$giftPlanningDescription = $(".gift-planning .additional-info-description");
 		
+		$(this).toggleClass("down");
+
 		$giftPlanningDescription.animate({
 			opacity: "toggle",
 			height: "toggle"
 		}, 400, "linear");
-
-		// if($giftPlanningDescription.is(":hidden"))
-		// {
-		// 	$giftPlanningDescription.slideToggle().fadeToggle();
-		// 	//showAnything($giftPlanningDescription);
-		// }
-		// else
-		// {
-		// 	$giftPlanningDescription.slideToggle("fast");
-		// 	hideAnything($giftPlanningDescription);
-		// }
 	});
 
 	// Close Add Fund Indicator
@@ -222,8 +213,6 @@ jQuery(document).ready(function($) {
 	$("#backButton").on('click',function(){
 		showForm();
 	});
-
-	//$(".gift-planning .additional-info-description").animate({height: "toggle"}, 5);
 
 	$("#genScholarship").change(function() {
 		// this will contain a reference to the checkbox
