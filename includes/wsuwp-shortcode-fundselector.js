@@ -37,6 +37,8 @@ jQuery(document).ready(function($) {
 	// Major Category Click Events
 	$("#majorcategory a")
 	.click( function( event ) {
+		resetForm(true);
+		
 		$("#majorcategory a").removeClass("active");  
 		$(".categoryTab").addClass('hidden');
 
@@ -168,7 +170,7 @@ jQuery(document).ready(function($) {
 
 		$parent.fadeOut(1000, function(){ 
             $(this).remove();
-            wsuwpUtils.updateTotalAmountText();
+            wsuwpUtils.updateTotalAmountText($("#advFeeCheck").prop('checked'));
         });
 
         // If the Fund list is empty, disable the Continue Button
@@ -226,7 +228,7 @@ jQuery(document).ready(function($) {
 			// the checkbox is now no longer checked
 			$("#selectedFunds > li.fund-scholarship").remove();
 
-			wsuwpUtils.updateTotalAmountText();
+			wsuwpUtils.updateTotalAmountText($("#advFeeCheck").prop('checked'));
 
 			// If the Fund list is empty, disable the Continue Button
 			if ($("#selectedFunds").find("li").length === 0) {
@@ -234,6 +236,11 @@ jQuery(document).ready(function($) {
 				hideContinueButton();
 			}
 		}
+	});
+
+	$("#advFeeCheck").change(function() {
+		// this will contain a reference to the checkbox
+		wsuwpUtils.updateTotalAmountText(this.checked);
 	});
 
 	// if a unit is specified
@@ -326,21 +333,34 @@ function addFundAction(scholarship)
 		wsuwpUtils.addListItem(jQuery("#selectedFunds"), fundName, designationId, jQuery("#inpAmount").val(), scholarship);
 		wsuwpUtils.enableButton(jQuery("#continueButton"));
 		
-		wsuwpUtils.updateTotalAmountText();
+		wsuwpUtils.updateTotalAmountText(jQuery("#advFeeCheck").prop('checked'));
 		showAnything(jQuery(".disclaimer"));
 		showContinueButton();
 		resetForm();
 	}
 }
 
-function resetForm()
+/**
+ * Resets the plugin elements back to their default states
+ * 
+ * @param {boolean} immediate If true, certain elements hide right away instead of fading out (like on tab switch)
+ */
+function resetForm(immediate)
 {
 	jQuery("#fundSearch").val("");
 	jQuery('.fund-selection').prop('selectedIndex', 0);
 	jQuery('.category-selection').prop('selectedIndex', 0);
 	setTimeout(function(){ jQuery('.amountwrapper .selected').removeClass('selected'); }, 1300);
-	hideAmountZone();
-	hideother();
+	if(immediate) { 		
+		jQuery(".amountwrapper.wrapper").hide();
+		jQuery(".otherprice").hide();
+		jQuery("#errorOtherAmount").hide();	 
+	}
+	else
+	{
+		hideAmountZone();
+		hideOther();
+	}
 }
 
 function handleAmountSelectionClick(event)
@@ -362,6 +382,12 @@ function continueAction()
 	if(designations && designations.length > 0)
 	{
 		hideForm();
+
+		var $advFeeCheck = jQuery("#advFeeCheck");
+		
+		if($advFeeCheck.prop("checked")) {
+			designations.push({id: $advFeeCheck.attr("data-designation_id"), amount: parseInt($advFeeCheck.attr("data-amount")) });
+		}
 
 		if(designations.length === 1)
 		{
@@ -455,10 +481,10 @@ function showOther()
 	showAnything(jQuery("#errorOtherAmount")); 
 }
 
-function hideother()
+function hideOther()
 {
 	hideAnything( jQuery(".otherprice") );
-	hideAnything(jQuery("#errorOtherAmount"));
+	hideAnything( jQuery("#errorOtherAmount") );
 }
 
 function showAnything(element)
