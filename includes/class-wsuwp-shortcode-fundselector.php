@@ -150,7 +150,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Search AutoComplete
 		$return_string .= '
 		<div class="form-group has-feedback wrapper search hidden">
-			<input id="fundSearch" type="text" class="form-control" placeholder="Search for a fund..." >
+			<input id="fundSearch" type="text" class="form-control" placeholder="Search for a fund..." title="Search for a fund">
 			<span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
 		</div>
 		';
@@ -166,7 +166,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			<div class="input-group otherprice" style="opacity:0; display:none;">
 				<div class="input-group-addon">$</div>
 				<!-- Maximum length of 8 includes cents (.xx) -->
-				<input class="form-control" id="otherAmount" placeholder="Other Amount" maxlength="8" data-max="99999" value="100" type="text">
+				<input class="form-control" id="otherAmount" placeholder="Other Amount" maxlength="8" data-max="99999" value="100" type="text" title="Other amount">
 				<a class="btnlhtgry plus" id="addFundButton">Add Fund</a>				
 			</div>
 			<span id="errorOtherAmount" class="error" style="opacity:0; display:none;"></span>
