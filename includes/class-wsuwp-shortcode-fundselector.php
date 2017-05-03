@@ -234,9 +234,14 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Gift Planning Checkboxes
 		$return_string .= '
 		<div class="additional-info gift-planning" style="display:none;">
-			<div class="additional-info-header">Is WSU in your Will?</div>
-			<p>Charitable gifts from estates and other planned gifts play an integral role in the future of Washington State University. The WSU Foundation offers several tax-wise giving options to support WSU’s mission while fulfilling your personal philanthropic goals.</p>
-            <span>
+			<span class="additional-info-header-wrapper">
+				<div class="additional-info-header">Is WSU in your Will?</div>
+				<a role="button">Learn More</a>
+			</span>
+			<p class="additional-info-description" style="display:none;">
+				Charitable gifts from estates and other planned gifts play an integral role in the future of Washington State University. The WSU Foundation offers several tax-wise giving options to support WSU’s mission while fulfilling your personal philanthropic goals.
+			</p>
+            <span >
             	<input type="checkbox" id="gpInWill"> 
 				<label for="gpInWill">
 					<span>I have included the WSU Foundation in my Will or other estate plans.</span>

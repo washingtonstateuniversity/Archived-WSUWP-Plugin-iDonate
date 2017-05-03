@@ -427,11 +427,13 @@
         p {
             padding-bottom: 2em;
         }
-        span { 
-            display: flex; 
+		span { 
+            display: flex;
+			margin-bottom: 10px; 
+		}
+        span:not(.additional-info-header-wrapper) { 
             margin-left: 10px; 
-            line-height: 2em; 
-            margin-bottom: 10px; 
+            line-height: 2em;
             margin-top: -4px;
         }
         label { 
@@ -440,6 +442,29 @@
 			font-size:1em; 
   			padding-right: 10px;
 		}
+		.additional-info-header-wrapper a {
+            background: transparent url(../images/ico/arrow-down-gry.png) no-repeat calc(100% - 10px) 8px;
+            background-size: 8px;
+			transition:background-color .3s ease-in-out, color .3s ease-in-out;
+			padding-right: 27px;
+			margin-left: 15px;
+			border:1px solid rgba(236,236,236,1);
+			background-color:#f1f1f1;
+			cursor: pointer;
+			&:hover {
+				background-color:#d1d3d4;
+			}
+			&.down {
+                background: url(../images/ico/arrow-up-gry.png) no-repeat calc(100% - 10px) 6px;
+                background-size: 8px;
+			}		
+		}
+		.additional-info-header-wrapper a > span {
+			line-height: inherit;
+			margin-top: 0;
+			margin-bottom: 0;
+			text-align: center;
+		}		
     }
 	.hidden {
 		display:none;
