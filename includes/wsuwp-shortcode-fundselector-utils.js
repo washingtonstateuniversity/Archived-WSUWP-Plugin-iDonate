@@ -42,7 +42,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 						e.target.parent().parent().attr("data-amount", e.value);
 						jQuery("#error" + designationId).text("");
 
-						wsuwpUtils.updateTotalAmountText();
+						wsuwpUtils.updateTotalAmountText(jQuery("#advFeeCheck").prop('checked'));
 					}
 				});
 			}
@@ -196,11 +196,34 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			return sum;
 		},
 
-		updateTotalAmountText: function()
+		/**
+		 * Updates the Total Amount text and the Advancement fee text whenever the values change
+		 * 
+		 * @param {bool} If true, the Advancement fee should be added to the donation total
+		 * 
+		 */
+		updateTotalAmountText: function(addAdvFee)
 		{
 			var designations = wsuwpUtils.getDesignationList(jQuery("#selectedFunds"));
-			jQuery("#totalAmount").text(wsuwpUtils.getDonationTotal(designations).toFixed(2));
-		},
+			var donationTotal = wsuwpUtils.getDonationTotal(designations);
+			
+			if(wpData.adv_fee_percentage)
+			{
+				var advFeeDecimal = donationTotal * (wpData.adv_fee_percentage * 0.01);
+				if(addAdvFee) donationTotal = donationTotal + advFeeDecimal;
+				
+				// Use Mustache / Handlebars syntax for templating
+				_.templateSettings = {
+					interpolate: /\{\{(.+?)\}\}/g
+				};
+				
+				jQuery("#advFeeAmount").text(_.template(wpData.adv_fee_message)({advFeeAmount: advFeeDecimal.toFixed(2) }));
+				jQuery("#advFeeCheck").attr("data-amount", advFeeDecimal);
+			}
+
+			jQuery("#totalAmount").text(donationTotal.toFixed(2));
+			
+		},	
 
 		/**
 		 * Selects a fund in a dropdown select list and shows the amount zone
