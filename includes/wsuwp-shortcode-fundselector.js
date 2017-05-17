@@ -212,7 +212,8 @@ jQuery(document).ready(function($) {
 
     hideContinueButton();
     
-	$("#backButton").on('click',function(){
+	$("#backButton").on('click',function(event){
+		event.preventDefault();
 		showForm();
 	});
 
@@ -375,8 +376,10 @@ function handleAmountSelectionClick(event)
 	}
 }
 
-function continueAction()
+function continueAction(event)
 {
+	if(event) event.preventDefault();
+	
 	var designations = wsuwpUtils.getDesignationList(jQuery("#selectedFunds"));
 
 	if(designations && designations.length > 0)

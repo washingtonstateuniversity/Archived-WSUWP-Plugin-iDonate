@@ -11,7 +11,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			html += '	<span class="right">' + _.escape(name) + '</span>'
 			html += '	<span class="center">$</span><span id="edit' + designationId + '" class="editable left">' + amount +  '</span>';
 			html += '	<span class="edit"><a href="#!" id="' + designationId +'" class="edit">EDIT</a></span>';
-			html += '	<span class="close remove"><a href="#"></a></span>'
+			html += '	<span class="close remove"><a href="#" aria-label="Remove ' + _.escape(name) + ' from the list of funds"></a></span>'
 			html += '</span>';
 			html += '<span id="error' + designationId + '" class="error"></span>';
 			html += '</li>';
