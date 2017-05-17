@@ -155,7 +155,8 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 	**/
 	private function replace_conditionals( $content, $query_params ) {
 		$tags = array();
-		preg_match_all( '/{{if\s+(.*?)}}(.*?){{end}}/is', $content, $tags, PREG_SET_ORDER );
+		// This RegEx captures values inside {{if <value>}}{{end}} blocks (as well as any optional surrounding <p> or ending <br /> tags)
+		preg_match_all( '/(?:\<p\>)?{{if\s+(.*?)}}(.*?){{end}}(?:\<\/p\>|\<br\s*?\/\s*>)?/is', $content, $tags, PREG_SET_ORDER );
 
 		foreach ( $tags as $tag ) {
 			$replace_content = ! empty( $query_params[ $tag[1] ] ) ? $tag[2]: '';
