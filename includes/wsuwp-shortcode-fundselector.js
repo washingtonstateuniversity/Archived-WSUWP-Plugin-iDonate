@@ -433,7 +433,7 @@ function continueAction()
 			jQuery("#iDonateEmbed").attr("data-custom_note_5", "I would like more information about putting WSU in my will/estate plan");
 		}
 
-		var referenceCode = { donorPaysFee: $advFeeCheck.prop("checked")};
+		var referenceCode = { donorPaysFee: $advFeeCheck.prop("checked"), feePercentage: parseInt(wpData.adv_fee_percentage)};
 		
 		jQuery("#iDonateEmbed").attr("data-reference_code", JSON.stringify(referenceCode));
 
