@@ -386,7 +386,13 @@ function continueAction()
 		var $advFeeCheck = jQuery("#advFeeCheck");
 		
 		if($advFeeCheck.prop("checked")) {
-			designations.push({id: $advFeeCheck.attr("data-designation_id"), amount: parseInt($advFeeCheck.attr("data-amount")) });
+			for (var i = 0; i < designations.length; i++) {
+				// The new calculation formula is "total / (1 - fee%) - total" to cover fee
+				var advFeeDecimal = designations[i].amount / (1 - (wpData.adv_fee_percentage * 0.01)) - designations[i].amount;
+				
+				// Rounding based on this answer: http://stackoverflow.com/a/5191166
+				designations[i].amount += parseFloat(Math.ceil(advFeeDecimal * 100) / 100);
+			}
 		}
 
 		if(designations.length === 1)
@@ -413,7 +419,7 @@ function continueAction()
 			var sum = 0;
 
 			for (var i = 0; i < designations.length; i++) {
-				sum += parseInt(designations[i].amount);
+				sum += parseFloat(designations[i].amount);
 			}		
 
 			jQuery("#iDonateEmbed").attr("data-custom_gift_amount", sum);		
