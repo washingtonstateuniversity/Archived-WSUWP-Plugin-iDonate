@@ -197,6 +197,31 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 		},
 
 		/**
+		 * Calculates the total Advancement Fee, per designation, rounding up
+		 * 
+		 * @param {array} A list of designations where each item has an amount property
+		 * 
+		 * @return {number} The total Advancement fee, fixed to 2 digits
+		 */
+		getAdvFeeTotal: function(designationList)
+		{
+			var sum = 0.0;
+			
+			if(designationList && designationList.length)
+			{
+				for (var i = 0; i < designationList.length; i++) {
+					// The new calculation formula is "total / (1 - fee%) - total" to cover fee
+					var advFeeDecimal = designationList[i].amount / (1 - (wpData.adv_fee_percentage * 0.01)) - designationList[i].amount;
+					
+					// Rounding based on this answer: http://stackoverflow.com/a/5191166
+					sum += parseFloat(Math.ceil(advFeeDecimal * 100) / 100);
+				}
+			}
+
+			return sum;
+		},
+
+		/**
 		 * Updates the Total Amount text and the Advancement fee text whenever the values change
 		 * 
 		 * @param {bool} If true, the Advancement fee should be added to the donation total
@@ -209,7 +234,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			
 			if(wpData.adv_fee_percentage)
 			{
-				var advFeeDecimal = donationTotal * (wpData.adv_fee_percentage * 0.01);
+				var advFeeDecimal = wsuwpUtils.getAdvFeeTotal(designations);
 				if(addAdvFee) donationTotal = donationTotal + advFeeDecimal;
 				
 				// Use Mustache / Handlebars syntax for templating
