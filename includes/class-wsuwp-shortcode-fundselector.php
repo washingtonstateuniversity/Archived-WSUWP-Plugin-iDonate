@@ -73,7 +73,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$return_string .= '	<div class="help-text" style="opacity:0;display:none;">
 						 		<div class="help-text-box">
 									<span class="left">Thank you! You can add more funds from these categories:</span>
-									<span class="close remove"><a href="#"></a></span>
+									<span class="close remove"><a href="#" aria-label="Hide the Add Funds message"></a></span>
 								</div>
 								<div class="help-text-caret"></div>
 							</div>
@@ -157,7 +157,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Search AutoComplete
 		$return_string .= '
 		<div class="form-group has-feedback wrapper search hidden">
-			<input id="fundSearch" type="text" class="form-control" placeholder="Search for a fund..." >
+			<input id="fundSearch" type="text" class="form-control" placeholder="Search for a fund..." title="Search for a fund">
 			<span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
 		</div>
 		';
@@ -173,7 +173,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			<div class="input-group otherprice" style="opacity:0; display:none;">
 				<div class="input-group-addon">$</div>
 				<!-- Maximum length of 8 includes cents (.xx) -->
-				<input class="form-control" id="otherAmount" placeholder="Other Amount" maxlength="8" data-max="99999" value="100" type="text">
+				<input class="form-control" id="otherAmount" placeholder="Other Amount" maxlength="8" data-max="99999" value="100" type="text" title="Other amount">
 				<a class="btnlhtgry plus" id="addFundButton">Add Fund</a>				
 			</div>
 			<span id="errorOtherAmount" class="error" style="opacity:0; display:none;"></span>
@@ -255,7 +255,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		';
 
 		// Continue button
-		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton">Proceed to Checkout</a></p>';
+		$return_string .= '<p class="txtright continuebutton" style="display:none;"><a class="btnlhtgry" id="continueButton" role="button" href="#">Proceed to Checkout</a></p>';
 
 		// Credit Card Disclaimer
 		$return_string .= '
@@ -269,7 +269,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		// Loading Message List
-		$return_string .= '<div id="secondform" style="display: none;"><a class="left btnlhtgry" id="backButton">Back</a><h2 id="embedLoadingMessage" style="display: none;">Loading Payment Process</h2>';
+		$return_string .= '<div id="secondform" style="display: none;"><a class="left btnlhtgry" id="backButton" href="#">Back</a><h2 id="embedLoadingMessage" style="display: none;">Loading Payment Process</h2>';
 
 		wp_enqueue_script( 'wsuf_fundselector_idonate_embed', $url, array(), false, true );
 
