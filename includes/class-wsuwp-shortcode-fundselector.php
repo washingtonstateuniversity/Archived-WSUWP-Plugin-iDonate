@@ -38,7 +38,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			'unit_title' => '',
 			'unit_scholarship_category' => 'idonate_general-scholarship',
 			'adv_fee_message' => '',
-			'adv_fee_designation_id' => '',
 			'adv_fee_percentage' => '',
 		), $atts );
 
@@ -55,7 +54,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$args['unit_description'] = esc_html( $args['unit_description'] );
 
 		$args['adv_fee_message'] = esc_html( $args['adv_fee_message'] );
-		$args['adv_fee_designation_id'] = sanitize_key( $args['adv_fee_designation_id'] );
 		$args['adv_fee_percentage'] = sanitize_key( $args['adv_fee_percentage'] );
 
 		$des_id_query_param = ! empty( $_GET['fund'] ) ? sanitize_key( $_GET['fund'] ) : null;
@@ -215,11 +213,11 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		// Advancement Fee Checkbox
-		if ( ! empty( $args['adv_fee_designation_id'] ) ) {
+		if ( ! empty( $args['adv_fee_message'] ) ) {
 			$return_string .= '
 			<div class="additional-info" style="display:none;">
 				<span>
-					<input type="checkbox" id="advFeeCheck" data-designation_id="' . $args['adv_fee_designation_id'] . '" data-amount=10 > 
+					<input type="checkbox" id="advFeeCheck" data-amount=10 > 
 					<label for="advFeeCheck"><span id="advFeeAmount"></span></label>
 				</span>
 			</div>
