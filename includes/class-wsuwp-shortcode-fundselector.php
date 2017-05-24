@@ -165,11 +165,11 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Dollar Amount Selectors
 		$return_string .= '
 		<div class="amountwrapper wrapper" style="opacity:0;display:none;" role="group">
+			<button type="button" class="amount-selection btn btn-default" data-amount="2500">$2500</button>
 			<button type="button" class="amount-selection btn btn-default" data-amount="2000">$2000</button>
-			<button type="button" class="amount-selection btn btn-default" data-amount="100">$100</button>
-			<button type="button" class="amount-selection btn btn-default" data-amount="50">$50</button>
-			<button type="button" class="amount-selection btn btn-default" data-amount="25" >$25</button>
-			<button type="button" class="amount-selection btn btn-default other" data-amount="25" >OTHER</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="1500">$1500</button>
+			<button type="button" class="amount-selection btn btn-default" data-amount="1000" >$1000</button>
+			<button type="button" class="amount-selection btn btn-default other" data-amount="100" >OTHER</button>
 			<div class="input-group otherprice" style="opacity:0; display:none;">
 				<div class="input-group-addon">$</div>
 				<!-- Maximum length of 8 includes cents (.xx) -->
