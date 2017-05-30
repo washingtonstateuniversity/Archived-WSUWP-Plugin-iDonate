@@ -210,8 +210,8 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			if(designationList && designationList.length)
 			{
 				for (var i = 0; i < designationList.length; i++) {
-					// The new calculation formula is "total / (1 - fee%) - total" to cover fee
-					var advFeeDecimal = designationList[i].amount / (1 - (wpData.adv_fee_percentage * 0.01)) - designationList[i].amount;
+					// The new new calculation formula is "total * (1 + fee%) - total" to cover fee
+					var advFeeDecimal = designationList[i].amount * (1 + (wpData.adv_fee_percentage * 0.01)) - designationList[i].amount;
 					
 					// Rounding based on this answer: http://stackoverflow.com/a/5191166
 					sum += parseFloat(Math.ceil(advFeeDecimal * 100) / 100);
