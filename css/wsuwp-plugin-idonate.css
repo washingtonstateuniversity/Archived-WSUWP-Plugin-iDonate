@@ -602,11 +602,6 @@
   -ms-flex-pack: end;
   justify-content: flex-end;
 }
-@media (max-width: 372px) {
-  #fundSelectionForm .continuebutton {
-    padding-right: 30px;
-  }
-}
 #fundSelectionForm label,
 #fundSelectionForm legend {
   font-weight: 300;
@@ -746,13 +741,5 @@
 }
 .ui-autocomplete.fundselector .ui-menu-item.ui-state-focus {
   color: #981e32;
-}
-@media (max-width: 372px) {
-  .halves.gutter .column.one:not(.gutterless),
-  .halves.gutter .column:nth-of-type(2n+3):not(.gutterless),
-  .side-right.gutter .column.one:not(.gutterless) {
-    padding-right: 0.25rem;
-    padding-left: 0.25rem;
-  }
 }
 /*# sourceMappingURL=wsuwp-plugin-idonate.css.map */
