@@ -723,6 +723,16 @@
     font-size: 16px;
   }
 }
+#fundSelectionForm .loading {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.8) url('../images/loader.gif') 95% 50% no-repeat;
+}
 .ui-autocomplete.fundselector {
   background-color: #fff;
   border: 1px solid #e6e7e8;
