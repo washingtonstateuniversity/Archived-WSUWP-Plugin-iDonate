@@ -602,6 +602,11 @@
   -ms-flex-pack: end;
   justify-content: flex-end;
 }
+@media (max-width: 372px) {
+  #fundSelectionForm .continuebutton {
+    padding-right: 30px;
+  }
+}
 #fundSelectionForm label,
 #fundSelectionForm legend {
   font-weight: 300;
