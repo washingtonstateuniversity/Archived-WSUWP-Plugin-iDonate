@@ -1,6 +1,7 @@
 #fundSelectionForm p {
 	font-size: 1em;
 }
+
 #fundSelectionForm a.btnlhtgry {
 	display: inline-block;
 	min-width: 100px;
@@ -16,9 +17,11 @@
 	background-color: #f1f1f1;
 	cursor: pointer;
 }
+
 #fundSelectionForm a.btnlhtgry:hover {
 	background-color: #d1d3d4;
 }
+
 #fundSelectionForm input {
 	color: #4c4c4c;
 	width: 100%;
@@ -34,15 +37,16 @@
 	border: 1px solid #ebe7e8;
 	border-radius: 2px;
 }
+
 #fundSelectionForm input[type="checkbox"] {
 	width: 15px;
 	height: 15px;
 	margin-top: 2px;
 }
+
 #fundSelectionForm select {
 	color: #4c4c4c;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+	transition: all .3s ease-in-out;
 	width: 100%;
 	height: 40px;
 	margin: 0;
@@ -60,20 +64,21 @@
 	font-size: 12px;
 	font-weight: 400;
 }
+
 #fundSelectionForm select.fund {
 	background: #fff url(../images/ico/arrow-down-gry.png) no-repeat center center;
 	background-position: calc(100% - 16px) center;
 	background-size: 12px;
-  -webkit-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+	transition: background-color .3s ease-in-out, color .3s ease-in-out;
 	padding-right: 35px;
 }
+
 #fundSelectionForm button,
 #fundSelectionForm .ui-button {
 	color: #4c4c4c;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+	transition: all .3s ease-in-out;
 }
+
 #fundSelectionForm #majorcategory {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -82,10 +87,10 @@
 	justify-content: space-around;
 	padding: 0 0 10px 0;
 }
+
 #fundSelectionForm #majorcategory a {
 	line-height: 1.4em;
-  -webkit-transition: color 0.3s ease-in-out;
-  transition: color 0.3s ease-in-out;
+	transition: color .3s ease-in-out;
 	width: 25%;
 	color: #4c4c4c;
 	display: -webkit-box;
@@ -105,16 +110,19 @@
 	-ms-flex-align: center;
 	align-items: center;
 }
+
 #fundSelectionForm #majorcategory a:hover {
 	color: #981e32;
 }
+
 #fundSelectionForm #majorcategory a.search:after {
 	content: "$";
 	font-family: Spine-Icons;
-  margin: 0 -0.25rem 0 0.5rem;
+	margin: 0 -.25rem 0 .5rem;
 	position: relative;
 	top: .125rem;
 }
+
 #fundSelectionForm #majorcategory a.active {
 	border-left: 1px solid #d1d3d4;
 	border-top: 1px solid #d1d3d4;
@@ -123,23 +131,28 @@
 	color: #981e32;
 	font-weight: 700;
 }
+
 #fundSelectionForm input[type="text"]:hover,
 #fundSelectionForm select:hover {
 	border: 1px solid #d1d3d4;
 	cursor: pointer;
 }
+
 #fundSelectionForm input[type="text"]:focus,
 #fundSelectionForm select:focus {
 	border: 1px solid #981e32;
 }
+
 #fundSelectionForm select::-ms-expand {
 	display: none;
 }
+
 #fundSelectionForm input.search {
 	background: transparent url(../images/ico/search-gry.png) no-repeat 12px center;
 	background-size: 12px;
 	background-position-x: 6px;
 }
+
 #fundSelectionForm input.left,
 #fundSelectionForm a.left {
 	background: transparent url(../images/ico/arrow-left-gry.png) no-repeat 12px center;
@@ -148,23 +161,26 @@
 	border: 1px solid #ececec;
 	background-color: #f1f1f1;
 }
+
 #fundSelectionForm a.plus {
 	background: transparent url(../images/ico/plus-gry.png) no-repeat 12px center;
 	background-size: 12px;
 	color: #3b4042;
 	border: 1px solid #ececec;
 	background-color: #f1f1f1;
-  -webkit-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+	transition: background-color .3s ease-in-out, color .3s ease-in-out;
 }
+
 #fundSelectionForm input.search:focus {
 	background: #94192b url(../images/ico/search-wht.png) no-repeat 16px center;
 }
+
 #fundSelectionForm .input-group {
 	position: relative;
 	display: table;
 	border-collapse: separate;
 }
+
 #fundSelectionForm .input-group .form-control {
 	position: relative;
 	z-index: 2;
@@ -173,9 +189,11 @@
 	padding: 0;
 	border: 1px solid #ebe7e8;
 }
+
 #fundSelectionForm .input-group .form-control:focus {
 	z-index: 3;
 }
+
 #fundSelectionForm .input-group-btn {
 	position: relative;
 	display: table-cell;
@@ -186,22 +204,27 @@
 	vertical-align: middle;
 	font-size: 0;
 }
+
 #fundSelectionForm .input-group-btn > .btn:active,
 #fundSelectionForm .input-group-btn > .btn:focus,
 #fundSelectionForm .input-group-btn > .btn:hover {
 	z-index: 2;
 }
+
 #fundSelectionForm .input-group-btn > .btn {
 	position: relative;
 }
+
 #fundSelectionForm .input-group-btn > .btn + .btn {
 	margin-left: -1px;
 }
+
 #fundSelectionForm .input-group[class*="col-"] {
 	float: none;
 	padding-left: 0;
 	padding-right: 0;
 }
+
 #fundSelectionForm .input-group-addon {
 	display: table-cell;
 	display: -webkit-box;
@@ -224,10 +247,12 @@
 	-ms-flex-align: center;
 	align-items: center;
 }
+
 #fundSelectionForm .input-group-addon input[type="checkbox"],
 #fundSelectionForm .input-group-addon input[type="radio"] {
 	margin-top: 0;
 }
+
 #fundSelectionForm .input-group-addon.input-sm,
 #fundSelectionForm .input-group-sm > .input-group-addon,
 #fundSelectionForm .input-group-sm > .input-group-btn > .input-group-addon.btn {
@@ -235,6 +260,7 @@
 	font-size: 14px;
 	border-radius: 3px;
 }
+
 #fundSelectionForm .input-group-addon.input-lg,
 #fundSelectionForm .input-group-lg > .input-group-addon,
 #fundSelectionForm .input-group-lg > .input-group-btn > .input-group-addon.btn {
@@ -242,28 +268,34 @@
 	font-size: 20px;
 	border-radius: 6px;
 }
+
 #fundSelectionForm .input-group .form-control:first-child,
 #fundSelectionForm .input-group-btn:first-child > .btn-group > .btn,
 #fundSelectionForm .input-group-btn:first-child > .dropdown-toggle,
 #fundSelectionForm .input-group-btn:last-child > .btn-group:not(:last-child) > .btn,
 #fundSelectionForm .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
+
 	border-bottom-right-radius: 0;
 	border-top-right-radius: 0;
 }
+
 #fundSelectionForm .input-group-addon:first-child {
 	border-right: 0;
 	border-radius: 0;
 	font-weight: 800;
 	font-size: 12px;
 }
+
 #fundSelectionForm .input-group-btn:first-child > .btn {
 	border-bottom-right-radius: 0;
 	border-top-right-radius: 0;
 	margin-right: -1px;
 }
+
 #fundSelectionForm .input-group-btn:first-child > .btn-group {
 	margin-right: -1px;
 }
+
 #fundSelectionForm .input-group .form-control:last-child,
 #fundSelectionForm .input-group-btn:first-child > .btn-group:not(:first-child) > .btn,
 #fundSelectionForm .input-group-btn:first-child > .btn:not(:first-child),
@@ -272,26 +304,31 @@
 	border-bottom-left-radius: 0;
 	border-top-left-radius: 0;
 }
+
 #fundSelectionForm .input-group-addon:last-child {
 	border-bottom-left-radius: 0;
 	border-top-left-radius: 0;
 	border-left: 0;
 }
+
 #fundSelectionForm .input-group-btn:last-child > .btn {
 	border-bottom-left-radius: 0;
 	border-top-left-radius: 0;
 	z-index: 2;
 	margin-left: -1px;
 }
+
 #fundSelectionForm .input-group-btn:last-child > .btn-group {
 	z-index: 2;
 	margin-left: -1px;
 }
+
 #fundSelectionForm .wrapper {
 	position: relative;
 	width: 100%;
 	display: inline-block;
 }
+
 #fundSelectionForm button.amount-selection {
 	border: none;
 	padding: 10px 10px;
@@ -306,31 +343,38 @@
 	justify-content: center;
 	margin-top: 10px;
 }
+
 #fundSelectionForm button.amount-selection.selected {
 	color: #fff;
 	background-color: #981e32;
 }
+
 #fundSelectionForm button.amount-selection:first-child {
 	border-top-left-radius: 2px;
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 2px;
 }
+
 #fundSelectionForm button.amount-selection.lastbutton {
 	border-top-left-radius: 0;
 	border-top-right-radius: 2px;
 	border-bottom-right-radius: 2px;
 	border-bottom-left-radius: 0;
 }
+
 #fundSelectionForm button.amount-selection:hover {
 	background-color: #d1d3d4;
 }
+
 #fundSelectionForm button.amount-selection.selected:hover {
 	background-color: #981e32;
 }
+
 #fundSelectionForm div.input-group {
 	clear: both;
 }
+
 #fundSelectionForm .amountwrapper {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -342,9 +386,11 @@
 	-ms-flex-pack: justify;
 	justify-content: space-between;
 }
+
 #fundSelectionForm .amountwrapper .input-group {
 	margin: 20px 0 0 0;
 }
+
 #fundSelectionForm .button.active,
 #fundSelectionForm .button:active,
 #fundSelectionForm button.active,
@@ -354,11 +400,13 @@
 #fundSelectionForm input[type="button"]:active {
 	background: auto;
 }
+
 #fundSelectionForm #selectedFunds {
 	margin: 0 0 20px 0;
 	list-style-type: none;
 	padding: 0;
 }
+
 #fundSelectionForm #selectedFunds li {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -375,6 +423,7 @@
 	margin-top: 10px;
 	color: #464e54;
 }
+
 #fundSelectionForm #selectedFunds li span {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -384,6 +433,7 @@
 	-ms-flex-direction: row;
 	flex-direction: row;
 }
+
 #fundSelectionForm #selectedFunds li span.left {
 	padding-right: 20px;
 	font-weight: 700;
@@ -395,6 +445,7 @@
 	display: flex;
 	font-size: 12px;
 }
+
 #fundSelectionForm #selectedFunds li span.right {
 	font-size: 12px;
 	width: 100%;
@@ -406,6 +457,7 @@
 	align-items: center;
 	padding-right: 20px;
 }
+
 #fundSelectionForm #selectedFunds li:first-child:after {
 	content: "";
 	position: absolute;
@@ -417,6 +469,7 @@
 	top: -8px;
 	left: 7px;
 }
+
 #fundSelectionForm .help-text-box {
 	background: #981e32;
 	color: #e6e7e8;
@@ -430,6 +483,7 @@
 	margin-top: 10px;
 	font-size: 12px;
 }
+
 #fundSelectionForm .help-text-box span.left {
 	padding-right: 20px;
 	font-weight: 800;
@@ -442,6 +496,7 @@
 	font-size: 105%;
 	width: 100%;
 }
+
 #fundSelectionForm .help-text-box span.right {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -451,6 +506,7 @@
 	align-items: center;
 	padding-right: 20px;
 }
+
 #fundSelectionForm .help-text-caret {
 	width: 0;
 	height: 0;
@@ -461,25 +517,30 @@
 	margin-left: calc(10% - 7px);
 	margin-bottom: 10px;
 }
+
 #fundSelectionForm .help-text .close a {
 	background: url(../images/ico/close-wht.png) no-repeat center center;
 	background-size: 12px;
 }
+
 #fundSelectionForm .additional-info {
 	font-size: 90%;
 	margin-bottom: 20px;
 }
+
 #fundSelectionForm .additional-info .additional-info-header {
 	font-weight: 700;
 	font-size: 12px;
 }
+
 #fundSelectionForm .additional-info input[type="checkbox"] {
 	-webkit-box-flex: 0;
 	-ms-flex: 0 0 20px;
 	flex: 0 0 20px;
 }
+
 #fundSelectionForm .additional-info input[type="checkbox"] + label:before {
-  border: 1px solid rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(0, 0, 0, .2);
 	content: "\00a0";
 	font: 16px/1em sans-serif;
 	height: 15px;
@@ -489,6 +550,7 @@
 	width: 15px;
 	float: left;
 }
+
 #fundSelectionForm .additional-info input[type="checkbox"]:checked + label:before {
 	background: #981e32 url(../images/ico-check-wht.png) center center no-repeat;
 	color: #fff;
@@ -504,23 +566,29 @@
 #fundSelectionForm .additional-info input[type="checkbox"]:checked + label:after {
 	font-weight: 700;
 }
+
 #fundSelectionForm .additional-info input[type="checkbox"] {
 	opacity: 0;
 }
+
 #fundSelectionForm .additional-info p {
 	padding-bottom: 2em;
 }
+
 #fundSelectionForm .additional-info span {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-  margin-bottom: 10px;
+	margin-bottom: 10px;
 }
+
 #fundSelectionForm .additional-info span:not(.additional-info-header-wrapper) {
+
 	margin-left: 10px;
 	line-height: 2em;
 	margin-top: -4px;
 }
+
 #fundSelectionForm .additional-info label {
 	-webkit-box-flex: 2;
 	-ms-flex: 2;
@@ -529,33 +597,38 @@
 	font-size: 1em;
 	padding-right: 10px;
 }
+
 #fundSelectionForm .additional-info .additional-info-header-wrapper a {
-  background: transparent url(../images/ico/arrow-down-gry.png) no-repeat calc(100% - 10px) 8px;
-  background-size: 8px;
-  -webkit-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  padding-right: 27px;
-  margin-left: 15px;
-  border: 1px solid #ececec;
-  background-color: #f1f1f1;
-  cursor: pointer;
+	background: transparent url(../images/ico/arrow-down-gry.png) no-repeat calc(100% - 10px) 8px;
+	background-size: 8px;
+	transition: background-color .3s ease-in-out, color .3s ease-in-out;
+	padding-right: 27px;
+	margin-left: 15px;
+	border: 1px solid #ececec;
+	background-color: #f1f1f1;
+	cursor: pointer;
 }
+
 #fundSelectionForm .additional-info .additional-info-header-wrapper a:hover {
-  background-color: #d1d3d4;
+	background-color: #d1d3d4;
 }
+
 #fundSelectionForm .additional-info .additional-info-header-wrapper a.down {
-  background: url(../images/ico/arrow-up-gry.png) no-repeat calc(100% - 10px) 6px;
-  background-size: 8px;
+	background: url(../images/ico/arrow-up-gry.png) no-repeat calc(100% - 10px) 6px;
+	background-size: 8px;
 }
+
 #fundSelectionForm .additional-info .additional-info-header-wrapper a > span {
-  line-height: inherit;
-  margin-top: 0;
-  margin-bottom: 0;
-  text-align: center;
+	line-height: inherit;
+	margin-top: 0;
+	margin-bottom: 0;
+	text-align: center;
 }
+
 #fundSelectionForm .hidden {
 	display: none;
 }
+
 #fundSelectionForm .center {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -564,6 +637,7 @@
 	-ms-flex-pack: center;
 	justify-content: center;
 }
+
 #fundSelectionForm .alignright {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -572,9 +646,11 @@
 	-ms-flex-pack: end;
 	justify-content: flex-end;
 }
+
 #fundSelectionForm .wrapper:after {
 	clear: both;
 }
+
 #fundSelectionForm .search-separator {
 	margin: 0 0;
 	display: -webkit-box;
@@ -584,22 +660,26 @@
 	-ms-flex-pack: center;
 	justify-content: center;
 }
+
 #fundSelectionForm #jacket,
 #fundSelectionForm #binder,
 #fundSelectionForm section.row {
 	background-color: #fff;
 }
+
 #fundSelectionForm ul.ui-autocomplete {
 	background-color: #fff;
 	border: 1px solid #ccc;
 	width: 100%;
 	z-index: 1000;
 }
+
 #fundSelectionForm .ui-button-text,
 #fundSelectionForm #selectedFunds li span.left {
 	font-weight: 800;
 	font-size: 12px;
 }
+
 #fundSelectionForm .continuebutton {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -610,12 +690,14 @@
 	-ms-flex-pack: end;
 	justify-content: flex-end;
 }
+
 #fundSelectionForm label,
 #fundSelectionForm legend {
 	font-weight: 300;
 	font-size: 12px;
 	color: #4c4c4c;
 }
+
 #fundSelectionForm .close a {
 	display: block;
 	right: 0;
@@ -628,6 +710,7 @@
 	background-size: 12px;
 	opacity: 1;
 }
+
 #fundSelectionForm span.edit {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -636,18 +719,21 @@
 	-ms-flex-align: center;
 	align-items: center;
 }
+
 #fundSelectionForm a.edit,
 #fundSelectionForm li span.amount {
 	color: #4c4c4c;
 	font-weight: 800;
 	font-size: 12px;
 }
+
 #fundSelectionForm .otherprice {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	width: 100%;
 }
+
 #fundSelectionForm span.center,
 #fundSelectionForm span.close {
 	-webkit-box-flex: 0;
@@ -664,68 +750,90 @@
 	-ms-flex-align: center;
 	align-items: center;
 }
+
 #fundSelectionForm #addFundButton {
 	padding: 11px 40px 10px 40px;
 	background-position-x: 51px;
 	background-size: 8px;
 	background-color: #e6e7e8;
 }
+
 #fundSelectionForm #addFundButton:hover:not(.ui-state-disabled) {
+
 	color: #fff;
 	background: #981e32 url(../images/ico/plus-wht.png) no-repeat 12px center;
 	background-size: 8px;
 	background-position-x: 51px;
 }
+
 #fundSelectionForm #backButton {
 	min-width: 70px;
 	padding: 15px 15px 15px 15px;
 }
+
 #fundSelectionForm .disclaimer {
 	line-height: 1.3em;
 }
+
 #fundSelectionForm .disclaimer.total {
 	margin-bottom: 20px;
 }
+
 #fundSelectionForm .disclaimer.total .first-sentence {
 	color: #981e32;
 	font-weight: 600;
 }
+
 #fundSelectionForm .disclaimer.credit-card {
 	font-style: italic;
 	font-size: 75%;
 }
+
 #fundSelectionForm .error {
 	font-size: 90%;
 	color: #c60c30;
 }
+
 #fundSelectionForm #errorOtherAmount {
 	margin-left: 15px;
 }
+
 @media (max-width: 800px) {
+
 	#fundSelectionForm button.amount-selection {
 		width: calc(20% - 5px);
 	}
+
 }
+
 @media (max-width: 420px) {
+
 	#fundSelectionForm .additional-info {
 		font-size: 65%;
 	}
+
 	#fundSelectionForm button.amount-selection {
 		width: calc(33% - 5px);
 	}
+
 }
+
 @media screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 0) {
+
 	#fundSelectionForm select,
 	#fundSelectionForm textarea,
 	#fundSelectionForm input {
 		font-size: 16px;
 	}
+
 	#fundSelectionForm select:focus,
 	#fundSelectionForm textarea:focus,
 	#fundSelectionForm input:focus {
 		font-size: 16px;
 	}
+
 }
+
 .ui-autocomplete.fundselector {
 	background-color: #fff;
 	border: 1px solid #e6e7e8;
@@ -734,10 +842,13 @@
 	padding-bottom: 5px;
 	text-transform: uppercase;
 }
+
 .ui-autocomplete.fundselector .ui-menu-item {
 	cursor: pointer;
 }
+
 .ui-autocomplete.fundselector .ui-menu-item.ui-state-focus {
 	color: #981e32;
 }
+
 /*# sourceMappingURL=wsuwp-plugin-idonate.css.map */
