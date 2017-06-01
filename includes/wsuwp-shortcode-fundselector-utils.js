@@ -112,8 +112,9 @@ var minimumGift = 3;
 
 		roundAmount: function (amount) {
 			var roundedAmount = 0;
-			if(amount && _.isNumber(amount)) {
-				roundedAmount = Math.round(amount * 100 + Number.EPSILON) / 100;
+			var inputAmount = parseFloat(amount);
+			if(inputAmount && _.isNumber(inputAmount)) {
+				roundedAmount = Math.round(inputAmount * 100 + Number.EPSILON) / 100;
 			}
 			return roundedAmount;
 		},
