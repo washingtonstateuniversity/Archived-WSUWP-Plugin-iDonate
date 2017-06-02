@@ -49,14 +49,14 @@ jQuery(document).ready(function($) {
 
 		if(categoryName) {
 			var restUrl = wpData.request_url_base + encodeURIComponent(categoryName);
+			var category = $(this).attr("data-name");
 			
+			var $list = $('#subcategories'); 
+			$list.empty();
+			$list.append('<option disabled selected value> SELECT A ' + category + '</option>');
+
 			$.getJSON( restUrl )
 			.done(function( json ) {
-
-				var $list = $('#subcategories'); 
-				$list.empty();
-				$list.append('<option disabled selected value> SELECT A CATEGORY </option>');
-				
 				var $fundList = $('#funds');				
 				$fundList.empty();
 				$fundList.append('<option disabled selected value> SELECT A FUND </option>');
