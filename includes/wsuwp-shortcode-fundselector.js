@@ -439,9 +439,8 @@ function continueAction(event)
 		}
 
 		var referenceCode = { donorPaysFee: $advFeeCheck.prop("checked"), feePercentage: parseInt(wpData.adv_fee_percentage)};
-		var stringifiedRefCode = new RegExp(JSON.stringify(referenceCode));
 
-		jQuery("#iDonateEmbed").attr("data-reference_code", stringifiedRefCode);
+		jQuery("#iDonateEmbed").attr("data-reference_code", JSON.stringify(referenceCode));
 
 		// Initialize the iDonate embed
 		initializeEmbeds();
