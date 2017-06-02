@@ -90,16 +90,16 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		<div id="majorcategory" class="wrapper" role="group" aria-label="Category Selection Group">'
 			. $unit_priorities .
 			'<a class="' . ($unit_included ? '' : 'active') . '" role="button" data-tab="prioritiesTab" href="#" >WSU Priorities</a>
-			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_programs" data-name="PROGRAM" href="#">Programs</a>
-			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_colleges" data-name="COLLEGE" href="#">Colleges</a>
-			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_campuses" data-name="CAMPUS" href="#">Campuses</a>
+			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_programs" data-name="PROGRAM" data-description="division, department, or affiliation" href="#">Programs</a>
+			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_colleges" data-name="COLLEGE" data-description="college" href="#">Colleges</a>
+			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_campuses" data-name="CAMPUS" data-description="campus, research, or extension center" href="#">Campuses</a>
             <a class="search" role="button" href="#"><div class="search-text">Search</div></a>
 		</div>';
 
 		// Unit Priorities Tab
 		$unit_priorities = $this->wsuf_fundselector_funds_get_funds( $args['unit_taxonomy'], $args['unit_category'] );
 		$unit_priorities_list = '<option disabled selected value> SELECT A FUND </option>';
-
+		
 		foreach ( $unit_priorities as $unit_priority ) {
 			$fund_name = esc_html( $unit_priority['fund_name'] );
 			$fund_designation_id = esc_attr( $unit_priority['designation_id'] );

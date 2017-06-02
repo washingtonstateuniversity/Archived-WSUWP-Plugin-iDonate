@@ -50,10 +50,12 @@ jQuery(document).ready(function($) {
 		if(categoryName) {
 			var restUrl = wpData.request_url_base + encodeURIComponent(categoryName);
 			var category = $(this).attr("data-name");
-			
+			var description = $(this).attr("data-description");
+
 			var $list = $('#subcategories'); 
 			$list.empty();
 			$list.append('<option disabled selected value> SELECT A ' + category + '</option>');
+			$("label[for=subcategories]").text("Choose a " + description);
 
 			$.getJSON( restUrl )
 			.done(function( json ) {
