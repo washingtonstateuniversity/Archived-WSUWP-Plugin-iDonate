@@ -99,7 +99,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Unit Priorities Tab
 		$unit_priorities = $this->wsuf_fundselector_funds_get_funds( $args['unit_taxonomy'], $args['unit_category'] );
 		$unit_priorities_list = '<option disabled selected value> SELECT A FUND </option>';
-		
 		foreach ( $unit_priorities as $unit_priority ) {
 			$fund_name = esc_html( $unit_priority['fund_name'] );
 			$fund_designation_id = esc_attr( $unit_priority['designation_id'] );
@@ -109,7 +108,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$unit_description = ! empty( $args['unit_description'] ) ? $args['unit_description'] : 'Please choose a fund to support';
 
 		$return_string .= '
-		<div id="categoryTab" class="categoryTab wrapper ' . ($unit_included ? '' : 'hidden') . '">    
+		<div id="categoryTab" class="categoryTab wrapper ' . ($unit_included ? '' : 'hidden') . '">
 			<label for="unit-priorities">' . $unit_description . '</label>
 			<select name="unit-priorities" id="unit-priorities" class="form-control fund-selection fund">'
 				. $unit_priorities_list .
