@@ -227,7 +227,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		// Total Amount information
 		$return_string .= '
-		<div tabindex="0" class="disclaimer total" style="display:none;"><span class="first-sentence">Your generous donation will total $<span id="totalAmount"></span> today.</span> When you proceed to checkout, you will be sent to our payment processing service.</div>
+		<div class="disclaimer total" style="display:none;"><span class="first-sentence">Your generous donation will total $<span id="totalAmount"></span> today.</span> When you proceed to checkout, you will be sent to our payment processing service.</div>
 		';
 
 		// Gift Planning Checkboxes
