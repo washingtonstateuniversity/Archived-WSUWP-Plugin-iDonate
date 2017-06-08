@@ -616,14 +616,13 @@
 	}
 
 	.loading {
-	display: inline-flex;
-	justify-content: flex-end;
-	z-index: 1000;
-	background: rgba( 255, 255, 255, .8 ) 
-				url(../images/loader.gif)
-                95% 50% 
-                no-repeat;
+		background: #fff url(../images/loader.gif) no-repeat center center;
+        background-position:calc(100% - 16px) center;
+		background-size:12px;
+		transition:background-color .3s ease-in-out, color .3s ease-in-out;
+        padding-right: 35px;
  	}
+	 
 }
 
 .ui-autocomplete.fundselector {

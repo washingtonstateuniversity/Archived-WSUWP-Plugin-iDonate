@@ -106,11 +106,12 @@ jQuery(document).ready(function($) {
 					.text( wsuwpUtils.htmlDecode(value["title"].rendered) ) ); 
 				});
 
+				$list.removeClass('loading');
+				$list.addClass('fund'); 
+
 				if(json.length > 0)
 				{
 					$list.prop("disabled", false);
-					$list.addClass('fund');
-					$list.removeClass('loading'); 
 				}
 
 			})
