@@ -402,8 +402,8 @@ function continueAction(event)
 		
 		if($advFeeCheck.prop("checked")) {
 			for (var i = 0; i < designations.length; i++) {
-				// The new calculation formula is "total / (1 - fee%) - total" to cover fee
-				var advFeeDecimal = designations[i].amount / (1 - (wpData.adv_fee_percentage * 0.01)) - designations[i].amount;
+				// The new new calculation formula is "total * (1 + fee%) - total" to cover fee
+				var advFeeDecimal = designations[i].amount * (1 + (wpData.adv_fee_percentage * 0.01)) - designations[i].amount;
 				
 				// Rounding based on this answer: http://stackoverflow.com/a/5191166
 				designations[i].amount += parseFloat(Math.ceil(advFeeDecimal * 100) / 100);
@@ -449,8 +449,10 @@ function continueAction(event)
 		}
 
 		var referenceCode = { donorPaysFee: $advFeeCheck.prop("checked"), feePercentage: parseInt(wpData.adv_fee_percentage)};
-		
-		jQuery("#iDonateEmbed").attr("data-reference_code", JSON.stringify(referenceCode));
+		var stringifiedRefCode = '/' + JSON.stringify(referenceCode) + '/';
+		stringifiedRefCode = stringifiedRefCode.replace(/"/g, '\\"');
+
+		jQuery("#iDonateEmbed").attr("data-reference_code", stringifiedRefCode);
 
 		// Initialize the iDonate embed
 		initializeEmbeds();
