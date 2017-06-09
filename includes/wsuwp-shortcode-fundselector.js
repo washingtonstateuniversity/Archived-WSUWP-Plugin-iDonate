@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
 	$("#fundSearch").autocomplete(
         {
 			source: function( request, response ) {
-	
+				$("#fundSearch").addClass("loading");
 				$.getJSON( wpData.request_url_base + 'idonate_fund', 
 					{
 						search : request.term
@@ -20,7 +20,7 @@ jQuery(document).ready(function($) {
 								"value": wsuwpUtils.htmlDecode(fund.title.rendered)
 							};
 						});
-						
+						$("#fundSearch").removeClass("loading");
 						response( fundList );
 					}
 				);
@@ -53,7 +53,10 @@ jQuery(document).ready(function($) {
 			var description = $(this).attr("data-description");
 
 			var $list = $('#subcategories'); 
-			$list.empty();
+			$list.prop('disabled', true); 
+			$list.addClass('loading');
+			$list.removeClass('fund');
+      
 			$list.append('<option disabled selected value> SELECT A ' + category + '</option>');
 			$("label[for=subcategories]").text("Choose a " + description);
 
@@ -62,14 +65,15 @@ jQuery(document).ready(function($) {
 				var $fundList = $('#funds');				
 				$fundList.empty();
 				$fundList.append('<option disabled selected value> SELECT A FUND </option>');
-				$fundList.prop("disabled", true);
 
 				$.each(json, function(key, value) {   
 					$list
 					.append($('<option>', { value : value["id"], "data-category" : value["taxonomy"] })
 					.text( wsuwpUtils.htmlDecode( value["name"]) )); 
 				});
-
+				$list.prop('disabled', false);
+				$list.addClass('fund');
+				$list.removeClass('loading'); 
 			})
 		}
 
@@ -85,12 +89,16 @@ jQuery(document).ready(function($) {
 
 		if(category && subcategoryId) {
 			// GET /wp-json/wp/v2/idonate_fund?<taxonomy_slug>=<category_id> (e.g. GET /wp-json/wp/v2/idonate_fund?idonate_priorities=35)
-			var restQueryUrl = wpData.request_url_base + 'idonate_fund?' + category + "=" + subcategoryId;
+			var restQueryUrl = wpData.request_url_base + 'idonate_fund?' + category + "=" + subcategoryId + "&per_page=100&orderby=title&order=asc";
 			
+			var $list = $('#funds'); 
+			$list.prop('disabled', true); 
+			$list.addClass('loading');
+			$list.removeClass('fund');
+
 			$.getJSON( restQueryUrl )
 			.done(function( json ) {
 
-				var $list = $('#funds'); 
 				$list.empty();
 				$list.append('<option disabled selected value> SELECT A FUND </option>');
 				$.each(json, function(key, value) {   
@@ -98,6 +106,9 @@ jQuery(document).ready(function($) {
 					.append($('<option>', { value : value["designationId"] })
 					.text( wsuwpUtils.htmlDecode(value["title"].rendered) ) ); 
 				});
+
+				$list.removeClass('loading');
+				$list.addClass('fund'); 
 
 				if(json.length > 0)
 				{
@@ -440,7 +451,8 @@ function continueAction(event)
 
 		var referenceCode = { donorPaysFee: $advFeeCheck.prop("checked"), feePercentage: parseInt(wpData.adv_fee_percentage)};
 
-		var stringifiedRefCode = new RegExp(JSON.stringify(referenceCode));
+		var stringifiedRefCode = '/' + JSON.stringify(referenceCode) + '/';
+		stringifiedRefCode = stringifiedRefCode.replace(/"/g, '\\"');
 
 		jQuery("#iDonateEmbed").attr("data-reference_code", stringifiedRefCode);
 
