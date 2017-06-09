@@ -729,6 +729,13 @@
   background-size: 15px;
   opacity: 1;
 }
+#fundSelectionForm .loading {
+  background: #fff url(../images/loader.gif) no-repeat center center;
+  background-position: calc(100% - 16px) center;
+  background-size: 12px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  padding-right: 35px;
+}
 .ui-autocomplete.fundselector {
   background-color: #fff;
   border: 1px solid #e6e7e8;
