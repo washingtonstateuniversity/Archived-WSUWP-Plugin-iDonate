@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
 		var categoryName = $(this).attr("data-category");
 
 		if(categoryName) {
-			var restUrl = wpData.request_url_base + encodeURIComponent(categoryName);
+			var restUrl = wpData.request_url_base + encodeURIComponent(categoryName) + "?per_page=100&orderby=name";
 			
 			$.getJSON( restUrl )
 			.done(function( json ) {
@@ -83,7 +83,7 @@ jQuery(document).ready(function($) {
 
 		if(category && subcategoryId) {
 			// GET /wp-json/wp/v2/idonate_fund?<taxonomy_slug>=<category_id> (e.g. GET /wp-json/wp/v2/idonate_fund?idonate_priorities=35)
-			var restQueryUrl = wpData.request_url_base + 'idonate_fund?' + category + "=" + subcategoryId;
+			var restQueryUrl = wpData.request_url_base + 'idonate_fund?' + category + "=" + subcategoryId + "&per_page=100&orderby=title&order=asc";
 			
 			$.getJSON( restQueryUrl )
 			.done(function( json ) {
