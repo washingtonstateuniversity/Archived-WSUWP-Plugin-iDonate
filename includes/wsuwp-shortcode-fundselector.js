@@ -53,6 +53,7 @@ jQuery(document).ready(function($) {
 			var description = $(this).attr("data-description");
 
 			var $list = $('#subcategories'); 
+			$list.empty();
 			$list.prop('disabled', true); 
 			$list.addClass('loading');
 			$list.removeClass('fund');
