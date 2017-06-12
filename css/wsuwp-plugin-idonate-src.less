@@ -95,12 +95,20 @@
 		a:hover {
 			color:#981e32;
 		}
+		a.search .search-text { 
+			@media only screen and (max-width:480px) {
+				display: none; 
+			}
+		}
 		a.search:after {
 			content: "$";
 			font-family: Spine-Icons;
 			margin: 0 -.25rem 0 .5rem;
 			position: relative;
 			top: .125rem;
+			@media only screen and (max-width:480px) {
+				margin: 0;
+			}
 		}
 		a.active {
 			border-left:1px solid #d1d3d4;
