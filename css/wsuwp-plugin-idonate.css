@@ -115,12 +115,24 @@
   color: #981e32;
 }
 
+@media only screen and (max-width: 480px) {
+	#fundSelectionForm #majorcategory a.search .search-text {
+		display: none;
+	}
+}
+
 #fundSelectionForm #majorcategory a.search:after {
   content: "$";
   font-family: Spine-Icons;
   margin: 0 -0.25rem 0 0.5rem;
   position: relative;
   top: .125rem;
+}
+
+@media only screen and (max-width: 480px) {
+	#fundSelectionForm #majorcategory a.search:after {
+		margin: 0;
+	}
 }
 
 #fundSelectionForm #majorcategory a.active {
@@ -557,6 +569,7 @@
   background-size: 12px;
   text-align: center;
 }
+
 #fundSelectionForm .additional-info input[type="checkbox"]:focus + label:before {
   border: 1px dotted #000;
 }
@@ -821,6 +834,7 @@
     font-size: 16px;
   }
 }
+
 #fundSelectionForm .loading {
   background: #fff url(../images/loader.gif) no-repeat center center;
   background-position: calc(100% - 16px) center;
