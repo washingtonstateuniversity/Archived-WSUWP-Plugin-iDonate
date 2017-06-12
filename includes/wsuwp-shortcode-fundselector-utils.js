@@ -1,7 +1,7 @@
 // Does our namespace exist
 window.wsuwpUtils = window.wsuwpUtils || {};
-var maximumGift = 100000;
-var minimumGift = 3;
+var MAXIMUM_GIFT = 100000;
+var MINIMUM_GIFT = 3;
 
 (function () {
 
@@ -30,11 +30,11 @@ var minimumGift = 3;
 				var option = {trigger : $editButton, action : "click"};
 				jQuery("span#edit" + designationId).editable(option, function(e){
 					var roundedValue = wsuwpUtils.roundAmount(e.value);
-					if( !wsuwpUtils.validateAmount(roundedValue, minimumGift, maximumGift) ){
+					if( !wsuwpUtils.validateAmount(roundedValue, MINIMUM_GIFT, MAXIMUM_GIFT) ){
 						// Revert back to the original value
 						e.target.html(e.old_value);
 						var $error = jQuery("#error" + designationId);
-						$error.text("Amount must be between $" + minimumGift + " and $" + maximumGift + ". Amount was reset.");
+						$error.text("Amount must be between $" + MINIMUM_GIFT + " and $" + MAXIMUM_GIFT + ". Amount was reset.");
 						showAnything($error);
 						setTimeout(function() {
 							hideAnything($error);

@@ -142,7 +142,7 @@ jQuery(document).ready(function($) {
 	.click( function ( event ) {	
 		var amount = jQuery("#otherAmount").val();
 		var roundedAmount = wsuwpUtils.roundAmount(amount);
-		if(wsuwpUtils.validateAmount(roundedAmount, minimumGift, maximumGift))
+		if(wsuwpUtils.validateAmount(roundedAmount, MINIMUM_GIFT, MAXIMUM_GIFT))
 		{	
 			jQuery("#inpAmount").val( roundedAmount );
 			addFundAction();
@@ -198,7 +198,7 @@ jQuery(document).ready(function($) {
 	$("#otherAmount").on('input propertychange paste', function () {
 		var inputAmount = $(this).val();
 		var roundedAmount = wsuwpUtils.roundAmount(inputAmount);
-		if(wsuwpUtils.validateAmount(roundedAmount, minimumGift, maximumGift))
+		if(wsuwpUtils.validateAmount(roundedAmount, MINIMUM_GIFT, MAXIMUM_GIFT))
 		{
 			$("#inpAmount").val(roundedAmount);
 			wsuwpUtils.enableButton($("#addFundButton"));
@@ -207,7 +207,7 @@ jQuery(document).ready(function($) {
 		else
 		{
 			wsuwpUtils.disableButton($("#addFundButton"));
-			jQuery("#errorOtherAmount").text("Amount should be between $" + minimumGift + " and $" + maximumGift);
+			jQuery("#errorOtherAmount").text("Amount should be between $" + MINIMUM_GIFT + " and $" + MAXIMUM_GIFT);
 		}		
 	});
 
