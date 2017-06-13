@@ -418,8 +418,12 @@ function continueAction(event)
 			jQuery("#iDonateEmbed").attr("data-designation", des.id);
 			
 			// Get the designation name from the first span in the list item
-			var desName = wsuwpUtils.htmlEncode(jQuery("#selectedFunds li span").first().text());
+			var desName = wsuwpUtils.htmlEncode(jQuery("#selectedFunds li span span").first().text());
 			var giftArrays = [[desName, des.amount]];
+
+			var designationsString = JSON.stringify(designations);
+			// Add the designations as an attribute
+			jQuery("#iDonateEmbed").attr("data-designations", designationsString);
 
 			jQuery("#iDonateEmbed").attr("data-gift_arrays", JSON.stringify(giftArrays));
 			jQuery("#iDonateEmbed").attr("data-cash_default", des.amount);
