@@ -1,5 +1,7 @@
 // Does our namespace exist
 window.wsuwpUtils = window.wsuwpUtils || {};
+var MAXIMUM_GIFT = 100000;
+var MINIMUM_GIFT = 3;
 
 (function () {
 
@@ -9,7 +11,7 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			var html = '<li class="list-group-item ' + (scholarship ? "fund-scholarship": "") + '" data-designation_id="' + designationId + '" data-amount="' + amount + '">';
 			html += '<span class="fund-info">';
 			html += '	<span class="right">' + _.escape(name) + '</span>'
-			html += '	<span class="center">$</span><span id="edit' + designationId + '" class="editable left">' + amount +  '</span>';
+			html += '	<span class="center">$</span><span id="edit' + designationId + '" class="editable left">' + wsuwpUtils.roundAmount(amount) +  '</span>';
 			html += '	<span class="edit"><a href="#!" id="' + designationId +'" class="edit">EDIT</a></span>';
 			html += '	<span class="close remove"><a href="#" aria-label="Remove ' + _.escape(name) + ' from the list of funds"></a></span>'
 			html += '</span>';
@@ -24,22 +26,23 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 				var $editButton = jQuery("a#" + designationId);
 				
 				$editButton.click(function (e) { e.preventDefault(); } );
-				
+
 				var option = {trigger : $editButton, action : "click"};
 				jQuery("span#edit" + designationId).editable(option, function(e){
-					
-					if( !wsuwpUtils.validateAmount(e.value) ){
+					var roundedValue = wsuwpUtils.roundAmount(e.value);
+					if( !wsuwpUtils.validateAmount(roundedValue, MINIMUM_GIFT, MAXIMUM_GIFT) ){
 						// Revert back to the original value
 						e.target.html(e.old_value);
 						var $error = jQuery("#error" + designationId);
-						$error.text("Amount must be between $3 and $100,000. Amount was reset.");
+						$error.text("Amount must be between $" + MINIMUM_GIFT + " and $" + MAXIMUM_GIFT + ". Amount was reset.");
 						showAnything($error);
 						setTimeout(function() {
 							hideAnything($error);
 						}, 2500);
 					}
 					else{
-						e.target.parent().parent().attr("data-amount", e.value);
+						e.target.html(roundedValue);
+						e.target.parent().parent().attr("data-amount", roundedValue);
 						jQuery("#error" + designationId).text("");
 
 						wsuwpUtils.updateTotalAmountText(jQuery("#advFeeCheck").prop('checked'));
@@ -107,12 +110,21 @@ window.wsuwpUtils = window.wsuwpUtils || {};
 			 return $element;
 		},
 
-		validateAmount: function (intendedAmount)
+		roundAmount: function (amount) {
+			var roundedAmount = 0;
+			var inputAmount = parseFloat(amount);
+			if(inputAmount && _.isNumber(inputAmount)) {
+				roundedAmount = Math.round(inputAmount * 100 + Number.EPSILON) / 100;
+			}
+			return roundedAmount;
+		},
+
+		validateAmount: function (intendedAmount, minimumAmount, maximumAmount)
 		{
 			var validMoneyAmount = false;
 
 			var inputAmount = parseFloat(intendedAmount);
-			if(inputAmount && _.isNumber(inputAmount) && inputAmount > 0 && intendedAmount.match(/^\d{1,5}(?:\.\d{0,2})?$/)){
+			if(inputAmount && _.isNumber(inputAmount) && inputAmount >= minimumAmount && inputAmount <= maximumAmount) {
 				validMoneyAmount = true;
 			}
 

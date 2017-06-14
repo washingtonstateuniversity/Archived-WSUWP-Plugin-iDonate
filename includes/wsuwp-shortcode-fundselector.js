@@ -143,10 +143,10 @@ jQuery(document).ready(function($) {
 	$("#addFundButton")
 	.click( function ( event ) {	
 		var amount = jQuery("#otherAmount").val();
-
-		if(wsuwpUtils.validateAmount(amount))
+		var roundedAmount = wsuwpUtils.roundAmount(amount);
+		if(wsuwpUtils.validateAmount(roundedAmount, MINIMUM_GIFT, MAXIMUM_GIFT))
 		{	
-			jQuery("#inpAmount").val( amount );
+			jQuery("#inpAmount").val( roundedAmount );
 			addFundAction();
 		}
 	});
@@ -199,16 +199,17 @@ jQuery(document).ready(function($) {
 	// Other Amount text field Change Event
 	$("#otherAmount").on('input propertychange paste', function () {
 		var inputAmount = $(this).val();
-		if(wsuwpUtils.validateAmount(inputAmount))
+		var roundedAmount = wsuwpUtils.roundAmount(inputAmount);
+		if(wsuwpUtils.validateAmount(roundedAmount, MINIMUM_GIFT, MAXIMUM_GIFT))
 		{
-			$("#inpAmount").val(inputAmount);
+			$("#inpAmount").val(roundedAmount);
 			wsuwpUtils.enableButton($("#addFundButton"));
 			jQuery("#errorOtherAmount").text("");
 		}
 		else
 		{
 			wsuwpUtils.disableButton($("#addFundButton"));
-			jQuery("#errorOtherAmount").text("Amount should be between $3 and $100,000.");
+			jQuery("#errorOtherAmount").text("Amount should be between $" + MINIMUM_GIFT + " and $" + MAXIMUM_GIFT);
 		}		
 	});
 
