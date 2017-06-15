@@ -36,7 +36,7 @@ jQuery(document).ready(function($) {
 
 	// Major Category Click Events
 	$("#majorcategory a")
-	.click( function( event ) {
+	.click( function( event, deferred ) {
 		resetForm(true);
 		
 		$("#majorcategory a").removeClass("active");  
@@ -67,12 +67,16 @@ jQuery(document).ready(function($) {
 
 				$.each(json, function(key, value) {   
 					$list
-					.append($('<option>', { value : value["id"], "data-category" : value["taxonomy"] })
+					.append($('<option>', { value : value["id"], "data-category" : value["taxonomy"], "data-subcategory" : value["slug"] })
 					.text( wsuwpUtils.htmlDecode( value["name"]) )); 
 				});
 				$list.prop('disabled', false);
 				$list.addClass('fund');
-				$list.removeClass('loading'); 
+				$list.removeClass('loading');
+
+				if(deferred !== undefined) { //complete deferred function that was passed into the click event
+					deferred.resolve();
+				} 
 			})
 		}
 
@@ -267,10 +271,17 @@ jQuery(document).ready(function($) {
 		loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
 	}
 	else if (wpData.area && wpData.unit_category) {
-		
-		var tab = $('#majorcategory').find("[data-category='" + wpData.unit_category + "']");
-		tab.click();
-		tab.addClass("active")
+		//Switch to the correct tab
+		var category = $('#majorcategory').find("[data-category='" + wpData.unit_category + "']");
+		var defer = $.Deferred();
+		category.trigger('click', defer);
+		category.addClass("active");
+
+		//Populate the subcategory after the tab has been loaded
+		$.when(defer).done(function () {
+		var subcategory = $('#subcategories').find("[data-subcategory='" + wpData.area + "']");
+		subcategory.prop("selected", true);
+		});
 	}
 	else
 	{
