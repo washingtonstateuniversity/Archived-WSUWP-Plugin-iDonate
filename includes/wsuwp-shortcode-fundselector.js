@@ -286,7 +286,7 @@ jQuery(document).ready(function($) {
 	}
 	else
 	{
-		loadPriorities($("#priorities"), "idonate_priorities", wpData.unit_category)
+		loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities")
 		.done(function() {
 			loadFundFromDesignationID($("#priorities"), wpData.unit_designation);
 		});
