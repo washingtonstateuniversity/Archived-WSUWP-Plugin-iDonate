@@ -266,9 +266,15 @@ jQuery(document).ready(function($) {
 		});
 		loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
 	}
+	else if (wpData.area && wpData.unit_category) {
+		
+		var tab = $('#majorcategory').find("[data-category='" + wpData.unit_category + "']");
+		tab.click();
+		tab.addClass("active")
+	}
 	else
 	{
-		loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities")
+		loadPriorities($("#priorities"), "idonate_priorities", wpData.unit_category)
 		.done(function() {
 			loadFundFromDesignationID($("#priorities"), wpData.unit_designation);
 		});
@@ -301,7 +307,7 @@ function loadFundFromDesignationID($list, designationId){
 					var $fund = jQuery('<option>', { value : json[0]["designation_id"] })
 								.text( wsuwpUtils.htmlDecode(json[0]["fund_name"]) );
 					$list.append($fund);
-
+					
 					// Select and show amount buttons
 					wsuwpUtils.selectFundInDropdown($fund, designationId); 
 				}
