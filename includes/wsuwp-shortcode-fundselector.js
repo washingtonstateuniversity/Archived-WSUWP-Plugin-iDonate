@@ -279,8 +279,9 @@ jQuery(document).ready(function($) {
 
 		//Populate the subcategory after the tab has been loaded
 		$.when(defer).done(function () {
-		var subcategory = $('#subcategories').find("[data-subcategory='" + wpData.area + "']");
-		subcategory.prop("selected", true);
+			var subcategory = $('#subcategories').find("[data-subcategory='" + wpData.area + "']");
+			subcategory.prop("selected", true);
+			subcategory.trigger('change');
 		});
 	}
 	else
