@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
 		var categoryName = $(this).attr("data-category");
 
 		if(categoryName) {
-			var restUrl = wpData.request_url_base + encodeURIComponent(categoryName);
+			var restUrl = wpData.request_url_base + encodeURIComponent(categoryName) + "?per_page=100&orderby=name";
 			var category = $(this).attr("data-name");
 			var description = $(this).attr("data-description");
 
