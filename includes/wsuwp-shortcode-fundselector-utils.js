@@ -114,9 +114,16 @@ var MINIMUM_GIFT = 3;
 			var roundedAmount = 0;
 			var inputAmount = parseFloat(amount);
 			if(inputAmount && _.isNumber(inputAmount)) {
-				roundedAmount = Math.round(inputAmount * 100 + Number.EPSILON) / 100;
+				roundedAmount = Math.round(inputAmount * 100 + (Number.EPSILON || wsuwpUtils.getEpsilon())) / 100;
 			}
 			return roundedAmount;
+		},
+
+		 getEpsilon: function() {
+			var e = 1.0;
+			while ( ( 1.0 + 0.5 * e ) !== 1.0 )
+				e *= 0.5;
+			return e;
 		},
 
 		validateAmount: function (intendedAmount, minimumAmount, maximumAmount)
