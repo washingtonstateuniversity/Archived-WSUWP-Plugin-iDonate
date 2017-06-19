@@ -85,18 +85,18 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 		$content = $this->replace_conditionals( $content, $query_params );
 
 		foreach ( $query_params as $key => $value ) {
-			if ( ( 'donor.id' === $key || 'transaction_id' === $key ) && $value ) { $value = strtoupper( substr( $value, 0, 8 ) ); }
-
-			elseif ( 'created' === $key && $value ) {
+			if ( ( 'donor.id' === $key || 'transaction_id' === $key ) && $value ) {
+				$value = strtoupper( substr( $value, 0, 8 ) );
+			} elseif ( 'created' === $key && $value ) {
 				date_default_timezone_set( 'America/Los_Angeles' );
 				$value = date( 'm/d/Y g:i A T', strtotime( $value ) );
+			} elseif ( 'card_type' === $key && $value ) {
+				$value = ucwords( $value );
+			} elseif ( 'subtype' === $key && 'echeck' === $value ) {
+				$value = 'eCheck';
+			} elseif ( 'value' === $key && $value ) {
+				$value = '$' . $value;
 			}
-
-			elseif ( 'card_type' === $key && $value ) { $value = ucwords( $value ); }
-
-			elseif ( 'subtype' === $key && 'echeck' === $value ) { $value = 'eCheck'; }
-
-			elseif ( 'value' === $key && $value ) { $value = '$' . $value; }
 
 			$content = str_replace( '{{' . $key . '}}', esc_html( $value ), $content );
 		}
