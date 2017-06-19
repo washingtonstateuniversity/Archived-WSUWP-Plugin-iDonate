@@ -93,6 +93,7 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 			elseif ($key == 'transaction_id' && $value) { $value = strtoupper(substr($value, 0, 8)); }
 			elseif ($key == 'card_type' && $value) { $value = ucwords($value); }
 			elseif ($key == 'subtype' && $value == "echeck") { $value = "eCheck"; }
+			elseif ($key == 'value' && $value) { $value = "$" . $value; }
 			$content = str_replace( '{{' . $key . '}}', esc_html( $value ), $content );
 			
 		}
