@@ -270,9 +270,9 @@ jQuery(document).ready(function($) {
 		});
 		loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
 	}
-	else if (wpData.area && wpData.unit_category) {
+	else if (wpData.area && wpData.cat) {
 		//Switch to the correct tab
-		var category = $('#majorcategory').find("[data-category='" + wpData.unit_category + "']");
+		var category = $('#majorcategory').find("[data-category='" + wpData.cat + "']");
 		var defer = $.Deferred();
 		category.trigger('click', defer);
 		category.addClass("active");

@@ -48,7 +48,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		$args['unit_taxonomy'] = sanitize_key( $args['unit_taxonomy'] );
-		$args['unit_category'] = ! empty( $_GET['cat'] ) ? sanitize_key( $_GET['cat'] ) : null;
+		$args['unit_category'] = sanitize_key( $args['unit_category'] );
 		$args['unit_scholarship_category'] = sanitize_key( $args['unit_scholarship_category'] );
 		$args['unit_title'] = sanitize_text_field( $args['unit_title'] );
 		$args['unit_description'] = esc_html( $args['unit_description'] );
@@ -58,6 +58,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		$des_id_query_param = ! empty( $_GET['fund'] ) ? sanitize_key( $_GET['fund'] ) : null;
 		$area = ! empty( $_GET['area'] ) ? sanitize_key( $_GET['area'] ) : null;
+		$cat = ! empty( $_GET['cat'] ) ? sanitize_key( $_GET['cat'] ) : null;
 
 		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
 			'request_url_base' => esc_url( $args['rest_url'] . 'wp/v2/' ),
@@ -66,6 +67,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			'unit_category' => $args['unit_category'],
 			'unit_designation' => $des_id_query_param,
 			'area' => $area,
+			'cat' => $cat,
 			'adv_fee_message' => $args['adv_fee_message'],
 			'adv_fee_percentage' => $args['adv_fee_percentage'],
 		));
