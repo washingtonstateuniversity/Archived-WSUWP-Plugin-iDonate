@@ -48,6 +48,8 @@ jQuery(document).ready(function($) {
 		var categoryName = $(this).attr("data-category");
 
 		if(categoryName) {
+			$('#subcategories').focus();
+
 			var restUrl = wpData.request_url_base + encodeURIComponent(categoryName) + "?per_page=100&orderby=name";
 
 			var $list = $('#subcategories');
@@ -135,6 +137,7 @@ jQuery(document).ready(function($) {
 	.click( function ( event ) {
 		handleAmountSelectionClick( event );	
 		addFundAction();
+		$('#selectedFunds').focus();
 	});
 
 	// Add Fund Button click  event
@@ -146,6 +149,14 @@ jQuery(document).ready(function($) {
 		{	
 			jQuery("#inpAmount").val( roundedAmount );
 			addFundAction();
+		}
+	});
+
+	// Add Fund Button keypress event
+	$("#addFundButton")
+	.keypress(function (e) {
+		if (e.which == 13) { // enter key is pressed
+			$('#addFundButton').click();
 		}
 	});
 
@@ -215,6 +226,8 @@ jQuery(document).ready(function($) {
 		$(".amount-selection.selected").removeClass("selected");
 		$(this).addClass("selected");
 		showOther();
+		$('#otherAmount').focus();
+		$('#addFundButton').attr('tabindex', "0")
 	});
 
 	// Continue Button Initialization and Click Event
