@@ -231,17 +231,17 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		// Total Amount information
 		$return_string .= '
-		<div class="disclaimer total" style="display:none;"><span class="first-sentence">Your generous donation will total $<span id="totalAmount"></span> today.</span> When you proceed to checkout, you will be sent to our payment processing service.</div>
+		<div tabindex="0" class="disclaimer total" style="display:none;"><span class="first-sentence">Your generous donation will total $<span id="totalAmount"></span> today.</span> When you proceed to checkout, you will be sent to our payment processing service.</div>
 		';
 
 		// Gift Planning Checkboxes
 		$return_string .= '
 		<div class="additional-info gift-planning" style="display:none;">
 			<span class="additional-info-header-wrapper">
-				<div class="additional-info-header">Is WSU in your Will?</div>
-				<a role="button">Learn More</a>
+				<div tabindex="0" class="additional-info-header">Is WSU in your Will?</div>
+				<a tabindex="0" aria-label="Click enter and then tab to learn more about including WSU in your will" role="button">Learn More</a>
 			</span>
-			<p class="additional-info-description" style="display:none;">
+			<p tabindex="0" class="additional-info-description" style="display:none;">
 				Charitable gifts from estates and other planned gifts play an integral role in the future of Washington State University. The WSU Foundation offers several tax-wise giving options to support WSU’s mission while fulfilling your personal philanthropic goals.
 			</p>
             <span >
@@ -264,7 +264,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		// Credit Card Disclaimer
 		$return_string .= '
-		<div class="disclaimer credit-card" style="display:none;">In accordance with <a href="https://www.pcisecuritystandards.org/">PCI compliance requirements</a>, the WSU Foundation does not store or retain your credit card information.</div></div>
+		<div tabindex="0" class="disclaimer credit-card" style="display:none;">In accordance with <a href="https://www.pcisecuritystandards.org/">PCI compliance requirements</a>, the WSU Foundation does not store or retain your credit card information.</div></div>
 		';
 
 		if ( 'staging' === $args['server'] ) {
