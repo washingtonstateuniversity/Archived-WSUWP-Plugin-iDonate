@@ -435,8 +435,6 @@ function continueAction(event)
 			// Add the designation as an attribute
 			jQuery("#iDonateEmbed").attr("data-designation", des.id);
 			
-			// Get the designation name from the first span in the list item
-			var desName = wsuwpUtils.htmlEncode(jQuery("#selectedFunds li span span").first().text());
 			var giftArrays = [[null, des.amount]]; //if the name is set not null, then it will show up on the red amount button (it will be html encoded) 
 
 			var designationsString = JSON.stringify(designations);
