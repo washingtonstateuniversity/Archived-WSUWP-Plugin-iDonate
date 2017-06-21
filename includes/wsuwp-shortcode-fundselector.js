@@ -467,14 +467,18 @@ function continueAction(event)
 			jQuery("#iDonateEmbed").attr("data-custom_gift_amount", sum);
 		}
 
-		jQuery("#iDonateEmbed").attr("data-custom_note_4", ""); //clear the custom_note_4 field
 		if(jQuery("#gpInWill").prop("checked")){
 			jQuery("#iDonateEmbed").attr("data-custom_note_4", "WSU is in my will/estate plan!");
 		}
+		else {
+			jQuery("#iDonateEmbed").attr("data-custom_note_4", "");
+		}
 		
-		jQuery("#iDonateEmbed").attr("data-custom_note_5", ""); //clear the custom_note_5 field
 		if(jQuery("#gpMoreInfo").prop("checked")){
 			jQuery("#iDonateEmbed").attr("data-custom_note_5", "I would like more information about putting WSU in my will/estate plan");
+		}
+		else {
+			jQuery("#iDonateEmbed").attr("data-custom_note_5", "");
 		}
 
 		var referenceCode = { donorPaysFee: $advFeeCheck.prop("checked"), feePercentage: parseInt(wpData.adv_fee_percentage)};
