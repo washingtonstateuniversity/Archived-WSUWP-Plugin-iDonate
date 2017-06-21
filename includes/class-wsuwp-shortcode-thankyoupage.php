@@ -89,7 +89,7 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 				$value = strtoupper( substr( $value, 0, 8 ) );
 			} elseif ( 'created' === $key && $value ) {
 				date_default_timezone_set( 'America/Los_Angeles' );
-				$value = date( 'm/d/Y g:i A T', strtotime( $value ) );
+				$value = date( 'm/d/Y', strtotime( $value ) );
 			} elseif ( 'card_type' === $key && $value ) {
 				$value = ucwords( $value );
 			} elseif ( 'subtype' === $key && 'echeck' === $value ) {
