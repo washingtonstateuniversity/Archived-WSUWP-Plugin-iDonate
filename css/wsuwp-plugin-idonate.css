@@ -302,7 +302,7 @@
   padding: 10px 10px;
   background-color: #f1f1f1;
   border-radius: 2px;
-  width: calc(20% - 5px);
+  width: calc(16%);
   display: flex;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -710,15 +710,12 @@
 }
 @media (max-width: 800px) {
   #fundSelectionForm button.amount-selection {
-    width: calc(20% - 5px);
+    width: calc(30% - 5px);
   }
 }
 @media (max-width: 420px) {
   #fundSelectionForm .additional-info {
     font-size: 65%;
-  }
-  #fundSelectionForm button.amount-selection {
-    width: calc(33% - 5px);
   }
 }
 @media screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 0) {
@@ -733,6 +730,7 @@
     font-size: 16px;
   }
 }
+
 #fundSelectionForm .help-icon a {
   display: block;
   right: 0;
@@ -744,6 +742,7 @@
   background-size: 15px;
   opacity: 1;
 }
+
 #fundSelectionForm .loading {
   background: #fff url(../images/loader.gif) no-repeat center center;
   background-position: calc(100% - 16px) center;

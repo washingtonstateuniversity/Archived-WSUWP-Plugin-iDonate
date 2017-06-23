@@ -48,6 +48,8 @@ jQuery(document).ready(function($) {
 		var categoryName = $(this).attr("data-category");
 
 		if(categoryName) {
+			$('#subcategories').focus();
+
 			var restUrl = wpData.request_url_base + encodeURIComponent(categoryName) + "?per_page=100&orderby=name";
 
 			var $list = $('#subcategories');
@@ -135,17 +137,26 @@ jQuery(document).ready(function($) {
 	.click( function ( event ) {
 		handleAmountSelectionClick( event );	
 		addFundAction();
+		$('#selectedFunds').focus();
 	});
 
 	// Add Fund Button click  event
 	$("#addFundButton")
 	.click( function ( event ) {	
 		var amount = jQuery("#otherAmount").val();
-
-		if(wsuwpUtils.validateAmount(amount))
+		var roundedAmount = wsuwpUtils.roundAmount(amount);
+		if(wsuwpUtils.validateAmount(roundedAmount, MINIMUM_GIFT, MAXIMUM_GIFT))
 		{	
-			jQuery("#inpAmount").val( amount );
+			jQuery("#inpAmount").val( roundedAmount );
 			addFundAction();
+		}
+	});
+
+	// Add Fund Button keypress event
+	$("#addFundButton")
+	.keypress(function (e) {
+		if (e.which == 13) { // enter key is pressed
+			$('#addFundButton').click();
 		}
 	});
 
@@ -197,16 +208,17 @@ jQuery(document).ready(function($) {
 	// Other Amount text field Change Event
 	$("#otherAmount").on('input propertychange paste', function () {
 		var inputAmount = $(this).val();
-		if(wsuwpUtils.validateAmount(inputAmount))
+		var roundedAmount = wsuwpUtils.roundAmount(inputAmount);
+		if(wsuwpUtils.validateAmount(roundedAmount, MINIMUM_GIFT, MAXIMUM_GIFT))
 		{
-			$("#inpAmount").val(inputAmount);
+			$("#inpAmount").val(roundedAmount);
 			wsuwpUtils.enableButton($("#addFundButton"));
 			jQuery("#errorOtherAmount").text("");
 		}
 		else
 		{
 			wsuwpUtils.disableButton($("#addFundButton"));
-			jQuery("#errorOtherAmount").text("Amount should be between $3 and $100,000.");
+			jQuery("#errorOtherAmount").text("Amount should be between $" + MINIMUM_GIFT + " and $" + MAXIMUM_GIFT);
 		}		
 	});
 
@@ -214,6 +226,8 @@ jQuery(document).ready(function($) {
 		$(".amount-selection.selected").removeClass("selected");
 		$(this).addClass("selected");
 		showOther();
+		$('#otherAmount').focus();
+		$('#addFundButton').attr('tabindex', "0")
 	});
 
 	// Continue Button Initialization and Click Event
@@ -412,14 +426,16 @@ function continueAction(event)
 
 		if(designations.length === 1)
 		{
+			// Clear fields used by mulitple designations
+			jQuery("#iDonateEmbed").attr("data-custom_gift_amount", null);
+			jQuery("#iDonateEmbed").attr("data-designations", null);
+
 			var des = designations[0];
 			
 			// Add the designation as an attribute
 			jQuery("#iDonateEmbed").attr("data-designation", des.id);
 			
-			// Get the designation name from the first span in the list item
-			var desName = wsuwpUtils.htmlEncode(jQuery("#selectedFunds li span span").first().text());
-			var giftArrays = [[desName, des.amount]];
+			var giftArrays = [[null, des.amount]]; //if the name is set not null, then it will show up on the red amount button (it will be html encoded) 
 
 			var designationsString = JSON.stringify(designations);
 			// Add the designations as an attribute
@@ -429,6 +445,11 @@ function continueAction(event)
 			jQuery("#iDonateEmbed").attr("data-cash_default", des.amount);
 		}
 		else {
+			// Clear fields used by single designation
+			jQuery("#iDonateEmbed").attr("data-designation", null);
+			jQuery("#iDonateEmbed").attr("data-gift_arrays", null);
+			jQuery("#iDonateEmbed").attr("data-cash_default", null);
+
 			// Turn the list of designations into a JSON string
 			var designationsString = JSON.stringify(designations);
 			
@@ -441,15 +462,21 @@ function continueAction(event)
 				sum += parseFloat(designations[i].amount);
 			}		
 
-			jQuery("#iDonateEmbed").attr("data-custom_gift_amount", sum);		
+			jQuery("#iDonateEmbed").attr("data-custom_gift_amount", sum);
 		}
 
 		if(jQuery("#gpInWill").prop("checked")){
 			jQuery("#iDonateEmbed").attr("data-custom_note_4", "WSU is in my will/estate plan!");
 		}
-
+		else {
+			jQuery("#iDonateEmbed").attr("data-custom_note_4", "");
+		}
+		
 		if(jQuery("#gpMoreInfo").prop("checked")){
 			jQuery("#iDonateEmbed").attr("data-custom_note_5", "I would like more information about putting WSU in my will/estate plan");
+		}
+		else {
+			jQuery("#iDonateEmbed").attr("data-custom_note_5", "");
 		}
 
 		var referenceCode = { donorPaysFee: $advFeeCheck.prop("checked"), feePercentage: parseInt(wpData.adv_fee_percentage)};
