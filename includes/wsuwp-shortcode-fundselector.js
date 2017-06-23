@@ -48,8 +48,7 @@ jQuery(document).ready(function($) {
 		var categoryName = $(this).attr("data-category");
 
 		if(categoryName) {
-			$('#subcategories').focus();
-
+			
 			var restUrl = wpData.request_url_base + encodeURIComponent(categoryName) + "?per_page=100&orderby=name";
 
 			var $list = $('#subcategories');
@@ -74,11 +73,13 @@ jQuery(document).ready(function($) {
 				});
 				$list.prop('disabled', false);
 				$list.addClass('fund');
-				$list.removeClass('loading');
-
-				if(deferred !== undefined) { //complete deferred function that was passed into the click event
+				$list.removeClass('loading'); 
+        
+        if(deferred !== undefined) { //complete deferred function that was passed into the click event
 					deferred.resolve();
 				} 
+        
+				$('#subcategories').focus(); 
 			})
 		}
 
