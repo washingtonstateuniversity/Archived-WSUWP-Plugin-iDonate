@@ -265,6 +265,7 @@ var EPSILON = 0;
 				};
 				
 				jQuery("#advFeeAmount").text(_.template(wpData.adv_fee_message)({advFeeAmount: advFeeDecimal.toFixed(2) }));
+				jQuery("#advFeeAmount").html(jQuery("#advFeeAmount").html() + '<a href="https://foundation.wsu.edu/about/fee-disclosure/" target="_blank"></a>');
 				jQuery("#advFeeCheck").attr("data-amount", advFeeDecimal);
 			}
 
