@@ -2,6 +2,7 @@
 window.wsuwpUtils = window.wsuwpUtils || {};
 var MAXIMUM_GIFT = 100000;
 var MINIMUM_GIFT = 3;
+var EPSILON = 0;
 
 (function () {
 
@@ -116,9 +117,16 @@ var MINIMUM_GIFT = 3;
 			var roundedAmount = 0;
 			var inputAmount = parseFloat(amount);
 			if(inputAmount && _.isNumber(inputAmount)) {
-				roundedAmount = Math.round(inputAmount * 100 + Number.EPSILON) / 100;
+				roundedAmount = Math.round(inputAmount * 100 + EPSILON) / 100;
 			}
 			return roundedAmount;
+		},
+
+		 getEpsilon: function() {
+			var e = 1.0;
+			while ( ( 1.0 + 0.5 * e ) !== 1.0 )
+				e *= 0.5;
+			return e;
 		},
 
 		validateAmount: function (intendedAmount, minimumAmount, maximumAmount)
@@ -276,6 +284,8 @@ var MINIMUM_GIFT = 3;
 			showAmountZone();
 		}
 
-	}
+	};
+
+	EPSILON = Number.EPSILON || wsuwpUtils.getEpsilon();
 
 })();
