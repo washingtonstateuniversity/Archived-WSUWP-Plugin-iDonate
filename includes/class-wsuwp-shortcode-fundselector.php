@@ -219,7 +219,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			<div class="additional-info help-icon" style="display:none;">
 				<span>
 					<input type="checkbox" id="advFeeCheck" data-amount=10 > 
-					<label for="advFeeCheck" style="display: flow-root;"><span id="advFeeAmount" style="display: flow-root;"></span></label>
+					<label for="advFeeCheck" id="advFeeLabel" style="display: flow-root;"><span id="advFeeAmount" style="display: flow-root;"></span></label>
 				</span>
 			</div>
 			';

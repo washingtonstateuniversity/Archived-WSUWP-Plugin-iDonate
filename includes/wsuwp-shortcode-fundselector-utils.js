@@ -269,7 +269,11 @@ var EPSILON = 0;
 				jQuery("#advFeeAmount").html(jQuery("#advFeeAmount").html() + '<a id="moreAdvFeeInfo" href="https://foundation.wsu.edu/about/fee-disclosure/" target="_blank"></a>');	
 				jQuery("#advFeeCheck").attr("data-amount", advFeeDecimal);
 			}
-
+			
+			if (jQuery("#advFeeLabel").css("display") === "inline") { //flow-root not supported, so apply clearfix
+				jQuery("#advFeeLabel").css({display: "block", clear: "both", content: " "});
+				jQuery("#advFeeAmount").css({display: "block", clear: "both", content: " "});
+			}
 			jQuery("#totalAmount").text(donationTotal.toFixed(2));
 			
 		},	
