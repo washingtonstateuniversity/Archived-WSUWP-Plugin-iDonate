@@ -36,7 +36,7 @@ jQuery(document).ready(function($) {
 
 	// Major Category Click Events
 	$("#majorcategory a")
-	.click( function( event ) {
+	.click( function( event, deferred ) {
 		resetForm(true);
 		
 		$("#majorcategory a").removeClass("active");  
@@ -48,8 +48,7 @@ jQuery(document).ready(function($) {
 		var categoryName = $(this).attr("data-category");
 
 		if(categoryName) {
-			$('#subcategories').focus();
-
+			
 			var restUrl = wpData.request_url_base + encodeURIComponent(categoryName) + "?per_page=100&orderby=name";
 
 			var $list = $('#subcategories');
@@ -69,12 +68,18 @@ jQuery(document).ready(function($) {
 
 				$.each(json, function(key, value) {   
 					$list
-					.append($('<option>', { value : value["id"], "data-category" : value["taxonomy"] })
+					.append($('<option>', { value : value["id"], "data-category" : value["taxonomy"], "data-subcategory" : value["slug"] })
 					.text( wsuwpUtils.htmlDecode( value["name"]) )); 
 				});
 				$list.prop('disabled', false);
 				$list.addClass('fund');
 				$list.removeClass('loading'); 
+        
+        if(deferred !== undefined) { //complete deferred function that was passed into the click event
+					deferred.resolve();
+				} 
+        
+				$('#subcategories').focus(); 
 			})
 		}
 
@@ -279,6 +284,20 @@ jQuery(document).ready(function($) {
 		});
 		loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
 	}
+	else if (wpData.area && wpData.cat) {
+		//Switch to the correct tab
+		var category = $('#majorcategory').find("[data-category='" + wpData.cat + "']");
+		var defer = $.Deferred();
+		category.trigger('click', defer);
+		category.addClass("active");
+
+		//Populate the subcategory after the tab has been loaded
+		$.when(defer).done(function () {
+			var subcategory = $('#subcategories').find("[data-subcategory='" + wpData.area + "']");
+			subcategory.prop("selected", true);
+			subcategory.trigger('change');
+		});
+	}
 	else
 	{
 		loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities")
@@ -314,7 +333,7 @@ function loadFundFromDesignationID($list, designationId){
 					var $fund = jQuery('<option>', { value : json[0]["designation_id"] })
 								.text( wsuwpUtils.htmlDecode(json[0]["fund_name"]) );
 					$list.append($fund);
-
+					
 					// Select and show amount buttons
 					wsuwpUtils.selectFundInDropdown($fund, designationId); 
 				}
