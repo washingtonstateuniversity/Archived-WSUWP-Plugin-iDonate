@@ -288,20 +288,22 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	*/
 	function wsuf_fundselector_enqueue_scripts() {
 
-		wp_enqueue_script( 'wsuf_fundselector_utils', plugins_url( '/wsuwp-shortcode-fundselector-utils.js', __FILE__ ), array( 'jquery' ), '1.0', true );
+		$versionNumber = $this->wsuf_fundselector_get_version();
 
-		wp_enqueue_script( 'wsuf_fundselector', plugins_url( '/wsuwp-shortcode-fundselector.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-autocomplete', 'jquery-ui-button', 'underscore' ), '1.0', true );
+		wp_enqueue_script( 'wsuf_fundselector_utils', plugins_url( '/wsuwp-shortcode-fundselector-utils.js', __FILE__ ), array( 'jquery' ), $versionNumber, true );
 
-		wp_enqueue_script( 'wsuf_fundselector_jquery_editable', plugins_url( '/jquery.editable.min.js', __FILE__ ), array( 'jquery' ), null, true );
+		wp_enqueue_script( 'wsuf_fundselector', plugins_url( '/wsuwp-shortcode-fundselector.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-autocomplete', 'jquery-ui-button', 'underscore' ), $versionNumber, true );
+
+		wp_enqueue_script( 'wsuf_fundselector_jquery_editable', plugins_url( '/jquery.editable.min.js', __FILE__ ), array( 'jquery' ), $versionNumber, true );
 
 		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
 			'request_url_base' => esc_url( rest_url( '/wp/v2/' ) ),
 			'plugin_url_base' => esc_url( rest_url( '/idonate_fundselector/v1/' ) ),
 		));
 
-		wp_enqueue_script( 'wsuf_fundselector_jquery_editable', plugins_url( '/jquery.editable.min.js', __FILE__ ), array( 'jquery' ), null, true );
+		wp_enqueue_script( 'wsuf_fundselector_jquery_editable', plugins_url( '/jquery.editable.min.js', __FILE__ ), array( 'jquery' ), $versionNumber, true );
 
-		wp_enqueue_style( 'wsuf_fundselector', plugins_url( 'css/wsuwp-plugin-idonate.css', dirname( __FILE__ ) ), array( 'spine-theme' ), null );
+		wp_enqueue_style( 'wsuf_fundselector', plugins_url( 'css/wsuwp-plugin-idonate.css', dirname( __FILE__ ) ), array( 'spine-theme' ), $versionNumber );
 	}
 
 	/**
@@ -437,5 +439,21 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		return $return_array;
+	}
+
+	/**
+	* Gets current plugin version
+	*
+	* @return string Plugin version
+	*
+	* @since 1.1.0
+	*/
+	function wsuf_fundselector_get_version() {
+	    if ( ! function_exists( 'get_plugins' ) ) {
+	    	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
+		$plugin_folder = get_plugins('/WSUWP-Plugin-iDonate');
+	    return $plugin_folder['wsuwp-plugin-idonate.php']['Version'];
 	}
 }
