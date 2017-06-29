@@ -452,8 +452,8 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	    if ( ! function_exists( 'get_plugins' ) ) {
 	    	require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
-
-		$plugin_folder = get_plugins('/WSUWP-Plugin-iDonate');
+		$plugin_dir = plugin_basename( dirname ( dirname( __FILE__ ) ) );
+		$plugin_folder = get_plugins('/' . $plugin_dir);
 	    return $plugin_folder['wsuwp-plugin-idonate.php']['Version'];
 	}
 }
