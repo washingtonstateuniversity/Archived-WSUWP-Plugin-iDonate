@@ -220,10 +220,10 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Advancement Fee Checkbox
 		if ( ! empty( $args['adv_fee_message'] ) ) {
 			$return_string .= '
-			<div class="additional-info" style="display:none;">
+			<div class="additional-info help-icon" style="display:none;">
 				<span>
 					<input type="checkbox" id="advFeeCheck" data-amount=10 > 
-					<label for="advFeeCheck"><span id="advFeeAmount"></span></label>
+					<label for="advFeeCheck" id="advFeeLabel" style="display: flow-root;"><span id="advFeeAmount" style="display: flow-root;"></span></label>
 				</span>
 			</div>
 			';
