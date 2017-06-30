@@ -265,7 +265,6 @@ var EPSILON = 0;
 				};
 				
 				jQuery("#advFeeAmount").text(_.template(wpData.adv_fee_message)({advFeeAmount: advFeeDecimal.toFixed(2) }));
-				jQuery("#advFeeAmount").html(jQuery("#advFeeAmount").html().replace("Advancement Fee", '<a href="https://foundation.wsu.edu/about/fees/" target="_blank" rel="noopener noreferrer">Advancement Fee</a>'));
 				jQuery("#advFeeAmount").html(jQuery("#advFeeAmount").html() + '<a id="moreAdvFeeInfo" href="https://foundation.wsu.edu/about/fees/" target="_blank" rel="noopener noreferrer"></a>');	
 				jQuery("#advFeeCheck").attr("data-amount", advFeeDecimal);
 			}
