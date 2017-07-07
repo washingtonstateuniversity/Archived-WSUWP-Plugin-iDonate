@@ -131,7 +131,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		$return_string .= '
 		<div id="prioritiesTab" class="categoryTab wrapper ' . ($unit_included ? 'hidden' : '') . '">    
-			<label for="priorities">Choose one of the university\'s greatest needs</label>
+			<label for="priorities" style="font: inherit;">Choose one of the university\'s greatest needs</label>
 			<select name="priorities" id="priorities" class="form-control fund-selection fund">'
 				. $priorities_list .
 			'</select>
@@ -143,14 +143,14 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		// Categories Select Menu
 		$return_string .= '    
-		<label for="subcategories">Choose a category</label>
+		<label for="subcategories" style="font: inherit;">Choose a category</label>
 		<select name="subcategories" id="subcategories" class="form-control category-selection fund">
 			<option disabled selected value> SELECT A CATEGORY </option>
 		</select>';
 
 		// Funds Select Menu
 		$return_string .= '    
-		<div class="wrapper"><label for="funds">Choose a fund</label>
+		<div class="wrapper"><label for="funds" style="font: inherit;">Choose a fund</label>
 		<select name="funds" id="funds" class="form-control fund-selection fund" disabled>
 			<option disabled selected value> SELECT A FUND </option>
 		</select></div>';
