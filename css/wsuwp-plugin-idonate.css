@@ -730,6 +730,18 @@
     font-size: 16px;
   }
 }
+#fundSelectionForm .help-icon a#moreAdvFeeInfo {
+  display: inline-block;
+  right: 0;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  background: url(../images/ico-help.png) no-repeat center center;
+  background-size: 15px;
+  opacity: 1;
+  padding-left: 10px;
+}
 #fundSelectionForm .loading {
   background: #fff url(../images/loader.gif) no-repeat center center;
   background-position: calc(100% - 16px) center;

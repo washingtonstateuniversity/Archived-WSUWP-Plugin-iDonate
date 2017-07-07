@@ -57,6 +57,8 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$args['adv_fee_percentage'] = sanitize_key( $args['adv_fee_percentage'] );
 
 		$des_id_query_param = ! empty( $_GET['fund'] ) ? sanitize_key( $_GET['fund'] ) : null;
+		$area = ! empty( $_GET['area'] ) ? sanitize_key( $_GET['area'] ) : null;
+		$cat = ! empty( $_GET['cat'] ) ? sanitize_key( $_GET['cat'] ) : null;
 
 		wp_localize_script( 'wsuf_fundselector', 'wpData', array(
 			'request_url_base' => esc_url( $args['rest_url'] . 'wp/v2/' ),
@@ -64,6 +66,8 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			'unit_taxonomy' => $args['unit_taxonomy'],
 			'unit_category' => $args['unit_category'],
 			'unit_designation' => $des_id_query_param,
+			'area' => $area,
+			'cat' => $cat,
 			'adv_fee_message' => $args['adv_fee_message'],
 			'adv_fee_percentage' => $args['adv_fee_percentage'],
 		));
@@ -215,10 +219,10 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		// Advancement Fee Checkbox
 		if ( ! empty( $args['adv_fee_message'] ) ) {
 			$return_string .= '
-			<div class="additional-info" style="display:none;">
+			<div class="additional-info help-icon" style="display:none;">
 				<span>
 					<input type="checkbox" id="advFeeCheck" data-amount=10 > 
-					<label for="advFeeCheck"><span id="advFeeAmount"></span></label>
+					<label for="advFeeCheck" id="advFeeLabel" style="display: flow-root;"><span id="advFeeAmount" style="display: flow-root;"></span></label>
 				</span>
 			</div>
 			';
@@ -226,17 +230,17 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		// Total Amount information
 		$return_string .= '
-		<div class="disclaimer total" style="display:none;"><span class="first-sentence">Your generous donation will total $<span id="totalAmount"></span> today.</span> When you proceed to checkout, you will be sent to our payment processing service.</div>
+		<div tabindex="0" class="disclaimer total" style="display:none;"><span class="first-sentence">Your generous donation will total $<span id="totalAmount"></span> today.</span> When you proceed to checkout, you will be sent to our payment processing service.</div>
 		';
 
 		// Gift Planning Checkboxes
 		$return_string .= '
 		<div class="additional-info gift-planning" style="display:none;">
 			<span class="additional-info-header-wrapper">
-				<div class="additional-info-header">Is WSU in your Will?</div>
-				<a role="button">Learn More</a>
+				<div tabindex="0" class="additional-info-header">Is WSU in your Will?</div>
+				<a tabindex="0" aria-label="Click enter and then tab to learn more about including WSU in your will" role="button">Learn More</a>
 			</span>
-			<p class="additional-info-description" style="display:none;">
+			<p tabindex="0" class="additional-info-description" style="display:none;">
 				Charitable gifts from estates and other planned gifts play an integral role in the future of Washington State University. The WSU Foundation offers several tax-wise giving options to support WSU’s mission while fulfilling your personal philanthropic goals.
 			</p>
             <span >
@@ -259,7 +263,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		// Credit Card Disclaimer
 		$return_string .= '
-		<div class="disclaimer credit-card" style="display:none;">In accordance with <a href="https://www.pcisecuritystandards.org/">PCI compliance requirements</a>, the WSU Foundation does not store or retain your credit card information.</div></div>
+		<div tabindex="0" class="disclaimer credit-card" style="display:none;">In accordance with <a href="https://www.pcisecuritystandards.org/">PCI compliance requirements</a>, the WSU Foundation does not store or retain your credit card information.</div></div>
 		';
 
 		if ( 'staging' === $args['server'] ) {
@@ -283,9 +287,9 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	*/
 	function wsuf_fundselector_enqueue_scripts() {
 
-		wp_enqueue_script( 'wsuf_fundselector_utils', plugins_url( '/wsuwp-shortcode-fundselector-utils.js', __FILE__ ), array( 'jquery' ), '1.0', true );
+		wp_enqueue_script( 'wsuf_fundselector_utils', plugins_url( '/wsuwp-shortcode-fundselector-utils.js', __FILE__ ), array( 'jquery' ), '1.1.2', true );
 
-		wp_enqueue_script( 'wsuf_fundselector', plugins_url( '/wsuwp-shortcode-fundselector.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-autocomplete', 'jquery-ui-button', 'underscore' ), '1.0', true );
+		wp_enqueue_script( 'wsuf_fundselector', plugins_url( '/wsuwp-shortcode-fundselector.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-autocomplete', 'jquery-ui-button', 'underscore' ), '1.1.2', true );
 
 		wp_enqueue_script( 'wsuf_fundselector_jquery_editable', plugins_url( '/jquery.editable.min.js', __FILE__ ), array( 'jquery' ), null, true );
 

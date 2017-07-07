@@ -2,6 +2,7 @@
 window.wsuwpUtils = window.wsuwpUtils || {};
 var MAXIMUM_GIFT = 100000;
 var MINIMUM_GIFT = 3;
+var EPSILON = 0;
 
 (function () {
 
@@ -11,8 +12,10 @@ var MINIMUM_GIFT = 3;
 			var html = '<li class="list-group-item ' + (scholarship ? "fund-scholarship": "") + '" data-designation_id="' + designationId + '" data-amount="' + amount + '">';
 			html += '<span class="fund-info">';
 			html += '	<span class="right">' + _.escape(name) + '</span>'
+
 			html += '	<span class="center">$</span><span id="edit' + designationId + '" class="editable left">' + wsuwpUtils.roundAmount(amount) +  '</span>';
-			html += '	<span class="edit"><a href="#!" id="' + designationId +'" class="edit">EDIT</a></span>';
+			html += '	<span class="edit"><a href="#!" aria-label="Edit current donation amount of $' + _.escape(amount) + ' for ' + _.escape(name) + '" ' +  'id="' + designationId +'" class="edit">EDIT</a></span>';
+
 			html += '	<span class="close remove"><a href="#" aria-label="Remove ' + _.escape(name) + ' from the list of funds"></a></span>'
 			html += '</span>';
 			html += '<span id="error' + designationId + '" class="error"></span>';
@@ -114,9 +117,16 @@ var MINIMUM_GIFT = 3;
 			var roundedAmount = 0;
 			var inputAmount = parseFloat(amount);
 			if(inputAmount && _.isNumber(inputAmount)) {
-				roundedAmount = Math.round(inputAmount * 100 + Number.EPSILON) / 100;
+				roundedAmount = Math.round(inputAmount * 100 + EPSILON) / 100;
 			}
 			return roundedAmount;
+		},
+
+		 getEpsilon: function() {
+			var e = 1.0;
+			while ( ( 1.0 + 0.5 * e ) !== 1.0 )
+				e *= 0.5;
+			return e;
 		},
 
 		validateAmount: function (intendedAmount, minimumAmount, maximumAmount)
@@ -255,9 +265,14 @@ var MINIMUM_GIFT = 3;
 				};
 				
 				jQuery("#advFeeAmount").text(_.template(wpData.adv_fee_message)({advFeeAmount: advFeeDecimal.toFixed(2) }));
+				jQuery("#advFeeAmount").html(jQuery("#advFeeAmount").html() + '<a id="moreAdvFeeInfo" href="https://foundation.wsu.edu/about/fees/" target="_blank" rel="noopener noreferrer"></a>');	
 				jQuery("#advFeeCheck").attr("data-amount", advFeeDecimal);
 			}
-
+			
+			if (jQuery("#advFeeLabel").css("display") === "inline") { //flow-root not supported, so apply clearfix
+				jQuery("#advFeeLabel").css({display: "block", clear: "both", content: " "});
+				jQuery("#advFeeAmount").css({display: "block", clear: "both", content: " "});
+			}
 			jQuery("#totalAmount").text(donationTotal.toFixed(2));
 			
 		},	
@@ -274,6 +289,8 @@ var MINIMUM_GIFT = 3;
 			showAmountZone();
 		}
 
-	}
+	};
+
+	EPSILON = Number.EPSILON || wsuwpUtils.getEpsilon();
 
 })();
