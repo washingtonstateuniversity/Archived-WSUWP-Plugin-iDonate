@@ -51,7 +51,7 @@ jQuery(document).ready(function($) {
 			
 			var restUrl = wpData.request_url_base + encodeURIComponent(categoryName) + "?per_page=100&orderby=name";
 			var category = $(this).attr("data-name");
-			var description = $(this).attr("data-description");
+			var description = $(this).attr("data-description") || "category";
 
 			var $list = $('#subcategories'); 
 			$list.empty();
