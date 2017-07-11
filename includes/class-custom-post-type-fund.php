@@ -43,6 +43,8 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
 			'hierarchical' => false,
 			'taxonomies' => array( 'idonate_priorities', 'idonate_colleges', 'idonate_campuses', 'idonate_programs' ),
 			'supports' => array( 'title', 'custom-fields' ),
+    		'capability_type' => array( 'idonate_fund' , 'idonate_funds'),
+      		'map_meta_cap' => true,
 		);
 
 		register_post_type( 'idonate_fund', $args );
