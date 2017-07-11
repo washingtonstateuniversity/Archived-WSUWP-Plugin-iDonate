@@ -23,7 +23,7 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
 	public function init() {
 
 		add_action( 'init', array( $this, 'custom_post_types' ) );
-
+		$this->add_idonate_fund_caps_to_admin();
 	}
 
 	function custom_post_types() {
@@ -48,5 +48,33 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
 		);
 
 		register_post_type( 'idonate_fund', $args );
+	}
+
+	# Give Administrators All Fund Editing Capabilities
+	function add_idonate_fund_caps_to_admin() {
+		$caps = array(
+			'read',
+			'read_idonate_fund',
+			'read_private_idonate_funds',
+			'edit_idonate_funds',
+			'edit_private_idonate_funds',
+			'edit_published_idonate_funds',
+			'edit_others_idonate_funds',
+			'publish_idonate_funds',
+			'delete_idonate_funds',
+			'delete_private_idonate_funds',
+			'delete_published_idonate_funds',
+			'delete_others_idonate_funds',
+		);
+
+		$roles = array(
+			get_role( 'administrator' ),
+		);
+
+		foreach ( $roles as $role ) {
+			foreach ( $caps as $cap ) {
+				$role->add_cap( $cap );
+			}
+		}
 	}
 }
