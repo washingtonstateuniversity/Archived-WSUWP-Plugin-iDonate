@@ -439,12 +439,19 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		return $return_array;
 	}
 
-	function wsuf_fundselector_funds_search_funds( $searchTerm ) {
+	/**
+	* Get a list of 10 funds matching a search term. Search only published and searchable funds
+	*
+	* @return array $return_array
+	*
+	* @since 1.1.2
+	*/
+	function wsuf_fundselector_funds_search_funds( $search_term ) {
 		$fund_list = get_posts(array(
 			'post_type' => 'idonate_fund',
 			'post_status' => 'any',
 			'posts_per_page' => 10,
-			's' => $searchTerm,
+			's' => $search_term,
 			'orderby' => 'title',
 			'order' => 'ASC',
 		));

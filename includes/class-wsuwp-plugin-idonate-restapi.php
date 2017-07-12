@@ -121,7 +121,7 @@ class WSUWP_Plugin_iDonate_Custom_REST_API {
 	}
 
 	/**
-	* Add a new custom REST endpoint to get a fund name for a specific designation ID by slug
+	* Add a new custom REST endpoint to get a list of funds based off of a search term
 	*
 	* @since 1.1.2
 	**/
@@ -136,16 +136,16 @@ class WSUWP_Plugin_iDonate_Custom_REST_API {
 	}
 
 	/**
-	* Gets a fund for a specific designation ID passed via the REST API
+	* Gets a list of funds matching a search term passed via the REST API
 	*
 	* @param WP_Rest_Request $data data from the REST request
 	*
-	* @return array $return_array (from wsuf_fundselector_funds_get_funds)
+	* @return array $return_array (from wsuf_fundselector_funds_search_funds)
 	*
 	* @since 1.1.2
 	*/
 	function wsuf_fundselector_funds_search_rest( $data ) {
-		$searchTerm = $data['searchTerm'];
-		return $this->fundselector_shortcode->wsuf_fundselector_funds_search_funds( $searchTerm );
+		$search_term = $data['searchTerm'];
+		return $this->fundselector_shortcode->wsuf_fundselector_funds_search_funds( $search_term );
 	}
 }
