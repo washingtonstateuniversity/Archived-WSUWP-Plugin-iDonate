@@ -12,11 +12,15 @@ jQuery(document).ready(function($) {
 				jQuery.getJSON( restQueryUrl )
 				.then(function( json ) {
 					$("#fundSearch").removeClass("loading");
-					var stringified = json.toString();
-					return json;
+					response( json );
 				})
 			},
-			minLength: 3
+			minLength: 3,
+			select: function( event, ui ) {
+				$("#inpDesignationId").text(ui.item.designationId);
+				$("#inpFundName").text(ui.item.name);
+				showAmountZone();
+			}
 		}
     ).autocomplete( "widget" ).addClass( "fundselector" );
 

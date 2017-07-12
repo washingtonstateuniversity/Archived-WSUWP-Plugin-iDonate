@@ -443,8 +443,10 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$fund_list = get_posts(array(
 			'post_type' => 'idonate_fund',
 			'post_status' => 'any',
-			'posts_per_page' => -1,
+			'posts_per_page' => 10,
 			's' => $searchTerm,
+			'orderby' => 'title',
+			'order' => 'ASC',
 		));
 		$return_array = array();
 
@@ -454,7 +456,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			$des_id = get_post_meta( $p->ID, 'designationId' , true );
 			$post_title = $p->post_title;
 			//do whatever you want with it
-			$return_array[] = array( 'fund_name' => $post_title, 'designation_id' => $des_id );
+			$return_array[] = array( 'designationId' => $des_id, 'name' => $post_title, 'value' => $post_title );
 		}
 
 		return $return_array;
