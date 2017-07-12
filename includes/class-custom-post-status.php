@@ -10,7 +10,7 @@
  * @since      1.1.2
  *
  * @package    WSUWP_Plugin_iDonate_Post_Status
- * @author     Blair Lierman
+ * @author     Jared Crain
  */
 class WSUWP_Plugin_iDonate_Post_Status {
 
