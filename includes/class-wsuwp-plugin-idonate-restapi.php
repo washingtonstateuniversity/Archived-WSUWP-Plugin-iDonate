@@ -127,7 +127,7 @@ class WSUWP_Plugin_iDonate_Custom_REST_API {
 	**/
 	function wsuf_fundselector_register_endpoint_fund_search() {
 		//var_dump("Reached endpoint register");
-		register_rest_route( 'idonate_fundselector/v1', '/funds/search/(?P<searchTerm>.*?)',
+		register_rest_route( 'idonate_fundselector/v1', '/search/(?P<searchTerm>.*?)',
 			array(
 				'methods' => 'GET',
 				'callback' => array( $this, 'wsuf_fundselector_funds_search_rest' ),

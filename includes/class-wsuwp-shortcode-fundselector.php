@@ -440,18 +440,11 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	}
 
 	function wsuf_fundselector_funds_search_funds( $searchTerm ) {
-		print_r($searchTerm);
 		$fund_list = get_posts(array(
 			'post_type' => 'idonate_fund',
 			'post_status' => 'any',
 			'posts_per_page' => -1,
-			'meata_query' => array(
-				'relation' => 'IN',
-				array(
-					'key' => 'title',
-					'value' => $searchTerm,
-				)
-			)
+			's' => $searchTerm,
 		));
 		$return_array = array();
 
