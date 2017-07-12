@@ -438,4 +438,32 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		return $return_array;
 	}
+
+	function wsuf_fundselector_funds_search_funds( $searchTerm ) {
+		print_r($searchTerm);
+		$fund_list = get_posts(array(
+			'post_type' => 'idonate_fund',
+			'post_status' => 'any',
+			'posts_per_page' => -1,
+			'meata_query' => array(
+				'relation' => 'IN',
+				array(
+					'key' => 'title',
+					'value' => $searchTerm,
+				)
+			)
+		));
+		$return_array = array();
+
+		//loop over each post
+		foreach ( $fund_list as $p ) {
+			//get the meta you need form each post
+			$des_id = get_post_meta( $p->ID, 'designationId' , true );
+			$post_title = $p->post_title;
+			//do whatever you want with it
+			$return_array[] = array( 'fund_name' => $post_title, 'designation_id' => $des_id );
+		}
+
+		return $return_array;
+	}
 }

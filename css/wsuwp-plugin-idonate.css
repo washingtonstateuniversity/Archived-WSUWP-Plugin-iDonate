@@ -1,355 +1,412 @@
 #fundSelectionForm p {
-  font-size: 1em;
+	font-size: 1em;
 }
+
 #fundSelectionForm a.btnlhtgry {
-  display: inline-block;
-  min-width: 100px;
-  margin: 0;
-  padding: 15px 40px 15px 40px;
-  background: rgba(0, 0, 0, 0);
-  font: 700 12px/12px Montserrat, Helvetica, Arial, san-serif;
-  text-align: center;
-  text-shadow: none;
-  border-radius: 2px;
-  color: #3b4042;
-  border: 1px solid #ececec;
-  background-color: #f1f1f1;
-  cursor: pointer;
+	display: inline-block;
+	min-width: 100px;
+	margin: 0;
+	padding: 15px 40px 15px 40px;
+	background: rgba(0, 0, 0, 0);
+	font: 700 12px/12px Montserrat, Helvetica, Arial, san-serif;
+	text-align: center;
+	text-shadow: none;
+	border-radius: 2px;
+	color: #3b4042;
+	border: 1px solid #ececec;
+	background-color: #f1f1f1;
+	cursor: pointer;
 }
+
 #fundSelectionForm a.btnlhtgry:hover {
-  background-color: #d1d3d4;
+	background-color: #d1d3d4;
 }
+
 #fundSelectionForm input {
-  color: #4c4c4c;
-  width: 100%;
-  height: 50px;
-  height: 35px;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  text-indent: 10px;
-  text-transform: none;
-  box-shadow: none;
-  border: none;
-  border: 1px solid #ebe7e8;
-  border-radius: 2px;
+	color: #4c4c4c;
+	width: 100%;
+	height: 50px;
+	height: 35px;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	text-indent: 10px;
+	text-transform: none;
+	box-shadow: none;
+	border: none;
+	border: 1px solid #ebe7e8;
+	border-radius: 2px;
 }
+
 #fundSelectionForm input[type="checkbox"] {
-  width: 15px;
-  height: 15px;
-  margin-top: 2px;
+	width: 15px;
+	height: 15px;
+	margin-top: 2px;
 }
+
 #fundSelectionForm select {
-  color: #4c4c4c;
-  transition: all 0.3s ease-in-out;
-  width: 100%;
-  height: 40px;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  padding-left: 16px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  box-shadow: none;
-  border: none;
-  border: 1px solid #ebe7e8;
-  border-radius: 2px;
-  outline: none;
-  font-size: 12px;
-  font-weight: 400;
+	color: #4c4c4c;
+	transition: all .3s ease-in-out;
+	width: 100%;
+	height: 40px;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	padding-left: 16px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	box-shadow: none;
+	border: none;
+	border: 1px solid #ebe7e8;
+	border-radius: 2px;
+	outline: none;
+	font-size: 12px;
+	font-weight: 400;
 }
+
 #fundSelectionForm select.fund {
-  background: #fff url(../images/ico/arrow-down-gry.png) no-repeat center center;
-  background-position: calc(100% - 16px) center;
-  background-size: 12px;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  padding-right: 35px;
+	background: #fff url(../images/ico/arrow-down-gry.png) no-repeat center center;
+	background-position: calc(100% - 16px) center;
+	background-size: 12px;
+	transition: background-color .3s ease-in-out, color .3s ease-in-out;
+	padding-right: 35px;
 }
+
 #fundSelectionForm button,
 #fundSelectionForm .ui-button {
-  color: #4c4c4c;
-  transition: all 0.3s ease-in-out;
+	color: #4c4c4c;
+	transition: all .3s ease-in-out;
 }
+
 #fundSelectionForm #majorcategory {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-  padding: 0 0 10px 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: distribute;
+	justify-content: space-around;
+	padding: 0 0 10px 0;
 }
+
 #fundSelectionForm #majorcategory a {
-  line-height: 1.4em;
-  transition: color 0.3s ease-in-out;
-  width: 25%;
-  color: #4c4c4c;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding: 6px;
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 12px;
-  margin-bottom: -1px;
-  border-bottom: 1px solid #d1d3d4;
-  text-align: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+	line-height: 1.4em;
+	transition: color .3s ease-in-out;
+	width: 25%;
+	color: #4c4c4c;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	padding: 6px;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 12px;
+	margin-bottom: -1px;
+	border-bottom: 1px solid #d1d3d4;
+	text-align: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
 }
+
 #fundSelectionForm #majorcategory a:hover {
-  color: #981e32;
+	color: #981e32;
 }
+
 @media only screen and (max-width: 480px) {
-  #fundSelectionForm #majorcategory a.search .search-text {
-    display: none;
-  }
+
+	#fundSelectionForm #majorcategory a.search .search-text {
+		display: none;
+	}
+
 }
+
 #fundSelectionForm #majorcategory a.search:after {
-  content: "$";
-  font-family: Spine-Icons;
-  margin: 0 -0.25rem 0 0.5rem;
-  position: relative;
-  top: .125rem;
+	content: "$";
+	font-family: Spine-Icons;
+	margin: 0 -.25rem 0 .5rem;
+	position: relative;
+	top: .125rem;
 }
+
 @media only screen and (max-width: 480px) {
-  #fundSelectionForm #majorcategory a.search:after {
-    margin: 0;
-  }
+
+	#fundSelectionForm #majorcategory a.search:after {
+		margin: 0;
+	}
+
 }
+
 #fundSelectionForm #majorcategory a.active {
-  border-left: 1px solid #d1d3d4;
-  border-top: 1px solid #d1d3d4;
-  border-right: 1px solid #d1d3d4;
-  border-bottom: none;
-  color: #981e32;
-  font-weight: 700;
+	border-left: 1px solid #d1d3d4;
+	border-top: 1px solid #d1d3d4;
+	border-right: 1px solid #d1d3d4;
+	border-bottom: none;
+	color: #981e32;
+	font-weight: 700;
 }
+
 #fundSelectionForm input[type="text"]:hover,
 #fundSelectionForm select:hover {
-  border: 1px solid #d1d3d4;
-  cursor: pointer;
+	border: 1px solid #d1d3d4;
+	cursor: pointer;
 }
+
 #fundSelectionForm input[type="text"]:focus,
 #fundSelectionForm select:focus {
-  border: 1px solid #981e32;
+	border: 1px solid #981e32;
 }
+
 #fundSelectionForm select::-ms-expand {
-  display: none;
+	display: none;
 }
+
 #fundSelectionForm input.search {
-  background: transparent url(../images/ico/search-gry.png) no-repeat 12px center;
-  background-size: 12px;
-  background-position-x: 6px;
+	background: transparent url(../images/ico/search-gry.png) no-repeat 12px center;
+	background-size: 12px;
+	background-position-x: 6px;
 }
+
 #fundSelectionForm input.left,
 #fundSelectionForm a.left {
-  background: transparent url(../images/ico/arrow-left-gry.png) no-repeat 12px center;
-  background-size: 12px;
-  color: #3b4042;
-  border: 1px solid #ececec;
-  background-color: #f1f1f1;
+	background: transparent url(../images/ico/arrow-left-gry.png) no-repeat 12px center;
+	background-size: 12px;
+	color: #3b4042;
+	border: 1px solid #ececec;
+	background-color: #f1f1f1;
 }
+
 #fundSelectionForm a.plus {
-  background: transparent url(../images/ico/plus-gry.png) no-repeat 12px center;
-  background-size: 12px;
-  color: #3b4042;
-  border: 1px solid #ececec;
-  background-color: #f1f1f1;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+	background: transparent url(../images/ico/plus-gry.png) no-repeat 12px center;
+	background-size: 12px;
+	color: #3b4042;
+	border: 1px solid #ececec;
+	background-color: #f1f1f1;
+	transition: background-color .3s ease-in-out, color .3s ease-in-out;
 }
+
 #fundSelectionForm input.search:focus {
-  background: #94192b url(../images/ico/search-wht.png) no-repeat 16px center;
+	background: #94192b url(../images/ico/search-wht.png) no-repeat 16px center;
 }
+
 #fundSelectionForm .input-group {
-  position: relative;
-  display: table;
-  border-collapse: separate;
+	position: relative;
+	display: table;
+	border-collapse: separate;
 }
+
 #fundSelectionForm .input-group .form-control {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  display: table-cell;
-  padding: 0;
-  border: 1px solid #ebe7e8;
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	display: table-cell;
+	padding: 0;
+	border: 1px solid #ebe7e8;
 }
+
 #fundSelectionForm .input-group .form-control:focus {
-  z-index: 3;
+	z-index: 3;
 }
+
 #fundSelectionForm .input-group-btn {
-  position: relative;
-  display: table-cell;
-  padding: 0;
-  border: 1px solid #ebe7e8;
-  width: 1%;
-  white-space: nowrap;
-  vertical-align: middle;
-  font-size: 0;
+	position: relative;
+	display: table-cell;
+	padding: 0;
+	border: 1px solid #ebe7e8;
+	width: 1%;
+	white-space: nowrap;
+	vertical-align: middle;
+	font-size: 0;
 }
+
 #fundSelectionForm .input-group-btn > .btn:active,
 #fundSelectionForm .input-group-btn > .btn:focus,
 #fundSelectionForm .input-group-btn > .btn:hover {
-  z-index: 2;
+	z-index: 2;
 }
+
 #fundSelectionForm .input-group-btn > .btn {
-  position: relative;
+	position: relative;
 }
+
 #fundSelectionForm .input-group-btn > .btn + .btn {
-  margin-left: -1px;
+	margin-left: -1px;
 }
+
 #fundSelectionForm .input-group[class*="col-"] {
-  float: none;
-  padding-left: 0;
-  padding-right: 0;
+	float: none;
+	padding-left: 0;
+	padding-right: 0;
 }
+
 #fundSelectionForm .input-group-addon {
-  display: table-cell;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 0;
-  padding: 6px 12px;
-  border: 1px solid #ebe7e8;
-  width: 1%;
-  white-space: nowrap;
-  vertical-align: middle;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1;
-  color: #242424;
-  text-align: center;
-  background-color: #eee;
-  border-radius: 2px;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+	display: table-cell;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	padding: 0;
+	padding: 6px 12px;
+	border: 1px solid #ebe7e8;
+	width: 1%;
+	white-space: nowrap;
+	vertical-align: middle;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1;
+	color: #242424;
+	text-align: center;
+	background-color: #eee;
+	border-radius: 2px;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
 }
+
 #fundSelectionForm .input-group-addon input[type="checkbox"],
 #fundSelectionForm .input-group-addon input[type="radio"] {
-  margin-top: 0;
+	margin-top: 0;
 }
+
 #fundSelectionForm .input-group-addon.input-sm,
 #fundSelectionForm .input-group-sm > .input-group-addon,
 #fundSelectionForm .input-group-sm > .input-group-btn > .input-group-addon.btn {
-  padding: 5px 10px;
-  font-size: 14px;
-  border-radius: 3px;
+	padding: 5px 10px;
+	font-size: 14px;
+	border-radius: 3px;
 }
+
 #fundSelectionForm .input-group-addon.input-lg,
 #fundSelectionForm .input-group-lg > .input-group-addon,
 #fundSelectionForm .input-group-lg > .input-group-btn > .input-group-addon.btn {
-  padding: 10px 16px;
-  font-size: 20px;
-  border-radius: 6px;
+	padding: 10px 16px;
+	font-size: 20px;
+	border-radius: 6px;
 }
+
 #fundSelectionForm .input-group .form-control:first-child,
 #fundSelectionForm .input-group-btn:first-child > .btn-group > .btn,
 #fundSelectionForm .input-group-btn:first-child > .dropdown-toggle,
 #fundSelectionForm .input-group-btn:last-child > .btn-group:not(:last-child) > .btn,
 #fundSelectionForm .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
+
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
 }
+
 #fundSelectionForm .input-group-addon:first-child {
-  border-right: 0;
-  border-radius: 0;
-  font-weight: 800;
-  font-size: 12px;
+	border-right: 0;
+	border-radius: 0;
+	font-weight: 800;
+	font-size: 12px;
 }
+
 #fundSelectionForm .input-group-btn:first-child > .btn {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  margin-right: -1px;
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+	margin-right: -1px;
 }
+
 #fundSelectionForm .input-group-btn:first-child > .btn-group {
-  margin-right: -1px;
+	margin-right: -1px;
 }
+
 #fundSelectionForm .input-group .form-control:last-child,
 #fundSelectionForm .input-group-btn:first-child > .btn-group:not(:first-child) > .btn,
 #fundSelectionForm .input-group-btn:first-child > .btn:not(:first-child),
 #fundSelectionForm .input-group-btn:last-child > .btn-group > .btn,
 #fundSelectionForm .input-group-btn:last-child > .dropdown-toggle {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
 }
+
 #fundSelectionForm .input-group-addon:last-child {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-  border-left: 0;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	border-left: 0;
 }
+
 #fundSelectionForm .input-group-btn:last-child > .btn {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-  z-index: 2;
-  margin-left: -1px;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	z-index: 2;
+	margin-left: -1px;
 }
+
 #fundSelectionForm .input-group-btn:last-child > .btn-group {
-  z-index: 2;
-  margin-left: -1px;
+	z-index: 2;
+	margin-left: -1px;
 }
+
 #fundSelectionForm .wrapper {
-  position: relative;
-  width: 100%;
-  display: inline-block;
+	position: relative;
+	width: 100%;
+	display: inline-block;
 }
+
 #fundSelectionForm button.amount-selection {
-  border: none;
-  padding: 10px 10px;
-  background-color: #f1f1f1;
-  border-radius: 2px;
-  width: calc(16%);
-  display: flex;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  margin-top: 10px;
+	border: none;
+	padding: 10px 10px;
+	background-color: #f1f1f1;
+	border-radius: 2px;
+	width: calc(16%);
+	display: flex;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	margin-top: 10px;
 }
+
 #fundSelectionForm button.amount-selection.selected {
-  color: #fff;
-  background-color: #981e32;
+	color: #fff;
+	background-color: #981e32;
 }
+
 #fundSelectionForm button.amount-selection:first-child {
-  border-top-left-radius: 2px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 2px;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 2px;
 }
+
 #fundSelectionForm button.amount-selection.lastbutton {
-  border-top-left-radius: 0;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius: 0;
 }
+
 #fundSelectionForm button.amount-selection:hover {
-  background-color: #d1d3d4;
+	background-color: #d1d3d4;
 }
+
 #fundSelectionForm button.amount-selection.selected:hover {
-  background-color: #981e32;
+	background-color: #981e32;
 }
+
 #fundSelectionForm div.input-group {
-  clear: both;
+	clear: both;
 }
+
 #fundSelectionForm .amountwrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
 }
+
 #fundSelectionForm .amountwrapper .input-group {
-  margin: 20px 0 0 0;
+	margin: 20px 0 0 0;
 }
+
 #fundSelectionForm .button.active,
 #fundSelectionForm .button:active,
 #fundSelectionForm button.active,
@@ -357,418 +414,494 @@
 #fundSelectionForm input[type="submit"]:active,
 #fundSelectionForm input[type="reset"]:active,
 #fundSelectionForm input[type="button"]:active {
-  background: auto;
+	background: auto;
 }
+
 #fundSelectionForm #selectedFunds {
-  margin: 0 0 20px 0;
-  list-style-type: none;
-  padding: 0;
+	margin: 0 0 20px 0;
+	list-style-type: none;
+	padding: 0;
 }
+
 #fundSelectionForm #selectedFunds li {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  position: relative;
-  padding: 10px 10px 10px 20px;
-  background: #eff0f1;
-  border-radius: 2px;
-  border: #eff0f1 solid 1px;
-  margin-top: 10px;
-  color: #464e54;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	position: relative;
+	padding: 10px 10px 10px 20px;
+	background: #eff0f1;
+	border-radius: 2px;
+	border: #eff0f1 solid 1px;
+	margin-top: 10px;
+	color: #464e54;
 }
+
 #fundSelectionForm #selectedFunds li span {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
 }
+
 #fundSelectionForm #selectedFunds li span.left {
-  padding-right: 20px;
-  font-weight: 700;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 12px;
+	padding-right: 20px;
+	font-weight: 700;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	font-size: 12px;
 }
+
 #fundSelectionForm #selectedFunds li span.right {
-  font-size: 12px;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-right: 20px;
+	font-size: 12px;
+	width: 100%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-right: 20px;
 }
+
 #fundSelectionForm #selectedFunds li:first-child:after {
-  content: "";
-  position: absolute;
-  border-style: solid;
-  border-width: 0 7px 7px;
-  border-color: #eff0f1 transparent;
-  display: block;
-  width: 0;
-  top: -8px;
-  left: 7px;
+	content: "";
+	position: absolute;
+	border-style: solid;
+	border-width: 0 7px 7px;
+	border-color: #eff0f1 transparent;
+	display: block;
+	width: 0;
+	top: -8px;
+	left: 7px;
 }
+
 #fundSelectionForm .help-text-box {
-  background: #981e32;
-  color: #e6e7e8;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  padding: 10px 10px 10px 20px;
-  border-radius: 2px;
-  border: #981e32 solid 1px;
-  margin-top: 10px;
-  font-size: 12px;
+	background: #981e32;
+	color: #e6e7e8;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	position: relative;
+	padding: 10px 10px 10px 20px;
+	border-radius: 2px;
+	border: #981e32 solid 1px;
+	margin-top: 10px;
+	font-size: 12px;
 }
+
 #fundSelectionForm .help-text-box span.left {
-  padding-right: 20px;
-  font-weight: 800;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 105%;
-  width: 100%;
+	padding-right: 20px;
+	font-weight: 800;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	font-size: 105%;
+	width: 100%;
 }
+
 #fundSelectionForm .help-text-box span.right {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-right: 20px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-right: 20px;
 }
+
 #fundSelectionForm .help-text-caret {
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid #981e32;
-  margin-top: 0;
-  margin-left: calc(10% - 7px);
-  margin-bottom: 10px;
+	width: 0;
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 7px solid #981e32;
+	margin-top: 0;
+	margin-left: calc(10% - 7px);
+	margin-bottom: 10px;
 }
+
 #fundSelectionForm .help-text .close a {
-  background: url(../images/ico/close-wht.png) no-repeat center center;
-  background-size: 12px;
+	background: url(../images/ico/close-wht.png) no-repeat center center;
+	background-size: 12px;
 }
+
 #fundSelectionForm .additional-info {
-  font-size: 90%;
-  margin-bottom: 20px;
+	font-size: 90%;
+	margin-bottom: 20px;
 }
+
 #fundSelectionForm .additional-info .additional-info-header {
-  font-weight: 700;
-  font-size: 12px;
+	font-weight: 700;
+	font-size: 12px;
 }
+
 #fundSelectionForm .additional-info input[type="checkbox"] {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 20px;
-  flex: 0 0 20px;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 20px;
+	flex: 0 0 20px;
 }
+
 #fundSelectionForm .additional-info input[type="checkbox"] + label:before {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  content: "\00a0";
-  font: 16px/1em sans-serif;
-  height: 15px;
-  margin: 0 .5em 0 0;
-  padding: 0;
-  vertical-align: top;
-  width: 15px;
-  float: left;
+	border: 1px solid rgba(0, 0, 0, .2);
+	content: "\00a0";
+	font: 16px/1em sans-serif;
+	height: 15px;
+	margin: 0 .5em 0 0;
+	padding: 0;
+	vertical-align: top;
+	width: 15px;
+	float: left;
 }
+
 #fundSelectionForm .additional-info input[type="checkbox"]:checked + label:before {
-  background: #981e32 url(../images/ico-check-wht.png) center center no-repeat;
-  color: #fff;
-  border: 1px solid #981e32;
-  background-size: 12px;
-  text-align: center;
+	background: #981e32 url(../images/ico-check-wht.png) center center no-repeat;
+	color: #fff;
+	border: 1px solid #981e32;
+	background-size: 12px;
+	text-align: center;
 }
+
 #fundSelectionForm .additional-info input[type="checkbox"]:focus + label:before {
-  border: 1px dotted #000;
+	border: 1px dotted #000;
 }
+
 #fundSelectionForm .additional-info input[type="checkbox"]:checked + label:after {
-  font-weight: 700;
+	font-weight: 700;
 }
+
 #fundSelectionForm .additional-info input[type="checkbox"] {
-  opacity: 0;
+	opacity: 0;
 }
+
 #fundSelectionForm .additional-info p {
-  padding-bottom: 2em;
+	padding-bottom: 2em;
 }
+
 #fundSelectionForm .additional-info span {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 10px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin-bottom: 10px;
 }
+
 #fundSelectionForm .additional-info span:not(.additional-info-header-wrapper) {
-  margin-left: 10px;
-  line-height: 2em;
-  margin-top: -4px;
+
+	margin-left: 10px;
+	line-height: 2em;
+	margin-top: -4px;
 }
+
 #fundSelectionForm .additional-info label {
-  -webkit-box-flex: 2;
-  -ms-flex: 2;
-  flex: 2;
-  margin-left: 5px;
-  font-size: 1em;
-  padding-right: 10px;
+	-webkit-box-flex: 2;
+	-ms-flex: 2;
+	flex: 2;
+	margin-left: 5px;
+	font-size: 1em;
+	padding-right: 10px;
 }
+
 #fundSelectionForm .additional-info .additional-info-header-wrapper a {
-  background: transparent url(../images/ico/arrow-down-gry.png) no-repeat calc(100% - 10px) 8px;
-  background-size: 8px;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  padding-right: 27px;
-  margin-left: 15px;
-  border: 1px solid #ececec;
-  background-color: #f1f1f1;
-  cursor: pointer;
+	background: transparent url(../images/ico/arrow-down-gry.png) no-repeat calc(100% - 10px) 8px;
+	background-size: 8px;
+	transition: background-color .3s ease-in-out, color .3s ease-in-out;
+	padding-right: 27px;
+	margin-left: 15px;
+	border: 1px solid #ececec;
+	background-color: #f1f1f1;
+	cursor: pointer;
 }
+
 #fundSelectionForm .additional-info .additional-info-header-wrapper a:hover {
-  background-color: #d1d3d4;
+	background-color: #d1d3d4;
 }
+
 #fundSelectionForm .additional-info .additional-info-header-wrapper a.down {
-  background: url(../images/ico/arrow-up-gry.png) no-repeat calc(100% - 10px) 6px;
-  background-size: 8px;
+	background: url(../images/ico/arrow-up-gry.png) no-repeat calc(100% - 10px) 6px;
+	background-size: 8px;
 }
+
 #fundSelectionForm .additional-info .additional-info-header-wrapper a > span {
-  line-height: inherit;
-  margin-top: 0;
-  margin-bottom: 0;
-  text-align: center;
+	line-height: inherit;
+	margin-top: 0;
+	margin-bottom: 0;
+	text-align: center;
 }
+
 #fundSelectionForm .hidden {
-  display: none;
+	display: none;
 }
+
 #fundSelectionForm .center {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
 }
+
 #fundSelectionForm .alignright {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
 }
+
 #fundSelectionForm .wrapper:after {
-  clear: both;
+	clear: both;
 }
+
 #fundSelectionForm .search-separator {
-  margin: 0 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+	margin: 0 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
 }
+
 #fundSelectionForm #jacket,
 #fundSelectionForm #binder,
 #fundSelectionForm section.row {
-  background-color: #fff;
+	background-color: #fff;
 }
+
 #fundSelectionForm ul.ui-autocomplete {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  width: 100%;
-  z-index: 1000;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	width: 100%;
+	z-index: 1000;
 }
+
 #fundSelectionForm .ui-button-text,
 #fundSelectionForm #selectedFunds li span.left {
-  font-weight: 800;
-  font-size: 12px;
+	font-weight: 800;
+	font-size: 12px;
 }
+
 #fundSelectionForm .continuebutton {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	-webkit-box-pack: end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
 }
+
 @media (max-width: 372px) {
-  #fundSelectionForm .continuebutton {
-    padding-right: 30px;
-  }
+
+	#fundSelectionForm .continuebutton {
+		padding-right: 30px;
+	}
+
 }
+
 #fundSelectionForm label,
 #fundSelectionForm legend {
-  font-weight: 300;
-  font-size: 12px;
-  color: #4c4c4c;
+	font-weight: 300;
+	font-size: 12px;
+	color: #4c4c4c;
 }
+
 #fundSelectionForm .close a {
-  display: block;
-  right: 0;
-  top: 0;
-  width: 12px;
-  height: 12px;
-  margin: 10px;
-  padding: 0;
-  background: url(../images/ico/close-gry.png) no-repeat center center;
-  background-size: 12px;
-  opacity: 1;
+	display: block;
+	right: 0;
+	top: 0;
+	width: 12px;
+	height: 12px;
+	margin: 10px;
+	padding: 0;
+	background: url(../images/ico/close-gry.png) no-repeat center center;
+	background-size: 12px;
+	opacity: 1;
 }
+
 #fundSelectionForm span.edit {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
 }
+
 #fundSelectionForm a.edit,
 #fundSelectionForm li span.amount {
-  color: #4c4c4c;
-  font-weight: 800;
-  font-size: 12px;
+	color: #4c4c4c;
+	font-weight: 800;
+	font-size: 12px;
 }
+
 #fundSelectionForm .otherprice {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	width: 100%;
 }
+
 #fundSelectionForm span.center,
 #fundSelectionForm span.close {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  font-size: 12px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;
+	font-size: 12px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
 }
+
 #fundSelectionForm #addFundButton {
-  padding: 11px 40px 10px 40px;
-  background-position-x: 51px;
-  background-size: 8px;
-  background-color: #e6e7e8;
+	padding: 11px 40px 10px 40px;
+	background-position-x: 51px;
+	background-size: 8px;
+	background-color: #e6e7e8;
 }
+
 #fundSelectionForm #addFundButton:hover:not(.ui-state-disabled) {
-  color: #fff;
-  background: #981e32 url(../images/ico/plus-wht.png) no-repeat 12px center;
-  background-size: 8px;
-  background-position-x: 51px;
+
+	color: #fff;
+	background: #981e32 url(../images/ico/plus-wht.png) no-repeat 12px center;
+	background-size: 8px;
+	background-position-x: 51px;
 }
+
 #fundSelectionForm #backButton {
-  min-width: 70px;
-  padding: 15px 15px 15px 15px;
+	min-width: 70px;
+	padding: 15px 15px 15px 15px;
 }
+
 #fundSelectionForm .disclaimer {
-  line-height: 1.3em;
+	line-height: 1.3em;
 }
+
 #fundSelectionForm .disclaimer.total {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
+
 #fundSelectionForm .disclaimer.total .first-sentence {
-  color: #981e32;
-  font-weight: 600;
+	color: #981e32;
+	font-weight: 600;
 }
+
 #fundSelectionForm .disclaimer.credit-card {
-  font-style: italic;
-  font-size: 75%;
+	font-style: italic;
+	font-size: 75%;
 }
+
 #fundSelectionForm .error {
-  font-size: 90%;
-  color: #c60c30;
+	font-size: 90%;
+	color: #c60c30;
 }
+
 #fundSelectionForm #errorOtherAmount {
-  margin-left: 15px;
+	margin-left: 15px;
 }
+
 @media (max-width: 800px) {
-  #fundSelectionForm button.amount-selection {
-    width: calc(30% - 5px);
-  }
+
+	#fundSelectionForm button.amount-selection {
+		width: calc(30% - 5px);
+	}
+
 }
+
 @media (max-width: 420px) {
-  #fundSelectionForm .additional-info {
-    font-size: 65%;
-  }
+
+	#fundSelectionForm .additional-info {
+		font-size: 65%;
+	}
+
 }
+
 @media screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 0) {
-  #fundSelectionForm select,
-  #fundSelectionForm textarea,
-  #fundSelectionForm input {
-    font-size: 16px;
-  }
-  #fundSelectionForm select:focus,
-  #fundSelectionForm textarea:focus,
-  #fundSelectionForm input:focus {
-    font-size: 16px;
-  }
+
+	#fundSelectionForm select,
+	#fundSelectionForm textarea,
+	#fundSelectionForm input {
+		font-size: 16px;
+	}
+
+	#fundSelectionForm select:focus,
+	#fundSelectionForm textarea:focus,
+	#fundSelectionForm input:focus {
+		font-size: 16px;
+	}
+
 }
+
 #fundSelectionForm .help-icon a#moreAdvFeeInfo {
-  display: inline-block;
-  right: 0;
-  top: 0;
-  width: 15px;
-  height: 15px;
-  padding: 0;
-  background: url(../images/ico-help.png) no-repeat center center;
-  background-size: 15px;
-  opacity: 1;
-  padding-left: 10px;
+	display: inline-block;
+	right: 0;
+	top: 0;
+	width: 15px;
+	height: 15px;
+	padding: 0;
+	background: url(../images/ico-help.png) no-repeat center center;
+	background-size: 15px;
+	opacity: 1;
+	padding-left: 10px;
 }
+
 #fundSelectionForm .loading {
-  background: #fff url(../images/loader.gif) no-repeat center center;
-  background-position: calc(100% - 16px) center;
-  background-size: 12px;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  padding-right: 35px;
+	background: #fff url(../images/loader.gif) no-repeat center center;
+	background-position: calc(100% - 16px) center;
+	background-size: 12px;
+	transition: background-color .3s ease-in-out, color .3s ease-in-out;
+	padding-right: 35px;
 }
+
 .ui-autocomplete.fundselector {
-  background-color: #fff;
-  border: 1px solid #e6e7e8;
-  list-style-type: none;
-  padding-left: 15px;
-  padding-bottom: 5px;
-  text-transform: uppercase;
+	background-color: #fff;
+	border: 1px solid #e6e7e8;
+	list-style-type: none;
+	padding-left: 15px;
+	padding-bottom: 5px;
+	text-transform: uppercase;
 }
+
 .ui-autocomplete.fundselector .ui-menu-item {
-  cursor: pointer;
+	cursor: pointer;
 }
+
 .ui-autocomplete.fundselector .ui-menu-item.ui-state-focus {
-  color: #981e32;
+	color: #981e32;
 }
+
 @media (max-width: 372px) {
-  .halves.gutter .column.one:not(.gutterless),
-  .halves.gutter .column:nth-of-type(2n+3):not(.gutterless),
-  .side-right.gutter .column.one:not(.gutterless) {
-    padding-right: 0.25rem;
-    padding-left: 0.25rem;
-  }
+
+	.halves.gutter .column.one:not(.gutterless),
+	.halves.gutter .column:nth-of-type(2n+3):not(.gutterless),
+	.side-right.gutter .column.one:not(.gutterless) {
+
+		padding-right: .25rem;
+		padding-left: .25rem;
+	}
+
 }
+
 /*# sourceMappingURL=wsuwp-plugin-idonate.css.map */

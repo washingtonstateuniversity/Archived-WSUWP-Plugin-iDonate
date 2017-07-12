@@ -7,31 +7,17 @@ jQuery(document).ready(function($) {
         {
 			source: function( request, response ) {
 				$("#fundSearch").addClass("loading");
-				$.getJSON( wpData.request_url_base + 'idonate_fund', 
-					{
-						search : request.term
-					}, 
-					function( data, status, xhr ) {			
-						// Map the fund data to use the expected label name ("value") from fund name
-						var fundList = $.map(data, function(fund) {
-							return {
-								"designationId": fund.designationId,
-								"name": wsuwpUtils.htmlDecode(fund.title.rendered),
-								"value": wsuwpUtils.htmlDecode(fund.title.rendered)
-							};
-						});
-						$("#fundSearch").removeClass("loading");
-						response( fundList );
-					}
-				);
+				var restQueryUrl = wpData.plugin_url_base + 'funds/search/' + request.term;
+			
+				jQuery.getJSON( restQueryUrl )
+				.then(function( json ) {
+					$("#fundSearch").removeClass("loading");
+					var stringified = json.toString();
+					return json;
+				})
 			},
-			minLength: 3,
-            select: function( event, ui ) {
-				$("#inpDesignationId").text(ui.item.designationId);
-				$("#inpFundName").text(ui.item.name);
-				showAmountZone();
-            }
-        }
+			minLength: 3
+		}
     ).autocomplete( "widget" ).addClass( "fundselector" );
 
 	// Major Category Click Events

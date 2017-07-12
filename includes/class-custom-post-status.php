@@ -3,7 +3,7 @@
 /**
  * The core plugin class file
  *
- * Defines the functions necessary to register our custom post types with
+ * Defines the functions necessary to register our custom post statuses with
  * WordPress.
  *
  * @link       http://jamescollings.co.uk/blog/wordpress-create-custom-post-status/
@@ -29,6 +29,7 @@ class WSUWP_Plugin_iDonate_Post_Status {
      register_post_status( 'archive', array(
           'label'                     => _x( 'Archive', 'post' ),
           'public'                    => true,
+          'exclude_from_search'       => false,
           'show_in_admin_all_list'    => true,
           'show_in_admin_status_list' => true,
           'label_count'               => _n_noop( 'Archive <span class="count">(%s)</span>', 'Archive <span class="count">(%s)</span>' )
