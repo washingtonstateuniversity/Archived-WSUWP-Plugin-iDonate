@@ -146,7 +146,6 @@ class WSUWP_Plugin_iDonate_Custom_REST_API {
 	*/
 	function wsuf_fundselector_funds_search_rest( $data ) {
 		$searchTerm = $data['searchTerm'];
-		return json_last_error();
 		return $this->fundselector_shortcode->wsuf_fundselector_funds_search_funds( $searchTerm );
 	}
 }
