@@ -115,6 +115,7 @@ class WSUWP_Plugin_iDonate_Custom_REST_API {
 	* @since 0.0.17
 	*/
 	function wsuf_fundselector_funds_get_fund_by_des_id_rest( $data ) {
+
 		$designation_id = $data['designationId'];
 
 		return $this->fundselector_shortcode->wsuf_fundselector_funds_get_fund_name( $designation_id );
@@ -126,7 +127,7 @@ class WSUWP_Plugin_iDonate_Custom_REST_API {
 	* @since 1.1.2
 	**/
 	function wsuf_fundselector_register_endpoint_fund_search() {
-		//var_dump("Reached endpoint register");
+
 		register_rest_route( 'idonate_fundselector/v1', '/search/(?P<searchTerm>.*?)',
 			array(
 				'methods' => 'GET',
@@ -145,7 +146,9 @@ class WSUWP_Plugin_iDonate_Custom_REST_API {
 	* @since 1.1.2
 	*/
 	function wsuf_fundselector_funds_search_rest( $data ) {
+
 		$search_term = $data['searchTerm'];
+		
 		return $this->fundselector_shortcode->wsuf_fundselector_funds_search_funds( $search_term );
 	}
 }
