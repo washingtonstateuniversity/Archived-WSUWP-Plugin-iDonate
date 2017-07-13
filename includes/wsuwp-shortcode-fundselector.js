@@ -40,18 +40,20 @@ jQuery(document).ready(function($) {
 		if(categoryName) {
 			
 			var restUrl = wpData.request_url_base + encodeURIComponent(categoryName) + "?per_page=100&orderby=name";
+			var category = $(this).attr("data-name");
+			var description = $(this).attr("data-description") || "category";
 
-			var $list = $('#subcategories');
+			var $list = $('#subcategories'); 
+			$list.empty();
 			$list.prop('disabled', true); 
 			$list.addClass('loading');
 			$list.removeClass('fund');
+      
+			$list.append('<option disabled selected value> SELECT A ' + category + '</option>');
+			$("label[for=subcategories]").text("Choose a " + description);
 
 			$.getJSON( restUrl )
 			.done(function( json ) {
-
-				$list.empty();
-				$list.append('<option disabled selected value> SELECT A CATEGORY </option>');
-				
 				var $fundList = $('#funds');				
 				$fundList.empty();
 				$fundList.append('<option disabled selected value> SELECT A FUND </option>');
@@ -489,6 +491,7 @@ function continueAction(event)
 		}
 
 		var referenceCode = { donorPaysFee: $advFeeCheck.prop("checked"), feePercentage: parseInt(wpData.adv_fee_percentage)};
+
 		var stringifiedRefCode = '/' + JSON.stringify(referenceCode) + '/';
 		stringifiedRefCode = stringifiedRefCode.replace(/"/g, '\\"');
 
