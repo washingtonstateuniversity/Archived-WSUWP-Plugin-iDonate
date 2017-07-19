@@ -103,16 +103,15 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		<div id="majorcategory" class="wrapper" role="group" aria-label="Category Selection Group">'
 			. $unit_priorities .
 			'<a class="' . ($unit_included ? '' : 'active') . '" role="button" data-tab="prioritiesTab" href="#" >WSU Priorities</a>
-			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_programs" href="#">Programs</a>
-			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_colleges" href="#">Colleges</a>
-			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_campuses" href="#">Campuses</a>
+			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_programs" data-name="PROGRAM" data-description="division, department, or affiliation" href="#">Programs</a>
+			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_colleges" data-name="COLLEGE" data-description="college" href="#">Colleges</a>
+			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_campuses" data-name="CAMPUS" data-description="campus, research, or extension center" href="#">Campuses</a>
             <a class="search" role="button" href="#"><div class="search-text">Search</div></a>
 		</div>';
 
 		// Unit Priorities Tab
 		$unit_priorities = $this->wsuf_fundselector_funds_get_funds( $args['unit_taxonomy'], $args['unit_category'] );
 		$unit_priorities_list = '<option disabled selected value> SELECT A FUND </option>';
-
 		foreach ( $unit_priorities as $unit_priority ) {
 			$fund_name = esc_html( $unit_priority['fund_name'] );
 			$fund_designation_id = esc_attr( $unit_priority['designation_id'] );
@@ -122,7 +121,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$unit_description = ! empty( $args['unit_description'] ) ? $args['unit_description'] : 'Please choose a fund to support';
 
 		$return_string .= '
-		<div id="categoryTab" class="categoryTab wrapper ' . ($unit_included ? '' : 'hidden') . '">    
+		<div id="categoryTab" class="categoryTab wrapper ' . ($unit_included ? '' : 'hidden') . '">
 			<label for="unit-priorities">' . $unit_description . '</label>
 			<select name="unit-priorities" id="unit-priorities" class="form-control fund-selection fund">'
 				. $unit_priorities_list .
@@ -141,7 +140,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		$return_string .= '
 		<div id="prioritiesTab" class="categoryTab wrapper ' . ($unit_included ? 'hidden' : '') . '">    
-			<label for="priorities">Choose one of the university\'s greatest needs</label>
+			<label for="priorities" style="font: inherit;">Choose one of the University\'s greatest needs</label>
 			<select name="priorities" id="priorities" class="form-control fund-selection fund">'
 				. $priorities_list .
 			'</select>
@@ -153,14 +152,14 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		// Categories Select Menu
 		$return_string .= '    
-		<label for="subcategories">Choose a category</label>
+		<label for="subcategories" style="font: inherit;">Choose a category</label>
 		<select name="subcategories" id="subcategories" class="form-control category-selection fund">
 			<option disabled selected value> SELECT A CATEGORY </option>
 		</select>';
 
 		// Funds Select Menu
 		$return_string .= '    
-		<div class="wrapper"><label for="funds">Choose a fund</label>
+		<div class="wrapper"><label for="funds" style="font: inherit;">Choose a fund</label>
 		<select name="funds" id="funds" class="form-control fund-selection fund" disabled>
 			<option disabled selected value> SELECT A FUND </option>
 		</select></div>';
