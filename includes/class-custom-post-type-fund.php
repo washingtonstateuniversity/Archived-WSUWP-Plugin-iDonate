@@ -24,7 +24,7 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
 
 		add_action( 'init', array( $this, 'custom_post_types' ) );
 		$this->add_idonate_fund_caps_to_admin();
-		$this->add_idonate_fund_caps_to_non_admin_roles();
+		$this->create_fund_editor_role();
 	}
 
 	function custom_post_types() {
@@ -51,7 +51,14 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
 		register_post_type( 'idonate_fund', $args );
 	}
 
-	# Give Administrators All Fund Editing Capabilities
+	/**
+	*
+	* Give Administrators all Fund Editing Capabilities
+	*
+	* @link       http://www.nathanfeaver.com/blog/custom_post_types_and_roles_in_wordpress/
+	* @since      1.1.2
+	*
+	*/
 	function add_idonate_fund_caps_to_admin() {
 		$caps = array(
 			'read',
@@ -79,11 +86,18 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
 		}
 	}
 
-	# Give other roles Fund editing Capabilities
-	function add_idonate_fund_caps_to_non_admin_roles() {
-		add_role( 'fund_editor', 'Fund Editor' );
+	/**
+	*
+	* Creates a new role called Fund Editor that only has access to create and update Funds.
+	* This role is designed to allow the delegation of fund updates without access to the rest of the WP site.
+	*
+	* @link       http://www.nathanfeaver.com/blog/custom_post_types_and_roles_in_wordpress_2/
+	* @since      1.1.2
+	*
+	*/
+	function create_fund_editor_role() {
 
-		# Everyone gets these capabilities:
+		# Fund Editors only get these capabilities:
 		$caps = array(
 			'read_idonate_fund',
 			'read_private_idonate_funds',
@@ -95,14 +109,6 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
 			'delete_idonate_funds',
 		);
 
-		$roles = array(
-			get_role( 'fund_editor' ),
-		);
-
-		foreach ( $roles as $role ) {
-			foreach ( $caps as $cap ) {
-				$role->add_cap( $cap );
-			}
-		}
+		add_role( 'fund_editor', 'Fund Editor', $caps );
 	}
 }
