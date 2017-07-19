@@ -96,19 +96,20 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
 	*
 	*/
 	function create_fund_editor_role() {
+		if ( ! array_key_exists( 'fund_editor', WP_Roles()->get_names() ) ) {
+			# Fund Editors only get these capabilities:
+			$caps = array(
+				'read_idonate_fund',
+				'read_private_idonate_funds',
+				'edit_idonate_funds',
+				'edit_private_idonate_funds',
+				'edit_published_idonate_funds',
+				'edit_others_idonate_funds',
+				'publish_idonate_funds',
+				'delete_idonate_funds',
+			);
 
-		# Fund Editors only get these capabilities:
-		$caps = array(
-			'read_idonate_fund',
-			'read_private_idonate_funds',
-			'edit_idonate_funds',
-			'edit_private_idonate_funds',
-			'edit_published_idonate_funds',
-			'edit_others_idonate_funds',
-			'publish_idonate_funds',
-			'delete_idonate_funds',
-		);
-
-		add_role( 'fund_editor', 'Fund Editor', $caps );
+			add_role( 'fund_editor', 'Fund Editor', $caps );
+		}
 	}
 }
