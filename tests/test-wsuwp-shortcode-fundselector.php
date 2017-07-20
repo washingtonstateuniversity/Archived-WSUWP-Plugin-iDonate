@@ -43,7 +43,7 @@ class WSUWP_Plugin_iDonate_ShortCode_FundSelector_Tests extends WP_UnitTestCase 
 		$plugin_version = $test_fundselector_shortcode->wsuf_fundselector_get_plugin_version();
 
 		$script_version = $test_fundselector_shortcode->wsuf_fundselector_get_script_version();
-		
+
 		$this->assertTrue( $plugin_version === $script_version );
 	}
 }

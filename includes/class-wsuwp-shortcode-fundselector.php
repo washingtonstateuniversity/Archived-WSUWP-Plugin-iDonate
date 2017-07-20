@@ -15,15 +15,6 @@
 class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 	/**
-	 * Track a version number for scripts.
-	 *
-	 * @since 1.1.2
-	 *
-	 * @var string
-	 */
-	var $script_version = '1.1.2';
-
-	/**
 	 * Initializes the plugin by registering the hooks necessary
 	 * for creating our custom post type within WordPress.
 	 *
@@ -460,7 +451,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	    if ( ! function_exists( 'get_plugins' ) ) {
 	    	require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
-		$plugin_dir = dirname( dirname( __FILE__) );
+		$plugin_dir = dirname( dirname( __FILE__ ) );
 		$plugin_data = get_plugin_data( $plugin_dir . '/wsuwp-plugin-idonate.php' );
 		$plugin_version = $plugin_data['Version'];
 	    return $plugin_version;
@@ -474,7 +465,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	* @since 1.1.2
 	*/
 	function wsuf_fundselector_get_script_version() {
-	    
 	    return '1.1.2';
 	}
 }
