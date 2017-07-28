@@ -107,6 +107,9 @@ class WSUWP_Plugin_iDonate_Custom_Taxonomies {
 			'show_in_rest' => true,
 			'show_ui'           => true,
 			'show_admin_column' => true,
+			'capabilities' => array(
+				'assign_terms' => 'edit_idonate_funds',
+			),
 		);
 
 		register_taxonomy( $name, $post_type, $args );
