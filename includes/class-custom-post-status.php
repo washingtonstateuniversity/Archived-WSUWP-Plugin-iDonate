@@ -23,7 +23,7 @@ class WSUWP_Plugin_iDonate_Post_Status {
 	public function init() {
 		add_action( 'init', array( $this, 'create_archive_custom_post_status' ) );
 		add_action( 'init', array( $this, 'create_searchable_custom_post_status' ) );
-		add_action( 'admin_footer-post.php', array( $this, 'append_post_status_list' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'wsuf_custom_post_status_enqueue_scripts' ), 99 );
 	}
 
 	function create_archive_custom_post_status() {
@@ -48,30 +48,14 @@ class WSUWP_Plugin_iDonate_Post_Status {
 		));
 	}
 
-	function append_post_status_list() {
+	function wsuf_custom_post_status_enqueue_scripts() {
 		global $post;
-		$complete = '';
-		$label = '';
-		$text = '';
-		;
-		if ( 'idonate_fund' === $post->post_type ) {
-			if ( 'archive' === $post->post_status || 'searchable' === $post->post_status ) {
-				$complete = ' selected="selected"';
-				$label = '<span id="post-status-display">Archived</span>';
-				$text = ('archive' === $post->post_status ? '$("#post-status-display").text("Archived");' : '$("#post-status-display").text("Searchable");');
-			} else {
-				$text = '$(".misc-pub-section label").append("' . $label . '");';
-			}
-			$script = '
-				<script>
-				jQuery(document).ready(function($){
-				$(\'select#post_status\').append(\'<option value="archive" ' . $complete . '="">Archive</option>\');
-				$(\'select#post_status\').append(\'<option value="searchable" ' . $complete . '="">Searchable</option>\');
-				' . $text . '
-				});
-				</script>
-				';
-			echo $script; // WPCS: XSS ok, sanitization ok.
-		}
+		$post_type = $post && $post->post_type ? $post->post_type : '';
+		$post_status = $post && $post->post_status ? $post->post_status : '';
+		wp_enqueue_script( 'wsuf_custom_post_status', plugins_url( '/wsuwp-custom-post-status.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-autocomplete', 'jquery-ui-button', 'underscore' ), '1.1.4', true );
+		wp_localize_script( 'wsuf_custom_post_status', 'wpData', array(
+			'post_type' => $post_type,
+			'post_status' => $post_status,
+		));
 	}
 }
