@@ -25,8 +25,6 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
 		add_action( 'init', array( $this, 'custom_post_types' ) );
 		$this->add_idonate_fund_caps_to_admin();
 		$this->create_fund_editor_role();
-		// add fund_editor capabilities, priority must be after the initial role definition
-		add_action( 'init', array( $this, 'update_fund_editor_role' ), 11 );
 	}
 
 	function custom_post_types() {
@@ -101,34 +99,18 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
 		if ( ! array_key_exists( 'fund_editor', WP_Roles()->get_names() ) ) {
 			# Fund Editors only get these capabilities:
 			$caps = array(
-				'read',
-				'read_idonate_fund',
-				'read_private_idonate_funds',
-				'edit_idonate_funds',
-				'edit_private_idonate_funds',
-				'edit_published_idonate_funds',
-				'edit_others_idonate_funds',
-				'publish_idonate_funds',
-				'delete_idonate_funds',
+				'read' => true,
+				'read_idonate_fund' => true,
+				'read_private_idonate_funds' => true,
+				'edit_idonate_funds' => true,
+				'edit_private_idonate_funds' => true,
+				'edit_published_idonate_funds' => true,
+				'edit_others_idonate_funds' => true,
+				'publish_idonate_funds' => true,
+				'delete_idonate_funds' => true,
 			);
 
 			add_role( 'fund_editor', 'Fund Editor', $caps );
 		}
-	}
-
-	/**
-	*
-	* Add in the missing 'read' capability to existing Fund Editor roles, so they actually see the Funds entry
-	*
-	* @link       https://developer.wordpress.org/plugins/users/roles-and-capabilities/#adding-capabilities
-	* @since      1.1.3
-	*
-	*/
-	function update_fund_editor_role() {
-		// gets the fund_editor role object
-		$role = get_role( 'fund_editor' );
-
-		// add a new capability
-		$role->add_cap( 'read', true );
 	}
 }
