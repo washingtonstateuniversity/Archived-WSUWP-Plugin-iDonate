@@ -97,7 +97,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_programs" data-name="PROGRAM" data-description="division, department, or affiliation" href="#">Programs</a>
 			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_colleges" data-name="COLLEGE" data-description="college" href="#">Colleges</a>
 			<a class="" role="button" data-tab="subcategoryTab" data-category="idonate_campuses" data-name="CAMPUS" data-description="campus, research, or extension center" href="#">Campuses</a>
-            <a class="search" role="button" href="#"><div class="search-text">Search</div></a>
+			<a class="search" role="button" href="#"><div class="search-text">Search</div></a>
 		</div>';
 
 		// Unit Priorities Tab
@@ -130,7 +130,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		$return_string .= '
-		<div id="prioritiesTab" class="categoryTab wrapper ' . ($unit_included ? 'hidden' : '') . '">    
+		<div id="prioritiesTab" class="categoryTab wrapper ' . ($unit_included ? 'hidden' : '') . '">
 			<label for="priorities" style="font: inherit;">Choose one of the University\'s greatest needs</label>
 			<select name="priorities" id="priorities" class="form-control fund-selection fund">'
 				. $priorities_list .
@@ -142,14 +142,14 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		<div id="subcategoryTab" class="categoryTab hidden">';
 
 		// Categories Select Menu
-		$return_string .= '    
+		$return_string .= '
 		<label for="subcategories" style="font: inherit;">Choose a category</label>
 		<select name="subcategories" id="subcategories" class="form-control category-selection fund">
 			<option disabled selected value> SELECT A CATEGORY </option>
 		</select>';
 
 		// Funds Select Menu
-		$return_string .= '    
+		$return_string .= '
 		<div class="wrapper"><label for="funds" style="font: inherit;">Choose a fund</label>
 		<select name="funds" id="funds" class="form-control fund-selection fund" disabled>
 			<option disabled selected value> SELECT A FUND </option>
@@ -178,7 +178,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 				<div class="input-group-addon">$</div>
 				<!-- Maximum length of 8 includes cents (.xx) -->
 				<input class="form-control" id="otherAmount" placeholder="Other Amount" maxlength="8" data-max="99999" value="100" type="text" title="Other amount">
-				<a class="btnlhtgry plus" id="addFundButton">Add Fund</a>				
+				<a class="btnlhtgry plus" id="addFundButton">Add Fund</a>
 			</div>
 			<span id="errorOtherAmount" class="error" style="opacity:0; display:none;"></span>
 			<input name="inpAmount" id="inpAmount" class="value" data-token="amount" value="100" type="hidden">
@@ -209,7 +209,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			$return_string .= '
 			<div class="additional-info" style="display:none;">
 				<span>
-					<input type="checkbox" id="genScholarship" value="scholarship_check" data-designation_id="' . $scholarship_des_id . '" data-fund_name="' . $scholarship_name . '" data-amount=10 > 
+					<input type="checkbox" id="genScholarship" value="scholarship_check" data-designation_id="' . $scholarship_des_id . '" data-fund_name="' . $scholarship_name . '" data-amount=10 >
 					<label for="genScholarship"><span>' . $scholarship_description . ' (' . $scholarship_title  . ').</span></label>
 				</span>
 			</div>
@@ -221,7 +221,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			$return_string .= '
 			<div class="additional-info help-icon" style="display:none;">
 				<span>
-					<input type="checkbox" id="advFeeCheck" data-amount=10 > 
+					<input type="checkbox" id="advFeeCheck" data-amount=10 >
 					<label for="advFeeCheck" id="advFeeLabel" style="display: flow-root;"><span id="advFeeAmount" style="display: flow-root;"></span></label>
 				</span>
 			</div>
@@ -243,15 +243,15 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			<p tabindex="0" class="additional-info-description" style="display:none;">
 				Charitable gifts from estates and other planned gifts play an integral role in the future of Washington State University. The WSU Foundation offers several tax-wise giving options to support WSU’s mission while fulfilling your personal philanthropic goals.
 			</p>
-            <span >
-            	<input type="checkbox" id="gpInWill"> 
+			<span >
+				<input type="checkbox" id="gpInWill">
 				<label for="gpInWill">
 					<span>I have included the WSU Foundation in my Will or other estate plans.</span>
 				</label>
 			</span>
 			<span>
-            	<input type="checkbox" id="gpMoreInfo">
-            	<label for="gpMoreInfo"> 
+				<input type="checkbox" id="gpMoreInfo">
+				<label for="gpMoreInfo">
 					<span>I am considering including the WSU Foundation in my Will or other estate plans. Please send me information.</span>
 				</label>
 			</span>
@@ -468,8 +468,8 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		return $return_array;
-  }
-  
+	}
+
 	/**
 	* Gets current plugin version
 	*
@@ -478,13 +478,13 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	* @since 1.1.2
 	*/
 	function wsuf_fundselector_get_plugin_version() {
-	    if ( ! function_exists( 'get_plugins' ) ) {
-	    	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		if ( ! function_exists( 'get_plugins' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
 		$plugin_dir = dirname( dirname( __FILE__ ) );
 		$plugin_data = get_plugin_data( $plugin_dir . '/wsuwp-plugin-idonate.php' );
 		$plugin_version = $plugin_data['Version'];
-	    return $plugin_version;
+		return $plugin_version;
 	}
 
 	/**
@@ -495,6 +495,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	* @since 1.1.2
 	*/
 	function wsuf_fundselector_get_script_version() {
-	    return '1.1.5';
+		return '1.1.5';
 	}
 }
