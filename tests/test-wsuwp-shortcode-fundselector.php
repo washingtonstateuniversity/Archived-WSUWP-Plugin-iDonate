@@ -32,4 +32,18 @@ class WSUWP_Plugin_iDonate_ShortCode_FundSelector_Tests extends WP_UnitTestCase 
 
 		$this->assertCount( 1 , $priorities );
 	}
+
+	/**
+	 * Make sure the version number was manually updated
+	 */
+	public function test_WSUWP_Plugin_iDonate_ShortCode_FundSelector_check_version_number() {
+
+		$test_fundselector_shortcode = new WSUWP_Plugin_iDonate_ShortCode_Fund_Selector();
+
+		$plugin_version = $test_fundselector_shortcode->wsuf_fundselector_get_plugin_version();
+
+		$script_version = $test_fundselector_shortcode->wsuf_fundselector_get_script_version();
+
+		$this->assertTrue( $plugin_version === $script_version );
+	}
 }
