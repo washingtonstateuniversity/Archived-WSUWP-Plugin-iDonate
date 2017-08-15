@@ -470,6 +470,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		return $return_array;
   }
   
+	/**
 	* Gets current plugin version
 	*
 	* @return string Plugin version
