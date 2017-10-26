@@ -159,6 +159,15 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+
+	// Add fund when enter is pressed on the other amount field
+	$("#otherAmount")
+	.keypress(function (e) {
+		if (e.which == 13) { // enter key is pressed
+			$('#addFundButton').click();
+		}
+	});
+
 	// Add Fund Button keypress event
 	$("#addFundButton")
 	.keypress(function (e) {
