@@ -48,7 +48,7 @@ before_script:
       fi
     fi
   - |
-    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
+    if [[ "$WP_TRAVISCI" == "grunt" ]] ; then
       nvm install stable
       npm install -g grunt-cli
       npm install
