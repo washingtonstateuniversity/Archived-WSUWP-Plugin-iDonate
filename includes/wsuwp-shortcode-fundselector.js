@@ -236,6 +236,8 @@ jQuery(document).ready(function($) {
 			wsuwpUtils.disableButton($("#addFundButton"));
 			jQuery("#errorOtherAmount").text("Amount should be between $" + MINIMUM_GIFT + " and $" + MAXIMUM_GIFT);
 		}		
+	}).focus(function() {
+		$(this).select();
 	});
 
 	$(".amount-selection.other").on('click',function(){
