@@ -159,6 +159,15 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+
+	// Add fund when enter is pressed on the other amount field
+	$("#otherAmount")
+	.keypress(function (e) {
+		if (e.which == 13) { // enter key is pressed
+			$('#addFundButton').click();
+		}
+	});
+
 	// Add Fund Button keypress event
 	$("#addFundButton")
 	.keypress(function (e) {
@@ -227,6 +236,8 @@ jQuery(document).ready(function($) {
 			wsuwpUtils.disableButton($("#addFundButton"));
 			jQuery("#errorOtherAmount").text("Amount should be between $" + MINIMUM_GIFT + " and $" + MAXIMUM_GIFT);
 		}		
+	}).focus(function() {
+		$(this).select();
 	});
 
 	$(".amount-selection.other").on('click',function(){
