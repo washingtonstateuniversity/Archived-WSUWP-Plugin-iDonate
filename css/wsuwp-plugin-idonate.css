@@ -783,11 +783,10 @@
 }
 
 #fundSelectionForm #addFundButton:hover:not(.ui-state-disabled) {
-
-	color: #fff;
-	background: #981e32 url(../images/ico/plus-wht.png) no-repeat 12px center;
-	background-size: 8px;
-	background-position-x: 51px;
+  color: #fff;
+  background: #981e32;
+  background-size: 8px;
+  background-position-x: 51px;
 }
 
 #fundSelectionForm #backButton {
