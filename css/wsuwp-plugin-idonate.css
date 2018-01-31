@@ -783,10 +783,10 @@
 }
 
 #fundSelectionForm #addFundButton:hover:not(.ui-state-disabled) {
-  color: #fff;
-  background: #981e32;
-  background-size: 8px;
-  background-position-x: 51px;
+	color: #fff;
+	background: #981e32;
+	background-size: 8px;
+	background-position-x: 51px;
 }
 
 #fundSelectionForm #backButton {

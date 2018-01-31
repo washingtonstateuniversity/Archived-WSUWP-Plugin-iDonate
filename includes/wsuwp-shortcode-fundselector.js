@@ -313,14 +313,14 @@ jQuery(document).ready(function($) {
 				// Causing fund loading issues
 				//subcategory.trigger('change');
 
-				// Added	
 				$("#funds").prop("disabled", false);
-				$("#funds").focus();
-			})
-			.done(function() {
 				if (wpData.unit_designation) {
 					loadFundFromDesignationID($("#funds"), wpData.unit_designation);
 					$('.fund-selection').trigger('change');
+				}
+				else {
+					var subcategory = $('#subcategories').find("[data-subcategory='" + wpData.area + "']");
+					subcategory.trigger('change');
 				}
 			});
 		}
