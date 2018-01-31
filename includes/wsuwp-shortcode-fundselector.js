@@ -122,7 +122,7 @@ jQuery(document).ready(function($) {
 				{
 					$list.prop("disabled", false);
 				}
-
+				$list.focus();
 			})
 		}
 
@@ -291,25 +291,39 @@ jQuery(document).ready(function($) {
 	// if a unit is specified
 	if(wpData.unit_taxonomy && wpData.unit_category)
 	{
+		console.log("Unit specified");
 		loadPriorities($("#unit-priorities"), wpData.unit_taxonomy, wpData.unit_category)
 		.done(function() {
 			loadFundFromDesignationID($("#unit-priorities"), wpData.unit_designation);
 		});
 		loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
 	}
-	else if (wpData.area && wpData.cat) {
+	else if (wpData.cat) {
 		//Switch to the correct tab
 		var category = $('#majorcategory').find("[data-category='" + wpData.cat + "']");
 		var defer = $.Deferred();
 		category.trigger('click', defer);
 		category.addClass("active");
 
-		//Populate the subcategory after the tab has been loaded
-		$.when(defer).done(function () {
-			var subcategory = $('#subcategories').find("[data-subcategory='" + wpData.area + "']");
-			subcategory.prop("selected", true);
-			subcategory.trigger('change');
-		});
+		if (wpData.area) {
+			//Populate the subcategory after the tab has been loaded
+			$.when(defer).done(function () {
+				var subcategory = $('#subcategories').find("[data-subcategory='" + wpData.area + "']");
+				subcategory.prop("selected", true);
+				// Causing fund loading issues
+				//subcategory.trigger('change');
+
+				// Added	
+				$("#funds").prop("disabled", false);
+				$("#funds").focus();
+			})
+			.done(function() {
+				if (wpData.unit_designation) {
+					loadFundFromDesignationID($("#funds"), wpData.unit_designation);
+					$('.fund-selection').trigger('change');
+				}
+			});
+		}
 	}
 	else
 	{
@@ -325,6 +339,7 @@ function loadFundFromDesignationID($list, designationId){
 	if(designationId)
 	{
 		var $des = wsuwpUtils.findElementbyDesignation($list, designationId);
+		console.log($des);
 
 		// Check if the designation already exists in the priorities list and select item
 		if($des)
