@@ -298,7 +298,7 @@ jQuery(document).ready(function($) {
 		});
 		loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
 	}
-	else if (wpData.cat) {
+	else if ((wpData.cat && !wpData.area && !wpData.unit_designation) || (wpData.cat && wpData.area && !wpData.unit_designation) || (wpData.cat && wpData.area && wpData.unit_designation)) {
 		//Switch to the correct tab
 		var category = $('#majorcategory').find("[data-category='" + wpData.cat + "']");
 		var defer = $.Deferred();
