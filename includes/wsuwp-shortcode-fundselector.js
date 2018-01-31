@@ -77,7 +77,7 @@ jQuery(document).ready(function($) {
 				$list.addClass('fund');
 				$list.removeClass('loading'); 
         
-        if(deferred !== undefined) { //complete deferred function that was passed into the click event
+        		if(deferred !== undefined) { //complete deferred function that was passed into the click event
 					deferred.resolve();
 				} 
         
@@ -91,7 +91,7 @@ jQuery(document).ready(function($) {
 	
 	// Subcategory Selected Change event
 	$("#subcategories")
-	.change( function( event ) {
+	.change( function( event, deferred ) {
 		var category = $(this).find(":selected").attr("data-category");
 		var subcategoryId = $(this).find(":selected").attr("value");
 
@@ -122,6 +122,11 @@ jQuery(document).ready(function($) {
 				{
 					$list.prop("disabled", false);
 				}
+
+				if(deferred !== undefined) { //complete deferred function that was passed into the click event
+					deferred.resolve();
+				} 
+
 				$list.focus();
 			})
 		}
@@ -291,7 +296,6 @@ jQuery(document).ready(function($) {
 	// if a unit is specified
 	if(wpData.unit_taxonomy && wpData.unit_category)
 	{
-		console.log("Unit specified");
 		loadPriorities($("#unit-priorities"), wpData.unit_taxonomy, wpData.unit_category)
 		.done(function() {
 			loadFundFromDesignationID($("#unit-priorities"), wpData.unit_designation);
@@ -310,17 +314,14 @@ jQuery(document).ready(function($) {
 			$.when(defer).done(function () {
 				var subcategory = $('#subcategories').find("[data-subcategory='" + wpData.area + "']");
 				subcategory.prop("selected", true);
-				// Causing fund loading issues
-				//subcategory.trigger('change');
+				var deferSubcategoryChange = $.Deferred();
+				subcategory.trigger('change', deferSubcategoryChange);
 
-				$("#funds").prop("disabled", false);
 				if (wpData.unit_designation) {
-					loadFundFromDesignationID($("#funds"), wpData.unit_designation);
-					$('.fund-selection').trigger('change');
-				}
-				else {
-					var subcategory = $('#subcategories').find("[data-subcategory='" + wpData.area + "']");
-					subcategory.trigger('change');
+					$.when(deferSubcategoryChange).done(function () {
+						loadFundFromDesignationID($("#funds"), wpData.unit_designation);
+						$('.fund-selection').trigger('change');
+					});
 				}
 			});
 		}
@@ -339,7 +340,6 @@ function loadFundFromDesignationID($list, designationId){
 	if(designationId)
 	{
 		var $des = wsuwpUtils.findElementbyDesignation($list, designationId);
-		console.log($des);
 
 		// Check if the designation already exists in the priorities list and select item
 		if($des)
