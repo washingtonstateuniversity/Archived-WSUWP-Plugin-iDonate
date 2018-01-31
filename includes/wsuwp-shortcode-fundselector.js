@@ -28,8 +28,7 @@ jQuery(document).ready(function($) {
 						if (data.length > 10) {
 							fundList.push({
 								"name": "",
-								"value": 'More results were found, please narrow down your search',
-								"disabled": true
+								"value": 'More results were found, please narrow down your search'
 							});
 						};
 
