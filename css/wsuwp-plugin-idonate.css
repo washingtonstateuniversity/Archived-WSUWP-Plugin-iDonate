@@ -783,10 +783,11 @@
 }
 
 #fundSelectionForm #addFundButton:hover:not(.ui-state-disabled) {
-  color: #fff;
-  background: #981e32;
-  background-size: 8px;
-  background-position-x: 51px;
+
+	color: #fff;
+	background: #981e32;
+	background-size: 8px;
+	background-position-x: 51px;
 }
 
 #fundSelectionForm #backButton {
@@ -889,6 +890,17 @@
 
 .ui-autocomplete.fundselector .ui-menu-item.ui-state-focus {
 	color: #981e32;
+}
+
+.ui-autocomplete.fundselector li.narrow-search {
+	font-style: italic;
+	padding-top: 10px;
+	text-transform: lowercase;
+	border-top: 1px #8d959a solid !important;
+}
+
+.ui-autocomplete.fundselector li.narrow-search.ui-state-focus {
+	color: inherit;
 }
 
 @media (max-width: 372px) {

@@ -9,17 +9,30 @@ jQuery(document).ready(function($) {
 				$("#fundSearch").addClass("loading");
 				$.getJSON( wpData.request_url_base + 'idonate_fund', 
 					{
-						search : request.term
+						search : request.term,
+						per_page: 100,
+						orderby: "title",
+						order: "asc"
 					}, 
 					function( data, status, xhr ) {			
 						// Map the fund data to use the expected label name ("value") from fund name
-						var fundList = $.map(data, function(fund) {
+						var fundList = $.map(data.slice(0, 10), function(fund) {
 							return {
 								"designationId": fund.designationId,
 								"name": wsuwpUtils.htmlDecode(fund.title.rendered),
 								"value": wsuwpUtils.htmlDecode(fund.title.rendered)
 							};
 						});
+
+						// Show the narrow search results message if there are more than 10 results
+						if (data.length > 10) {
+							fundList.push({
+								"name": "",
+								"value": 'More results were found, please narrow down your search',
+								"disabled": true
+							});
+						};
+
 						$("#fundSearch").removeClass("loading");
 						response( fundList );
 					}
@@ -605,6 +618,14 @@ jQuery.extend(jQuery.ui.autocomplete.prototype.options, {
 	open: function(event, ui) {
 		jQuery(this).autocomplete("widget").css({
             "width": (jQuery(this).width() + "px")
-        });
+		});
+
+		var length = jQuery(this).autocomplete("widget")[0].childNodes.length;
+		var $lastNode = jQuery(this).autocomplete("widget")[0].childNodes[length - 1];
+
+		if ($lastNode.innerText.indexOf("narrow down your search".toUpperCase()) != -1) {
+			jQuery('#' + $lastNode.id).prop('disabled', true);
+			jQuery('#' + $lastNode.id).addClass('narrow-search', true);
+		}
     }
 });
