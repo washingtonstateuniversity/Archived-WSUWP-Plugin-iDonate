@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
         {
 			source: function( request, response ) {
 				$("#fundSearch").addClass("loading");
-				var restQueryUrl = wpData.plugin_url_base + 'search/' + request.term;
+				var restQueryUrl = wpData.plugin_url_base + 'search/' + encodeURI(request.term);
 			
 				jQuery.getJSON( restQueryUrl )
 				.then(function( json ) {

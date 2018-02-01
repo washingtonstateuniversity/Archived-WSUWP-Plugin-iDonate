@@ -452,7 +452,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			'post_type' => 'idonate_fund',
 			'post_status' => 'any',
 			'posts_per_page' => 10,
-			's' => $search_term,
+			's' => urldecode( $search_term ),
 			'orderby' => 'title',
 			'order' => 'ASC',
 		));
