@@ -1,4 +1,5 @@
-FROM php:7.0-fpm
+FROM php:7.1-apache
+#FROM php:7.0-fpm
 LABEL version="1.0"
 LABEL description="WSU Foundation Online Giving WordPress Plugin"
 LABEL maintainer="Jared Crain <jared.crain@wsu.edu>"
@@ -20,7 +21,9 @@ RUN apt-get update && apt-get install -y zlib1g-dev \
     && docker-php-ext-install zip
 
 # Install Node
-RUN apt-get update && apt-get install -y nodejs npm
+#RUN apt-get update && apt-get install -y nodejs npm
+RUN curl -sL https://deb.nodesource.com/setup_5.x | bash
+RUN apt-get update && apt-get install -y nodejs
 
 # Install composer
 RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
@@ -35,8 +38,9 @@ COPY . /var/www/html
 
 RUN composer install
 
-#COPY . /bin/sh
-RUN node -v
+COPY . /var/www/html
+
+#WORKDIR /var/www/html
 
 # use changes to package.json to force Docker not to use the cache
 # when we change our application's nodejs dependencies:
