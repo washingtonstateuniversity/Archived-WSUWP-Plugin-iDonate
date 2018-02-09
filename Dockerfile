@@ -34,13 +34,13 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 
 COPY . /var/www/html
 
-RUN composer install
+#RUN composer install
 
 # Install packages
-RUN npm install
+#RUN npm install
 
 # Install grunt
-RUN npm install grunt --global
+#RUN npm install grunt --global
 
 #RUN grunt phpcs
 #RUN grunt phpunit
