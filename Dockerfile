@@ -33,20 +33,18 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer --snapshot \
 && rm -f /tmp/composer-setup.*
 
-
-COPY . /var/www/html
+VOLUME [ "/var/www/html/wp-content/plugins" ]
+#VOLUME /var/www/html/wp-content/plugins/WSUWP-Plugin-iDonate
+COPY . /var/www/html/wp-content/plugins/WSUWP-Plugin-iDonate
+WORKDIR /var/www/html/wp-content/plugins/WSUWP-Plugin-iDonate
 
 RUN composer install
 
-COPY . /var/www/html
-
-#WORKDIR /var/www/html
 
 # use changes to package.json to force Docker not to use the cache
 # when we change our application's nodejs dependencies:
-WORKDIR /tmp
 COPY ./package.json /tmp/package.json
-RUN npm install
+RUN cd /tmp && npm install
 RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
 
 # From here we load our application's code in, therefore the previous docker
@@ -54,6 +52,4 @@ RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
 WORKDIR /opt/app
 ADD . /opt/app
 
-#CMD ["./run.sh"]
-
-COPY . /usr/src/app
+COPY . /var/www/html/wp-content/plugins/WSUWP-Plugin-iDonate
