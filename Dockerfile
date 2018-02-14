@@ -32,8 +32,7 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer --snapshot \
 && rm -f /tmp/composer-setup.*
 
-COPY . /var/www/html/wp-content/plugins/WSUWP-Plugin-iDonate
-WORKDIR /var/www/html/wp-content/plugins/WSUWP-Plugin-iDonate
+COPY . /var/www/html
 
 RUN composer install
 
@@ -42,9 +41,3 @@ RUN npm install
 
 # Install grunt
 RUN npm install grunt --global
-
-#EXPOSE 9000
-
-#ENTRYPOINT ["grunt", "serve"]
-#RUN grunt phpcs
-#RUN grunt phpunit

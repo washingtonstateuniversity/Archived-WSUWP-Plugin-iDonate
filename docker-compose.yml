@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  plugin:
+    build:
+      context: .
+    restart: always
+    volumes:
+      - .:/var/www/html
