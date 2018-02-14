@@ -4,25 +4,18 @@ LABEL version="1.0"
 LABEL description="WSU Foundation Online Giving WordPress Plugin"
 LABEL maintainer="Jared Crain <jared.crain@wsu.edu>"
 
-RUN apt-get update && apt-get install -y \
-		libfreetype6-dev \
-		libjpeg62-turbo-dev \
-		libmcrypt-dev \
-		libpng-dev \
-	&& docker-php-ext-install -j$(nproc) iconv mcrypt \
-	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-	&& docker-php-ext-install -j$(nproc) gd
+# Install curl, gnupg, node, npm and grunt
+RUN apt-get update \
+    && apt-get install -y \
+    curl \
+    gnupg \
+    && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g grunt-cli
 
-# Install curl
-RUN apt-get update && apt-get install -y curl
-
-# Install zip (get around git dependancy)
+# Install zip (for composer)
 RUN apt-get update && apt-get install -y zlib1g-dev \
     && docker-php-ext-install zip
-
-# Install Node
-RUN curl -sL https://deb.nodesource.com/setup_5.x | bash
-RUN apt-get update && apt-get install -y nodejs
 
 # Install composer
 RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
@@ -39,5 +32,4 @@ RUN composer install
 # Install packages
 RUN npm install
 
-# Install grunt
-RUN npm install grunt --global
+EXPOSE 8000
