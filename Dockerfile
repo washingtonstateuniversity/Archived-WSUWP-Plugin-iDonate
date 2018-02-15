@@ -9,7 +9,7 @@ RUN apt-get update \
     && apt-get install -y \
     curl \
     gnupg \
-    && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_5.x | bash - \
     && apt-get install -y nodejs \
     && npm install -g grunt-cli
 
@@ -33,3 +33,6 @@ RUN composer install
 RUN npm install
 
 EXPOSE 8000
+
+# TODO: Environment variable to run in dev?
+#CMD ["grunt", "serve"]
