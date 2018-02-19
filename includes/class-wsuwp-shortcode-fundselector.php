@@ -335,7 +335,8 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	function wsuf_fundselector_funds_get_funds( $category, $subcategory ) {
 		$fund_list = get_posts(array(
 			'post_type'   => 'idonate_fund',
-			'post_status' => 'any',
+			'post_status' => 'publish',
+			'perm' => 'readable',
 			'posts_per_page' => -1, // Get all posts
 			'tax_query' => array(
 					array(
