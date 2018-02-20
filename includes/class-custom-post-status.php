@@ -52,7 +52,11 @@ class WSUWP_Plugin_iDonate_Post_Status {
 		global $post;
 		$post_type = $post && $post->post_type ? $post->post_type : '';
 		$post_status = $post && $post->post_status ? $post->post_status : '';
-		wp_enqueue_script( 'wsuf_custom_post_status', plugins_url( '/wsuwp-custom-post-status.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-autocomplete', 'jquery-ui-button', 'underscore' ), '1.1.4', true );
+
+		$fund_selector = new WSUWP_Plugin_iDonate_ShortCode_Fund_Selector();
+		$version_number = $fund_selector->wsuf_fundselector_get_script_version();
+
+		wp_enqueue_script( 'wsuf_custom_post_status', plugins_url( '/wsuwp-custom-post-status.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-autocomplete', 'jquery-ui-button', 'underscore' ), $version_number, true );
 		wp_localize_script( 'wsuf_custom_post_status', 'wpData', array(
 			'post_type' => $post_type,
 			'post_status' => $post_status,

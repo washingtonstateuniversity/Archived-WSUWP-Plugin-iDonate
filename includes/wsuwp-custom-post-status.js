@@ -13,7 +13,12 @@ jQuery(document).ready(function($) {
 			$(".misc-pub-section label").append("' + $label + '");;
         }
 
+        // Edit screen dropdowns
         $('select#post_status').append('<option value="archive" ' + complete + '="">Archive</option>');
         $('select#post_status').append('<option value="searchable" ' + complete + '="">Searchable</option>');
-	}
+
+        // Quick edit dropdowns
+        $('select[name=_status]').append('<option value="archive" ' + complete + '="">Archive</option>');
+        $('select[name=_status]').append('<option value="searchable" ' + complete + '="">Searchable</option>');
+    }
 });

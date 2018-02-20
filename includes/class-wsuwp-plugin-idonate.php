@@ -56,7 +56,7 @@ class WSUWP_Plugin_iDonate {
 	* Creates an instance of the WSUWP_Plugin_iDonate_Post_Status class
 	* and calls its initialization method.
 	*
-	* @since    1.1.2
+	* @since    1.1.7
 	*/
 	private function custom_post_status_run() {
 
