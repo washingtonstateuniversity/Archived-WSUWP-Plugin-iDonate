@@ -89,7 +89,7 @@ jQuery(document).ready(function($) {
 				$list.addClass('fund');
 				$list.removeClass('loading'); 
         
-        if(deferred !== undefined) { //complete deferred function that was passed into the click event
+        		if(deferred !== undefined) { //complete deferred function that was passed into the click event
 					deferred.resolve();
 				} 
         
@@ -103,7 +103,7 @@ jQuery(document).ready(function($) {
 	
 	// Subcategory Selected Change event
 	$("#subcategories")
-	.change( function( event ) {
+	.change( function( event, deferred ) {
 		var category = $(this).find(":selected").attr("data-category");
 		var subcategoryId = $(this).find(":selected").attr("value");
 
@@ -135,6 +135,11 @@ jQuery(document).ready(function($) {
 					$list.prop("disabled", false);
 				}
 
+				if(deferred !== undefined) { //complete deferred function that was passed into the click event
+					deferred.resolve();
+				} 
+
+				$list.focus();
 			})
 		}
 
@@ -309,19 +314,34 @@ jQuery(document).ready(function($) {
 		});
 		loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
 	}
-	else if (wpData.area && wpData.cat) {
+	else if (wpData.cat && ( // if we don't know the category, default to showing the priorities tab and populating the fund there if provided
+		(!wpData.area && !wpData.unit_designation) || // Show the category tab 
+		(wpData.area && !wpData.unit_designation) || // Show the category and populate the area
+		(wpData.area && wpData.unit_designation))) // Show the category and populate the area and fund
+	{
+
 		//Switch to the correct tab
 		var category = $('#majorcategory').find("[data-category='" + wpData.cat + "']");
 		var defer = $.Deferred();
 		category.trigger('click', defer);
 		category.addClass("active");
 
-		//Populate the subcategory after the tab has been loaded
-		$.when(defer).done(function () {
-			var subcategory = $('#subcategories').find("[data-subcategory='" + wpData.area + "']");
-			subcategory.prop("selected", true);
-			subcategory.trigger('change');
-		});
+		if (wpData.area) {
+			//Populate the subcategory after the tab has been loaded
+			$.when(defer).done(function () {
+				var subcategory = $('#subcategories').find("[data-subcategory='" + wpData.area + "']");
+				subcategory.prop("selected", true);
+				var deferSubcategoryChange = $.Deferred();
+				subcategory.trigger('change', deferSubcategoryChange);
+
+				if (wpData.unit_designation) {
+					$.when(deferSubcategoryChange).done(function () {
+						loadFundFromDesignationID($("#funds"), wpData.unit_designation);
+						$('.fund-selection').trigger('change');
+					});
+				}
+			});
+		}
 	}
 	else
 	{
