@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
 				$.getJSON( wpData.request_url_base + 'idonate_fund', 
 					{
 						search : request.term,
-						per_page: 100,
+						per_page: 11,
 						orderby: "title",
 						order: "asc"
 					}, 
@@ -624,7 +624,6 @@ jQuery.extend(jQuery.ui.autocomplete.prototype.options, {
 
 		if ($lastNode.innerText.indexOf("narrow down your search".toUpperCase()) != -1) {
 			jQuery('#' + $lastNode.id).prop('disabled', true);
-			jQuery('#' + $lastNode.id).addClass('narrow-search', true);
 		}
     }
 });
