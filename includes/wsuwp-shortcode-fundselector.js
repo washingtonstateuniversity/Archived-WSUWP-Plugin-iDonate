@@ -302,7 +302,12 @@ jQuery(document).ready(function($) {
 		});
 		loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
 	}
-	else if ((wpData.cat && !wpData.area && !wpData.unit_designation) || (wpData.cat && wpData.area && !wpData.unit_designation) || (wpData.cat && wpData.area && wpData.unit_designation)) {
+	else if (wpData.cat && ( // if we don't know the category, default to showing the priorities tab and populating the fund there if provided
+		(!wpData.area && !wpData.unit_designation) || // Show the category tab 
+		(wpData.area && !wpData.unit_designation) || // Show the category and populate the area
+		(wpData.area && wpData.unit_designation))) // Show the category and populate the area and fund
+	{
+
 		//Switch to the correct tab
 		var category = $('#majorcategory').find("[data-category='" + wpData.cat + "']");
 		var defer = $.Deferred();
