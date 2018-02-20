@@ -94,6 +94,7 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 			} elseif ( 'subtype' === $key && 'echeck' === $value ) {
 				$value = 'eCheck';
 			} elseif ( 'value' === $key && $value ) {
+				$value = number_format( $value, 2 );
 				$value = '$' . $value;
 			}
 
