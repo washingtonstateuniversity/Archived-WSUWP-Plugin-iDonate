@@ -119,7 +119,7 @@ var EPSILON = 0;
 			if(inputAmount && _.isNumber(inputAmount)) {
 				roundedAmount = Math.round(inputAmount * 100 + EPSILON) / 100;
 			}
-			return roundedAmount;
+			return roundedAmount.toFixed(2);
 		},
 
 		 getEpsilon: function() {
