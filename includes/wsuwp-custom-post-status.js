@@ -20,5 +20,10 @@ jQuery(document).ready(function($) {
         // Quick edit dropdowns
         $('select[name=_status]').append('<option value="archive" ' + complete + '="">Archive</option>');
         $('select[name=_status]').append('<option value="searchable" ' + complete + '="">Searchable</option>');
+
+        $('.save-post-status')
+        .click(function() {
+            $('#publish').attr({'value': 'Update', 'name': 'save'});
+        });
     }
 });
