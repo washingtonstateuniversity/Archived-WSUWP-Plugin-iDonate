@@ -29,7 +29,7 @@ class WSUWP_Plugin_iDonate_Post_Status {
 	function create_archive_custom_post_status() {
 		register_post_status( 'archive', array(
 			'label'                     => _x( 'Archive', 'post' ),
-			'public'                    => false,
+			'public'                    => true,
 			'exclude_from_search'       => true,
 			'show_in_admin_all_list'    => true,
 			'show_in_admin_status_list' => true,
@@ -40,7 +40,7 @@ class WSUWP_Plugin_iDonate_Post_Status {
 	function create_searchable_custom_post_status() {
 		register_post_status( 'searchable', array(
 			'label'                     => _x( 'Searchable', 'post' ),
-			'public'                    => false,
+			'public'                    => true,
 			'exclude_from_search'       => false,
 			'show_in_admin_all_list'    => true,
 			'show_in_admin_status_list' => true,
