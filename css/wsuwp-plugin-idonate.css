@@ -740,6 +740,7 @@
 }
 
 #fundSelectionForm #addFundButton:hover:not(.ui-state-disabled) {
+
 	color: #fff;
 	background: #981e32;
 	background-size: 8px;
