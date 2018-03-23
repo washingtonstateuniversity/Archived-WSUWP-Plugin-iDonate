@@ -7,31 +7,22 @@ jQuery(document).ready(function($) {
         {
 			source: function( request, response ) {
 				$("#fundSearch").addClass("loading");
-				$.getJSON( wpData.request_url_base + 'idonate_fund', 
-					{
-						search : request.term
-					}, 
-					function( data, status, xhr ) {			
-						// Map the fund data to use the expected label name ("value") from fund name
-						var fundList = $.map(data, function(fund) {
-							return {
-								"designationId": fund.designationId,
-								"name": wsuwpUtils.htmlDecode(fund.title.rendered),
-								"value": wsuwpUtils.htmlDecode(fund.title.rendered)
-							};
-						});
-						$("#fundSearch").removeClass("loading");
-						response( fundList );
-					}
-				);
+
+				var restQueryUrl = wpData.plugin_url_base + 'search/' + encodeURI(request.term);
+						
+				jQuery.getJSON( restQueryUrl )
+				.then(function( json ) {
+					$("#fundSearch").removeClass("loading");
+					response( json );
+				})
 			},
 			minLength: 3,
-            select: function( event, ui ) {
+			select: function( event, ui ) {
 				$("#inpDesignationId").text(ui.item.designationId);
 				$("#inpFundName").text(ui.item.name);
 				showAmountZone();
-            }
-        }
+			}
+		}
     ).autocomplete( "widget" ).addClass( "fundselector" );
 
 	// Major Category Click Events
@@ -77,7 +68,7 @@ jQuery(document).ready(function($) {
 				$list.addClass('fund');
 				$list.removeClass('loading'); 
         
-        if(deferred !== undefined) { //complete deferred function that was passed into the click event
+        		if(deferred !== undefined) { //complete deferred function that was passed into the click event
 					deferred.resolve();
 				} 
         
@@ -91,7 +82,7 @@ jQuery(document).ready(function($) {
 	
 	// Subcategory Selected Change event
 	$("#subcategories")
-	.change( function( event ) {
+	.change( function( event, deferred ) {
 		var category = $(this).find(":selected").attr("data-category");
 		var subcategoryId = $(this).find(":selected").attr("value");
 
@@ -123,6 +114,11 @@ jQuery(document).ready(function($) {
 					$list.prop("disabled", false);
 				}
 
+				if(deferred !== undefined) { //complete deferred function that was passed into the click event
+					deferred.resolve();
+				} 
+
+				$list.focus();
 			})
 		}
 
@@ -297,19 +293,34 @@ jQuery(document).ready(function($) {
 		});
 		loadPriorities($("#priorities"), "idonate_priorities", "idonate_priorities");
 	}
-	else if (wpData.area && wpData.cat) {
+	else if (wpData.cat && ( // if we don't know the category, default to showing the priorities tab and populating the fund there if provided
+		(!wpData.area && !wpData.unit_designation) || // Show the category tab 
+		(wpData.area && !wpData.unit_designation) || // Show the category and populate the area
+		(wpData.area && wpData.unit_designation))) // Show the category and populate the area and fund
+	{
+
 		//Switch to the correct tab
 		var category = $('#majorcategory').find("[data-category='" + wpData.cat + "']");
 		var defer = $.Deferred();
 		category.trigger('click', defer);
 		category.addClass("active");
 
-		//Populate the subcategory after the tab has been loaded
-		$.when(defer).done(function () {
-			var subcategory = $('#subcategories').find("[data-subcategory='" + wpData.area + "']");
-			subcategory.prop("selected", true);
-			subcategory.trigger('change');
-		});
+		if (wpData.area) {
+			//Populate the subcategory after the tab has been loaded
+			$.when(defer).done(function () {
+				var subcategory = $('#subcategories').find("[data-subcategory='" + wpData.area + "']");
+				subcategory.prop("selected", true);
+				var deferSubcategoryChange = $.Deferred();
+				subcategory.trigger('change', deferSubcategoryChange);
+
+				if (wpData.unit_designation) {
+					$.when(deferSubcategoryChange).done(function () {
+						loadFundFromDesignationID($("#funds"), wpData.unit_designation);
+						$('.fund-selection').trigger('change');
+					});
+				}
+			});
+		}
 	}
 	else
 	{
@@ -605,6 +616,13 @@ jQuery.extend(jQuery.ui.autocomplete.prototype.options, {
 	open: function(event, ui) {
 		jQuery(this).autocomplete("widget").css({
             "width": (jQuery(this).width() + "px")
-        });
+		});
+
+		var length = jQuery(this).autocomplete("widget")[0].childNodes.length;
+		var $lastNode = jQuery(this).autocomplete("widget")[0].childNodes[length - 1];
+
+		if ($lastNode.innerText.indexOf("narrow down your search".toUpperCase()) != -1) {
+			jQuery('#' + $lastNode.id).prop('disabled', true);
+		}
     }
 });

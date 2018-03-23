@@ -11,7 +11,7 @@ class WSUWP_Plugin_iDonate_ShortCode_FundSelector_Tests extends WP_UnitTestCase 
 		// Set up a test post in the priorities category
 		$this->post_id = $this->factory->post->create( array(
 			'post_title' => 'Test Post',
-			'post_status' => 'private',
+			'post_status' => 'publish',
 			'post_type' => 'idonate_fund',
 			'post_category' => array( 'idonate_priorities', $this->cat_id ),
 			)
