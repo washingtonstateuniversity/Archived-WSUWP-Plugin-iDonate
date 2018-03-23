@@ -441,6 +441,41 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	}
 
 	/**
+	* Get a list of 10 funds matching a search term. Search only published and searchable funds
+	*
+	* @return array $return_array
+	*
+	* @since 1.1.2
+	*/
+	function wsuf_fundselector_funds_search_funds( $search_term ) {
+		$fund_list = get_posts(array(
+			'post_type' => 'idonate_fund',
+			'post_status' => 'any',
+			'posts_per_page' => 11,
+			's' => urldecode( $search_term ),
+			'orderby' => 'title',
+			'order' => 'ASC',
+		));
+		$fund_list_trimmed = array_slice( $fund_list, 0, 10 );
+		$return_array = array();
+
+		//loop over each post
+		foreach ( $fund_list_trimmed as $p ) {
+			//get the meta you need form each post
+			$des_id = get_post_meta( $p->ID, 'designationId' , true );
+			$post_title = $p->post_title;
+			//do whatever you want with it
+			$return_array[] = array( 'designationId' => $des_id, 'name' => $post_title, 'value' => $post_title );
+		}
+
+		if ( count( $fund_list ) > 10 ) {
+			array_push( $return_array, array( 'designationId' => null, 'name' => '', 'value' => 'More results were found, please narrow down your search' ) );
+		}
+
+		return $return_array;
+	}
+
+	/**
 	* Gets current plugin version
 	*
 	* @return string Plugin version
