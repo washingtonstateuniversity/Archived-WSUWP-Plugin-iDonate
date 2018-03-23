@@ -29,6 +29,7 @@ class WSUWP_Plugin_iDonate {
 	 */
 	public function setup_hooks() {
 		self::$instance->custom_posttypes_run();
+		self::$instance->custom_post_status_run();
 		self::$instance->custom_taxonomies_run();
 		self::$instance->fundselector_shortcode_run();
 		self::$instance->thankyoupage_shortcode_run();
@@ -48,6 +49,22 @@ class WSUWP_Plugin_iDonate {
 
 		$custom_post_type = new WSUWP_Plugin_iDonate_Post_Type_Fund();
 		$custom_post_type->init();
+
+	}
+
+	/**
+	* Creates an instance of the WSUWP_Plugin_iDonate_Post_Status class
+	* and calls its initialization method.
+	*
+	* @since    1.1.7
+	*/
+	private function custom_post_status_run() {
+
+		/** Loads the custom post type Fund class file. */
+		require_once( dirname( __FILE__ ) . '/class-custom-post-status.php' );
+
+		$custom_post_status = new WSUWP_Plugin_iDonate_Post_Status();
+		$custom_post_status->init();
 
 	}
 
