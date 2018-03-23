@@ -29,7 +29,6 @@ COPY . /var/www/html
 
 RUN composer install
 
-# Install packages
 RUN npm install
 
 EXPOSE 8000
