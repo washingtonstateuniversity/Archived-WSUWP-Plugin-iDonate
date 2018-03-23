@@ -7,43 +7,22 @@ jQuery(document).ready(function($) {
         {
 			source: function( request, response ) {
 				$("#fundSearch").addClass("loading");
-				$.getJSON( wpData.request_url_base + 'idonate_fund', 
-					{
-						search : request.term,
-						per_page: 11,
-						orderby: "title",
-						order: "asc"
-					}, 
-					function( data, status, xhr ) {			
-						// Map the fund data to use the expected label name ("value") from fund name
-						var fundList = $.map(data.slice(0, 10), function(fund) {
-							return {
-								"designationId": fund.designationId,
-								"name": wsuwpUtils.htmlDecode(fund.title.rendered),
-								"value": wsuwpUtils.htmlDecode(fund.title.rendered)
-							};
-						});
 
-						// Show the narrow search results message if there are more than 10 results
-						if (data.length > 10) {
-							fundList.push({
-								"name": "",
-								"value": 'More results were found, please narrow down your search'
-							});
-						};
-
-						$("#fundSearch").removeClass("loading");
-						response( fundList );
-					}
-				);
+				var restQueryUrl = wpData.plugin_url_base + 'search/' + encodeURI(request.term);
+						
+				jQuery.getJSON( restQueryUrl )
+				.then(function( json ) {
+					$("#fundSearch").removeClass("loading");
+					response( json );
+				})
 			},
 			minLength: 3,
-            select: function( event, ui ) {
+			select: function( event, ui ) {
 				$("#inpDesignationId").text(ui.item.designationId);
 				$("#inpFundName").text(ui.item.name);
 				showAmountZone();
-            }
-        }
+			}
+		}
     ).autocomplete( "widget" ).addClass( "fundselector" );
 
 	// Major Category Click Events
