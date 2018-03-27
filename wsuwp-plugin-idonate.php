@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WSUWP Plugin iDonate
-Version: 1.1.7
+Version: 1.2.0
 Description: A plugin that is used to select funds to pass to the iDonate online giving solution
 Author: washingtonstateuniversity, blairlierman
 Author URI: https://foundation.wsu.edu/
