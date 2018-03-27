@@ -465,6 +465,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			//get the meta you need form each post
 			$des_id = get_post_meta( $p->ID, 'designationId' , true );
 			$post_title = $p->post_title;
+			$post_title = html_entity_decode( $post_title );
 			//do whatever you want with it
 			$return_array[] = array( 'designationId' => $des_id, 'name' => $post_title, 'value' => $post_title );
 		}
