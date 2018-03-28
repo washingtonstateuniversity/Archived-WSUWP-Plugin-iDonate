@@ -471,7 +471,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		}
 
 		if ( count( $fund_list ) > 10 ) {
-			array_push( $return_array, array( 'designationId' => null, 'name' => '', 'value' => 'More results were found, please narrow down your search' ) );
+			array_push( $return_array, array( 'designationId' => null, 'name' => '', 'value' => 'More than 10 results found. Please refine your search' ) );
 		}
 
 		return $return_array;
