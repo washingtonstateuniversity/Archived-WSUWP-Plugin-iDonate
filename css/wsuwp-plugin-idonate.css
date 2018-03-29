@@ -80,6 +80,7 @@
 }
 
 #fundSelectionForm #majorcategory {
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-pack: distribute;
@@ -92,8 +93,10 @@
 	transition: color .3s ease-in-out;
 	width: 25%;
 	color: #4c4c4c;
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
 	padding: 6px;
@@ -103,6 +106,7 @@
 	margin-bottom: -1px;
 	border-bottom: 1px solid #d1d3d4;
 	text-align: center;
+	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
 }
@@ -239,6 +243,7 @@
 
 #fundSelectionForm .input-group-addon {
 	display: table-cell;
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	padding: 0;
@@ -254,6 +259,7 @@
 	text-align: center;
 	background-color: #eee;
 	border-radius: 2px;
+	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
 }
@@ -346,7 +352,9 @@
 	border-radius: 2px;
 	width: calc(16%);
 	display: flex;
+	display: -webkit-box;
 	display: -ms-flexbox;
+	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
 	margin-top: 10px;
@@ -384,11 +392,13 @@
 }
 
 #fundSelectionForm .amountwrapper {
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	box-sizing: border-box;
+	-webkit-box-pack: justify;
 	-ms-flex-pack: justify;
 	justify-content: space-between;
 }
@@ -414,8 +424,11 @@
 }
 
 #fundSelectionForm #selectedFunds li {
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
 	-ms-flex-direction: column;
 	flex-direction: column;
 	position: relative;
@@ -428,8 +441,11 @@
 }
 
 #fundSelectionForm #selectedFunds li span {
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
 	-ms-flex-direction: row;
 	flex-direction: row;
 }
@@ -437,8 +453,10 @@
 #fundSelectionForm #selectedFunds li span.left {
 	padding-right: 20px;
 	font-weight: 700;
+	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	font-size: 12px;
@@ -447,8 +465,10 @@
 #fundSelectionForm #selectedFunds li span.right {
 	font-size: 12px;
 	width: 100%;
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
 	padding-right: 20px;
@@ -469,6 +489,7 @@
 #fundSelectionForm .help-text-box {
 	background: #981e32;
 	color: #e6e7e8;
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	position: relative;
@@ -482,8 +503,10 @@
 #fundSelectionForm .help-text-box span.left {
 	padding-right: 20px;
 	font-weight: 800;
+	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	font-size: 105%;
@@ -491,8 +514,10 @@
 }
 
 #fundSelectionForm .help-text-box span.right {
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
 	padding-right: 20px;
@@ -525,6 +550,7 @@
 }
 
 #fundSelectionForm .additional-info input[type="checkbox"] {
+	-webkit-box-flex: 0;
 	-ms-flex: 0 0 20px;
 	flex: 0 0 20px;
 }
@@ -566,6 +592,7 @@
 }
 
 #fundSelectionForm .additional-info span {
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	margin-bottom: 10px;
@@ -579,6 +606,7 @@
 }
 
 #fundSelectionForm .additional-info label {
+	-webkit-box-flex: 2;
 	-ms-flex: 2;
 	flex: 2;
 	margin-left: 5px;
@@ -618,15 +646,19 @@
 }
 
 #fundSelectionForm .center {
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
 }
 
 #fundSelectionForm .alignright {
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-pack: end;
 	-ms-flex-pack: end;
 	justify-content: flex-end;
 }
@@ -637,8 +669,10 @@
 
 #fundSelectionForm .search-separator {
 	margin: 0 0;
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
 }
@@ -663,10 +697,12 @@
 }
 
 #fundSelectionForm .continuebutton {
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	margin-top: 40px;
 	margin-bottom: 40px;
+	-webkit-box-pack: end;
 	-ms-flex-pack: end;
 	justify-content: flex-end;
 }
@@ -700,8 +736,10 @@
 }
 
 #fundSelectionForm span.edit {
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
 }
@@ -714,6 +752,7 @@
 }
 
 #fundSelectionForm .otherprice {
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	width: 100%;
@@ -721,13 +760,17 @@
 
 #fundSelectionForm span.center,
 #fundSelectionForm span.close {
+	-webkit-box-flex: 0;
 	-ms-flex: 0 0 auto;
 	flex: 0 0 auto;
 	font-size: 12px;
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
+	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
 }
@@ -851,10 +894,12 @@
 
 .ui-autocomplete.fundselector li:nth-child(11) {
 
+	color: #981e32;
+	text-transform: none;
+	font-weight: bolder !important;
 	pointer-events: none;
 	font-style: italic;
 	padding-top: 10px;
-	text-transform: lowercase;
 	border-top: 1px #8d959a solid;
 }
 
