@@ -54,7 +54,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$args['unit_description'] = esc_html( $args['unit_description'] );
 
 		$args['adv_fee_message'] = esc_html( $args['adv_fee_message'] );
-		$args['adv_fee_percentage'] = sanitize_key( $args['adv_fee_percentage'] );
+		$args['adv_fee_percentage'] = filter_var( $args['adv_fee_percentage'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 
 		$des_id_query_param = ! empty( $_GET['fund'] ) ? sanitize_key( $_GET['fund'] ) : null;
 		$area = ! empty( $_GET['area'] ) ? sanitize_key( $_GET['area'] ) : null;

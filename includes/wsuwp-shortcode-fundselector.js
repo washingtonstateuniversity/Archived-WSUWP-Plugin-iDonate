@@ -522,7 +522,7 @@ function continueAction(event)
 			jQuery("#iDonateEmbed").attr("data-custom_note_5", "");
 		}
 
-		var referenceCode = { donorPaysFee: $advFeeCheck.prop("checked"), feePercentage: parseInt(wpData.adv_fee_percentage)};
+		var referenceCode = { donorPaysFee: $advFeeCheck.prop("checked"), feePercentage: parseFloat(wpData.adv_fee_percentage)};
 
 		var stringifiedRefCode = '/' + JSON.stringify(referenceCode) + '/';
 		stringifiedRefCode = stringifiedRefCode.replace(/"/g, '\\"');
