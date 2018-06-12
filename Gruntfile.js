@@ -160,6 +160,17 @@ module.exports = function(grunt) {
                     hostname: "localhost"
                 }
             }
+        },
+
+        run: {
+            qunit: {
+                cmd: 'npm',
+                args: [
+                    'run',
+                    'qunit'
+                ]
+            }
+            
         }
     });
 
@@ -172,8 +183,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks( "grunt-phpcs" );
 	grunt.loadNpmTasks( "grunt-sed" );
     grunt.loadNpmTasks( "grunt-stylelint" );
+    grunt.loadNpmTasks('grunt-run');
 
     // Default task(s).
-    grunt.registerTask( "default", [ "lesslint", "less", "sed", "stylelint", "phpcs" ] );
+    grunt.registerTask( "default", [ "lesslint", "less", "sed", "stylelint", "phpcs", "run:qunit" ] );
     grunt.registerTask( "serve", [ "connect", "watch" ] );
 };

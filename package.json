@@ -5,6 +5,9 @@
     "type": "git",
     "url": "https://github.com/washingtonstateuniversity/wsuwp-plugin-idonate"
   },
+  "scripts": {
+    "qunit": "qunit"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
     "grunt": "~1.0.1",
@@ -17,10 +20,12 @@
     "grunt-lesslint": "^4.0.0",
     "grunt-phpcs": "^0.4.0",
     "grunt-postcss": "^0.9.0",
+    "grunt-run": "^0.8.1",
     "grunt-sed": "^0.1.1",
     "grunt-stylelint": "^0.9.0",
     "less": "^2.7.3",
     "less-plugin-autoprefix": "^1.5.1",
+    "qunit": "^2.6.1",
     "stylelint": "^8.2.0"
   }
 }
