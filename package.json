@@ -15,6 +15,7 @@
     "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-csslint": "^2.0.0",
     "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-qunit": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-indent": "^1.0.0",
     "grunt-lesslint": "^4.0.0",
@@ -27,5 +28,8 @@
     "less-plugin-autoprefix": "^1.5.1",
     "qunit": "^2.6.1",
     "stylelint": "^8.2.0"
+  },
+  "dependencies": {
+    "phantomjs-prebuilt": "^2.1.3"
   }
 }

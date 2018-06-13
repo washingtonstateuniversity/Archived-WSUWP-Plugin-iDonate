@@ -162,15 +162,8 @@ module.exports = function(grunt) {
             }
         },
 
-        run: {
-            qunit: {
-                cmd: 'npm',
-                args: [
-                    'run',
-                    'qunit'
-                ]
-            }
-            
+        qunit: {
+            src: ['tests/index.html']
         }
     });
 
@@ -179,13 +172,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks( "grunt-contrib-connect" );
     grunt.loadNpmTasks( "grunt-contrib-less" );
     grunt.loadNpmTasks( "grunt-contrib-csslint" );
+    grunt.loadNpmTasks( "grunt-contrib-qunit" );
 	grunt.loadNpmTasks( "grunt-lesslint" );
     grunt.loadNpmTasks( "grunt-phpcs" );
 	grunt.loadNpmTasks( "grunt-sed" );
     grunt.loadNpmTasks( "grunt-stylelint" );
-    grunt.loadNpmTasks('grunt-run');
 
     // Default task(s).
-    grunt.registerTask( "default", [ "lesslint", "less", "sed", "stylelint", "phpcs", "run:qunit" ] );
+    grunt.registerTask( "default", [ "lesslint", "less", "sed", "stylelint", "phpcs", "qunit:src" ] );
     grunt.registerTask( "serve", [ "connect", "watch" ] );
+    grunt.registerTask( "test", "qunit:src" );
 };
