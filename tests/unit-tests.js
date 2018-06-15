@@ -62,5 +62,36 @@ jQuery(document).ready(function($) {
                 assert.equal(result, expected, "string gets encoded");
             });
         });
+
+        QUnit.module( "Donation total", {}, function() {
+            QUnit.test("Calculate donation total", function( assert ) {
+                var donationList = [];
+                var total = wsuwpUtils.getDonationTotal(donationList);
+
+                assert.equal(0, total, 'Empty donation list returns 0 as sum');
+
+                donationList = [{'amount': 1.5}, {'amount': 2}, {'amount': 5.99}];
+                total = wsuwpUtils.getDonationTotal(donationList);
+                assert.equal(total, 1.5 + 2 + 5.99, 'Correctly calculates donation total');
+            });
+        });
+
+        QUnit.module( "Advancement fee", {}, function() {
+            QUnit.test("Calculate advancement fee", function( assert ) {
+                var donationList = [];
+                var total = wsuwpUtils.getAdvFeeTotal(donationList);
+
+                assert.equal(0, total, 'Empty donation list returns 0 as sum');
+
+                donationList = [{'amount': 50}, {'amount': 25}, {'amount': 25}];
+                wpData.adv_fee_percentage = 5;
+                total = wsuwpUtils.getAdvFeeTotal(donationList);
+                assert.equal(total, 5, 'Correctly calculates advancment fee when fee is an integer');
+
+                wpData.adv_fee_percentage = 4.5;
+                total = wsuwpUtils.getAdvFeeTotal(donationList);
+                assert.equal(total, 4.5, 'Correctly calculates advancment fee when fee is a floating point number');
+            });
+        });
     })
 });
