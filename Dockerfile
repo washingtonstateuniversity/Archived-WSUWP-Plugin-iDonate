@@ -1,4 +1,4 @@
-FROM php:7.1-apache
+FROM php:7.1-jessie
 
 LABEL version="1.0"
 LABEL description="WSU Foundation Online Giving WordPress Plugin"
