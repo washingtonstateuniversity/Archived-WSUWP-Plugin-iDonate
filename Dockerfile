@@ -26,6 +26,7 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 && rm -f /tmp/composer-setup.*
 
 COPY . /var/www/html
+WORKDIR /var/www/html
 
 RUN composer install
 
