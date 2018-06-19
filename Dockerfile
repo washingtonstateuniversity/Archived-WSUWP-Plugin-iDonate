@@ -1,4 +1,4 @@
-FROM php:7.1-apache
+FROM php:7.1-jessie
 
 LABEL version="1.0"
 LABEL description="WSU Foundation Online Giving WordPress Plugin"
@@ -26,6 +26,7 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 && rm -f /tmp/composer-setup.*
 
 COPY . /var/www/html
+WORKDIR /var/www/html
 
 RUN composer install
 
