@@ -54,7 +54,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		$args['unit_description'] = esc_html( $args['unit_description'] );
 
 		$args['adv_fee_message'] = esc_html( $args['adv_fee_message'] );
-		$args['adv_fee_percentage'] = sanitize_key( $args['adv_fee_percentage'] );
+		$args['adv_fee_percentage'] = filter_var( $args['adv_fee_percentage'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 
 		$des_id_query_param = ! empty( $_GET['fund'] ) ? sanitize_key( $_GET['fund'] ) : null;
 		$area = ! empty( $_GET['area'] ) ? sanitize_key( $_GET['area'] ) : null;
@@ -464,10 +464,18 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		foreach ( $fund_list_trimmed as $p ) {
 			//get the meta you need form each post
 			$des_id = get_post_meta( $p->ID, 'designationId' , true );
+
+			$terms = wp_get_post_terms( $p->ID, array( 'idonate_priorities', 'idonate_colleges', 'idonate_campuses', 'idonate_programs' ) );
+			$taxonomies = array();
+
+			foreach ( $terms as $t ) {
+				array_push( $taxonomies, array( 'taxonomy' => ( $t->taxonomy ), 'name' => ( $t->name ), 'slug' => ( $t->slug ) ) );
+			}
+
 			$post_title = $p->post_title;
 			$post_title = html_entity_decode( $post_title );
 			//do whatever you want with it
-			$return_array[] = array( 'designationId' => $des_id, 'name' => $post_title, 'value' => $post_title );
+			$return_array[] = array( 'designationId' => $des_id, 'name' => $post_title, 'value' => $post_title, 'taxonomy' => $taxonomies );
 		}
 
 		if ( count( $fund_list ) > 10 ) {

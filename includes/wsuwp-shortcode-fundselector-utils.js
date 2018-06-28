@@ -236,7 +236,7 @@ var EPSILON = 0;
 					var advFeeDecimal = designationList[i].amount * (1 + (wpData.adv_fee_percentage * 0.01)) - designationList[i].amount;
 					
 					// Rounding based on this answer: http://stackoverflow.com/a/5191166
-					sum += parseFloat(Math.ceil(advFeeDecimal * 100) / 100);
+					sum += parseFloat(Math.ceil(advFeeDecimal * 1000) / 1000);
 				}
 			}
 
