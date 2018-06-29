@@ -463,7 +463,7 @@ function continueAction(event)
 				var advFeeDecimal = designations[i].amount * (1 + (wpData.adv_fee_percentage * 0.01)) - designations[i].amount;
 				
 				// Rounding based on this answer: http://stackoverflow.com/a/5191166
-				designations[i].amount += parseFloat(Math.ceil(advFeeDecimal * 1000) / 1000).toFixed(2);
+				designations[i].amount += parseFloat((Math.ceil(advFeeDecimal * 1000) / 1000).toFixed(2));
 			}
 		}
 
