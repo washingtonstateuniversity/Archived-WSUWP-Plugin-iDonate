@@ -76,7 +76,7 @@ class WSUWP_Plugin_iDonate {
 	* @since    1.2.3
 	*/
 	private function custom_post_receipting_checkbox_run() {
-		require_once( dirname( __FILE__ ) . '/class-custom-post-receipting-checkbox.pnp' );
+		require_once( dirname( __FILE__ ) . '/class-custom-post-receipting-checkbox.php' );
 
 		$custom_checkbox = new WSUWP_Plugin_iDonate_Post_Receipting_Checkbox();
 		$custom_checkbox->init();

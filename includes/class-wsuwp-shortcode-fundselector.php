@@ -433,9 +433,13 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		foreach ( $fund_list as $p ) {
 			//get the meta you need form each post
 			$des_id = get_post_meta( $p->ID, 'designationId' , true );
+
+			$des_receipt = get_post_meta( $p->ID, 'hideReceipt' , true );
+			$des_receipt = ( 1 == $des_receipt ? true : false);
+
 			$post_title = $p->post_title;
 			//do whatever you want with it
-			$return_array[] = array( 'fund_name' => $post_title, 'designation_id' => $des_id );
+			$return_array[] = array( 'fund_name' => $post_title, 'designation_id' => $des_id, 'hideReceipt' => $des_receipt );
 		}
 
 		return $return_array;
@@ -465,6 +469,9 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			//get the meta you need form each post
 			$des_id = get_post_meta( $p->ID, 'designationId' , true );
 
+			$des_receipt = get_post_meta( $p->ID, 'hideReceipt' , true );
+			$des_receipt = ( 1 == $des_receipt ? true : false);
+
 			$terms = wp_get_post_terms( $p->ID, array( 'idonate_priorities', 'idonate_colleges', 'idonate_campuses', 'idonate_programs' ) );
 			$taxonomies = array();
 
@@ -475,7 +482,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			$post_title = $p->post_title;
 			$post_title = html_entity_decode( $post_title );
 			//do whatever you want with it
-			$return_array[] = array( 'designationId' => $des_id, 'name' => $post_title, 'value' => $post_title, 'taxonomy' => $taxonomies );
+			$return_array[] = array( 'designationId' => $des_id, 'name' => $post_title, 'value' => $post_title, 'taxonomy' => $taxonomies, 'hideReceipt' => $des_receipt );
 		}
 
 		if ( count( $fund_list ) > 10 ) {
