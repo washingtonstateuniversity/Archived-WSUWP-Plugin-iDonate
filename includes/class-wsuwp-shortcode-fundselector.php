@@ -439,7 +439,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 			$post_title = $p->post_title;
 			//do whatever you want with it
-			$return_array[] = array( 'fund_name' => $post_title, 'designation_id' => $des_id, 'hideReceipt' => $des_receipt );
+			$return_array[] = array( 'fund_name' => $post_title, 'designation_id' => $des_id, 'hide_receipt' => $des_receipt );
 		}
 
 		return $return_array;
