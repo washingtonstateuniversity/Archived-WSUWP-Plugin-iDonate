@@ -3,7 +3,7 @@
 /**
  * The core plugin class file
  *
- * Defines the functions necessary to register our custom post statuses with
+ * Defines the functions necessary to register our custom reciept checkbox with
  * WordPress.
  *
  * @link       https://www.pmg.com/blog/wordpress-how-to-adding-a-custom-checkbox-to-the-post-publish-box/
