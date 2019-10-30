@@ -30,6 +30,7 @@ class WSUWP_Plugin_iDonate {
 	public function setup_hooks() {
 		self::$instance->custom_posttypes_run();
 		self::$instance->custom_post_status_run();
+		self::$instance->custom_post_receipting_checkbox_run();
 		self::$instance->custom_taxonomies_run();
 		self::$instance->fundselector_shortcode_run();
 		self::$instance->thankyoupage_shortcode_run();
@@ -66,6 +67,19 @@ class WSUWP_Plugin_iDonate {
 		$custom_post_status = new WSUWP_Plugin_iDonate_Post_Status();
 		$custom_post_status->init();
 
+	}
+
+	/**
+	* Creates an instance of the WSUWP_Plugin_iDonate_Post_Receipting_Checkbox class
+	* and calls its initialization method.
+	*
+	* @since    1.2.3
+	*/
+	private function custom_post_receipting_checkbox_run() {
+		require_once( dirname( __FILE__ ) . '/class-custom-post-receipting-checkbox.pnp' );
+
+		$custom_checkbox = new WSUWP_Plugin_iDonate_Post_Receipting_Checkbox();
+		$custom_checkbox->init();
 	}
 
 	/**
