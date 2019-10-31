@@ -435,7 +435,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			$des_id = get_post_meta( $p->ID, 'designationId' , true );
 
 			$des_receipt = get_post_meta( $p->ID, 'hideReceipt' , true );
-			$des_receipt = ( 1 == $des_receipt ? true : false);
 
 			$post_title = $p->post_title;
 			//do whatever you want with it
@@ -470,7 +469,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			$des_id = get_post_meta( $p->ID, 'designationId' , true );
 
 			$des_receipt = get_post_meta( $p->ID, 'hideReceipt' , true );
-			$des_receipt = ( 1 == $des_receipt ? true : false);
 
 			$terms = wp_get_post_terms( $p->ID, array( 'idonate_priorities', 'idonate_colleges', 'idonate_campuses', 'idonate_programs' ) );
 			$taxonomies = array();

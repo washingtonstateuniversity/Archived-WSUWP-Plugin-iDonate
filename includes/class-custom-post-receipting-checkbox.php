@@ -31,7 +31,7 @@ class WSUWP_Plugin_iDonate_Post_Receipting_Checkbox {
 		if ( get_post_type( $post_id ) !== 'idonate_fund' ) {
 			return;
 		}
-	
+
 		$value = get_post_meta( $post_id, 'hideReceipt', true );
 		wp_nonce_field( 'hide_receipt_'.$post_id, 'hide_receipt' );
 
@@ -43,21 +43,21 @@ class WSUWP_Plugin_iDonate_Post_Receipting_Checkbox {
 	}
 
 	function saveCustomField( $post_id ) {
-		if (defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE) {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
 		}
-		
+
 		if (
-			!isset( $_POST['hide_receipt'] ) ||
-			!wp_verify_nonce( $_POST['hide_receipt'], 'hide_receipt_' . $post_id )
+			! isset( $_POST['hide_receipt'] ) ||
+			! wp_verify_nonce( $_POST['hide_receipt'], 'hide_receipt_' . $post_id )
 		) {
 			return;
 		}
-		
-		if (!current_user_can( 'edit_post', $post_id )) {
+
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
 			return;
 		}
-		if (isset( $_POST['hideReceipt'] )) {
+		if ( isset( $_POST['hideReceipt'] ) ) {
 			update_post_meta( $post_id, 'hideReceipt', $_POST['hideReceipt'] );
 		} else {
 			delete_post_meta( $post_id, 'hideReceipt' );
