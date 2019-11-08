@@ -7,6 +7,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
+    "css-loader": "^3.2.0",
     "grunt": "~1.0.1",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-connect": "^1.0.2",
@@ -20,7 +21,22 @@
     "grunt-sed": "^0.1.1",
     "grunt-stylelint": "^0.9.0",
     "less": "^2.7.3",
+    "less-loader": "^5.0.0",
     "less-plugin-autoprefix": "^1.5.1",
-    "stylelint": "^8.2.0"
+    "mini-css-extract-plugin": "^0.8.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "stylelint": "^8.2.0",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "webpack": "^4.41.2"
+  },
+  "scripts": {
+    "phpcs": "phpcs -p -s ./ --extensions=php --ignore=\"*/vendor/*,*/node_modules/*\"",
+    "watch": "webpack --env.NODE_ENV=development --mode=development --watch --config webpack.config.js",
+    "build": "webpack --mode=production --config webpack-config.js",
+    "start": "webpack-dev-server --env.NODE_ENV=development --watch --config webpack.config.js"
   }
 }

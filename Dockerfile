@@ -30,6 +30,10 @@ WORKDIR /var/www/html
 
 RUN composer install
 
+ENV PATH="~/.composer/vendor/bin:$PATH"
+
+RUN composer global require "squizlabs/php_codesniffer=*"
+
 # Install packages
 RUN npm install
 
