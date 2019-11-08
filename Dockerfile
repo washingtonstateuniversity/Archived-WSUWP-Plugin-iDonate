@@ -1,4 +1,4 @@
-FROM php:7.1-jessie
+FROM php:7.1-apache-jessie
 
 LABEL version="1.0"
 LABEL description="WSU Foundation Online Giving WordPress Plugin"
@@ -9,9 +9,9 @@ RUN apt-get update \
     && apt-get install -y \
     curl \
     gnupg \
-    && curl -sL https://deb.nodesource.com/setup_5.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
     && apt-get install -y nodejs \
-    && npm install -g grunt-cli
+    && npm install -g gulp
 
 # Install zip (for composer)
 RUN apt-get update && apt-get install -y zlib1g-dev \
@@ -29,6 +29,10 @@ COPY . /var/www/html
 WORKDIR /var/www/html
 
 RUN composer install
+
+# Install phpcs and export the path
+ENV PATH="~/.composer/vendor/bin:$PATH"
+RUN composer global require "squizlabs/php_codesniffer=*"
 
 # Install packages
 RUN npm install
