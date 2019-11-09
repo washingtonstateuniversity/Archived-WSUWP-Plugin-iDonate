@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var phpcs = require('gulp-phpcs');
 
-gulp.task('default', function() {
+gulp.task('phpcs', function() {
 	return (
 		gulp
 			.src(['./**/*.php', '!vendor/**/*.*', '!node_modules/**/*.*'])
@@ -17,3 +17,5 @@ gulp.task('default', function() {
 			.pipe(phpcs.reporter('fail', { failOnFirst: false }))
 	);
 });
+
+gulp.task('default', ['phpcs'], function() {});
