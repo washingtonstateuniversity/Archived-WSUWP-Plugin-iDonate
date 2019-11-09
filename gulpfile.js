@@ -1,5 +1,12 @@
-var gulp = require('gulp');
-var phpcs = require('gulp-phpcs');
+var gulp = require('gulp'),
+	phpcs = require('gulp-phpcs'),
+	less = require('gulp-less'),
+	LessAutoprefix = require('less-plugin-autoprefix'),
+	autoprefix = new LessAutoprefix({
+		cascade: false,
+		browsers: ['> 1%', 'ie 8-11', 'Firefox ESR'],
+	}),
+	rename = require('gulp-rename');
 
 gulp.task('phpcs', function() {
 	return (
@@ -18,4 +25,22 @@ gulp.task('phpcs', function() {
 	);
 });
 
-gulp.task('default', ['phpcs'], function() {});
+gulp.task('less', function() {
+	return gulp
+		.src('./css/**/*.less')
+		.pipe(
+			less({
+				plugins: [autoprefix],
+				strictMath: true,
+				outputSourceFiles: false,
+			})
+		)
+		.pipe(
+			rename(function(path) {
+				path.basename = path.basename.replace('-src', '');
+			})
+		)
+		.pipe(gulp.dest('./css'));
+});
+
+gulp.task('default', ['phpcs', 'less'], function() {});
