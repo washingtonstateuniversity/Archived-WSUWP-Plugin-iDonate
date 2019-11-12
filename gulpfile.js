@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
 	phpcs = require('gulp-phpcs'),
+	sourcemaps = require('gulp-sourcemaps'),
 	less = require('gulp-less'),
 	LessAutoprefix = require('less-plugin-autoprefix'),
 	autoprefix = new LessAutoprefix({
@@ -28,6 +29,7 @@ gulp.task('phpcs', function() {
 gulp.task('less', function() {
 	return gulp
 		.src('./css/**/*.less')
+		.pipe(sourcemaps.init())
 		.pipe(
 			less({
 				plugins: [autoprefix],
@@ -40,6 +42,7 @@ gulp.task('less', function() {
 				path.basename = path.basename.replace('-src', '');
 			})
 		)
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('./css'));
 });
 
