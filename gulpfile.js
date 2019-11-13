@@ -78,6 +78,7 @@ gulp.task('watch', function() {
 		start: true,
 	});
 	gulp.watch('./css/**/*.less', ['less']);
+	gulp.watch('./css/**/*.css', ['replace']);
 	gulp.watch('./includes/**/*.js');
 	gulp.watch('./includes/**/*.php', ['phpcs', 'phpunit']);
 });
