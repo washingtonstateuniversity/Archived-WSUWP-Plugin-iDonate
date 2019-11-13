@@ -4,7 +4,7 @@ LABEL version="1.0"
 LABEL description="WSU Foundation Online Giving WordPress Plugin"
 LABEL maintainer="Jared Crain <jared.crain@wsu.edu>"
 
-# Install curl, gnupg, node, npm and grunt
+# Install subversion, curl, gnupg, node, npm and gulp
 RUN apt-get update \
     && apt-get install -y \
     subversion \

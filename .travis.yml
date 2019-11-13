@@ -30,7 +30,7 @@ branches:
 matrix:
   include:
     - php: 7.1
-      env: WP_TRAVISCI=grunt
+      env: WP_TRAVISCI=gulp
 
 before_script:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -45,10 +45,10 @@ before_script:
       fi
     fi
   - |
-    if [[ "$WP_TRAVISCI" == "grunt" ]] ; then
+    if [[ "$WP_TRAVISCI" == "gulp" ]] ; then
       composer install
       nvm install stable
-      npm install -g grunt-cli
+      npm install -g gulp
       npm install
       npm --version
       node --version
@@ -65,6 +65,6 @@ script:
       WP_MULTISITE=1 phpunit
     fi
   - |
-    if [[ "$WP_TRAVISCI" == "grunt" ]] ; then
-      grunt
+    if [[ "$WP_TRAVISCI" == "gulp" ]] ; then
+      gulp
     fi
