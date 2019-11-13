@@ -7,6 +7,7 @@ LABEL maintainer="Jared Crain <jared.crain@wsu.edu>"
 # Install curl, gnupg, node, npm and grunt
 RUN apt-get update \
     && apt-get install -y \
+    subversion \
     curl \
     gnupg \
     && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
@@ -28,11 +29,16 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 COPY . /var/www/html
 WORKDIR /var/www/html
 
-RUN composer install
+RUN composer install --no-interaction
 
 # Install phpcs and export the path
-ENV PATH="~/.composer/vendor/bin:$PATH"
+ENV PATH="~/.composer/vendor/bin:./vendor/bin:${PATH}"
 RUN composer global require "squizlabs/php_codesniffer=*"
+
+#PHPUNIT
+RUN composer global require "phpunit/phpunit=5.7.*"
+ENV PATH /root/.composer/vendor/bin:$PATH
+RUN ln -s /root/.composer/vendor/bin/phpunit /usr/bin/phpunit
 
 # Install packages
 RUN npm install
