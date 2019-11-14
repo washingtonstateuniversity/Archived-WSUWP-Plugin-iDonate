@@ -1,0 +1,33 @@
+{
+    "fileExtensions": [".less", ".css"],
+
+    "qualifyingElement": {
+        "allowWithId": true,
+        "allowWithClass": true,
+        "allowWithAttribute": true
+    },
+
+    "spaceAroundComma": {
+        "allowNewline": true
+    },
+
+    "duplicateProperty": {
+        "exclude": [
+            "border",
+            "display",
+            "padding"
+        ]
+    },
+
+    "borderZero": {
+        "style": "none"
+    },
+
+    "propertyOrdering": {
+        "enabled": false
+    },
+
+    "idSelector": {
+        "enabled": false
+    }
+}

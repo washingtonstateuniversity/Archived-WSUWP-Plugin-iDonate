@@ -2,6 +2,7 @@ var gulp = require('gulp'),
 	phpcs = require('gulp-phpcs'),
 	phpunit = require('gulp-phpunit'),
 	sourcemaps = require('gulp-sourcemaps'),
+	lesshint = require('gulp-lesshint'),
 	less = require('gulp-less'),
 	LessAutoprefix = require('less-plugin-autoprefix'),
 	autoprefix = new LessAutoprefix({
@@ -34,6 +35,15 @@ gulp.task('phpunit', function() {
 	return gulp
 		.src('phpunit.xml')
 		.pipe(phpunit('./vendor/bin/phpunit'))
+		.pipe(livereload());
+});
+
+gulp.task('lesslint', function() {
+	return gulp
+		.src('./css/**/*.less')
+		.pipe(lesshint())
+		.pipe(lesshint.reporter())
+		.pipe(lesshint.failOnError())
 		.pipe(livereload());
 });
 
@@ -77,12 +87,16 @@ gulp.task('watch', function() {
 		port: 8000,
 		start: true,
 	});
-	gulp.watch('./css/**/*.less', ['less']);
+	gulp.watch('./css/**/*.less', ['lesslint', 'less']);
 	gulp.watch('./css/**/*.css', ['replace']);
 	gulp.watch('./includes/**/*.js');
 	gulp.watch('./includes/**/*.php', ['phpcs', 'phpunit']);
 });
 
-gulp.task('default', ['phpcs', 'phpunit', 'less', 'replace'], function() {});
+gulp.task(
+	'default',
+	['phpcs', 'phpunit', 'lessslint', 'less', 'replace'],
+	function() {}
+);
 
 gulp.task('serve', ['default', 'watch'], function() {});
