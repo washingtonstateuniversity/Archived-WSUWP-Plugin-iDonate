@@ -95,7 +95,7 @@ gulp.task('watch', function() {
 
 gulp.task(
 	'default',
-	['phpcs', 'phpunit', 'lessslint', 'less', 'replace'],
+	['phpcs', 'phpunit', 'lesslint', 'less', 'replace'],
 	function() {}
 );
 
