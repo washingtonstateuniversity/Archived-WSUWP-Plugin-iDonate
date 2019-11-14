@@ -68,7 +68,7 @@ gulp.task('less', function() {
 		.pipe(livereload());
 });
 
-gulp.task('replace', function() {
+gulp.task('replace', ['less'], function() {
 	return gulp
 		.src(['./css/wsuwp-plugin-idonate.css'])
 		.pipe(replace('  ', '\t'))

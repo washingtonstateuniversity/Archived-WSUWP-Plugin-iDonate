@@ -5,7 +5,7 @@
 #fundSelectionForm a.btnlhtgry {
 	display: inline-block;
 	min-width: 100px;
-	margin: 0;
+	margin: 0px;
 	padding: 15px 40px 15px 40px;
 	background: rgba(0, 0, 0, 0);
 	font: 700 12px/12px Montserrat, Helvetica, Arial, san-serif;
@@ -25,10 +25,9 @@
 #fundSelectionForm input {
 	color: #4c4c4c;
 	width: 100%;
-	height: 50px;
 	height: 35px;
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding: 0px;
 	text-align: left;
 	text-indent: 10px;
 	text-transform: none;
@@ -38,7 +37,7 @@
 	border-radius: 2px;
 }
 
-#fundSelectionForm input[type="checkbox"] {
+#fundSelectionForm input[type='checkbox'] {
 	width: 15px;
 	height: 15px;
 	margin-top: 2px;
@@ -49,8 +48,8 @@
 	transition: all .3s ease-in-out;
 	width: 100%;
 	height: 40px;
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding: 0px;
 	text-align: left;
 	padding-left: 16px;
 	-webkit-appearance: none;
@@ -66,7 +65,7 @@
 }
 
 #fundSelectionForm select.fund {
-	background: #fff url(../images/ico/arrow-down-gry.png) no-repeat center center;
+	background: #ffffff url('../images/ico/arrow-down-gry.png') no-repeat center center;
 	background-position: calc(100% - 16px) center;
 	background-size: 12px;
 	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
@@ -84,7 +83,7 @@
 	display: flex;
 	-ms-flex-pack: distribute;
 	justify-content: space-around;
-	padding: 0 0 10px 0;
+	padding: 0px 0px 10px 0px;
 }
 
 #fundSelectionForm #majorcategory a {
@@ -120,16 +119,16 @@
 }
 
 #fundSelectionForm #majorcategory a.search:after {
-	content: "$";
+	content: '$';
 	font-family: Spine-Icons;
-	margin: 0 -0.25rem 0 0.5rem;
+	margin: 0rem -0.25rem 0rem 0.5rem;
 	position: relative;
-	top: .125rem;
+	top: 0.125rem;
 }
 
 @media only screen and (max-width: 480px) {
 	#fundSelectionForm #majorcategory a.search:after {
-		margin: 0;
+		margin: 0px;
 	}
 
 }
@@ -143,13 +142,13 @@
 	font-weight: 700;
 }
 
-#fundSelectionForm input[type="text"]:hover,
+#fundSelectionForm input[type='text']:hover,
 #fundSelectionForm select:hover {
 	border: 1px solid #d1d3d4;
 	cursor: pointer;
 }
 
-#fundSelectionForm input[type="text"]:focus,
+#fundSelectionForm input[type='text']:focus,
 #fundSelectionForm select:focus {
 	border: 1px solid #981e32;
 }
@@ -159,14 +158,14 @@
 }
 
 #fundSelectionForm input.search {
-	background: transparent url(../images/ico/search-gry.png) no-repeat 12px center;
+	background: transparent url('../images/ico/search-gry.png') no-repeat 12px center;
 	background-size: 12px;
 	background-position-x: 6px;
 }
 
 #fundSelectionForm input.left,
 #fundSelectionForm a.left {
-	background: transparent url(../images/ico/arrow-left-gry.png) no-repeat 12px center;
+	background: transparent url('../images/ico/arrow-left-gry.png') no-repeat 12px center;
 	background-size: 12px;
 	color: #3b4042;
 	border: 1px solid #ececec;
@@ -174,7 +173,7 @@
 }
 
 #fundSelectionForm a.plus {
-	background: transparent url(../images/ico/plus-gry.png) no-repeat 12px center;
+	background: transparent url('../images/ico/plus-gry.png') no-repeat 12px center;
 	background-size: 12px;
 	color: #3b4042;
 	border: 1px solid #ececec;
@@ -183,7 +182,7 @@
 }
 
 #fundSelectionForm input.search:focus {
-	background: #94192b url(../images/ico/search-wht.png) no-repeat 16px center;
+	background: #94192b url('../images/ico/search-wht.png') no-repeat 16px center;
 }
 
 #fundSelectionForm .input-group {
@@ -197,7 +196,7 @@
 	z-index: 2;
 	width: 100%;
 	display: table-cell;
-	padding: 0;
+	padding: 0px;
 	border: 1px solid #ebe7e8;
 }
 
@@ -208,12 +207,12 @@
 #fundSelectionForm .input-group-btn {
 	position: relative;
 	display: table-cell;
-	padding: 0;
+	padding: 0px;
 	border: 1px solid #ebe7e8;
 	width: 1%;
 	white-space: nowrap;
 	vertical-align: middle;
-	font-size: 0;
+	font-size: 0px;
 }
 
 #fundSelectionForm .input-group-btn > .btn:active,
@@ -230,17 +229,17 @@
 	margin-left: -1px;
 }
 
-#fundSelectionForm .input-group[class*="col-"] {
+#fundSelectionForm .input-group[class*='col-'] {
 	float: none;
-	padding-left: 0;
-	padding-right: 0;
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
 #fundSelectionForm .input-group-addon {
 	display: table-cell;
 	display: -ms-flexbox;
 	display: flex;
-	padding: 0;
+	padding: 0px;
 	padding: 6px 12px;
 	border: 1px solid #ebe7e8;
 	width: 1%;
@@ -251,15 +250,15 @@
 	line-height: 1;
 	color: #242424;
 	text-align: center;
-	background-color: #eee;
+	background-color: #eeeeee;
 	border-radius: 2px;
 	-ms-flex-align: center;
 	align-items: center;
 }
 
-#fundSelectionForm .input-group-addon input[type="checkbox"],
-#fundSelectionForm .input-group-addon input[type="radio"] {
-	margin-top: 0;
+#fundSelectionForm .input-group-addon input[type='checkbox'],
+#fundSelectionForm .input-group-addon input[type='radio'] {
+	margin-top: 0px;
 }
 
 #fundSelectionForm .input-group-addon.input-sm,
@@ -283,20 +282,20 @@
 #fundSelectionForm .input-group-btn:first-child > .dropdown-toggle,
 #fundSelectionForm .input-group-btn:last-child > .btn-group:not(:last-child) > .btn,
 #fundSelectionForm .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
-	border-bottom-right-radius: 0;
-	border-top-right-radius: 0;
+	border-bottom-right-radius: 0px;
+	border-top-right-radius: 0px;
 }
 
 #fundSelectionForm .input-group-addon:first-child {
-	border-right: 0;
-	border-radius: 0;
+	border-right: 0px;
+	border-radius: 0px;
 	font-weight: 800;
 	font-size: 12px;
 }
 
 #fundSelectionForm .input-group-btn:first-child > .btn {
-	border-bottom-right-radius: 0;
-	border-top-right-radius: 0;
+	border-bottom-right-radius: 0px;
+	border-top-right-radius: 0px;
 	margin-right: -1px;
 }
 
@@ -309,19 +308,19 @@
 #fundSelectionForm .input-group-btn:first-child > .btn:not(:first-child),
 #fundSelectionForm .input-group-btn:last-child > .btn-group > .btn,
 #fundSelectionForm .input-group-btn:last-child > .dropdown-toggle {
-	border-bottom-left-radius: 0;
-	border-top-left-radius: 0;
+	border-bottom-left-radius: 0px;
+	border-top-left-radius: 0px;
 }
 
 #fundSelectionForm .input-group-addon:last-child {
-	border-bottom-left-radius: 0;
-	border-top-left-radius: 0;
-	border-left: 0;
+	border-bottom-left-radius: 0px;
+	border-top-left-radius: 0px;
+	border-left: 0px;
 }
 
 #fundSelectionForm .input-group-btn:last-child > .btn {
-	border-bottom-left-radius: 0;
-	border-top-left-radius: 0;
+	border-bottom-left-radius: 0px;
+	border-top-left-radius: 0px;
 	z-index: 2;
 	margin-left: -1px;
 }
@@ -351,22 +350,22 @@
 }
 
 #fundSelectionForm button.amount-selection.selected {
-	color: #fff;
+	color: #ffffff;
 	background-color: #981e32;
 }
 
 #fundSelectionForm button.amount-selection:first-child {
 	border-top-left-radius: 2px;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
 	border-bottom-left-radius: 2px;
 }
 
 #fundSelectionForm button.amount-selection.lastbutton {
-	border-top-left-radius: 0;
+	border-top-left-radius: 0px;
 	border-top-right-radius: 2px;
 	border-bottom-right-radius: 2px;
-	border-bottom-left-radius: 0;
+	border-bottom-left-radius: 0px;
 }
 
 #fundSelectionForm button.amount-selection:hover {
@@ -392,23 +391,23 @@
 }
 
 #fundSelectionForm .amountwrapper .input-group {
-	margin: 20px 0 0 0;
+	margin: 20px 0px 0px 0px;
 }
 
 #fundSelectionForm .button.active,
 #fundSelectionForm .button:active,
 #fundSelectionForm button.active,
 #fundSelectionForm button:active,
-#fundSelectionForm input[type="submit"]:active,
-#fundSelectionForm input[type="reset"]:active,
-#fundSelectionForm input[type="button"]:active {
+#fundSelectionForm input[type='submit']:active,
+#fundSelectionForm input[type='reset']:active,
+#fundSelectionForm input[type='button']:active {
 	background: auto;
 }
 
 #fundSelectionForm #selectedFunds {
-	margin: 0 0 20px 0;
+	margin: 0px 0px 20px 0px;
 	list-style-type: none;
-	padding: 0;
+	padding: 0px;
 }
 
 #fundSelectionForm #selectedFunds li {
@@ -453,13 +452,13 @@
 }
 
 #fundSelectionForm #selectedFunds li:first-child:after {
-	content: "";
+	content: '';
 	position: absolute;
 	border-style: solid;
-	border-width: 0 7px 7px;
+	border-width: 0px 7px 7px;
 	border-color: #eff0f1 transparent;
 	display: block;
-	width: 0;
+	width: 0px;
 	top: -8px;
 	left: 7px;
 }
@@ -497,18 +496,18 @@
 }
 
 #fundSelectionForm .help-text-caret {
-	width: 0;
-	height: 0;
+	height: 0px;
+	width: 0px;
 	border-left: 7px solid transparent;
 	border-right: 7px solid transparent;
 	border-top: 7px solid #981e32;
-	margin-top: 0;
+	margin-top: 0px;
 	margin-left: calc(10% - 7px);
 	margin-bottom: 10px;
 }
 
 #fundSelectionForm .help-text .close a {
-	background: url(../images/ico/close-wht.png) no-repeat center center;
+	background: url('../images/ico/close-wht.png') no-repeat center center;
 	background-size: 12px;
 }
 
@@ -522,40 +521,43 @@
 	font-size: 12px;
 }
 
-#fundSelectionForm .additional-info input[type="checkbox"] {
+#fundSelectionForm .additional-info input[type='checkbox'] {
+	/* lesshint-disable zeroUnit */
+
 	-ms-flex: 0 0 20px;
 	flex: 0 0 20px;
+	/* lesshint-enable zeroUnit */
 }
 
-#fundSelectionForm .additional-info input[type="checkbox"] + label:before {
+#fundSelectionForm .additional-info input[type='checkbox'] + label:before {
 	border: 1px solid rgba(0, 0, 0, 0.2);
-	content: "\00a0";
+	content: '\00a0';
 	font: 16px/1em sans-serif;
 	height: 15px;
-	margin: 0 .5em 0 0;
-	padding: 0;
+	margin: 0em 0.5em 0em 0em;
+	padding: 0px;
 	vertical-align: top;
 	width: 15px;
 	float: left;
 }
 
-#fundSelectionForm .additional-info input[type="checkbox"]:checked + label:before {
-	background: #981e32 url(../images/ico-check-wht.png) center center no-repeat;
-	color: #fff;
+#fundSelectionForm .additional-info input[type='checkbox']:checked + label:before {
+	background: #981e32 url('../images/ico-check-wht.png') center center no-repeat;
+	color: #ffffff;
 	border: 1px solid #981e32;
 	background-size: 12px;
 	text-align: center;
 }
 
-#fundSelectionForm .additional-info input[type="checkbox"]:focus + label:before {
-	border: 1px dotted #000;
+#fundSelectionForm .additional-info input[type='checkbox']:focus + label:before {
+	border: 1px dotted #000000;
 }
 
-#fundSelectionForm .additional-info input[type="checkbox"]:checked + label:after {
+#fundSelectionForm .additional-info input[type='checkbox']:checked + label:after {
 	font-weight: 700;
 }
 
-#fundSelectionForm .additional-info input[type="checkbox"] {
+#fundSelectionForm .additional-info input[type='checkbox'] {
 	opacity: 0;
 }
 
@@ -584,7 +586,7 @@
 }
 
 #fundSelectionForm .additional-info .additional-info-header-wrapper a {
-	background: transparent url(../images/ico/arrow-down-gry.png) no-repeat calc(100% - 10px) 8px;
+	background: transparent url('../images/ico/arrow-down-gry.png') no-repeat calc(100% - 10px) 8px;
 	background-size: 8px;
 	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 	padding-right: 27px;
@@ -599,14 +601,14 @@
 }
 
 #fundSelectionForm .additional-info .additional-info-header-wrapper a.down {
-	background: url(../images/ico/arrow-up-gry.png) no-repeat calc(100% - 10px) 6px;
+	background: url('images/ico/arrow-up-gry.png') no-repeat calc(100% - 10px) 6px;
 	background-size: 8px;
 }
 
 #fundSelectionForm .additional-info .additional-info-header-wrapper a > span {
 	line-height: inherit;
-	margin-top: 0;
-	margin-bottom: 0;
+	margin-top: 0px;
+	margin-bottom: 0px;
 	text-align: center;
 }
 
@@ -633,7 +635,7 @@
 }
 
 #fundSelectionForm .search-separator {
-	margin: 0 0;
+	margin: 0px 0px;
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-pack: center;
@@ -643,12 +645,12 @@
 #fundSelectionForm #jacket,
 #fundSelectionForm #binder,
 #fundSelectionForm section.row {
-	background-color: #fff;
+	background-color: #ffffff;
 }
 
 #fundSelectionForm ul.ui-autocomplete {
-	background-color: #fff;
-	border: 1px solid #ccc;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
 	width: 100%;
 	z-index: 1000;
 }
@@ -684,13 +686,13 @@
 
 #fundSelectionForm .close a {
 	display: block;
-	right: 0;
-	top: 0;
-	width: 12px;
+	right: 0px;
+	top: 0px;
 	height: 12px;
+	width: 12px;
 	margin: 10px;
-	padding: 0;
-	background: url(../images/ico/close-gry.png) no-repeat center center;
+	padding: 0px;
+	background: url('../images/ico/close-gry.png') no-repeat center center;
 	background-size: 12px;
 	opacity: 1;
 }
@@ -717,8 +719,10 @@
 
 #fundSelectionForm span.center,
 #fundSelectionForm span.close {
+	/* lesshint-disable zeroUnit */
 	-ms-flex: 0 0 auto;
 	flex: 0 0 auto;
+	/* lesshint-enable zeroUnit */
 	font-size: 12px;
 	display: -ms-flexbox;
 	display: flex;
@@ -736,7 +740,7 @@
 }
 
 #fundSelectionForm #addFundButton:hover:not(.ui-state-disabled) {
-	color: #fff;
+	color: #ffffff;
 	background: #981e32;
 	background-size: 8px;
 	background-position-x: 51px;
@@ -805,31 +809,31 @@
 
 #fundSelectionForm .help-icon a#moreAdvFeeInfo {
 	display: inline-block;
-	right: 0;
-	top: 0;
-	width: 15px;
+	right: 0px;
+	top: 0px;
 	height: 15px;
-	padding: 0;
-	background: url(../images/ico-help.png) no-repeat center center;
+	width: 15px;
+	padding: 0px;
+	background: url('../images/ico-help.png') no-repeat center center;
 	background-size: 15px;
 	opacity: 1;
 	padding-left: 10px;
 }
 
 #fundSelectionForm .loading {
-	background: #fff url(../images/loader.gif) no-repeat center center;
+	background: #ffffff url('../images/loader.gif') no-repeat center center;
 	background-position: calc(100% - 16px) center;
 	background-size: 12px;
-	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 	padding-right: 35px;
+	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .ui-autocomplete.fundselector {
-	background-color: #fff;
+	background-color: #ffffff;
 	border: 1px solid #e6e7e8;
 	list-style-type: none;
-	padding-left: 15px;
 	padding-bottom: 5px;
+	padding-left: 15px;
 	text-transform: uppercase;
 }
 
@@ -843,8 +847,8 @@
 
 .ui-autocomplete.fundselector li:nth-child(11) {
 	color: #981e32;
-	text-transform: none;
 	font-weight: 800;
+	text-transform: none;
 	pointer-events: none;
 	font-style: italic;
 	padding-top: 10px;
@@ -859,12 +863,11 @@
 	.halves.gutter .column.one:not(.gutterless),
 	.halves.gutter .column:nth-of-type(2n+3):not(.gutterless),
 	.side-right.gutter .column.one:not(.gutterless) {
-		padding-right: 0.25rem;
 		padding-left: 0.25rem;
+		padding-right: 0.25rem;
 	}
 
 }
 
 
 /*# sourceMappingURL=wsuwp-plugin-idonate.css.map */
-
