@@ -4,13 +4,13 @@ var gulp = require('gulp'),
 	sourcemaps = require('gulp-sourcemaps'),
 	lesshint = require('gulp-lesshint'),
 	less = require('gulp-less'),
+	cssmin = require('gulp-cssmin'),
 	LessAutoprefix = require('less-plugin-autoprefix'),
 	autoprefix = new LessAutoprefix({
 		cascade: false,
 		browsers: ['> 1%', 'ie 8-11', 'Firefox ESR'],
 	}),
 	rename = require('gulp-rename'),
-	replace = require('gulp-replace'),
 	livereload = require('gulp-livereload');
 
 gulp.task('phpcs', function() {
@@ -58,25 +58,14 @@ gulp.task('less', function() {
 				outputSourceFiles: false,
 			})
 		)
+		.pipe(cssmin())
 		.pipe(
 			rename(function(path) {
 				path.basename = path.basename.replace('-src', '');
 			})
 		)
+		.pipe(rename({ suffix: '.min' }))
 		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('./css'))
-		.pipe(livereload());
-});
-
-gulp.task('replace', ['less'], function() {
-	return gulp
-		.src(['./css/wsuwp-plugin-idonate.css'])
-		.pipe(replace('  ', '\t'))
-		.pipe(replace(/0[.]/, '.'))
-		.pipe(replace('}', '}\r\n'))
-		.pipe(replace('\t ', '\t'))
-		.pipe(replace(/[)] \{/, ') {\r\n'))
-		.pipe(replace(/[*]\//, '*/\n'))
 		.pipe(gulp.dest('./css'))
 		.pipe(livereload());
 });
@@ -88,15 +77,10 @@ gulp.task('watch', function() {
 		start: true,
 	});
 	gulp.watch('./css/**/*.less', ['lesslint', 'less']);
-	gulp.watch('./css/**/*.css', ['replace']);
 	gulp.watch('./includes/**/*.js');
 	gulp.watch('./includes/**/*.php', ['phpcs', 'phpunit']);
 });
 
-gulp.task(
-	'default',
-	['phpcs', 'phpunit', 'lesslint', 'less', 'replace'],
-	function() {}
-);
+gulp.task('default', ['phpcs', 'phpunit', 'lesslint', 'less'], function() {});
 
 gulp.task('serve', ['default', 'watch'], function() {});
