@@ -36,7 +36,7 @@ ENV PATH="~/.composer/vendor/bin:./vendor/bin:${PATH}"
 RUN composer global require "squizlabs/php_codesniffer=*"
 
 #PHPUNIT
-RUN composer global require "phpunit/phpunit=5.7.*"
+RUN composer global require "phpunit/phpunit=6.*"
 ENV PATH /root/.composer/vendor/bin:$PATH
 RUN ln -s /root/.composer/vendor/bin/phpunit /usr/bin/phpunit
 
