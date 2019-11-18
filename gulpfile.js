@@ -83,6 +83,6 @@ gulp.task('watch', function() {
 
 // we can add the phpunit task here when we get it working. Right now we're runing into issues where some of the WordPress functions
 //	used in the tests like create_post are not being found. It looks like phpunit 6.x expects you to mock those sort of functions now
-gulp.task('default', ['phpcs', 'lesslint', 'less'], function() {});
+gulp.task('default', gulp.series(['phpcs', 'lesslint', 'less']));
 
-gulp.task('serve', ['default', 'watch'], function() {});
+gulp.task('serve', gulp.series(['default', 'watch']));
