@@ -40,6 +40,7 @@ class WSUWP_Plugin_iDonate_Post_Type_Fund {
 			'show_ui' => true,
 			'show_in_admin_bar' => true,
 			'show_in_rest' => true,
+			'hide_receipt' => false,
 			'menu_icon' => 'dashicons-welcome-learn-more',
 			'hierarchical' => false,
 			'taxonomies' => array( 'idonate_priorities', 'idonate_colleges', 'idonate_campuses', 'idonate_programs' ),
