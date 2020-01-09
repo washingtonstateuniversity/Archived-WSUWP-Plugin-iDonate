@@ -16,7 +16,7 @@ var gulp = require('gulp'),
 gulp.task('phpcs', function() {
 	return (
 		gulp
-			.src(['./**/*.php', '!vendor/**/*.*', '!node_modules/**/*.*'])
+			.src(['**/*.php', '!vendor/**/*.*', '!node_modules/**/*.*'])
 			// Validate files using PHP Code Sniffer
 			.pipe(
 				phpcs({
@@ -40,7 +40,7 @@ gulp.task('phpunit', function() {
 
 gulp.task('lesslint', function() {
 	return gulp
-		.src('./css/**/*.less')
+		.src('css/**/*.less')
 		.pipe(lesshint())
 		.pipe(lesshint.reporter())
 		.pipe(lesshint.failOnError())
@@ -49,7 +49,7 @@ gulp.task('lesslint', function() {
 
 gulp.task('less', function() {
 	return gulp
-		.src('./css/**/*.less')
+		.src('css/**/*.less')
 		.pipe(sourcemaps.init())
 		.pipe(
 			less({
@@ -76,9 +76,16 @@ gulp.task('watch', function() {
 		port: 8000,
 		start: true,
 	});
-	gulp.watch('./css/**/*.less', ['lesslint', 'less']);
-	gulp.watch('./includes/**/*.js');
-	gulp.watch('./includes/**/*.php', ['phpcs']); // ['phpcs', 'phpunit']
+	gulp.watch(
+		'css/**/*.less',
+		{ usePolling: true },
+		gulp.series(['lesslint', 'less'])
+	);
+	gulp.watch(
+		'includes/**/*.php',
+		{ usePolling: true },
+		gulp.series(['phpcs'])
+	); // gulp.series(['phpcs', 'phpunit'])
 });
 
 // we can add the phpunit task here when we get it working. Right now we're runing into issues where some of the WordPress functions
