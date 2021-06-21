@@ -1,8 +1,8 @@
-FROM php:7.3-apache
+FROM php:7.4-apache
 
-LABEL version="1.0"
+LABEL version="1.1"
 LABEL description="WSU Foundation Online Giving WordPress Plugin"
-LABEL maintainer="Jared Crain <jared.crain@wsu.edu>"
+LABEL maintainer="Blair Lierman <blair.lierman@wsu.edu>"
 
 # Install subversion, curl, gnupg, node, npm and gulp
 RUN apt-get update
