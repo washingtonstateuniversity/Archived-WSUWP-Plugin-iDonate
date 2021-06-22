@@ -1,6 +1,8 @@
 <?php
 
-class WSUWP_Plugin_iDonate_Tests extends WP_UnitTestCase {
+use PHPUnit\Framework\TestCase;
+
+class WSUWP_Plugin_iDonate_Tests extends TestCase {
 	/**
 	 * An initial sample test to verify working tests.
 	 */

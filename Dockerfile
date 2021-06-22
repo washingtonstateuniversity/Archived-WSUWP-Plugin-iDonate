@@ -11,7 +11,7 @@ RUN apt-get install -y curl
 RUN apt-get install -y gnupg
 RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get install -y nodejs \
-    && npm install -g grunt-cli
+    && npm install -g gulp
 
 # Install zip (for composer)
 RUN apt-get install -y zlib1g-dev libzip-dev
@@ -28,7 +28,16 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 COPY . /var/www/html
 WORKDIR /var/www/html
 
-RUN composer install
+RUN composer install --no-interaction
+
+# Install phpcs and export the path
+ENV PATH="~/.composer/vendor/bin:./vendor/bin:${PATH}"
+RUN composer global require "squizlabs/php_codesniffer=*"
+
+#PHPUNIT
+RUN composer global require "phpunit/phpunit=6.*"
+ENV PATH /root/.composer/vendor/bin:$PATH
+RUN ln -s /root/.composer/vendor/bin/phpunit /usr/bin/phpunit
 
 # Install packages
 RUN npm install
