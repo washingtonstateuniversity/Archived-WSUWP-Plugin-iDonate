@@ -452,14 +452,30 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	* @since 1.1.7
 	*/
 	function wsuf_fundselector_funds_search_funds( $search_term ) {
-		$fund_list = get_posts(array(
+		$search_term_and = str_ireplace("&", "and", $search_term);
+		
+		$fund_list_and = get_posts(array(
 			'post_type' => 'idonate_fund',
 			'post_status' => 'any',
 			'posts_per_page' => 11,
-			's' => urldecode( $search_term ),
+			's' => urldecode( $search_term_and ),
 			'orderby' => 'title',
 			'order' => 'ASC',
 		));
+		
+		$search_term_amp = str_ireplace("and", "&", $search_term);
+		
+		$fund_list_amp = get_posts(array(
+			'post_type' => 'idonate_fund',
+			'post_status' => 'any',
+			'posts_per_page' => 11,
+			's' => urldecode( $search_term_amp ),
+			'orderby' => 'title',
+			'order' => 'ASC',
+		));
+
+		$fund_list = array_merge( $fund_list_and, $fund_list_amp );
+
 		$fund_list_trimmed = array_slice( $fund_list, 0, 10 );
 		$return_array = array();
 
