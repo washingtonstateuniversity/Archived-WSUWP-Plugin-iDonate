@@ -496,7 +496,13 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			$post_title = $p->post_title;
 			$post_title = html_entity_decode( $post_title );
 			//do whatever you want with it
-			$return_array[] = array_merge( array( 'designationId' => $des_id, 'name' => $post_title, 'value' => $post_title, 'taxonomy' => $taxonomies ), $post_meta );
+			$merged_array = array_merge( array( 'designationId' => $des_id, 'name' => $post_title, 'value' => $post_title, 'taxonomy' => $taxonomies ), $post_meta );
+			
+			// Only add unique entries
+			if (!in_array($merged_array, $return_array))
+			{
+				$return_array[] = $merged_array;
+			}
 		}
 
 		if ( count( $fund_list ) > 10 ) {
