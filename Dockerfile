@@ -1,22 +1,21 @@
-FROM php:7.1-apache-jessie
+FROM php:7.4-apache
 
-LABEL version="1.0"
+LABEL version="1.1"
 LABEL description="WSU Foundation Online Giving WordPress Plugin"
-LABEL maintainer="Jared Crain <jared.crain@wsu.edu>"
+LABEL maintainer="Blair Lierman <blair.lierman@wsu.edu>"
 
 # Install subversion, curl, gnupg, node, npm and gulp
-RUN apt-get update \
-    && apt-get install -y \
-    subversion \
-    curl \
-    gnupg \
-    && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
+RUN apt-get update
+RUN apt-get install -y subversion
+RUN apt-get install -y curl
+RUN apt-get install -y gnupg
+RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get install -y nodejs \
     && npm install -g gulp
 
 # Install zip (for composer)
-RUN apt-get update && apt-get install -y zlib1g-dev \
-    && docker-php-ext-install zip
+RUN apt-get install -y zlib1g-dev libzip-dev
+RUN docker-php-ext-install zip
 
 # Install composer
 RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
