@@ -122,9 +122,6 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 			$query_params["donor"] = json_decode(stripslashes(nl2br($query_params["donor"])), true);
 			
 			$query_params = $this->array_flatten( $query_params );
-			// $query_params["donor_url"] = urldecode($query_params["donor"]);
-			// $query_params["donor_strip"] = stripslashes(nl2br($query_params["donor"]));
-			// $query_params["donor_json"] = json_decode(stripslashes(nl2br($query_params["donor"])), true);
 
 			//loop over each category
 			foreach ( $query_params as $key => $qp ) {
