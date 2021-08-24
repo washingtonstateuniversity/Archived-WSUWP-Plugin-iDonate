@@ -3,14 +3,26 @@
   "authors": [
     {
       "name": "Blair Lierman"
+    },
+    {
+      "name": "Jared Crain"
     }
   ],
+  "autoload": {
+    "classmap": [
+      "includes/"
+    ]
+  },
   "require-dev": {
     "squizlabs/php_codesniffer": "2.3.4",
-    "wp-coding-standards/wpcs": "0.9.0"
+    "wp-coding-standards/wpcs": "0.9.0",
+    "phpunit/phpunit": "6.5.14"
   },
   "scripts": {
     "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs",
-    "post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs"
+    "post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs",
+    "wp-install": "bash ./bin/install-docker.sh",
+    "wp-start": "docker-compose up -d",
+    "wp-tests": "docker-compose run --rm wordpress_phpunit phpunit"
   }
 }

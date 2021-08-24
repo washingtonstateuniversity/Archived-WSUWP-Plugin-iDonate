@@ -1,6 +1,8 @@
 <?php
 
-class WSUWP_Plugin_iDonate_ShortCode_FundSelector_Tests extends WP_UnitTestCase {
+use PHPUnit\Framework\TestCase;
+
+class WSUWP_Plugin_iDonate_ShortCode_FundSelector_Tests extends TestCase {
 
 	function setUp() {
 		parent::setUp();
