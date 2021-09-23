@@ -452,8 +452,8 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	* @since 1.1.7
 	*/
 	function wsuf_fundselector_funds_search_funds( $search_term ) {
-		$search_term_and = str_ireplace("&", "and", $search_term);
-		
+		$search_term_and = str_ireplace( '&', 'and', $search_term );
+
 		$fund_list_and = get_posts(array(
 			'post_type' => 'idonate_fund',
 			'post_status' => 'any',
@@ -462,9 +462,9 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			'orderby' => 'title',
 			'order' => 'ASC',
 		));
-		
-		$search_term_amp = str_ireplace("and", "&", $search_term);
-		
+
+		$search_term_amp = str_ireplace( 'and', '&', $search_term );
+
 		$fund_list_amp = get_posts(array(
 			'post_type' => 'idonate_fund',
 			'post_status' => 'any',
@@ -497,10 +497,9 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			$post_title = html_entity_decode( $post_title );
 			//do whatever you want with it
 			$merged_array = array_merge( array( 'designationId' => $des_id, 'name' => $post_title, 'value' => $post_title, 'taxonomy' => $taxonomies ), $post_meta );
-			
+
 			// Only add unique entries
-			if (!in_array($merged_array, $return_array))
-			{
+			if ( ! in_array( $merged_array, $return_array, true ) ) {
 				$return_array[] = $merged_array;
 			}
 		}

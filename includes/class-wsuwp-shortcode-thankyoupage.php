@@ -117,10 +117,10 @@ class WSUWP_Plugin_iDonate_ShortCode_ThankYouPage {
 		$return_array = array();
 		if ( ! empty( $_GET ) ) {
 
-			$query_params =  $_GET ;
+			$query_params = $_GET ;
 			// Parse Donor query param as JSON
-			$query_params["donor"] = json_decode(stripslashes(nl2br($query_params["donor"])), true);
-			
+			$query_params['donor'] = json_decode( stripslashes( nl2br( $query_params['donor'] ) ), true );
+
 			$query_params = $this->array_flatten( $query_params );
 
 			//loop over each category
