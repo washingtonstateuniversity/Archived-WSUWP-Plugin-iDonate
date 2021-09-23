@@ -537,6 +537,6 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	* @since 1.1.2
 	*/
 	function wsuf_fundselector_get_script_version() {
-		return '1.2.4';
+		return '1.2.5';
 	}
 }
