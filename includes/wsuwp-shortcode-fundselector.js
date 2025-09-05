@@ -1,10 +1,10 @@
 /// <reference path="wsuwp-shortcode-fundselector-utils.js" />
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
 	// Fund Search Autocomplete
 	$('#fundSearch')
 		.autocomplete({
-			source: function(request, response) {
+			source: function (request, response) {
 				$('#fundSearch').addClass('loading');
 
 				var restQueryUrl =
@@ -12,13 +12,13 @@ jQuery(document).ready(function($) {
 					'search/' +
 					encodeURI(request.term);
 
-				jQuery.getJSON(restQueryUrl).then(function(json) {
+				jQuery.getJSON(restQueryUrl).then(function (json) {
 					$('#fundSearch').removeClass('loading');
 					response(json);
 				});
 			},
 			minLength: 3,
-			select: function(event, ui) {
+			select: function (event, ui) {
 				$('#inpDesignationId').text(ui.item.designationId);
 				$('#inpFundName').text(ui.item.name);
 				showAmountZone();
@@ -28,7 +28,7 @@ jQuery(document).ready(function($) {
 		.addClass('fundselector');
 
 	// Major Category Click Events
-	$('#majorcategory a').click(function(event, deferred) {
+	$('#majorcategory a').click(function (event, deferred) {
 		resetForm(true);
 
 		$('#majorcategory a').removeClass('active');
@@ -55,19 +55,19 @@ jQuery(document).ready(function($) {
 
 			$list.append(
 				'<option disabled selected value> SELECT A ' +
-					category +
-					'</option>'
+				category +
+				'</option>'
 			);
 			$('label[for=subcategories]').text('Choose a ' + description);
 
-			$.getJSON(restUrl).done(function(json) {
+			$.getJSON(restUrl).done(function (json) {
 				var $fundList = $('#funds');
 				$fundList.empty();
 				$fundList.append(
 					'<option disabled selected value> SELECT A FUND </option>'
 				);
 
-				$.each(json, function(key, value) {
+				$.each(json, function (key, value) {
 					$list.append(
 						$('<option>', {
 							value: value['id'],
@@ -93,7 +93,7 @@ jQuery(document).ready(function($) {
 	});
 
 	// Subcategory Selected Change event
-	$('#subcategories').change(function(event, deferred) {
+	$('#subcategories').change(function (event, deferred) {
 		var category = $(this)
 			.find(':selected')
 			.attr('data-category');
@@ -116,14 +116,14 @@ jQuery(document).ready(function($) {
 			$list.addClass('loading');
 			$list.removeClass('fund');
 
-			$.getJSON(restQueryUrl).done(function(json) {
+			$.getJSON(restQueryUrl).done(function (json) {
 				$list.empty();
 				$list.append(
 					'<option disabled selected value> SELECT A FUND </option>'
 				);
-				$.each(json, function(key, value) {
+				$.each(json, function (key, value) {
 					$list.append(
-						$('<option>', { value: value['designationId'] }).text(
+						$('<option>', {value: value['designationId']}).text(
 							wsuwpUtils.htmlDecode(value['title'].rendered)
 						)
 					);
@@ -149,7 +149,7 @@ jQuery(document).ready(function($) {
 	});
 
 	// Fund Selected Change event
-	$('.fund-selection').change(function() {
+	$('.fund-selection').change(function () {
 		var designationId = $(this).val();
 		var fundName = $(this)
 			.find(':selected')
@@ -162,14 +162,14 @@ jQuery(document).ready(function($) {
 	// Dollar Amount button click  event
 	$('.amount-selection')
 		.not('.other')
-		.click(function(event) {
+		.click(function (event) {
 			handleAmountSelectionClick(event);
 			addFundAction();
 			$('#selectedFunds').focus();
 		});
 
 	// Add Fund Button click  event
-	$('#addFundButton').click(function(event) {
+	$('#addFundButton').click(function (event) {
 		var amount = jQuery('#otherAmount').val();
 		var roundedAmount = wsuwpUtils.roundAmount(amount);
 		if (
@@ -181,7 +181,7 @@ jQuery(document).ready(function($) {
 	});
 
 	// Add fund when enter is pressed on the other amount field
-	$('#otherAmount').keypress(function(e) {
+	$('#otherAmount').keypress(function (e) {
 		if (e.which == 13) {
 			// enter key is pressed
 			$('#addFundButton').click();
@@ -189,7 +189,7 @@ jQuery(document).ready(function($) {
 	});
 
 	// Add Fund Button keypress event
-	$('#addFundButton').keypress(function(e) {
+	$('#addFundButton').keypress(function (e) {
 		if (e.which == 13) {
 			// enter key is pressed
 			$('#addFundButton').click();
@@ -199,7 +199,7 @@ jQuery(document).ready(function($) {
 	// Gift Planning Learn More click  event
 	$('.gift-planning a')
 		.button()
-		.click(function(event) {
+		.click(function (event) {
 			$giftPlanningDescription = $(
 				'.gift-planning .additional-info-description'
 			);
@@ -219,7 +219,7 @@ jQuery(document).ready(function($) {
 	// Close Add Fund Indicator
 	$('.help-text span.close a')
 		.button()
-		.click(function(event) {
+		.click(function (event) {
 			event.preventDefault();
 
 			hideAnything('.help-text');
@@ -227,7 +227,7 @@ jQuery(document).ready(function($) {
 
 	// Remove Fund Button Click Event
 	// (Using body to defer binding until element has been created)
-	$('body').on('click', '#selectedFunds li span.close a', function(event) {
+	$('body').on('click', '#selectedFunds li span.close a', function (event) {
 		event.preventDefault();
 
 		$parent = $(this)
@@ -238,7 +238,7 @@ jQuery(document).ready(function($) {
 		if ($parent.hasClass('fund-scholarship'))
 			$('#genScholarship').prop('checked', false);
 
-		$parent.fadeOut(1000, function() {
+		$parent.fadeOut(1000, function () {
 			$(this).remove();
 			wsuwpUtils.updateTotalAmountText($('#advFeeCheck').prop('checked'));
 		});
@@ -253,7 +253,7 @@ jQuery(document).ready(function($) {
 
 	// Other Amount text field Change Event
 	$('#otherAmount')
-		.on('input propertychange paste', function() {
+		.on('input propertychange paste', function () {
 			var inputAmount = $(this).val();
 			var roundedAmount = wsuwpUtils.roundAmount(inputAmount);
 			if (
@@ -270,22 +270,30 @@ jQuery(document).ready(function($) {
 				wsuwpUtils.disableButton($('#addFundButton'));
 				jQuery('#errorOtherAmount').text(
 					'Amount should be between $' +
-						MINIMUM_GIFT +
-						' and $' +
-						MAXIMUM_GIFT
+					MINIMUM_GIFT +
+					' and $' +
+					MAXIMUM_GIFT
 				);
 			}
 		})
-		.focus(function() {
+		.focus(function () {
 			$(this).select();
 		});
 
-	$('.amount-selection.other').on('click', function() {
+	$('.amount-selection.other').on('click', function () {
 		$('.amount-selection.selected').removeClass('selected');
 		$(this).addClass('selected');
 		showOther();
 		$('#otherAmount').focus();
-		$('#addFundButton').attr('tabindex', '0');
+		$('#addFundButton').attr('tabindex', '0').css // YH if Other is clicked, change next button color
+			({
+				color: '#ffffff',
+				background: '#981e32',
+				padding: '11px 40px 10px 40px',
+				'background-position-x': '51px',
+				'background-size': '8px'
+			});
+
 	});
 
 	// Continue Button Initialization and Click Event
@@ -297,12 +305,12 @@ jQuery(document).ready(function($) {
 
 	hideContinueButton();
 
-	$('#backButton').on('click', function(event) {
+	$('#backButton').on('click', function (event) {
 		event.preventDefault();
 		showForm();
 	});
 
-	$('#genScholarship').change(function() {
+	$('#genScholarship').change(function () {
 		// this will contain a reference to the checkbox
 		if (this.checked) {
 			// the checkbox is now checked
@@ -324,7 +332,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$('#advFeeCheck').change(function() {
+	$('#advFeeCheck').change(function () {
 		// this will contain a reference to the checkbox
 		wsuwpUtils.updateTotalAmountText(this.checked);
 	});
@@ -335,7 +343,7 @@ jQuery(document).ready(function($) {
 			$('#unit-priorities'),
 			wpData.unit_taxonomy,
 			wpData.unit_category
-		).done(function() {
+		).done(function () {
 			loadFundFromDesignationID(
 				$('#unit-priorities'),
 				wpData.unit_designation
@@ -349,7 +357,7 @@ jQuery(document).ready(function($) {
 	} else if (
 		wpData.cat && // if we don't know the category, default to showing the priorities tab and populating the fund there if provided
 		((!wpData.area && !wpData.unit_designation) || // Show the category tab
-		(wpData.area && !wpData.unit_designation) || // Show the category and populate the area
+			(wpData.area && !wpData.unit_designation) || // Show the category and populate the area
 			(wpData.area && wpData.unit_designation))
 	) {
 		// Show the category and populate the area and fund
@@ -363,7 +371,7 @@ jQuery(document).ready(function($) {
 
 		if (wpData.area) {
 			//Populate the subcategory after the tab has been loaded
-			$.when(defer).done(function() {
+			$.when(defer).done(function () {
 				var subcategory = $('#subcategories').find(
 					"[data-subcategory='" + wpData.area + "']"
 				);
@@ -372,7 +380,7 @@ jQuery(document).ready(function($) {
 				subcategory.trigger('change', deferSubcategoryChange);
 
 				if (wpData.unit_designation) {
-					$.when(deferSubcategoryChange).done(function() {
+					$.when(deferSubcategoryChange).done(function () {
 						loadFundFromDesignationID(
 							$('#funds'),
 							wpData.unit_designation
@@ -387,7 +395,7 @@ jQuery(document).ready(function($) {
 			$('#priorities'),
 			'idonate_priorities',
 			'idonate_priorities'
-		).done(function() {
+		).done(function () {
 			loadFundFromDesignationID(
 				$('#priorities'),
 				wpData.unit_designation
@@ -410,7 +418,7 @@ function loadFundFromDesignationID($list, designationId) {
 			// GET /wp-json/idonate_fundselector/v1/fund/designationId (e.g. GET /wp-json/idonate_fundselector/v1/fund/12dc5acc-07ea-4ed3-9c92-4b9ebe7c951c)
 			var restQueryUrl = wpData.plugin_url_base + 'fund/' + designationId;
 
-			jQuery.getJSON(restQueryUrl).then(function(json) {
+			jQuery.getJSON(restQueryUrl).then(function (json) {
 				if (json.length > 0) {
 					// Add to priorities
 					var $fund = jQuery('<option>', {
@@ -432,14 +440,14 @@ function loadPriorities($list, category, subcategory) {
 		var restQueryUrl =
 			wpData.plugin_url_base + 'funds/' + category + '/' + subcategory;
 
-		return jQuery.getJSON(restQueryUrl).then(function(json) {
+		return jQuery.getJSON(restQueryUrl).then(function (json) {
 			$list.empty();
 			$list.append(
 				'<option disabled selected value> SELECT A FUND </option>'
 			);
-			jQuery.each(json, function(key, value) {
+			jQuery.each(json, function (key, value) {
 				$list.append(
-					jQuery('<option>', { value: value['designation_id'] }).text(
+					jQuery('<option>', {value: value['designation_id']}).text(
 						wsuwpUtils.htmlDecode(value['fund_name'])
 					)
 				);
@@ -487,7 +495,7 @@ function resetForm(immediate) {
 	jQuery('#fundSearch').val('');
 	jQuery('.fund-selection').prop('selectedIndex', 0);
 	jQuery('.category-selection').prop('selectedIndex', 0);
-	setTimeout(function() {
+	setTimeout(function () {
 		jQuery('.amountwrapper .selected').removeClass('selected');
 	}, 1300);
 	if (immediate) {
@@ -525,7 +533,7 @@ function continueAction(event) {
 				// The new new calculation formula is "total * (1 + fee%) - total" to cover fee
 				var advFeeDecimal =
 					designations[i].amount *
-						(1 + wpData.adv_fee_percentage * 0.01) -
+					(1 + wpData.adv_fee_percentage * 0.01) -
 					designations[i].amount;
 
 				// Rounding based on this answer: http://stackoverflow.com/a/5191166
@@ -611,18 +619,124 @@ function continueAction(event) {
 
 		jQuery('#iDonateEmbed').attr('data-reference_code', stringifiedRefCode);
 
-		// Initialize the iDonate embed
-		initializeEmbeds();
+		// redirect work start June 10, 2025
+		// get iDonate all attributes
+		// Using jQuery
+		const $element = jQuery('#iDonateEmbed');
+		const attributes = {}; // for debug
+		let queryString = "";
 
-		$loadingMessage = jQuery('#embedLoadingMessage');
+		let excludedAttributes = ["id",
+			"data-idonate-embed",
+			"data-designation",
+			"data-defer",
+			"data-cash_default",
+			"data-gift_arrays",
+			"data-custom_gift_amount"];
+
+		const WSU_WILL_CONSIDERING = "I am considering including the WSU Foundation in my Will or other estate plans. Please send me information.";
+		const WSU_WILL_INCLUDED = "I have included the WSU Foundation in my Will or other estate plans";
+		const DONOR_PAYS_FEE_MESSAGE = "I would like to cover the Advancement Fee to maximize the impact of my gift";
+
+		jQuery.each($element[0].attributes, function () {
+			if (!excludedAttributes.includes(this.name)) {
+
+				// I would like more information about putting WSU in my will/estate plan
+				if (this.name === 'data-custom_note_5') {
+					if (this.value.length > 0) {
+						queryString += `WsuInWill*=${encodeURIComponent(WSU_WILL_CONSIDERING)}&`;
+						queryString += encodeURIComponent(this.name.replace("data-", "")) + "=" + encodeURIComponent(this.value) + "&";
+					}
+				}
+				//WSU is in my will/estate plan!
+				else if (this.name === 'data-custom_note_4') {
+					if (this.value.length > 0) {
+						queryString += `WsuInWill*=${encodeURIComponent(WSU_WILL_INCLUDED)}&`;
+						queryString += encodeURIComponent(this.name.replace("data-", "")) + "=" + encodeURIComponent(this.value) + "&";
+					}
+				}
+				//reference_code=/{\"donorPaysFee\":true,\"feePercentage\":5}/
+				else if (this.name === 'data-reference_code') {
+					if (referenceCode.donorPaysFee === false) {
+						queryString += "DonorPaysFee*=No&";
+					} else {
+						queryString += `DonorPaysFee*=${encodeURIComponent(DONOR_PAYS_FEE_MESSAGE)}&`;
+					}
+
+					queryString += encodeURIComponent(this.name.replace("data-", "")) + "=" + encodeURIComponent(this.value) + "&";
+				} else {
+					// Handle all other attributes
+					queryString += encodeURIComponent(this.name.replace("data-", "")) + "=" + encodeURIComponent(this.value) + "&";
+				}
+			}
+			attributes[this.name] = this.value; // for debug
+		});
+
+		//UTM tags in the url
+		const params = new URLSearchParams(window.location.search);
+
+		// UTM query params
+		const UTMValues = [
+			"utm_term",
+			"utm_campaign",
+			"utm_medium",
+			"utm_content",
+			"utm_source"
+		];
+
+		UTMValues.forEach(function (value) {
+			let UTMValue = params.get(value);
+
+			if (UTMValue !== null && UTMValue.length > 0)
+				queryString += value + "=" + encodeURIComponent(UTMValue) + "&";
+		});
+
+		// Remove trailing '&' if it exists
+		if (queryString.endsWith('&')) {
+			queryString = queryString.slice(0, -1);
+		}
+
+		// Initialize the iDonate embed
+		//initializeEmbeds(); // June 10, 2025 no more embeds, use redirect
+
+		// Redirect and display the link if not redirect in #seconds
+		const redirectUrl = jQuery('#redirect_url').val() + queryString;
+		const seconds = 3;
+
+		const debugValue = params.get("debug");
+		if (debugValue !== null) //debug enabled
+		{
+			console.log(attributes);
+			console.log(queryString);
+			console.log(redirectUrl);
+		}
+
+		const $loadingMessage = jQuery('#embedLoadingMessage');
+		$loadingMessage.html(`<br />Redirecting to secure checkout in <span id="countdown" style="color: #981e32;">${seconds}</span> seconds. If not redirected, <a href="${redirectUrl}">click here</a>.`);
 		$loadingMessage.show();
 
-		wsuwpUtils
-			.iDonateEmbedLoad(jQuery('#loadingCheck'))
-			.then(function loaded() {
-				jQuery('#iDonateEmbed iframe').show();
-				$loadingMessage.hide();
-			});
+
+		//redirect
+		let timeLeft = seconds;
+		const countdownInterval = setInterval(() => {
+			timeLeft--;
+			jQuery('#countdown').text(timeLeft);
+
+			if (timeLeft <= 0) {
+				clearInterval(countdownInterval);
+				window.location.href = redirectUrl;
+			}
+		}, 1000);
+
+		// end of redirect work
+
+		// June 10, 2025 no more embeds, use redirect
+		// wsuwpUtils
+		// 	.iDonateEmbedLoad(jQuery('#loadingCheck'))
+		// 	.then(function loaded() {
+		// 		jQuery('#iDonateEmbed iframe').show();
+		// 		$loadingMessage.hide();
+		// 	});
 	} else jQuery('#iDonateEmbed iframe').hide();
 }
 
@@ -664,32 +778,32 @@ function hideOther() {
 
 function showAnything(element) {
 	jQuery(element)
-		.animate({ opacity: 1 }, { duration: 300 })
+		.animate({opacity: 1}, {duration: 300})
 		.show()
 		.delay(1000);
 }
 
 function hideAnything(element) {
-	jQuery(element).animate({ opacity: 0 }, { duration: 1000 });
-	setTimeout(function() {
+	jQuery(element).animate({opacity: 0}, {duration: 1000});
+	setTimeout(function () {
 		jQuery(element).hide();
 	}, 1100);
 }
 
-jQuery(document).ready(function() {
-	jQuery('#majorcategory a').on('click', function() {
+jQuery(document).ready(function () {
+	jQuery('#majorcategory a').on('click', function () {
 		jQuery('.form-group.search').addClass('hidden');
 		jQuery('#majorcategory a.active').removeClass('active');
 		jQuery(this).addClass('active');
 	});
-	jQuery('.search').on('click', function() {
+	jQuery('.search').on('click', function () {
 		jQuery('.form-group.search').removeClass('hidden');
 	});
 	jQuery('button.amount-selection:last').addClass('lastbutton');
 });
 
 jQuery.extend(jQuery.ui.autocomplete.prototype.options, {
-	open: function(event, ui) {
+	open: function (event, ui) {
 		jQuery(this)
 			.autocomplete('widget')
 			.css({
@@ -698,8 +812,8 @@ jQuery.extend(jQuery.ui.autocomplete.prototype.options, {
 
 		var length = jQuery(this).autocomplete('widget')[0].childNodes.length;
 		var $lastNode = jQuery(this).autocomplete('widget')[0].childNodes[
-			length - 1
-		];
+		length - 1
+			];
 
 		if (
 			$lastNode.innerText.indexOf(

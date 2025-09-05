@@ -115,7 +115,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		<div id="categoryTab" class="categoryTab wrapper ' . ($unit_included ? '' : 'hidden') . '">
 			<label for="unit-priorities">' . $unit_description . '</label>
 			<select name="unit-priorities" id="unit-priorities" class="form-control fund-selection fund">'
-				. $unit_priorities_list .
+			. $unit_priorities_list .
 			'</select>
 		</div>';
 
@@ -133,7 +133,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		<div id="prioritiesTab" class="categoryTab wrapper ' . ($unit_included ? 'hidden' : '') . '">
 			<label for="priorities" style="font: inherit;">Choose one of the University\'s greatest needs</label>
 			<select name="priorities" id="priorities" class="form-control fund-selection fund">'
-				. $priorities_list .
+			. $priorities_list .
 			'</select>
 		</div>';
 
@@ -233,7 +233,7 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 		<div tabindex="0" class="disclaimer total" style="display:none;"><span class="first-sentence">Your generous donation will total $<span id="totalAmount"></span> today.</span> When you proceed to checkout, you will be sent to our payment processing service.</div>
 		';
 
-		// Gift Planning Checkboxes
+		// Gift Planning Checkboxes - YH July 2025 changed checkboxes to radio buttons
 		$return_string .= '
 		<div class="additional-info gift-planning" style="display:none;">
 			<span class="additional-info-header-wrapper">
@@ -243,18 +243,18 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 			<p tabindex="0" class="additional-info-description" style="display:none;">
 				Charitable gifts from estates and other planned gifts play an integral role in the future of Washington State University. The WSU Foundation offers several tax-wise giving options to support WSU’s mission while fulfilling your personal philanthropic goals.
 			</p>
-			<span >
-				<input type="checkbox" id="gpInWill">
-				<label for="gpInWill">
-					<span>I have included the WSU Foundation in my Will or other estate plans.</span>
-				</label>
-			</span>
-			<span>
-				<input type="checkbox" id="gpMoreInfo">
-				<label for="gpMoreInfo">
-					<span>I am considering including the WSU Foundation in my Will or other estate plans. Please send me information.</span>
-				</label>
-			</span>
+            <span >
+                <input type="radio" name="gpPlanning" id="gpInWill" value="included" style="width: 15px; height: 15px; margin-top: 2px;accent-color: #981e32;">
+                <label for="gpInWill">
+                    <span>I have included the WSU Foundation in my Will or other estate plans.</span>
+                </label>
+            </span>
+            <span>
+                <input type="radio" name="gpPlanning" id="gpMoreInfo" value="considering" style="width: 15px; height: 15px; margin-top: 2px;accent-color: #981e32;">
+                <label for="gpMoreInfo">
+                    <span>I am considering including the WSU Foundation in my Will or other estate plans. Please send me information.</span>
+                </label>
+            </span>
 		</div>
 		';
 
@@ -268,14 +268,17 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 
 		if ( 'staging' === $args['server'] ) {
 			$url = 'https://staging-embed.idonate.com/idonate.js';
+			$return_string .= '<input id="redirect_url" type="hidden" value="https://gift.idonate.com/washington-state-univeristy-sandbox/test-checkout?">'; // set stage redirect url June 11, 2025 YH
 		} else {
 			$url = 'https://embed.idonate.com/idonate.js';
+			// production redirect url
+			$return_string .= '<input id="redirect_url" type="hidden" value="https://gift.idonate.com/washington-state-university/give-to-wsu?">';
 		}
 
 		// Loading Message List
 		$return_string .= '<div id="secondform" style="display: none;"><a class="left btnlhtgry" id="backButton" href="#">Back</a><h2 id="embedLoadingMessage" style="display: none;">Loading Payment Process</h2>';
 
-		wp_enqueue_script( 'wsuf_fundselector_idonate_embed', $url, array(), false, true );
+		//wp_enqueue_script( 'wsuf_fundselector_idonate_embed', $url, array(), false, true ); // June 10, 2025, embed replaced with redirect
 
 		$return_string .= '<div id="iDonateEmbed" data-idonate-embed="' . $args['embed'] . '" data-defer></div>';
 
@@ -306,10 +309,10 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	}
 
 	/**
-	* Get a list of all categories for a specific taxonomy
-	*
-	* @return array $return_array
-	*/
+	 * Get a list of all categories for a specific taxonomy
+	 *
+	 * @return array $return_array
+	 */
 	function wsuf_fundselector_funds_get_categories( $taxonomy ) {
 		$terms = get_terms( array(
 			'taxonomy' => $taxonomy,
@@ -328,25 +331,25 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	}
 
 	/**
-	* Get a list of all funds stored in the wsuf fundselector funds table
-	*
-	* @return array $return_array
-	*/
+	 * Get a list of all funds stored in the wsuf fundselector funds table
+	 *
+	 * @return array $return_array
+	 */
 	function wsuf_fundselector_funds_get_funds( $category, $subcategory ) {
 		$fund_list = get_posts(array(
-			'post_type'   => 'idonate_fund',
-			'post_status' => 'publish',
-			'perm' => 'readable',
-			'posts_per_page' => -1, // Get all posts
-			'tax_query' => array(
+				'post_type'   => 'idonate_fund',
+				'post_status' => 'publish',
+				'perm' => 'readable',
+				'posts_per_page' => -1, // Get all posts
+				'tax_query' => array(
 					array(
 						'taxonomy' => $category,
 						'field' => 'slug',
 						'terms' => $subcategory,
 					),
 				),
-			'orderby' => 'title',
-			'order' => 'ASC',
+				'orderby' => 'title',
+				'order' => 'ASC',
 			)
 		);
 
@@ -365,26 +368,26 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	}
 
 	/**
-	* Get a single fund stored in the a specific category
-	*
-	* @return array $return_fund
-	*
-	* @since 0.0.9
-	*/
+	 * Get a single fund stored in the a specific category
+	 *
+	 * @return array $return_fund
+	 *
+	 * @since 0.0.9
+	 */
 	function wsuf_fundselector_funds_get_single_scholarship_fund( $subcategory ) {
 		$fund_list = get_posts(array(
-			'post_type'   => 'idonate_fund',
-			'post_status' => 'any',
-			'posts_per_page' => 1,
-			'tax_query' => array(
+				'post_type'   => 'idonate_fund',
+				'post_status' => 'any',
+				'posts_per_page' => 1,
+				'tax_query' => array(
 					array(
 						'taxonomy' => 'idonate_scholarships',
 						'field' => 'slug',
 						'terms' => $subcategory,
 					),
 				),
-			'orderby' => 'title',
-			'order' => 'ASC',
+				'orderby' => 'title',
+				'order' => 'ASC',
 			)
 		);
 
@@ -407,23 +410,23 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	}
 
 	/**
-	* Get a list of all funds stored in the wsuf fundselector funds table
-	*
-	* @return array $return_array
-	*
-	* @since 0.0.17
-	*/
+	 * Get a list of all funds stored in the wsuf fundselector funds table
+	 *
+	 * @return array $return_array
+	 *
+	 * @since 0.0.17
+	 */
 	function wsuf_fundselector_funds_get_fund_name( $des_id ) {
 		$fund_list = get_posts(array(
 			'post_type'   => 'idonate_fund',
 			'post_status' => 'any',
 			'posts_per_page' => -1, // Get all posts
 			'meta_query' => array(
-					array(
-						'key' => 'designationId',
-						'value' => $des_id,
-						'compare' => '=',
-					),
+				array(
+					'key' => 'designationId',
+					'value' => $des_id,
+					'compare' => '=',
+				),
 			),
 		));
 
@@ -445,12 +448,12 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	}
 
 	/**
-	* Get a list of 10 funds matching a search term. Search only published and searchable funds
-	*
-	* @return array $return_array
-	*
-	* @since 1.1.7
-	*/
+	 * Get a list of 10 funds matching a search term. Search only published and searchable funds
+	 *
+	 * @return array $return_array
+	 *
+	 * @since 1.1.7
+	 */
 	function wsuf_fundselector_funds_search_funds( $search_term ) {
 		$search_term_and = str_ireplace( '&', 'and', $search_term );
 
@@ -512,12 +515,12 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	}
 
 	/**
-	* Gets current plugin version
-	*
-	* @return string Plugin version
-	*
-	* @since 1.1.2
-	*/
+	 * Gets current plugin version
+	 *
+	 * @return string Plugin version
+	 *
+	 * @since 1.1.2
+	 */
 	function wsuf_fundselector_get_plugin_version() {
 		if ( ! function_exists( 'get_plugins' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -529,13 +532,14 @@ class WSUWP_Plugin_iDonate_ShortCode_Fund_Selector {
 	}
 
 	/**
-	* Gets current script version
-	*
-	* @return string Script version
-	*
-	* @since 1.1.2
-	*/
+	 * Gets current script version
+	 *
+	 * @return string Script version
+	 *
+	 * @since 1.1.2
+	 */
 	function wsuf_fundselector_get_script_version() {
-		return '1.2.5';
+		//return '1.2.5';
+		return '1.2.6'; // YH redirect work
 	}
 }
